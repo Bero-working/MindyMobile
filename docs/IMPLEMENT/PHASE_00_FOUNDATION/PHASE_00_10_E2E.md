@@ -1,0 +1,23 @@
+# 0.10 E2E
+
+## Mô tả
+Cài Maestro CLI, tạo thư mục flow và script `test:e2e` để mọi phase màn hình viết được flow cho luồng chính.
+
+## Hạ tầng / ADR
+- File khoá bị sửa: `package.json` (script).
+- ADR: [ADR-0007](../../adr/ADR-0007-maestro-msw.md).
+- Nội dung: [guides/testing.md](../../guides/testing.md#e2e-maestro).
+- Lưu ý: Android `applicationId` là `com.mindymobile`, còn iOS `PRODUCT_BUNDLE_IDENTIFIER` vẫn là giá trị mặc định của
+  template (`org.reactjs.native.example...`). Flow dùng `appId: ${APP_ID}` nên phải truyền đúng id theo nền tảng.
+
+## Task
+### 0.10.1 Cài Maestro và script
+- Kết quả mong đợi: Maestro CLI cài trên máy dev (ghi cách cài vào [CONTRIBUTING.md](../../CONTRIBUTING.md)); thư mục
+  `e2e/flows/`; script `"test:e2e": "maestro test e2e/flows"` truyền được `APP_ID`
+  (`maestro test -e APP_ID=<id> e2e/flows`).
+- Test cần viết trước: flow mẫu `e2e/flows/app-launch.yaml` mở app và `assertVisible` một `testID` của màn đầu tiên;
+  chạy trước khi thêm `testID`, phải fail.
+
+## Tiêu chí nghiệm thu
+- [ ] `npm run test:e2e` chạy flow mẫu xanh trên Android Emulator.
+- [ ] Owner chốt cách truyền `APP_ID` cho script (Android và iOS).

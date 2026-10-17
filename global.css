@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* 1. Màu gốc (brand) */
+  --canvas: 255 255 255; /* #FFFFFF */
+  --mint: 51 138 133; /* #338A85 */
+  --forest: 29 91 87; /* #1D5B57 */
+  --coral: 255 127 80; /* #FF7F50 */
+  --headsup: 255 84 0; /* #FF5400 */
+  --sunshine: 255 221 174; /* #FFDDAE */
+  --logo-soft: 216 240 250; /* #D8F0FA */
+  --black: 0 0 0; /* #000000 */
+
+  /* 2. Màu pha (dẫn xuất) */
+  --soft: 241 247 246; /* #F1F7F6  mint 7% + trắng */
+  --line: 216 233 232; /* #D8E9E8  mint 19% + trắng */
+  --muted: 52 107 104; /* #346B68  forest 90% + trắng */
+  --peach: 255 238 232; /* #FFEEE8  coral 13% + trắng */
+  --action: 255 153 115; /* #FF9973  coral 80% + trắng */
+  --action-hover: 255 165 132; /* #FFA584  coral 70% + trắng */
+  --banner: 202 225 223; /* #CAE1DF  mint 26% + trắng */
+  --catalog-ink: 38 38 38; /* #262626  đen 85% + trắng */
+
+  /* Trạng thái */
+  --status-green: 21 128 61; /* #15803D */
+  --status-yellow: 161 98 7; /* #A16207 */
+  --status-red: 185 28 28; /* #B91C1C */
+  --pastel-red: 213 119 119; /* #D57777 */
+  --ink-soft: 46 46 46; /* #2E2E2E */
+  --ink-gray: 107 107 107; /* #6B6B6B */
+
+  /* 3. Token ngữ nghĩa (ghi giá trị trực tiếp, không trỏ var() lồng nhau) */
+  --background: 255 255 255; /* canvas */
+  --foreground: 29 91 87; /* forest */
+  --card: 255 255 255; /* canvas */
+  --card-foreground: 29 91 87; /* forest */
+  --popover: 255 255 255; /* canvas */
+  --popover-foreground: 29 91 87; /* forest */
+  --primary: 29 91 87; /* forest */
+  --primary-foreground: 255 255 255; /* canvas */
+  --secondary: 241 247 246; /* soft */
+  --secondary-foreground: 29 91 87; /* forest */
+  --accent: 241 247 246; /* soft */
+  --accent-foreground: 29 91 87; /* forest */
+  --border: 216 233 232; /* line */
+  --input: 216 233 232; /* line */
+  --ring: 51 138 133; /* mint */
+  --muted-foreground: 52 107 104; /* muted */
+  --destructive: 255 84 0; /* headsup */
+  --destructive-foreground: 255 255 255; /* canvas */
+  --hero: 51 138 133; /* mint */
+  --hero-ink: 255 255 255; /* canvas */
+  --hero-copy: 255 255 255; /* canvas */
+  --feature: 255 221 174; /* sunshine */
+}
+
+/* 7. Kiểu chữ dùng chung (GLOBAL_CSS §7, bỏ breakpoint sm/lg của web) */
+@layer components {
+  .section-title {
+    @apply font-nunito-extrabold text-3xl tracking-tight text-foreground;
+  }
+
+  .eyebrow {
+    @apply font-nunito-extrabold text-xs uppercase tracking-[0.14em] text-mint;
+  }
+
+  .text-link {
+    @apply font-nunito-extrabold text-sm text-mint;
+  }
+
+  .body-text {
+    @apply font-nunito text-base text-foreground;
+  }
+
+  .caption {
+    @apply font-nunito text-sm text-muted-foreground;
+  }
+}

@@ -1,0 +1,39 @@
+# File hạ tầng bị khoá. Danh sách gốc: docs/ARCHITECTURE.md mục "File hạ tầng (bị khoá)".
+# Sửa file trong đây cần ADR Accepted (docs/README.md, B.8) và owner duyệt PR.
+# Quy tắc của GitHub: dòng khớp sau cùng thắng. Dòng không có owner = bỏ khoá cho đường dẫn đó.
+
+/.github/CODEOWNERS                @Bero
+
+/babel.config.js                   @Bero
+/metro.config.js                   @Bero
+/tailwind.config.js                @Bero
+/global.css                        @Bero
+/nativewind-env.d.ts               @Bero
+/index.js                          @Bero
+/jest.config.js                    @Bero
+/jest.setup.js                     @Bero
+/.eslintrc.js                      @Bero
+/.prettierrc*                      @Bero
+/tsconfig.json                     @Bero
+/react-native.config.js            @Bero
+# CODEOWNERS không chia được theo phần của file. Chỉ dependencies, devDependencies, scripts bị khoá.
+/package.json                      @Bero
+
+/android/                          @Bero
+/ios/                              @Bero
+# Asset, icon, splash không bị khoá
+/android/app/src/main/res/mipmap-*/
+/android/app/src/main/res/drawable*/
+/ios/MindyMobile/Images.xcassets/
+/ios/MindyMobile/LaunchScreen.storyboard
+
+/src/config/                       @Bero
+/src/navigation/index.tsx          @Bero
+/src/theme/                        @Bero
+/src/shared/utilities/logger.ts    @Bero
+/src/shared/utilities/apiError.ts  @Bero
+# Bật sau khi Phase 0 nghiệm thu:
+# /src/components/ui/              @Bero
+
+/tests/mocks/server.ts             @Bero
+/tests/utils/                      @Bero

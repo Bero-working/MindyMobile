@@ -1,0 +1,10 @@
+appId: ${APP_ID}
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible:
+      id: 'app-root'
+    timeout: 30000
+- assertVisible:
+    id: 'app-root'
