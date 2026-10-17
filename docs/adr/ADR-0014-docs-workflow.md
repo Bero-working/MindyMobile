@@ -5,6 +5,8 @@
 - Author: @Bero
 - Approved by: @Bero
 
+> Cập nhật: **Superseded by [ADR-0021](ADR-0021-per-phase-ui-approval-api-uat.md)** đối với thứ tự vòng đời phase. Các quyết định còn lại của ADR này tiếp tục có hiệu lực.
+
 ## Context
 Toàn bộ rule cũ nằm trong một file `BUSINESS_RULES.md` (15 mục) lẫn kiến trúc, UI, test và việc cần làm. Nhiều người
 và AI agent cùng làm song song nên cần biết làm gì tiếp, ai đã làm gì, và tránh sửa nhầm file hạ tầng.

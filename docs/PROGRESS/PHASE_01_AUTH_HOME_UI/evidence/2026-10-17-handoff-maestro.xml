@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="Pixel_8_2" tests="5" failures="1" time="191.142" timestamp="2026-10-17T20:57:08">
+    <testcase id="api-health" name="api-health" classname="api-health" file="e2e\flows\api-health.yaml" time="20.043" timestamp="2026-10-17T20:57:08" status="SUCCESS"/>
+    <testcase id="app-launch" name="app-launch" classname="app-launch" file="e2e\flows\app-launch.yaml" time="8.215" timestamp="2026-10-17T20:57:28" status="SUCCESS"/>
+    <testcase id="auth-ui-login" name="auth-ui-login" classname="auth-ui-login" file="e2e\flows\auth-ui-login.yaml" time="46.697" timestamp="2026-10-17T20:57:36" status="SUCCESS"/>
+    <testcase id="auth-ui-register" name="auth-ui-register" classname="auth-ui-register" file="e2e\flows\auth-ui-register.yaml" time="52.534" timestamp="2026-10-17T20:58:23" status="SUCCESS"/>
+    <testcase id="student-home-ui" name="student-home-ui" classname="student-home-ui" file="e2e\flows\student-home-ui.yaml" time="63.591" timestamp="2026-10-17T20:59:15" status="ERROR">
+      <failure>No visible element found: id: home-course-select-preview-0</failure>
+    </testcase>
+  </testsuite>
+</testsuites>

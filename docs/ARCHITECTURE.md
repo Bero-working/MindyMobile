@@ -145,6 +145,37 @@ Chi tiết (Http client, `ApiError`, query key, mutation, QueryClient, polling):
 
 ## File hạ tầng (bị khoá)
 
+### Ngoại lệ gắn API Phase 1 — ADR-0022 Accepted
+
+Owner đã duyệt [ADR-0022](adr/ADR-0022-phase-01-api-foundation-exception.md) trong chat ngày2026-10-17.
+Cho phép tích hợp API Auth/Home sau UI approval trong Phase1 khi Foundation còn chờ UAT. Được sửa riêng
+src/navigation/index.tsx nếu cần cho bootstrap/guard/reset phiên, kèm test; không mở khoá config/native/theme/test
+runtime/package. Dùng HTTP cookie và refresh hiện có, không thêm thư viện. Foundation và UAT giữ xác nhận riêng.
+
+### Ngoại lệ Phase 1 — ADR-0020 Accepted (2026-10-17)
+
+Owner chốt trong chat (D1, D2). Đã sửa `global.css` (nhóm “4. Màu thiết kế Phase 1”), `tailwind.config.js`
+và `src/theme/colors.ts` để thêm 14 token: `forest-deep`, `forest-night`, `teal`, `aqua`, `cream`, `tape`,
+`cover-{a..d}` và `cover-{a..d}-soft`. Không đổi token cũ, token ngữ nghĩa, font hoặc `regions.ts`.
+Home mobile 2a không dùng `regionVars.home` (ngoại lệ CORE §5). Xem
+[ADR-0020](adr/ADR-0020-phase-01-design-tokens-home-region.md).
+
+### Ngoại lệ Phase 1 — ADR-0018 Accepted (2026-10-17)
+
+Owner đã duyệt [ADR-0018](adr/ADR-0018-phase-01-ui-foundation-exception.md) trong chat.
+Cho phép triển khai UI Phase 1 khi Phase 0 còn chờ UAT 5–6; không coi ngoại lệ là nghiệm thu Foundation.
+Được sửa `src/navigation/index.tsx` để đăng ký Welcome/Login/Register/Student Home cùng routes,
+param list và module exports. Được hoàn thiện Button/Input/Skeleton/ScreenState/PressableScale/CoverImage
+theo ADR-0004 và test của task 1.1.2. Không mở quyền sửa cấu hình, theme, provider hoặc thêm thư viện.
+Fixture chỉ ở test/preview development, không tạo phiên giả hoặc mở Home production khi chưa xác thực.
+Asset gốc vẫn là đầu vào bắt buộc của task 1.1.1. Phạm vi auth integration và UAT còn lại của Foundation
+được giữ riêng theo ADR. Các file khác trong danh sách dưới tiếp tục bị khoá.
+
+Triển khai Phase 1 dùng Welcome làm initial route; thêm Login/Register/Student Home và route preview chỉ
+đăng ký trong `__DEV__`. Home production hiển thị yêu cầu phiên học viên, không dùng fixture hoặc auth slice
+boilerplate để suy ra quyền. Màn Example còn truy cập được từ preview để kiểm tra Foundation. UI auth
+nhận callback có kiểu; app chưa gắn adapter backend, nên submit production disabled với giải thích.
+
 Các file dưới đây **KHÔNG ĐƯỢC** sửa nếu không có ADR `Accepted` mô tả thay đổi và cập nhật file này trong cùng PR
 (xem [B.8](README.md#b8-hạ-tầng-và-công-nghệ-mới)). Owner review được gán trong `.github/CODEOWNERS`.
 
@@ -168,7 +199,7 @@ src/navigation/index.tsx
 src/theme/**
 src/shared/utilities/logger.ts
 src/shared/utilities/apiError.ts
-src/components/ui/**   (sau khi Phase 0 nghiệm thu)
+src/components/ui/**   (đã bật khoá sau owner nghiệm thu Phase 0 ngày 2026-10-17)
 tests/mocks/server.ts, tests/utils/**
 ```
 
@@ -197,4 +228,19 @@ Ghi chú:
 - i18n hỗ trợ vi-VN mặc định và en-EN; lựa chọn ngôn ngữ được lưu; bỏ bn-BN.
 - `test:e2e` và flow app-launch đã có; Maestro2.11 đã cài bằng archive kiểm tra checksum, Android Emulator đã khởi động headless. Kết quả E2E ghi ở PROGRESS.
 - CLI đã nâng đồng bộ major 19 theo ADR-0016 (Accepted), autolinking nhận react-native-config và polyfill RNG; assembleDebug x86_64 đã thành công, app-launch Maestro xanh trên Android Emulator API37.
-- Chưa nghiệm thu Phase 0; chưa bật khoá `src/components/ui/**`. nativecn/shared UI chưa thêm ngoài sub-phase đã duyệt.
+- Owner đã nghiệm thu Phase 0 ngày 2026-10-17; đã bật khoá `src/components/ui/**` trong CODEOWNERS theo quy trình. Giới hạn kiểm thử và các điểm tồn đọng được giữ trong PROGRESS/UAT.
+
+## Rà soát và triển khai lại Phase 0 (2026-10-17)
+
+- Theo ADR-0009 và phạm vi 0.6, logger che cả thuộc tính có cấu trúc trong `Error` trước khi in/gửi reporter,
+  che các khoá kết thúc bằng `token` (như `access_token`, `refreshToken`) và xử lý tham chiếu vòng.
+  Không sửa dữ liệu đầu vào. Chuỗi message/body tự do vẫn phải được caller loại bỏ thông tin nhạy cảm trước khi log.
+- Kiểm tra HTTP bổ sung: chặn mutation thiếu Origin trước khi gửi, encode query offset `+07:00`, giữ giá trị
+  `0`/`false`, single-flight giữa nhiều Http instance cùng backend, không retry mutation khi lỗi transport.
+- Bước UAT cuối phase được ghi riêng trong `PHASE_00_99_User_Acceptance.md` theo ADR-0017;
+  không đóng phase khi còn chờ backend Origin hoặc chưa có đích Login.
+
+Owner đã xác nhận Origin development `http://localhost:3003` trong chat 2026-10-17;
+`.env` dùng giá trị này theo ADR-0002. `APP_ORIGIN` là giá trị header thuộc allowlist,
+không chuyển sang `10.0.2.2` như địa chỉ kết nối `API_URL`. Origin production chưa được
+xác nhận nên `.env.production` giữ trống. Còn blocker điều hướng Login; chưa kiểm tra mutation backend thật.

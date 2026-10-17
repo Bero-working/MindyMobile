@@ -5,6 +5,11 @@ enum routes {
    */
   splash = 'SPLASH',
   example = 'EXAMPLE',
+  welcome = 'WELCOME',
+  login = 'LOGIN',
+  register = 'REGISTER',
+  studentHome = 'STUDENT_HOME',
+  phaseOnePreview = 'PHASE_ONE_PREVIEW',
 }
 
 export default routes;

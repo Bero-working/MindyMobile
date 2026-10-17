@@ -21,3 +21,9 @@ Bổ sung rule ESLint chặn `unknown`, `@ts-ignore` / `@ts-expect-error`, non-n
 
 ## Tiêu chí nghiệm thu
 - [ ] Rule mới bật, `npm run lint:rules` xanh trên toàn repo.
+
+## Xác nhận nghiệm thu cuối Phase 0
+
+- Trạng thái: **Done** theo xác nhận owner trong chat ngày 2026-10-17: “Bước 6 approve và done phase 0, không cần đợi refresh”.
+- Checklist kiểm thử phía trên giữ mức bằng chứng đã ghi; việc đóng theo owner không bổ sung kết quả cho ca chưa chạy.
+- Chi tiết nghiệm thu và giới hạn tại [PROGRESS cấp phase](../../PROGRESS/PHASE_00_FOUNDATION/README.md).

@@ -2,6 +2,7 @@
 
 - Status: Proposed | Accepted | Deprecated | Superseded by ADR-NNNN
 - Date: YYYY-MM-DD
+- Created at: YYYY-MM-DDTHH:mm:ss+07:00
 - Author: @github-handle
 - Approved by: @Bero (bắt buộc trước khi Status = Accepted)
 

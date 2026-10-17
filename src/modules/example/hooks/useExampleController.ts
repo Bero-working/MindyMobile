@@ -6,20 +6,16 @@ import {
   EXAMPLE_FEATURE_LIST,
   type ExampleFeatureAction,
 } from '@/modules/example/constants/example.constant';
-import { useRandomUserQuery } from '@/modules/example/hooks/useRandomUserQuery';
+import { useHealthQuery } from '@/modules/example/hooks/useHealthQuery';
 import type { ExampleFeatureViewItem } from '@/modules/example/types/example.type';
 import { useI18n } from '@/shared/hooks/language/useI18n';
-import { toast, useTheme } from '@sohantalukder/rn-kit';
+import { useTheme } from '@sohantalukder/rn-kit';
 
 export function useExampleController() {
   const { t } = useTranslation();
   const theme = useTheme();
   const { toggleLanguage } = useI18n();
-  const {
-    data: userData,
-    isFetching: isUserFetching,
-    refetch: fetchRandomUserQuery,
-  } = useRandomUserQuery();
+  const { isSuccess, isError, error, isFetching, refetch } = useHealthQuery();
 
   const { changeTheme } = theme;
 
@@ -27,40 +23,26 @@ export function useExampleController() {
     changeTheme('default');
   }, [changeTheme]);
 
-  const fetchRandomUser = useCallback(async () => {
+  const checkHealth = useCallback(async () => {
     try {
-      const { data: user } = await fetchRandomUserQuery({
+      await refetch({
         throwOnError: true,
       });
-
-      if (user) {
-        toast.show({
-          type: 'success',
-          title: t('boilerplate.screen_example.api_messages.success_message', {
-            firstName: user.firstName,
-            lastName: user.lastName,
-          }),
-        });
-      }
-    } catch (error) {
+    } catch (failure) {
       logger.error(
-        'Error fetching user:',
-        error instanceof Error ? error : undefined
+        'API health check failed',
+        failure instanceof Error ? failure : undefined
       );
-      toast.show({
-        type: 'error',
-        title: t('boilerplate.screen_example.api_messages.error_message'),
-      });
     }
-  }, [fetchRandomUserQuery, t]);
+  }, [refetch]);
 
   const featureActions = useMemo<Record<ExampleFeatureAction, () => void>>(
     () => ({
-      fetchUser: fetchRandomUser,
+      checkHealth,
       toggleTheme: onChangeTheme,
       toggleLanguage,
     }),
-    [fetchRandomUser, onChangeTheme, toggleLanguage]
+    [checkHealth, onChangeTheme, toggleLanguage]
   );
 
   const features = useMemo<ExampleFeatureViewItem[]>(
@@ -70,14 +52,38 @@ export function useExampleController() {
         description: t(feature.descriptionKey),
         icon: feature.icon,
         onPress: featureActions[feature.action],
-        isLoading: feature.action === 'fetchUser' ? isUserFetching : false,
+        isLoading: feature.action === 'checkHealth' ? isFetching : false,
         buttonText: t(feature.buttonTextKey),
+        ...(feature.action === 'checkHealth'
+          ? {
+              testID: 'example-api-check',
+              ...(!isFetching && (isSuccess || isError)
+                ? {
+                    feedback: {
+                      message: isError
+                        ? t(
+                            'boilerplate.screen_example.api_messages.error_message',
+                            {
+                              code: error.code,
+                              status: error.status,
+                            }
+                          )
+                        : t(
+                            'boilerplate.screen_example.api_messages.success_message'
+                          ),
+                      testID: isError
+                        ? 'example-api-error'
+                        : 'example-api-success',
+                    },
+                  }
+                : {}),
+            }
+          : {}),
       })),
-    [featureActions, isUserFetching, t]
+    [featureActions, isFetching, isSuccess, isError, error, t]
   );
 
   return {
     features,
-    userData,
   };
 }

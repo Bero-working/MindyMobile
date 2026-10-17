@@ -13,7 +13,7 @@
       "features": {
         "api_integration": {
           "title": "Kết nối API",
-          "description": "Lấy dữ liệu từ API và xử lý lỗi",
+          "description": "Kiểm tra kết nối đến máy chủ Mindy",
           "button": "Thử kết nối API"
         },
         "theme_toggle": {
@@ -29,10 +29,10 @@
       },
       "api_messages": {
         "success_title": "Thành công!",
-        "success_message": "Xin chào {{firstName}} {{lastName}}!",
+        "success_message": "Kết nối API thành công. Máy chủ Mindy đang hoạt động.",
         "success_button": "Đồng ý",
         "error_title": "Lỗi",
-        "error_message": "Không thể tải thông tin người dùng. Vui lòng thử lại.",
+        "error_message": "Không thể kết nối API ({{code}}, HTTP {{status}}). Vui lòng thử lại.",
         "error_button": "Đồng ý"
       },
       "stats": {
@@ -48,5 +48,242 @@
       "description": "Vui lòng thử lại sau.",
       "cta": "Tải lại màn hình"
     }
+  },
+  "common": {
+    "retry": "Thử lại",
+    "loading": "Đang tải",
+    "showPassword": "Hiện mật khẩu",
+    "hidePassword": "Ẩn mật khẩu",
+    "back": "Quay lại",
+    "requestId": "Mã hỗ trợ: {{id}}"
+  },
+  "errors": {
+    "generic": "Đã xảy ra lỗi. Vui lòng thử lại.",
+    "INVALID_CREDENTIALS": "Email hoặc mật khẩu không đúng.",
+    "MAIL_DELIVERY_UNAVAILABLE": "Dịch vụ email tạm ngừng. Vui lòng thử lại.",
+    "NETWORK_UNAVAILABLE": "Không có kết nối mạng. Kiểm tra kết nối rồi thử lại.",
+    "RATE_LIMIT_EXCEEDED": "Bạn đã gửi quá nhiều yêu cầu. Vui lòng thử lại sau."
+  },
+  "auth": {
+    "brandName": "Mindy Coding",
+    "integrationUnavailable": "Tính năng này sẽ khả dụng khi hoàn tất kết nối xác thực.",
+    "welcome": {
+      "title": "Chào mừng bạn!",
+      "description": "Mindy Coding đồng hành cùng bạn học lập trình.\nĐăng nhập hoặc tạo tài khoản để bắt đầu.",
+      "register": "Tạo tài khoản",
+      "login": "Đăng nhập"
+    },
+    "fields": {
+      "displayName": "Tên hiển thị",
+      "email": "Email",
+      "phone": "Điện thoại (tuỳ chọn)",
+      "password": "Mật khẩu",
+      "confirmPassword": "Xác nhận mật khẩu"
+    },
+    "validation": {
+      "required": "Vui lòng điền thông tin này.",
+      "email": "Nhập email hợp lệ, tối đa 320 ký tự.",
+      "passwordMin": "Mật khẩu cần ít nhất 6 ký tự.",
+      "passwordMax": "Mật khẩu tối đa 128 ký tự.",
+      "nameMax": "Tên hiển thị tối đa 150 ký tự.",
+      "phone": "Điện thoại cần từ 7 đến 32 ký tự.",
+      "confirmPassword": "Mật khẩu xác nhận chưa khớp.",
+      "serverField": "Thông tin chưa hợp lệ. Vui lòng kiểm tra lại."
+    },
+    "login": {
+      "title": "Đăng nhập",
+      "submit": "Đăng nhập",
+      "registerLink": "Chưa có tài khoản? Đăng ký",
+      "registerPrompt": "Chưa có tài khoản?",
+      "registerAction": "Đăng ký"
+    },
+    "register": {
+      "title": "Tạo tài khoản",
+      "description": "Học lập trình. Mở thế giới của bạn.",
+      "submit": "Đăng ký",
+      "loginLink": "Đã có tài khoản? Đăng nhập",
+      "checkEmailTitle": "Kiểm tra email",
+      "checkEmailDescription": "Nếu địa chỉ có thể đăng ký, email xác thực đã được gửi. Hãy kiểm tra hộp thư và thư rác.",
+      "backToLogin": "Về đăng nhập",
+      "resend": "Gửi lại email",
+      "resendSuccess": "Nếu địa chỉ có thể nhận email xác thực, email đã được gửi lại.",
+      "loginPrompt": "Đã có tài khoản?",
+      "loginAction": "Đăng nhập",
+      "ready": "Bạn đã sẵn sàng chưa?"
+    },
+    "placeholders": {
+      "email": "ten@email.com",
+      "password": "••••••••",
+      "displayName": "Họ và tên"
+    },
+    "session": {
+      "error": "Chưa thể kiểm tra phiên đăng nhập. Vui lòng thử lại.",
+      "logout": "Đăng xuất",
+      "staff": "Bạn đã đăng nhập bằng tài khoản nhân sự. Màn hình dành cho vai trò này chưa có trong ứng dụng."
+    }
+  },
+  "home": {
+    "title": "Cứ thử. Bạn sẽ làm được.",
+    "greeting": "Xin chào, {{name}}",
+    "sections": {
+      "nextSession": "Buổi học tiếp theo",
+      "courses": "Khoá học nổi bật",
+      "intro": "Có nhiều cách để bắt đầu.",
+      "compiler": "Viết code ngay trên điện thoại",
+      "about": "Về chúng tôi"
+    },
+    "actions": {
+      "join": "Vào lớp",
+      "explore": "Khám phá khoá học",
+      "select": "Chọn lớp cho {{title}}",
+      "course": "Xem khoá học {{title}}",
+      "cart": "Giỏ hàng",
+      "unavailable": "Tính năng sẽ có trong phiên bản sau.",
+      "refresh": "Làm mới",
+      "previewClass": "Xem trước lớp"
+    },
+    "empty": {
+      "title": "Chưa có khoá học",
+      "description": "Các khoá học sẽ xuất hiện ở đây khi có dữ liệu.",
+      "action": "Khám phá khoá học",
+      "schedule": "Bạn chưa có buổi học sắp tới."
+    },
+    "errorTitle": "Chưa thể tải nội dung",
+    "tabs": {
+      "courses": "Khoá học",
+      "schedule": "Lịch học",
+      "home": "Trang chủ",
+      "notifications": "Thông báo",
+      "account": "Tài khoản"
+    },
+    "carousel": {
+      "goToSlide": "Xem mục {{index}}: {{title}}"
+    },
+    "intro": {
+      "first": {
+        "title": "Khởi đầu của riêng bạn.",
+        "description": "Ai cũng có một điểm xuất phát. Bắt đầu từ điều cơ bản và đi theo nhịp học của mình.",
+        "action": "Cách bắt đầu"
+      },
+      "second": {
+        "title": "Không ai phải học một mình.",
+        "description": "Lớp tối đa 20 học viên, mentor theo sát từng bài tập và trả lời trong 24 giờ.",
+        "action": "Gặp mentor"
+      },
+      "third": {
+        "title": "Dự án đầu tiên sau 4 tuần.",
+        "description": "Mỗi khoá học kết thúc bằng một sản phẩm bạn có thể khoe với bạn bè.",
+        "action": "Xem dự án"
+      },
+      "headingBefore": "Có ",
+      "headingAccent": "nhiều cách",
+      "headingAfter": "\nđể bắt đầu.",
+      "slides": {
+        "start": {
+          "imageAlt": "Khởi đầu học lập trình"
+        },
+        "mentor": {
+          "imageAlt": "Học cùng mentor"
+        },
+        "project": {
+          "imageAlt": "Dự án của học viên"
+        }
+      }
+    },
+    "about": {
+      "notes": {
+        "first": {
+          "title": "Sáng học, tối dùng luôn",
+          "description": "Mỗi buổi học tại Mindy đều chia làm 2 phần:",
+          "oneBold": "Nạp kiến thức",
+          "oneText": "(Input): hiểu rõ kiến thức đó dùng khi nào, dùng như thế nào.",
+          "twoBold": "Ứng dụng kiến thức",
+          "twoText": "(Output): làm bài ngay trên compiler ⇒ mentor kiểm tra ⇒ học viên tự tin áp dụng vào dự án thật."
+        },
+        "second": {
+          "title": "Lớp nhỏ, mentor kèm sát",
+          "description": "Mỗi lớp tối đa 20 học viên để không ai bị bỏ lại phía sau:",
+          "oneBold": "Mentor theo sát",
+          "oneText": "chấm bài và góp ý cho từng dòng code.",
+          "twoBold": "Hỏi đáp trong 24 giờ",
+          "twoText": "mọi thắc mắc đều được trả lời trong vòng một ngày."
+        },
+        "third": {
+          "title": "Học theo cách của bạn",
+          "description": "Chọn hình thức phù hợp với lịch của mình:",
+          "oneBold": "Online",
+          "oneText": "học mọi lúc, mọi nơi qua lớp trực tuyến.",
+          "twoBold": "Offline",
+          "twoText": "gặp mentor và bạn học trực tiếp tại lớp."
+        }
+      },
+      "dash": "– "
+    },
+    "compiler": {
+      "description": "Một không gian nhỏ để khám phá ý tưởng lập trình.",
+      "action": "Thử compiler",
+      "illustration": "Kết quả minh hoạ, không chạy mã thật.",
+      "terminal": "mindy — zsh",
+      "sample": "$ mindy run hello\nHello, Mindy!\n3/3 — minh hoạ",
+      "benefits": {
+        "one": "Chạy code ngay, không cần cài đặt",
+        "two": "Chấm bài tự động sau mỗi lần nộp",
+        "three": "Gợi ý sửa lỗi dễ hiểu"
+      },
+      "running": "Đang chạy…",
+      "hello": "Xin chào, {{name}}!",
+      "complete": "Hoàn thành · 3/3 đạt",
+      "command": "$ mindy run main.py",
+      "test1": "✓ test 1   0.12s",
+      "test2": "✓ test 2   0.09s",
+      "test3": "✓ test 3   0.21s",
+      "prompt": "$ "
+    },
+    "footer": {
+      "tagline": "Học lập trình. Mở thế giới của bạn.",
+      "learn": "Học tập",
+      "support": "Hỗ trợ",
+      "contact": "hotro@mindycoding.vn · 1900 0000",
+      "copyright": "© 2026 Mindy Coding",
+      "myClasses": "Lớp của tôi"
+    },
+    "authRequired": "Đăng nhập với tài khoản học viên để mở trang chủ.",
+    "delivery": {
+      "ONLINE": "Online",
+      "OFFLINE": "Offline"
+    },
+    "starts": " · KG {{date}}",
+    "brand": {
+      "name": "Mindy",
+      "initial": "M",
+      "subtitle": "CODING"
+    }
+  },
+  "preview": {
+    "open": "Xem thử UI (development)",
+    "title": "Xem thử Phase 1",
+    "description": "Dữ liệu minh hoạ; không tạo phiên đăng nhập hay gọi API.",
+    "auth": "Thử form Auth",
+    "home": "Student Home 2a",
+    "foundation": "Kiểm tra Foundation",
+    "success": "Thành công",
+    "loading": "Đang tải",
+    "empty": "Trống",
+    "error": "Lỗi",
+    "failure": "Mô phỏng lỗi",
+    "signedIn": "Đã kiểm tra callback đăng nhập ({{role}}). Không tạo phiên.",
+    "fixtureName": "Minh Anh",
+    "status": "Trạng thái: {{status}}",
+    "nextSession": "Buổi 3 · HTML & CSS",
+    "className": "Web cơ bản · WEB101-A",
+    "course0": "Web cơ bản: HTML, CSS",
+    "course1": "Python cho người mới",
+    "course2": "JavaScript thực chiến",
+    "course3": "Cấu trúc dữ liệu & giải thuật",
+    "action": "Đã nhận thao tác: {{name}}",
+    "reset": "Chọn lại màn hình",
+    "tools": "Công cụ xem thử",
+    "closeTools": "Thu gọn công cụ",
+    "toolsShort": "UI"
   }
 }

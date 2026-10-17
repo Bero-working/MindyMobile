@@ -3,8 +3,29 @@
 ## Mô tả
 Phần này hiển thị gì, tương tác gì.
 
+## Đặc tả UI từ Claude Design (Claude Code bàn giao)
+
+Hoàn thiện trước khi Codex triển khai UI tương ứng theo [ADR-0019](../../adr/ADR-0019-claude-design-handoff-codex-ui.md).
+Mục không áp dụng ghi rõ lý do; không thay đặc tả bằng mỗi link hoặc câu “giống thiết kế”.
+
+- Nguồn, màn hình/phiên bản/biến thể, thời điểm khảo sát và ảnh tham chiếu: ...
+- Bố cục: thứ tự các khối, căn chỉnh, kích thước, spacing/padding, vùng cuộn/cố định và safe area: ...
+- Hiển thị: màu/token, font/cỡ/độ đậm/chiều cao dòng, bo góc, viền, bóng, icon: ...
+- Asset: đường dẫn gốc trong `references/`, tỉ lệ, kích thước hiển thị và cách đặt/cắt ảnh: ...
+- Nội dung và dữ liệu: text/i18n key, dữ liệu mẫu/thật, mapping API: ...
+- Trạng thái: loading/empty/error/success; form validation/pending/disabled/phản hồi: ...
+- Tương tác: CTA, điều hướng, bàn phím, animation, accessibility, chữ lớn và Reduce Motion: ...
+- Sai khác cần thiết khi chuyển sang React Native và lý do: ...
+- Thông số ước lượng, đầu vào thiếu/chưa xác nhận và phần bị chặn: ...
+
 ## API / dữ liệu
 - `GET courses` → [catalog.md](../../API_CONTRACT/catalog.md)
+
+## Bước của phase
+
+- Bước: UI hoặc API (ghi rõ).
+- Nếu là API: liên kết xác nhận UI của owner trong PROGRESS trước khi bắt đầu theo [ADR-0021](../../adr/ADR-0021-per-phase-ui-approval-api-uat.md).
+- Test UI dùng callback/fixture riêng; MSW áp dụng khi test có HTTP. Không chuyển sang API chỉ vì task UI có test xanh.
 
 ## Task
 ### N.M.1 <Tên task>
@@ -17,4 +38,6 @@ Phần này hiển thị gì, tương tác gì.
 ...
 
 ## Tiêu chí nghiệm thu
+- [ ] Codex triển khai đúng bố cục, thông số, nội dung, asset, trạng thái và tương tác đã bàn giao (nếu có UI).
+- [ ] Đối chiếu UI chạy thật với ảnh/đặc tả ở trạng thái và kích thước phù hợp; ghi bằng chứng/sai khác vào PROGRESS.
 - [ ] ...

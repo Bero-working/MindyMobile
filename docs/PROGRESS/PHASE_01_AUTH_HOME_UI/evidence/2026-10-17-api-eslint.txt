@@ -1,0 +1,4 @@
+
+> @sohantalukder/react-native-boilerplate@1.0.0 lint:rules
+> eslint . --cache
+

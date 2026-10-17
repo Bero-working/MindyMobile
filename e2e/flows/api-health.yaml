@@ -1,0 +1,25 @@
+appId: ${APP_ID}
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible:
+      id: 'welcome-screen'
+    timeout: 90000
+- tapOn:
+    id: 'phase-one-preview-button'
+- tapOn:
+    id: 'preview-foundation-button'
+- scrollUntilVisible:
+    element:
+      id: 'example-api-check'
+    direction: DOWN
+    timeout: 30000
+- tapOn:
+    id: 'example-api-check'
+- extendedWaitUntil:
+    visible:
+      id: 'example-api-success'
+    timeout: 70000
+- assertVisible:
+    id: 'example-api-success'

@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="Pixel_8_2" tests="1" failures="0" time="24.195" timestamp="2026-10-17T21:28:27">
+    <testcase id="home-header-scroll" name="home-header-scroll" classname="home-header-scroll" file="e2e\visual\home-header-scroll.yaml" time="24.18" timestamp="2026-10-17T21:28:27" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

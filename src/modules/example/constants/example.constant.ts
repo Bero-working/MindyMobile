@@ -1,5 +1,5 @@
 export type ExampleFeatureAction =
-  | 'fetchUser'
+  | 'checkHealth'
   | 'toggleTheme'
   | 'toggleLanguage';
 
@@ -10,7 +10,7 @@ export const EXAMPLE_STYLES = {
 
 export const EXAMPLE_FEATURE_LIST = [
   {
-    action: 'fetchUser',
+    action: 'checkHealth',
     icon: 'send',
     titleKey: 'boilerplate.screen_example.features.api_integration.title',
     descriptionKey:

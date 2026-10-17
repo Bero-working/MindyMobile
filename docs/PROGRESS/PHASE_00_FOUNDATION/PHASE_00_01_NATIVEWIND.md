@@ -41,3 +41,19 @@ Nhật ký thực hiện task của [0.1 NativeWind](../../IMPLEMENT/PHASE_00_FO
 - Test: Native smoke trên Hermes xanh; Metro production bundle xanh.
 - PR / commit: Chưa có, workspace không có .git.
 - Ghi chú: Entry tạm đã khôi phục, source kiểm tra tạm đã xoá. Bằng chứng trong evidence/2026-10-17-native-foundation.png, evidence/2026-10-17-main-app.png và JSON cùng tên.
+
+### 2026-10-17 13:35 (+07:00) · @Bero
+- Phase: 0.1.1–0.1.4 Triển khai lại / AI tự kiểm tra
+- Trạng thái: In review
+- Đã làm: AI rà soát cấu hình NativeWind/Babel/Metro/Jest, SVG transformer và import global.css. Không cài lại thư viện đang đúng phiên bản.
+- Test: Smoke biên dịch CSS thật và áp bg-mint xanh; type-check xanh; assembleDebug x86_64 thành công.
+- PR / commit: Chưa tạo; kiểm tra trên working tree từ 5087fbf (main).
+- Ghi chú: Đã xem lại ảnh native-foundation của lần 12:29; không ghi đó là ảnh mới trong lần triển khai lại. Codex thực hiện; handle dùng lại xác nhận trực tiếp đã ghi trong nhật ký trước, vì máy không có gh CLI.
+
+### 2026-10-17 14:24 (+07:00) · @Bero
+- Phase: Đồng bộ nghiệm thu sub-phase theo UAT 1–4a
+- Trạng thái: Done
+- Đã làm: Tick checklist nghiệm thu và đồng bộ bảng sub-phase theo xác nhận trực tiếp của owner về UAT bước 1–4a. NativeWind, Nunito, theme và i18n tương ứng phạm vi đã chấp nhận.
+- Test: Chỉ cập nhật tài liệu, không đổi code; dùng bằng chứng test/native đã ghi trong nhật ký trước, không chạy lại test.
+- PR / commit: Chưa tạo.
+- Ghi chú: Done chỉ cho sub-phase này; Phase 0/0.99 chưa Done. Bằng chứng native/font của lần kiểm tra trước; không ghi đã xem lại màn kiểm tra tạm trên emulator, chưa chạy iOS trên Windows. Codex ghi nhận quyết định owner, không tự nghiệm thu thay owner.

@@ -25,3 +25,19 @@ Nhật ký thực hiện task của [0.10 E2E](../../IMPLEMENT/PHASE_00_FOUNDATI
 - Test: npm run test:e2e -- -e APP_ID=com.mindymobile ✓; 1/1 app-launch Passed in 19s.
 - PR / commit: Chưa có, workspace không có .git.
 - Ghi chú: Maestro2.11; Android Emulator API37; app chính mặc định tiếng Việt. Blocker automatic-review lệnh gộp ở phiên trước đã được khắc phục bằng cài gói checksum và chạy headless riêng. Bằng chứng trong evidence/2026-10-17-native-foundation.png, evidence/2026-10-17-main-app.png và JSON cùng tên.
+
+### 2026-10-17 13:37 (+07:00) · @Bero
+- Phase: 0.10.1 Triển khai lại / AI tự kiểm tra
+- Trạng thái: In review
+- Đã làm: AI chạy lại Maestro CLI2.11/JDK21 trên APK debug vừa build, emulator API37 x86_64. Hai lần đầu driver startup timeout; logcat xác nhận lowmemorykiller đóng driver ở AVD 2 GB. Khởi động lại emulator với RAM 4096 MB, không sửa cấu hình AVD hoặc cài thư viện.
+- Test: npm run test:e2e -- -e APP_ID=com.mindymobile --format junit --output docs/PROGRESS/PHASE_00_FOUNDATION/evidence/2026-10-17-reimplementation-maestro.xml ✓ (1/1 app-launch, 30 giây). Đã xem ảnh app mới, nội dung tiếng Việt và giao diện sáng.
+- PR / commit: Chưa tạo; working tree từ 5087fbf (main).
+- Ghi chú: Flow chỉ kiểm tra app-root, không kiểm chứng tích hợp backend hay điều hướng Login. Bằng chứng mới: evidence/2026-10-17-reimplementation-maestro.xml và evidence/2026-10-17-reimplementation-main-app.png. Chưa chạy iOS. Codex thực hiện, không thay owner UAT.
+
+### 2026-10-17 22:52 (+07:00) · @LogKoNger
+- Phase: 0 Nghiệm thu — owner duyệt bước 6 và đóng Foundation
+- Trạng thái: Done
+- Đã làm: Ghi nhận xác nhận trực tiếp “Bước 6 approve và done phase 0, không cần đợi refresh”. Owner đã duyệt đủ UAT 1–9 (gồm 4a). Đóng Phase 0, 0.99 và các sub-phase còn chờ; đồng bộ roadmap/IMPLEMENT, bật khoá src/components/ui/ trong CODEOWNERS theo quy trình sau nghiệm thu và cập nhật ARCHITECTURE.
+- Test: Không chạy thêm test hoặc mutation backend trong lượt ghi nhận. Test tự động bước 5 đã đạt 28/28 (3 suite), có cảnh báo React act(...). Đã xác nhận emulator-5554 đang ở Home production với phiên Student; gọi auth/me qua phiên hiện có trả 200. Access cookie hết hạn lúc 22:55:28 (+07:00); owner yêu cầu dừng chờ trước mốc đó. Chưa chạy ca native refresh sau hết hạn/thu hồi hoặc Android Back sau refresh lỗi, chưa gọi mutation Origin thật. Không ghi các ca này thành PASS.
+- PR / commit: Chưa tạo.
+- Ghi chú: Dừng phần native theo chỉ đạo; chưa thu hồi phiên, thay cookie, đổi đồng hồ hoặc TTL. Hai flow native chuẩn bị và kiểm tra cú pháp đã được gỡ vì không thực hiện. Giữ bằng chứng 28 test và giới hạn kỹ thuật, các điểm tồn đọng bước 9 vẫn được ghi rõ trong UAT. Không sửa entry lịch sử. UAT Phase 1 đã Done trước đó giữ nguyên.

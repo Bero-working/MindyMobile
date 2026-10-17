@@ -2,11 +2,21 @@
  * @format
  */
 
+import '../tests/mocks/nativeUi';
 import ReactTestRenderer from 'react-test-renderer';
 import App from '../src/';
+import { useStore } from '../src/state/store';
 
 describe('App', () => {
-  beforeEach(() => jest.useFakeTimers());
+  beforeEach(() => {
+    jest.useFakeTimers();
+    // Session networking is covered by sessionNavigation.test.tsx; keep this render smoke deterministic.
+    useStore.setState({
+      bootstrapStatus: 'ready',
+      sessionUser: null,
+      hasSessionHistory: false,
+    });
+  });
   afterEach(() => {
     jest.runOnlyPendingTimers();
     jest.clearAllTimers();

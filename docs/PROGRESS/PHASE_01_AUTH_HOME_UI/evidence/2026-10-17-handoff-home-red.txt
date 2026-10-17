@@ -1,0 +1,1669 @@
+
+> @sohantalukder/react-native-boilerplate@1.0.0 test
+> jest --runInBand src/modules/home/home.test.tsx src/modules/auth/navigation.test.tsx
+
+FAIL src/modules/home/home.test.tsx
+  ● uses the supplied timezone and server asOf to display only an upcoming session
+
+    expect(received).toBeNull()
+
+    Received: {"_fiber": {"_debugHookTypes": null, "_debugInfo": null, "_debugNeedsRemount": false, "_debugOwner": [FiberNode], "_debugStack": [Error: react-stack-top-frame], "_debugTask": null, "actualDuration": -0, "actualStartTime": 1792244487580, "alternate": [FiberNode], "child": null, "childLanes": 0, "deletions": null, "dependencies": null, "elementType": "View", "flags": 0, "index": 0, "key": null, "lanes": 0, "memoizedProps": [Object], "memoizedState": null, "mode": 1, "pendingProps": [Object], "ref": null, "refCleanup": null, "return": [FiberNode], "selfBaseDuration": -0, "sibling": null, "stateNode": [Object], "subtreeFlags": 13634053, "tag": 5, "treeBaseDuration": -0, "type": "View", "updateQueue": null}}
+
+      48 |     />
+      49 |   );
+    > 50 |   expect(screen.queryByTestId('home-next-session')).toBeNull();
+         |                                                     ^
+      51 |   expect(screen.queryByTestId('home-join-class-button')).toBeNull();
+      52 | });
+      53 |
+
+      at Object.toBeNull (src/modules/home/home.test.tsx:50:53)
+
+  ● shows approved course promises outside preview and no invented image icons
+
+    Unable to find an element with text: Dự án đầu tiên sau 4 tuần.
+
+    <RNCSafeAreaView
+      testID="home-screen"
+    >
+      <RCTScrollView
+        testID="home-content"
+      >
+        <RCTRefreshControl />
+        <View>
+          <View
+            testID="home-header"
+          >
+            <View>
+              <View />
+              <Text>
+                Mindy Coding
+              </Text>
+              <View>
+                <View
+                  accessibilityHint="Tính năng sẽ có trong phiên bản sau."
+                  accessibilityLabel="Giỏ hàng"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "disabled": true,
+                    }
+                  }
+                  accessible={true}
+                  testID="home-cart-button"
+                >
+                  <RNSVGSvgView
+                    accessible={false}
+                  >
+                    <RNSVGGroup>
+                      <RNSVGPath />
+                    </RNSVGGroup>
+                  </RNSVGSvgView>
+                </View>
+              </View>
+            </View>
+            <View>
+              <View>
+                <Text>
+                  Xin chào, An
+                </Text>
+                <Text
+                  accessibilityRole="header"
+                >
+                  Cứ thử.
+    Bạn sẽ làm được.
+                </Text>
+              </View>
+              <Image
+                accessible={false}
+                testID="home-mascot"
+              />
+            </View>
+          </View>
+          <View
+            testID="home-next-session"
+          >
+            <Text>
+              Buổi học tiếp theo
+            </Text>
+            <View>
+              <View>
+                <Text>
+                  08:00 18-10
+                </Text>
+                <Text>
+                  Web
+                </Text>
+                <Text>
+                  HTML
+                </Text>
+              </View>
+              <View>
+                <View
+                  accessibilityHint="Tính năng sẽ có trong phiên bản sau."
+                  accessibilityLabel="Xem trước lớp"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": false,
+                      "disabled": true,
+                    }
+                  }
+                  accessible={true}
+                  testID="home-join-class-button"
+                >
+                  <View
+                    accessible={false}
+                    pointerEvents="none"
+                  >
+                    <RNSVGSvgView
+                      accessible={false}
+                    >
+                      <RNSVGGroup>
+                        <RNSVGDefs>
+                          <RNSVGLinearGradient />
+                        </RNSVGDefs>
+                        <RNSVGRect />
+                      </RNSVGGroup>
+                    </RNSVGSvgView>
+                  </View>
+                  <Text>
+                    Xem trước lớp
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            testID="home-featured-courses"
+          >
+            <Text
+              accessibilityRole="header"
+            >
+              Khoá học nổi bật
+            </Text>
+            <View>
+              <View>
+                <View>
+                  <View>
+                    <View
+                      accessibilityHint="Tính năng sẽ có trong phiên bản sau."
+                      accessibilityLabel="Xem khoá học A long course title with Vietnamese: Lập trình web"
+                      accessibilityRole="button"
+                      accessibilityState={
+                        {
+                          "disabled": true,
+                        }
+                      }
+                      accessible={true}
+                      testID="home-course-course-1"
+                    >
+                      <View>
+                        <View>
+                          <View
+                            accessibilityLabel="A long course title with Vietnamese: Lập trình web"
+                            accessibilityRole="image"
+                            testID="home-cover-course-1-fallback"
+                          >
+                            <RNSVGSvgView
+                              accessible={false}
+                            >
+                              <RNSVGGroup>
+                                <RNSVGPath />
+                              </RNSVGGroup>
+                            </RNSVGSvgView>
+                          </View>
+                        </View>
+                        <View
+                          accessible={false}
+                          pointerEvents="none"
+                        >
+                          <RNSVGSvgView>
+                            <RNSVGGroup>
+                              <RNSVGDefs>
+                                <RNSVGLinearGradient />
+                              </RNSVGDefs>
+                              <RNSVGRect />
+                            </RNSVGGroup>
+                          </RNSVGSvgView>
+                        </View>
+                      </View>
+                      <View>
+                        <Text>
+                          A long course title with Vietnamese: Lập trình web
+                        </Text>
+                        <Text>
+                          0 ₫
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                  <View>
+                    <View>
+                      <View
+                        accessibilityHint="Tính năng sẽ có trong phiên bản sau."
+                        accessibilityLabel="Chọn lớp cho A long course title with Vietnamese: Lập trình web"
+                        accessibilityRole="button"
+                        accessibilityState={
+                          {
+                            "disabled": true,
+                          }
+                        }
+                        accessible={true}
+                        testID="home-course-select-course-1"
+                      >
+                        <RNSVGSvgView
+                          accessible={false}
+                        >
+                          <RNSVGGroup>
+                            <RNSVGPath />
+                          </RNSVGGroup>
+                        </RNSVGSvgView>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View>
+              <View
+                accessibilityHint="Tính năng sẽ có trong phiên bản sau."
+                accessibilityLabel="Khám phá khoá học"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": false,
+                    "disabled": true,
+                  }
+                }
+                accessible={true}
+                testID="home-explore-courses-button"
+              >
+                <Text>
+                  Khám phá khoá học
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            testID="home-intro-carousel"
+          >
+            <Text
+              accessibilityRole="header"
+            >
+              Có nhiều cách để bắt đầu.
+            </Text>
+            <View>
+              <RCTScrollView
+                testID="home-intro-scroll"
+              >
+                <View>
+                  <View
+                    accessibilityElementsHidden={true}
+                    importantForAccessibility="no-hide-descendants"
+                    testID="home-intro-slide-0"
+                  >
+                    <View>
+                      <Text
+                        accessibilityRole="header"
+                      >
+                        Khởi đầu của riêng bạn.
+                      </Text>
+                      <Text>
+                        Tìm bước đầu tiên trên hành trình học lập trình.
+                      </Text>
+                      <View
+                        accessible={false}
+                        importantForAccessibility="no-hide-descendants"
+                        testID="home-intro-image-0"
+                      >
+                        <RNSVGSvgView
+                          accessible={false}
+                        >
+                          <RNSVGGroup>
+                            <RNSVGPath />
+                          </RNSVGGroup>
+                        </RNSVGSvgView>
+                      </View>
+                      <View>
+                        <View
+                          accessibilityLabel="Cách bắt đầu"
+                          accessibilityRole="button"
+                          accessibilityState={
+                            {
+                              "busy": false,
+                              "disabled": true,
+                            }
+                          }
+                          accessible={true}
+                          testID="home-intro-action-0"
+                        >
+                          <Text>
+                            Cách bắt đầu
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                  <View
+                    accessibilityElementsHidden={true}
+                    importantForAccessibility="no-hide-descendants"
+                    testID="home-intro-slide-1"
+                  >
+                    <View>
+                      <Text
+                        accessibilityRole="header"
+                      >
+                        Không ai phải học một mình.
+                      </Text>
+                      <Text>
+                        Khám phá cách học cùng mentor và bạn bè.
+                      </Text>
+                      <View
+                        accessible={false}
+                        importantForAccessibility="no-hide-descendants"
+                        testID="home-intro-image-1"
+                      >
+                        <RNSVGSvgView
+                          accessible={false}
+                        >
+                          <RNSVGGroup>
+                            <RNSVGPath />
+                          </RNSVGGroup>
+                        </RNSVGSvgView>
+                      </View>
+                      <View>
+                        <View
+                          accessibilityLabel="Gặp mentor"
+                          accessibilityRole="button"
+                          accessibilityState={
+                            {
+                              "busy": false,
+                              "disabled": true,
+                            }
+                          }
+                          accessible={true}
+                          testID="home-intro-action-1"
+                        >
+                          <Text>
+                            Gặp mentor
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                  <View
+                    accessibilityElementsHidden={false}
+                    importantForAccessibility="auto"
+                    testID="home-intro-slide-2"
+                  >
+                    <View>
+                      <Text
+                        accessibilityRole="header"
+                      >
+                        Bắt đầu dự án của bạn.
+                      </Text>
+                      <Text>
+                        Cùng biến kiến thức thành sản phẩm đầu tiên.
+                      </Text>
+                      <View
+                        accessible={false}
+                        importantForAccessibility="no-hide-descendants"
+                        testID="home-intro-image-2"
+                      >
+                        <RNSVGSvgView
+                          accessible={false}
+                        >
+                          <RNSVGGroup>
+                            <RNSVGPath />
+                          </RNSVGGroup>
+                        </RNSVGSvgView>
+                      </View>
+                      <View>
+                        <View
+                          accessibilityLabel="Xem dự án"
+                          accessibilityRole="button"
+                          accessibilityState={
+                            {
+                              "busy": false,
+                              "disabled": true,
+                            }
+                          }
+                          accessible={true}
+                          testID="home-intro-action-2"
+                        >
+                          <Text>
+                            Xem dự án
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </RCTScrollView>
+            </View>
+            <View>
+              <View>
+                <View
+                  accessibilityLabel="Xem mục 1: Khởi đầu của riêng bạn."
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "selected": false,
+                    }
+                  }
+                  accessible={true}
+                  testID="home-intro-dot-0"
+                >
+                  <View />
+                </View>
+              </View>
+              <View>
+                <View
+                  accessibilityLabel="Xem mục 2: Không ai phải học một mình."
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "selected": false,
+                    }
+                  }
+                  accessible={true}
+                  testID="home-intro-dot-1"
+                >
+                  <View />
+                </View>
+              </View>
+              <View>
+                <View
+                  accessibilityLabel="Xem mục 3: Bắt đầu dự án của bạn."
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "selected": true,
+                    }
+                  }
+                  accessible={true}
+                  testID="home-intro-dot-2"
+                >
+                  <View />
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            testID="home-compiler-section"
+          >
+            <Text
+              accessibilityRole="header"
+            >
+              Viết code ngay trên điện thoại
+            </Text>
+            <Text>
+              Một không gian nhỏ để khám phá ý tưởng lập trình.
+            </Text>
+            <View>
+              <View
+                accessibilityHint="Tính năng sẽ có trong phiên bản sau."
+                accessibilityLabel="Thử compiler"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": false,
+                    "disabled": true,
+                  }
+                }
+                accessible={true}
+                testID="home-compiler-button"
+              >
+                <View
+                  accessible={false}
+                  pointerEvents="none"
+                >
+                  <RNSVGSvgView
+                    accessible={false}
+                  >
+                    <RNSVGGroup>
+                      <RNSVGDefs>
+                        <RNSVGLinearGradient />
+                      </RNSVGDefs>
+                      <RNSVGRect />
+                    </RNSVGGroup>
+                  </RNSVGSvgView>
+                </View>
+                <Text>
+                  Thử compiler
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            testID="home-about-carousel"
+          >
+            <Text
+              accessibilityRole="header"
+            >
+              Về chúng tôi
+            </Text>
+            <View>
+              <RCTScrollView
+                testID="home-about-scroll"
+              >
+                <View>
+                  <View
+                    accessibilityElementsHidden={false}
+                    importantForAccessibility="auto"
+                    testID="home-about-slide-0"
+                  >
+                    <View>
+                      <View
+                        accessible={false}
+                      />
+                      <View
+                        accessible={false}
+                      >
+                        <RNSVGSvgView
+                          accessible={false}
+                        >
+                          <RNSVGGroup>
+                            <RNSVGPath />
+                          </RNSVGGroup>
+                        </RNSVGSvgView>
+                      </View>
+                      <Text
+                        accessibilityRole="header"
+                      >
+                        Sáng học, tối dùng luôn
+                      </Text>
+                      <Text>
+                        Thực hành với Input/Output và cùng mentor kiểm tra.
+                      </Text>
+                    </View>
+                  </View>
+                  <View
+                    accessibilityElementsHidden={true}
+                    importantForAccessibility="no-hide-descendants"
+                    testID="home-about-slide-1"
+                  >
+                    <View>
+                      <View
+                        accessible={false}
+                      />
+                      <View
+                        accessible={false}
+                      >
+                        <RNSVGSvgView
+                          accessible={false}
+                        >
+                          <RNSVGGroup>
+                            <RNSVGPath />
+                          </RNSVGGroup>
+                        </RNSVGSvgView>
+                      </View>
+                      <Text
+                        accessibilityRole="header"
+                      >
+                        Lớp nhỏ, mentor kèm sát
+                      </Text>
+                      <Text>
+                        Học và trao đổi cùng mentor trong từng buổi học.
+                      </Text>
+                    </View>
+                  </View>
+                  <View
+                    accessibilityElementsHidden={true}
+                    importantForAccessibility="no-hide-descendants"
+                    testID="home-about-slide-2"
+                  >
+                    <View>
+                      <View
+                        accessible={false}
+                      />
+                      <View
+                        accessible={false}
+                      >
+                        <RNSVGSvgView
+                          accessible={false}
+                        >
+                          <RNSVGGroup>
+                            <RNSVGPath />
+                          </RNSVGGroup>
+                        </RNSVGSvgView>
+                      </View>
+                      <Text
+                        accessibilityRole="header"
+                      >
+                        Học theo cách của bạn
+                      </Text>
+                      <Text>
+                        Khám phá các lớp Online và Offline.
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </RCTScrollView>
+            </View>
+            <View>
+              <View>
+                <View
+                  accessibilityLabel="Xem mục 1: Sáng học, tối dùng luôn"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "selected": true,
+                    }
+                  }
+                  accessible={true}
+                  testID="home-about-dot-0"
+                >
+                  <View />
+                </View>
+              </View>
+              <View>
+                <View
+                  accessibilityLabel="Xem mục 2: Lớp nhỏ, mentor kèm sát"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "selected": false,
+                    }
+                  }
+                  accessible={true}
+                  testID="home-about-dot-1"
+                >
+                  <View />
+                </View>
+              </View>
+              <View>
+                <View
+                  accessibilityLabel="Xem mục 3: Học theo cách của bạn"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "selected": false,
+                    }
+                  }
+                  accessible={true}
+                  testID="home-about-dot-2"
+                >
+                  <View />
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            testID="home-footer"
+          >
+            <Text>
+              Mindy Coding
+            </Text>
+            <Text>
+              Cùng bạn học lập trình.
+            </Text>
+            <View>
+              <Text>
+                Học tập
+              </Text>
+              <Text>
+                Hỗ trợ
+              </Text>
+            </View>
+          </View>
+        </View>
+      </RCTScrollView>
+      <View>
+        <View>
+          <View>
+            <View
+              accessibilityHint="Tính năng sẽ có trong phiên bản sau."
+              accessibilityLabel="Khoá học"
+              accessibilityRole="tab"
+              accessibilityState={
+                {
+                  "disabled": true,
+                  "selected": false,
+                }
+              }
+              accessible={true}
+              testID="home-tab-courses"
+            >
+              <View>
+                <RNSVGSvgView
+                  accessible={false}
+                >
+                  <RNSVGGroup>
+                    <RNSVGPath />
+                  </RNSVGGroup>
+                </RNSVGSvgView>
+              </View>
+              <Text>
+                Khoá học
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View>
+          <View>
+            <View
+              accessibilityHint="Tính năng sẽ có trong phiên bản sau."
+              accessibilityLabel="Lịch học"
+              accessibilityRole="tab"
+              accessibilityState={
+                {
+                  "disabled": true,
+                  "selected": false,
+                }
+              }
+              accessible={true}
+              testID="home-tab-schedule"
+            >
+              <View>
+                <RNSVGSvgView
+                  accessible={false}
+                >
+                  <RNSVGGroup>
+                    <RNSVGPath />
+                    <RNSVGRect />
+                  </RNSVGGroup>
+                </RNSVGSvgView>
+              </View>
+              <Text>
+                Lịch học
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View>
+          <View>
+            <View
+              accessibilityLabel="Trang chủ"
+              accessibilityRole="tab"
+              accessibilityState={
+                {
+                  "disabled": false,
+                  "selected": true,
+                }
+              }
+              accessible={true}
+              testID="home-tab-home"
+            >
+              <View>
+                <RNSVGSvgView
+                  accessible={false}
+                >
+                  <RNSVGGroup>
+                    <RNSVGPath />
+                  </RNSVGGroup>
+                </RNSVGSvgView>
+              </View>
+              <Text>
+                Trang chủ
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View>
+          <View>
+            <View
+              accessibilityHint="Tính năng sẽ có trong phiên bản sau."
+              accessibilityLabel="Thông báo"
+              accessibilityRole="tab"
+              accessibilityState={
+                {
+                  "disabled": true,
+                  "selected": false,
+                }
+              }
+              accessible={true}
+              testID="home-tab-notifications"
+            >
+              <View>
+                <RNSVGSvgView
+                  accessible={false}
+                >
+                  <RNSVGGroup>
+                    <RNSVGPath />
+                  </RNSVGGroup>
+                </RNSVGSvgView>
+              </View>
+              <Text>
+                Thông báo
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View>
+          <View>
+            <View
+              accessibilityHint="Tính năng sẽ có trong phiên bản sau."
+              accessibilityLabel="Tài khoản"
+              accessibilityRole="tab"
+              accessibilityState={
+                {
+                  "disabled": true,
+                  "selected": false,
+                }
+              }
+              accessible={true}
+              testID="home-tab-account"
+            >
+              <View>
+                <RNSVGSvgView
+                  accessible={false}
+                >
+                  <RNSVGGroup>
+                    <RNSVGPath />
+                  </RNSVGGroup>
+                </RNSVGSvgView>
+              </View>
+              <Text>
+                Tài khoản
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </RNCSafeAreaView>
+
+      106 |   render(<StudentHome {...props} />);
+      107 |   fireEvent.press(screen.getByTestId('home-intro-dot-2'));
+    > 108 |   expect(screen.getByText('Dự án đầu tiên sau 4 tuần.')).toBeTruthy();
+          |                 ^
+      109 |   expect(screen.getByText('hotro@mindycoding.vn · 1900 0000')).toBeTruthy();
+      110 |   expect(screen.queryByText(i18n.t('home.sections.about'))).toBeNull();
+      111 | });
+
+      at Object.getByText (src/modules/home/home.test.tsx:108:17)
+
+  ● shows the compact header after scrolling and returns Home to the top
+
+    Unable to find an element with testID: home-compact-header
+
+    <RNCSafeAreaView
+      testID="home-screen"
+    >
+      <RCTScrollView
+        testID="home-content"
+      >
+        <RCTRefreshControl />
+        <View>
+          <View
+            testID="home-header"
+          >
+            <View>
+              <View />
+              <Text>
+                Mindy Coding
+              </Text>
+              <View>
+                <View
+                  accessibilityHint="Tính năng sẽ có trong phiên bản sau."
+                  accessibilityLabel="Giỏ hàng"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "disabled": true,
+                    }
+                  }
+                  accessible={true}
+                  testID="home-cart-button"
+                >
+                  <RNSVGSvgView
+                    accessible={false}
+                  >
+                    <RNSVGGroup>
+                      <RNSVGPath />
+                    </RNSVGGroup>
+                  </RNSVGSvgView>
+                </View>
+              </View>
+            </View>
+            <View>
+              <View>
+                <Text>
+                  Xin chào, An
+                </Text>
+                <Text
+                  accessibilityRole="header"
+                >
+                  Cứ thử.
+    Bạn sẽ làm được.
+                </Text>
+              </View>
+              <Image
+                accessible={false}
+                testID="home-mascot"
+              />
+            </View>
+          </View>
+          <View
+            testID="home-next-session"
+          >
+            <Text>
+              Buổi học tiếp theo
+            </Text>
+            <View>
+              <View>
+                <Text>
+                  08:00 18-10
+                </Text>
+                <Text>
+                  Web
+                </Text>
+                <Text>
+                  HTML
+                </Text>
+              </View>
+              <View>
+                <View
+                  accessibilityHint="Tính năng sẽ có trong phiên bản sau."
+                  accessibilityLabel="Xem trước lớp"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": false,
+                      "disabled": true,
+                    }
+                  }
+                  accessible={true}
+                  testID="home-join-class-button"
+                >
+                  <View
+                    accessible={false}
+                    pointerEvents="none"
+                  >
+                    <RNSVGSvgView
+                      accessible={false}
+                    >
+                      <RNSVGGroup>
+                        <RNSVGDefs>
+                          <RNSVGLinearGradient />
+                        </RNSVGDefs>
+                        <RNSVGRect />
+                      </RNSVGGroup>
+                    </RNSVGSvgView>
+                  </View>
+                  <Text>
+                    Xem trước lớp
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            testID="home-featured-courses"
+          >
+            <Text
+              accessibilityRole="header"
+            >
+              Khoá học nổi bật
+            </Text>
+            <View>
+              <View>
+                <View>
+                  <View>
+                    <View
+                      accessibilityHint="Tính năng sẽ có trong phiên bản sau."
+                      accessibilityLabel="Xem khoá học A long course title with Vietnamese: Lập trình web"
+                      accessibilityRole="button"
+                      accessibilityState={
+                        {
+                          "disabled": true,
+                        }
+                      }
+                      accessible={true}
+                      testID="home-course-course-1"
+                    >
+                      <View>
+                        <View>
+                          <View
+                            accessibilityLabel="A long course title with Vietnamese: Lập trình web"
+                            accessibilityRole="image"
+                            testID="home-cover-course-1-fallback"
+                          >
+                            <RNSVGSvgView
+                              accessible={false}
+                            >
+                              <RNSVGGroup>
+                                <RNSVGPath />
+                              </RNSVGGroup>
+                            </RNSVGSvgView>
+                          </View>
+                        </View>
+                        <View
+                          accessible={false}
+                          pointerEvents="none"
+                        >
+                          <RNSVGSvgView>
+                            <RNSVGGroup>
+                              <RNSVGDefs>
+                                <RNSVGLinearGradient />
+                              </RNSVGDefs>
+                              <RNSVGRect />
+                            </RNSVGGroup>
+                          </RNSVGSvgView>
+                        </View>
+                      </View>
+                      <View>
+                        <Text>
+                          A long course title with Vietnamese: Lập trình web
+                        </Text>
+                        <Text>
+                          0 ₫
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                  <View>
+                    <View>
+                      <View
+                        accessibilityHint="Tính năng sẽ có trong phiên bản sau."
+                        accessibilityLabel="Chọn lớp cho A long course title with Vietnamese: Lập trình web"
+                        accessibilityRole="button"
+                        accessibilityState={
+                          {
+                            "disabled": true,
+                          }
+                        }
+                        accessible={true}
+                        testID="home-course-select-course-1"
+                      >
+                        <RNSVGSvgView
+                          accessible={false}
+                        >
+                          <RNSVGGroup>
+                            <RNSVGPath />
+                          </RNSVGGroup>
+                        </RNSVGSvgView>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View>
+              <View
+                accessibilityHint="Tính năng sẽ có trong phiên bản sau."
+                accessibilityLabel="Khám phá khoá học"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": false,
+                    "disabled": true,
+                  }
+                }
+                accessible={true}
+                testID="home-explore-courses-button"
+              >
+                <Text>
+                  Khám phá khoá học
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            testID="home-intro-carousel"
+          >
+            <Text
+              accessibilityRole="header"
+            >
+              Có nhiều cách để bắt đầu.
+            </Text>
+            <View>
+              <RCTScrollView
+                testID="home-intro-scroll"
+              >
+                <View>
+                  <View
+                    accessibilityElementsHidden={false}
+                    importantForAccessibility="auto"
+                    testID="home-intro-slide-0"
+                  >
+                    <View>
+                      <Text
+                        accessibilityRole="header"
+                      >
+                        Khởi đầu của riêng bạn.
+                      </Text>
+                      <Text>
+                        Tìm bước đầu tiên trên hành trình học lập trình.
+                      </Text>
+                      <View
+                        accessible={false}
+                        importantForAccessibility="no-hide-descendants"
+                        testID="home-intro-image-0"
+                      >
+                        <RNSVGSvgView
+                          accessible={false}
+                        >
+                          <RNSVGGroup>
+                            <RNSVGPath />
+                          </RNSVGGroup>
+                        </RNSVGSvgView>
+                      </View>
+                      <View>
+                        <View
+                          accessibilityLabel="Cách bắt đầu"
+                          accessibilityRole="button"
+                          accessibilityState={
+                            {
+                              "busy": false,
+                              "disabled": true,
+                            }
+                          }
+                          accessible={true}
+                          testID="home-intro-action-0"
+                        >
+                          <Text>
+                            Cách bắt đầu
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                  <View
+                    accessibilityElementsHidden={true}
+                    importantForAccessibility="no-hide-descendants"
+                    testID="home-intro-slide-1"
+                  >
+                    <View>
+                      <Text
+                        accessibilityRole="header"
+                      >
+                        Không ai phải học một mình.
+                      </Text>
+                      <Text>
+                        Khám phá cách học cùng mentor và bạn bè.
+                      </Text>
+                      <View
+                        accessible={false}
+                        importantForAccessibility="no-hide-descendants"
+                        testID="home-intro-image-1"
+                      >
+                        <RNSVGSvgView
+                          accessible={false}
+                        >
+                          <RNSVGGroup>
+                            <RNSVGPath />
+                          </RNSVGGroup>
+                        </RNSVGSvgView>
+                      </View>
+                      <View>
+                        <View
+                          accessibilityLabel="Gặp mentor"
+                          accessibilityRole="button"
+                          accessibilityState={
+                            {
+                              "busy": false,
+                              "disabled": true,
+                            }
+                          }
+                          accessible={true}
+                          testID="home-intro-action-1"
+                        >
+                          <Text>
+                            Gặp mentor
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                  <View
+                    accessibilityElementsHidden={true}
+                    importantForAccessibility="no-hide-descendants"
+                    testID="home-intro-slide-2"
+                  >
+                    <View>
+                      <Text
+                        accessibilityRole="header"
+                      >
+                        Bắt đầu dự án của bạn.
+                      </Text>
+                      <Text>
+                        Cùng biến kiến thức thành sản phẩm đầu tiên.
+                      </Text>
+                      <View
+                        accessible={false}
+                        importantForAccessibility="no-hide-descendants"
+                        testID="home-intro-image-2"
+                      >
+                        <RNSVGSvgView
+                          accessible={false}
+                        >
+                          <RNSVGGroup>
+                            <RNSVGPath />
+                          </RNSVGGroup>
+                        </RNSVGSvgView>
+                      </View>
+                      <View>
+                        <View
+                          accessibilityLabel="Xem dự án"
+                          accessibilityRole="button"
+                          accessibilityState={
+                            {
+                              "busy": false,
+                              "disabled": true,
+                            }
+                          }
+                          accessible={true}
+                          testID="home-intro-action-2"
+                        >
+                          <Text>
+                            Xem dự án
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </RCTScrollView>
+            </View>
+            <View>
+              <View>
+                <View
+                  accessibilityLabel="Xem mục 1: Khởi đầu của riêng bạn."
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "selected": true,
+                    }
+                  }
+                  accessible={true}
+                  testID="home-intro-dot-0"
+                >
+                  <View />
+                </View>
+              </View>
+              <View>
+                <View
+                  accessibilityLabel="Xem mục 2: Không ai phải học một mình."
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "selected": false,
+                    }
+                  }
+                  accessible={true}
+                  testID="home-intro-dot-1"
+                >
+                  <View />
+                </View>
+              </View>
+              <View>
+                <View
+                  accessibilityLabel="Xem mục 3: Bắt đầu dự án của bạn."
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "selected": false,
+                    }
+                  }
+                  accessible={true}
+                  testID="home-intro-dot-2"
+                >
+                  <View />
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            testID="home-compiler-section"
+          >
+            <Text
+              accessibilityRole="header"
+            >
+              Viết code ngay trên điện thoại
+            </Text>
+            <Text>
+              Một không gian nhỏ để khám phá ý tưởng lập trình.
+            </Text>
+            <View>
+              <View
+                accessibilityHint="Tính năng sẽ có trong phiên bản sau."
+                accessibilityLabel="Thử compiler"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": false,
+                    "disabled": true,
+                  }
+                }
+                accessible={true}
+                testID="home-compiler-button"
+              >
+                <View
+                  accessible={false}
+                  pointerEvents="none"
+                >
+                  <RNSVGSvgView
+                    accessible={false}
+                  >
+                    <RNSVGGroup>
+                      <RNSVGDefs>
+                        <RNSVGLinearGradient />
+                      </RNSVGDefs>
+                      <RNSVGRect />
+                    </RNSVGGroup>
+                  </RNSVGSvgView>
+                </View>
+                <Text>
+                  Thử compiler
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            testID="home-about-carousel"
+          >
+            <Text
+              accessibilityRole="header"
+            >
+              Về chúng tôi
+            </Text>
+            <View>
+              <RCTScrollView
+                testID="home-about-scroll"
+              >
+                <View>
+                  <View
+                    accessibilityElementsHidden={false}
+                    importantForAccessibility="auto"
+                    testID="home-about-slide-0"
+                  >
+                    <View>
+                      <View
+                        accessible={false}
+                      />
+                      <View
+                        accessible={false}
+                      >
+                        <RNSVGSvgView
+                          accessible={false}
+                        >
+                          <RNSVGGroup>
+                            <RNSVGPath />
+                          </RNSVGGroup>
+                        </RNSVGSvgView>
+                      </View>
+                      <Text
+                        accessibilityRole="header"
+                      >
+                        Sáng học, tối dùng luôn
+                      </Text>
+                      <Text>
+                        Thực hành với Input/Output và cùng mentor kiểm tra.
+                      </Text>
+                    </View>
+                  </View>
+                  <View
+                    accessibilityElementsHidden={true}
+                    importantForAccessibility="no-hide-descendants"
+                    testID="home-about-slide-1"
+                  >
+                    <View>
+                      <View
+                        accessible={false}
+                      />
+                      <View
+                        accessible={false}
+                      >
+                        <RNSVGSvgView
+                          accessible={false}
+                        >
+                          <RNSVGGroup>
+                            <RNSVGPath />
+                          </RNSVGGroup>
+                        </RNSVGSvgView>
+                      </View>
+                      <Text
+                        accessibilityRole="header"
+                      >
+                        Lớp nhỏ, mentor kèm sát
+                      </Text>
+                      <Text>
+                        Học và trao đổi cùng mentor trong từng buổi học.
+                      </Text>
+                    </View>
+                  </View>
+                  <View
+                    accessibilityElementsHidden={true}
+                    importantForAccessibility="no-hide-descendants"
+                    testID="home-about-slide-2"
+                  >
+                    <View>
+                      <View
+                        accessible={false}
+                      />
+                      <View
+                        accessible={false}
+                      >
+                        <RNSVGSvgView
+                          accessible={false}
+                        >
+                          <RNSVGGroup>
+                            <RNSVGPath />
+                          </RNSVGGroup>
+                        </RNSVGSvgView>
+                      </View>
+                      <Text
+                        accessibilityRole="header"
+                      >
+                        Học theo cách của bạn
+                      </Text>
+                      <Text>
+                        Khám phá các lớp Online và Offline.
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </RCTScrollView>
+            </View>
+            <View>
+              <View>
+                <View
+                  accessibilityLabel="Xem mục 1: Sáng học, tối dùng luôn"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "selected": true,
+                    }
+                  }
+                  accessible={true}
+                  testID="home-about-dot-0"
+                >
+                  <View />
+                </View>
+              </View>
+              <View>
+                <View
+                  accessibilityLabel="Xem mục 2: Lớp nhỏ, mentor kèm sát"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "selected": false,
+                    }
+                  }
+                  accessible={true}
+                  testID="home-about-dot-1"
+                >
+                  <View />
+                </View>
+              </View>
+              <View>
+                <View
+                  accessibilityLabel="Xem mục 3: Học theo cách của bạn"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "selected": false,
+                    }
+                  }
+                  accessible={true}
+                  testID="home-about-dot-2"
+                >
+                  <View />
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            testID="home-footer"
+          >
+            <Text>
+              Mindy Coding
+            </Text>
+            <Text>
+              Cùng bạn học lập trình.
+            </Text>
+            <View>
+              <Text>
+                Học tập
+              </Text>
+              <Text>
+                Hỗ trợ
+              </Text>
+            </View>
+          </View>
+        </View>
+      </RCTScrollView>
+      <View>
+        <View>
+          <View>
+            <View
+              accessibilityLabel="Khoá học"
+              accessibilityRole="tab"
+              accessibilityState={
+                {
+                  "disabled": false,
+                  "selected": false,
+                }
+              }
+              accessible={true}
+              testID="home-tab-courses"
+            >
+              <View>
+                <RNSVGSvgView
+                  accessible={false}
+                >
+                  <RNSVGGroup>
+                    <RNSVGPath />
+                  </RNSVGGroup>
+                </RNSVGSvgView>
+              </View>
+              <Text>
+                Khoá học
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View>
+          <View>
+            <View
+              accessibilityLabel="Lịch học"
+              accessibilityRole="tab"
+              accessibilityState={
+                {
+                  "disabled": false,
+                  "selected": false,
+                }
+              }
+              accessible={true}
+              testID="home-tab-schedule"
+            >
+              <View>
+                <RNSVGSvgView
+                  accessible={false}
+                >
+                  <RNSVGGroup>
+                    <RNSVGPath />
+                    <RNSVGRect />
+                  </RNSVGGroup>
+                </RNSVGSvgView>
+              </View>
+              <Text>
+                Lịch học
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View>
+          <View>
+            <View
+              accessibilityLabel="Trang chủ"
+              accessibilityRole="tab"
+              accessibilityState={
+                {
+                  "disabled": false,
+                  "selected": true,
+                }
+              }
+              accessible={true}
+              testID="home-tab-home"
+            >
+              <View>
+                <RNSVGSvgView
+                  accessible={false}
+                >
+                  <RNSVGGroup>
+                    <RNSVGPath />
+                  </RNSVGGroup>
+                </RNSVGSvgView>
+              </View>
+              <Text>
+                Trang chủ
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View>
+          <View>
+            <View
+              accessibilityLabel="Thông báo"
+              accessibilityRole="tab"
+              accessibilityState={
+                {
+                  "disabled": false,
+                  "selected": false,
+                }
+              }
+              accessible={true}
+              testID="home-tab-notifications"
+            >
+              <View>
+                <RNSVGSvgView
+                  accessible={false}
+                >
+                  <RNSVGGroup>
+                    <RNSVGPath />
+                  </RNSVGGroup>
+                </RNSVGSvgView>
+              </View>
+              <Text>
+                Thông báo
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View>
+          <View>
+            <View
+              accessibilityLabel="Tài khoản"
+              accessibilityRole="tab"
+              accessibilityState={
+                {
+                  "disabled": false,
+                  "selected": false,
+                }
+              }
+              accessible={true}
+              testID="home-tab-account"
+            >
+              <View>
+                <RNSVGSvgView
+                  accessible={false}
+                >
+                  <RNSVGGroup>
+                    <RNSVGPath />
+                  </RNSVGGroup>
+                </RNSVGSvgView>
+              </View>
+              <Text>
+                Tài khoản
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </RNCSafeAreaView>
+
+      116 |   expect(screen.queryByTestId('home-compact-header')).toBeNull();
+      117 |   fireEvent.scroll(screen.getByTestId('home-content'), {nativeEvent: {contentOffset: {y: 180}}});
+    > 118 |   expect(screen.getByTestId('home-compact-header')).toBeTruthy();
+          |                 ^
+      119 |   fireEvent.press(screen.getByTestId('home-tab-home'));
+      120 |   expect(onTab).not.toHaveBeenCalled();
+      121 | });
+
+      at Object.getByTestId (src/modules/home/home.test.tsx:118:17)
+
+FAIL src/modules/auth/navigation.test.tsx
+  ● switches Home preview between controlled loading, empty, error and success states
+
+    expect(received).toBeNull()
+
+    Received: {"_fiber": {"_debugHookTypes": null, "_debugInfo": null, "_debugNeedsRemount": false, "_debugOwner": [FiberNode], "_debugStack": [Error: react-stack-top-frame], "_debugTask": null, "actualDuration": -0, "actualStartTime": 1792244490041, "alternate": null, "child": [FiberNode], "childLanes": 0, "deletions": null, "dependencies": null, "elementType": "View", "flags": 0, "index": 0, "key": null, "lanes": 0, "memoizedProps": [Object], "memoizedState": null, "mode": 1, "pendingProps": [Object], "ref": null, "refCleanup": null, "return": [FiberNode], "selfBaseDuration": -0, "sibling": null, "stateNode": [Object], "subtreeFlags": 1048577, "tag": 5, "treeBaseDuration": -0, "type": "View", "updateQueue": null}}
+
+      19 |   render(<PhaseOnePreview />);
+      20 |   fireEvent.press(screen.getByTestId('preview-home-button'));
+    > 21 |   expect(screen.queryByTestId('preview-state-loading')).toBeNull();
+         |                                                         ^
+      22 |   fireEvent.press(screen.getByTestId('preview-tools-toggle'));
+      23 |   fireEvent.press(screen.getByTestId('preview-state-loading'));
+      24 |   expect(screen.getByTestId('home-loading')).toBeTruthy();
+
+      at Object.toBeNull (src/modules/auth/navigation.test.tsx:21:57)
+
+Test Suites: 2 failed, 2 total
+Tests:       4 failed, 14 passed, 18 total
+Snapshots:   0 total
+Time:        5.473 s, estimated 7 s
+Ran all test suites matching /src\\modules\\home\\home.test.tsx|src\\modules\\auth\\navigation.test.tsx/i.

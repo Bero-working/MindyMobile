@@ -83,6 +83,16 @@ Các component trong `src/components/ui` dùng nhóm token này.
 | `.course-catalog`           | Chữ forest/muted/mint chuyển thành `catalog-ink`, trừ bộ lọc khóa học |
 | Admin (`[data-admin-root]`) | Xem mục 6                                                             |
 
+Ngoại lệ mobile: Home 2a (`StudentHome`) không áp dụng `.home-content`; màu chữ ghi rõ theo đặc tả Phase 1.4.
+Xem [ADR-0020](../adr/ADR-0020-phase-01-design-tokens-home-region.md).
+
+## 5b. Màu thiết kế Phase 1 (chỉ mobile)
+
+Thêm theo [ADR-0020](../adr/ADR-0020-phase-01-design-tokens-home-region.md); bảng mục đích dùng nằm trong ADR.
+`forest-deep` `#12302E`, `forest-night` `#0C2422`, `teal` `#1F9184`, `aqua` `#7FD6C9`, `cream` `#FFF1D6`,
+`tape` `#78F0E8`, `cover-a`/`-soft` `#A6DED4`/`#DAF6F0`, `cover-b`/`-soft` `#EFC8AA`/`#FEEADB`,
+`cover-c`/`-soft` `#F6C3BA`/`#FFE8E3`, `cover-d`/`-soft` `#B6DDBD`/`#E1F5E4`.
+
 ## 6. Admin
 
 Định nghĩa trong `src/app/admin/admin.css` và `src/app/admin/tokens.css`.

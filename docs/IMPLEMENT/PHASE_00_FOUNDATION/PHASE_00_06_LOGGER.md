@@ -22,3 +22,9 @@ Tạo `logger` có che dữ liệu nhạy cảm và reporter cho production, tha
 ## Tiêu chí nghiệm thu
 - [ ] Không còn import `logger` từ `@/ignoreWarnings`.
 - [ ] `logger.ts` là file duy nhất có `eslint-disable no-console`.
+
+## Xác nhận nghiệm thu cuối Phase 0
+
+- Trạng thái: **Done** theo xác nhận owner trong chat ngày 2026-10-17: “Bước 6 approve và done phase 0, không cần đợi refresh”.
+- Checklist kiểm thử phía trên giữ mức bằng chứng đã ghi; việc đóng theo owner không bổ sung kết quả cho ca chưa chạy.
+- Chi tiết nghiệm thu và giới hạn tại [PROGRESS cấp phase](../../PROGRESS/PHASE_00_FOUNDATION/README.md).

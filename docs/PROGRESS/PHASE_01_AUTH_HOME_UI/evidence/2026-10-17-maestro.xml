@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="Pixel_8_2" tests="5" failures="0" time="183.906" timestamp="2026-10-17T15:36:37">
+    <testcase id="api-health" name="api-health" classname="api-health" file="e2e\flows\api-health.yaml" time="22.698" timestamp="2026-10-17T15:36:37" status="SUCCESS"/>
+    <testcase id="app-launch" name="app-launch" classname="app-launch" file="e2e\flows\app-launch.yaml" time="11.802" timestamp="2026-10-17T15:37:00" status="SUCCESS"/>
+    <testcase id="auth-ui-login" name="auth-ui-login" classname="auth-ui-login" file="e2e\flows\auth-ui-login.yaml" time="41.781" timestamp="2026-10-17T15:37:12" status="SUCCESS"/>
+    <testcase id="auth-ui-register" name="auth-ui-register" classname="auth-ui-register" file="e2e\flows\auth-ui-register.yaml" time="57.197" timestamp="2026-10-17T15:37:54" status="SUCCESS"/>
+    <testcase id="student-home-ui" name="student-home-ui" classname="student-home-ui" file="e2e\flows\student-home-ui.yaml" time="50.388" timestamp="2026-10-17T15:38:51" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

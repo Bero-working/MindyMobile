@@ -30,5 +30,8 @@ ghép class `cn()`.
 - Test cần viết trước: giá trị khớp bảng animation trong guide (`pressScale` 0.97, `staggerLimit` 8...).
 
 ## Tiêu chí nghiệm thu
-- [ ] 4 file tạo xong, test xanh.
-- [ ] `colors.test.ts` fail khi sửa một màu chỉ ở một trong hai file.
+- [x] 4 file tạo xong, test xanh.
+- [x] `colors.test.ts` fail khi sửa một màu chỉ ở một trong hai file.
+
+Owner @Bero đã chấp nhận phạm vi này qua UAT bước 1–4a ngày 2026-10-17.
+Chi tiết và giới hạn xem [file UAT](PHASE_00_99_User_Acceptance.md).

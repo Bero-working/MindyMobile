@@ -13,7 +13,7 @@
       "features": {
         "api_integration": {
           "title": "API Integration",
-          "description": "Fetch data from external APIs with error handling",
+          "description": "Check the connection to the Mindy server",
           "button": "Try API Integration"
         },
         "theme_toggle": {
@@ -29,10 +29,10 @@
       },
       "api_messages": {
         "success_title": "Success!",
-        "success_message": "Hello {{firstName}} {{lastName}}!",
+        "success_message": "API connected successfully. The Mindy server is running.",
         "success_button": "OK",
         "error_title": "Error",
-        "error_message": "Failed to fetch user data. Please try again.",
+        "error_message": "Cannot connect to the API ({{code}}, HTTP {{status}}). Please try again.",
         "error_button": "OK"
       },
       "stats": {
@@ -48,5 +48,242 @@
       "description": "We are sorry for the inconvenience. Please try again later.",
       "cta": "Reload the screen"
     }
+  },
+  "common": {
+    "retry": "Try again",
+    "loading": "Loading",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "back": "Back",
+    "requestId": "Support reference: {{id}}"
+  },
+  "errors": {
+    "generic": "Something went wrong. Please try again.",
+    "INVALID_CREDENTIALS": "The email or password is incorrect.",
+    "MAIL_DELIVERY_UNAVAILABLE": "Email is temporarily unavailable. Please try again.",
+    "NETWORK_UNAVAILABLE": "You are offline. Check your connection and try again.",
+    "RATE_LIMIT_EXCEEDED": "Too many requests. Please try again later."
+  },
+  "auth": {
+    "brandName": "Mindy Coding",
+    "integrationUnavailable": "This feature will be available after authentication is connected.",
+    "welcome": {
+      "title": "Welcome!",
+      "description": "Mindy Coding is here to help you learn to code.\nSign in or create an account to get started.",
+      "register": "Create an account",
+      "login": "Sign in"
+    },
+    "fields": {
+      "displayName": "Display name",
+      "email": "Email",
+      "phone": "Phone (optional)",
+      "password": "Password",
+      "confirmPassword": "Confirm password"
+    },
+    "validation": {
+      "required": "Please fill in this field.",
+      "email": "Enter a valid email, up to 320 characters.",
+      "passwordMin": "Use at least 6 characters.",
+      "passwordMax": "Use no more than 128 characters.",
+      "nameMax": "Use no more than 150 characters.",
+      "phone": "Use between 7 and 32 characters.",
+      "confirmPassword": "The passwords do not match.",
+      "serverField": "Please check this information and try again."
+    },
+    "login": {
+      "title": "Sign in",
+      "submit": "Sign in",
+      "registerLink": "New here? Create an account",
+      "registerPrompt": "New here?",
+      "registerAction": "Sign up"
+    },
+    "register": {
+      "title": "Create an account",
+      "description": "Learn to code. Open your world.",
+      "submit": "Create account",
+      "loginLink": "Already have an account? Sign in",
+      "checkEmailTitle": "Check your email",
+      "checkEmailDescription": "If the address can be registered, a verification email has been sent. Check your inbox and spam folder.",
+      "backToLogin": "Back to sign in",
+      "resend": "Resend email",
+      "resendSuccess": "If the address can receive a verification email, another email has been sent.",
+      "loginPrompt": "Already have an account?",
+      "loginAction": "Sign in",
+      "ready": "Are you ready?"
+    },
+    "placeholders": {
+      "email": "name@email.com",
+      "password": "••••••••",
+      "displayName": "Full name"
+    },
+    "session": {
+      "error": "We could not verify your session. Please try again.",
+      "logout": "Sign out",
+      "staff": "You are signed in with a staff account. This role is not available in the mobile app yet."
+    }
+  },
+  "home": {
+    "title": "Give it a try. You can do it.",
+    "greeting": "Hello, {{name}}",
+    "sections": {
+      "nextSession": "Your next session",
+      "courses": "Featured courses",
+      "intro": "More than one way to begin.",
+      "compiler": "Write code on your phone",
+      "about": "About us"
+    },
+    "actions": {
+      "join": "Open class",
+      "explore": "Explore courses",
+      "select": "Choose a class for {{title}}",
+      "course": "View course {{title}}",
+      "cart": "Shopping cart",
+      "unavailable": "Available in a future version.",
+      "refresh": "Refresh",
+      "previewClass": "Preview class"
+    },
+    "empty": {
+      "title": "No courses yet",
+      "description": "Courses will appear here when data is available.",
+      "action": "Explore courses",
+      "schedule": "You have no upcoming sessions."
+    },
+    "errorTitle": "Unable to load content",
+    "tabs": {
+      "courses": "Courses",
+      "schedule": "Schedule",
+      "home": "Home",
+      "notifications": "Notifications",
+      "account": "Account"
+    },
+    "carousel": {
+      "goToSlide": "View item {{index}}: {{title}}"
+    },
+    "intro": {
+      "first": {
+        "title": "Your own beginning.",
+        "description": "Everyone starts somewhere. Begin with the basics and learn at your own pace.",
+        "action": "Getting started"
+      },
+      "second": {
+        "title": "Nobody learns alone.",
+        "description": "Classes of up to 20 learners, with mentors reviewing every exercise and replying within 24 hours.",
+        "action": "Meet the mentors"
+      },
+      "third": {
+        "title": "Your first project in 4 weeks.",
+        "description": "Finish each course with something you can show your friends.",
+        "action": "View projects"
+      },
+      "headingBefore": "There are ",
+      "headingAccent": "many ways",
+      "headingAfter": "\nto begin.",
+      "slides": {
+        "start": {
+          "imageAlt": "Starting to code"
+        },
+        "mentor": {
+          "imageAlt": "Learning with a mentor"
+        },
+        "project": {
+          "imageAlt": "Student project"
+        }
+      }
+    },
+    "about": {
+      "notes": {
+        "first": {
+          "title": "Learn today, use it tonight",
+          "description": "Every Mindy lesson has two parts:",
+          "oneBold": "Learn",
+          "oneText": "(Input): understand when and how to use each concept.",
+          "twoBold": "Apply",
+          "twoText": "(Output): practise in the compiler, receive mentor feedback, then use it in a real project."
+        },
+        "second": {
+          "title": "Small classes, close guidance",
+          "description": "Up to 20 learners per class so nobody is left behind:",
+          "oneBold": "Close mentoring",
+          "oneText": "with exercise reviews and feedback on your code.",
+          "twoBold": "Answers within 24 hours",
+          "twoText": "so your questions never hold you back for long."
+        },
+        "third": {
+          "title": "Learn your way",
+          "description": "Choose the format that fits your schedule:",
+          "oneBold": "Online",
+          "oneText": "learn from anywhere in a virtual class.",
+          "twoBold": "In person",
+          "twoText": "meet your mentor and classmates in the classroom."
+        }
+      },
+      "dash": "– "
+    },
+    "compiler": {
+      "description": "A little space to explore your coding ideas.",
+      "action": "Try the compiler",
+      "illustration": "Illustration only; no code is executed.",
+      "terminal": "mindy — zsh",
+      "sample": "$ mindy run hello\nHello, Mindy!\n3/3 — illustration",
+      "benefits": {
+        "one": "Run code without installing anything",
+        "two": "Automatic checks after each submission",
+        "three": "Easy-to-understand fixes"
+      },
+      "running": "Running…",
+      "hello": "Hello, {{name}}!",
+      "complete": "Complete · 3/3 passed",
+      "command": "$ mindy run main.py",
+      "test1": "✓ test 1   0.12s",
+      "test2": "✓ test 2   0.09s",
+      "test3": "✓ test 3   0.21s",
+      "prompt": "$ "
+    },
+    "footer": {
+      "tagline": "Learn to code. Open your world.",
+      "learn": "Learning",
+      "support": "Support",
+      "contact": "hotro@mindycoding.vn · 1900 0000",
+      "copyright": "© 2026 Mindy Coding",
+      "myClasses": "My classes"
+    },
+    "authRequired": "Sign in with a student account to open Home.",
+    "delivery": {
+      "ONLINE": "Online",
+      "OFFLINE": "Offline"
+    },
+    "starts": " · Starts {{date}}",
+    "brand": {
+      "name": "Mindy",
+      "initial": "M",
+      "subtitle": "CODING"
+    }
+  },
+  "preview": {
+    "open": "Preview UI (development)",
+    "title": "Phase 1 preview",
+    "description": "Illustrative data; no session is created and no API is called.",
+    "auth": "Try Auth forms",
+    "home": "Student Home 2a",
+    "foundation": "Check Foundation",
+    "success": "Success",
+    "loading": "Loading",
+    "empty": "Empty",
+    "error": "Error",
+    "failure": "Simulate an error",
+    "signedIn": "Sign-in callback checked ({{role}}). No session created.",
+    "fixtureName": "Minh Anh",
+    "status": "State: {{status}}",
+    "nextSession": "Session 3 · HTML & CSS",
+    "className": "Web basics · WEB101-A",
+    "course0": "Web basics: HTML, CSS",
+    "course1": "Python for beginners",
+    "course2": "Practical JavaScript",
+    "course3": "Data structures & algorithms",
+    "action": "Action received: {{name}}",
+    "reset": "Choose another screen",
+    "tools": "Preview tools",
+    "closeTools": "Close preview tools",
+    "toolsShort": "UI"
   }
 }

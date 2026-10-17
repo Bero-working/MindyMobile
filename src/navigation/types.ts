@@ -11,6 +11,11 @@ export type RootScreenProps<
 export type RootStackParamList = {
   [routes.splash]: undefined;
   [routes.example]: undefined;
+  [routes.welcome]: undefined;
+  [routes.login]: undefined;
+  [routes.register]: undefined;
+  [routes.studentHome]: undefined;
+  [routes.phaseOnePreview]: undefined;
 };
 
 export type NavigationProp = StackNavigationProp<RootStackParamList>;

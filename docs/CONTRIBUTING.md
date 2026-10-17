@@ -22,7 +22,7 @@ npm run lint:code-format        # Prettier
 npm run lint:type-check         # tsc
 ```
 
-`npm run lint` và `lint:fix` gọi `yarn` bên trong. Không có yarn thì chạy từng script con bằng npm.
+`npm run lint` và `lint:fix` gọi các script con bằng npm; không cần yarn.
 
 ## Chạy máy ảo và Dev Menu
 
@@ -37,6 +37,12 @@ npm run lint:type-check         # tsc
   khi sửa code.
 - Đổi file `.env` / `.env.production` phải build lại native. Reload Metro không đủ.
 - Bật `global.css` hoặc sửa `tailwind.config.js` mà style không ăn: chạy `npm start -- --reset-cache`.
+
+## Các bước trong từng phase
+
+Theo [ADR-0021](adr/ADR-0021-per-phase-ui-approval-api-uat.md): **thiết kế và triển khai UI → owner xác nhận UI → gắn API của cùng phase → owner UAT**.
+TDD dưới đây áp dụng trong bước đang làm, không cho phép tự vượt mốc xác nhận UI. UI dùng fixture/callback riêng;
+chỉ bắt đầu service/query/mutation nghiệp vụ thật sau khi owner xác nhận UI. Chỉ chuyển phase Done sau UAT đạt.
 
 ## Thứ tự làm một tính năng (TDD)
 
@@ -78,6 +84,10 @@ xác nhận để trống; mutation cần Origin sẽ báo `APP_ORIGIN_REQUIRED`
 CLI đã nâng lên major 19 theo [ADR-0016](adr/ADR-0016-react-native-cli-compatibility.md), khắc phục việc CLI15 bỏ sót `BaseReactPackage`.
 UUID v11 + polyfill v1.11 đã triển khai theo [ADR-0015](adr/ADR-0015-idempotency-key-uuid.md). Polyfill v2 yêu cầu RN >=0.81 nên không dùng.
 Maestro CLI 2.11.0 trong phiên này nằm tại `%USERPROFILE%/.maestro/cli-2.11.0/maestro/bin`; thêm đường dẫn đó vào PATH cho terminal chạy E2E.
+
+Emulator API37 nên có ít nhất 4 GB RAM khi chạy Maestro. Lần chạy lại với AVD 2 GB,
+Android lowmemorykiller đã đóng driver và CLI báo startup timeout; khởi động emulator
+với `-memory 4096` cho lần kiểm tra (không cần đổi file cấu hình AVD).
 
 Trên máy Windows hiện tại, dùng JDK 21 đi kèm Android Studio cho Gradle (Java mặc định của máy là 25):
 

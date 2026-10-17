@@ -21,6 +21,20 @@ export const colors = {
   pastelRed: '#D57777',
   inkSoft: '#2E2E2E',
   inkGray: '#6B6B6B',
+  forestDeep: '#12302E',
+  forestNight: '#0C2422',
+  teal: '#1F9184',
+  aqua: '#7FD6C9',
+  cream: '#FFF1D6',
+  tape: '#78F0E8',
+  coverA: '#A6DED4',
+  coverASoft: '#DAF6F0',
+  coverB: '#EFC8AA',
+  coverBSoft: '#FEEADB',
+  coverC: '#F6C3BA',
+  coverCSoft: '#FFE8E3',
+  coverD: '#B6DDBD',
+  coverDSoft: '#E1F5E4',
 } as const;
 
 export type ColorToken = keyof typeof colors;

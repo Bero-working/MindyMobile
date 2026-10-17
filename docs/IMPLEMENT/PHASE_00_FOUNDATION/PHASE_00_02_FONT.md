@@ -15,6 +15,9 @@ Thêm font Nunito (file tĩnh) cho cả Android và iOS, dùng qua class `font-n
 - Test cần viết trước: không có unit test cho asset native. Kiểm tra bằng mắt ở tiêu chí nghiệm thu.
 
 ## Tiêu chí nghiệm thu
-- [ ] Text dùng `font-nunito`, `font-nunito-semibold`, `font-nunito-bold`, `font-nunito-extrabold` hiện đúng 4 độ
+- [x] Text dùng `font-nunito`, `font-nunito-semibold`, `font-nunito-bold`, `font-nunito-extrabold` hiện đúng 4 độ
       đậm trên Android Emulator (và iOS Simulator nếu có macOS).
-- [ ] Không dùng `font-bold` với Nunito ở bất kỳ chỗ nào.
+- [x] Không dùng `font-bold` với Nunito ở bất kỳ chỗ nào.
+
+Owner @Bero đã chấp nhận phạm vi này qua UAT bước 1–4a ngày 2026-10-17.
+Chi tiết và giới hạn xem [file UAT](PHASE_00_99_User_Acceptance.md).

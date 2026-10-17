@@ -66,6 +66,7 @@ export function ExampleFeatureCard({ feature }: ExampleFeatureCardProps) {
 
       <View style={gutters.marginTop_16}>
         <Button
+          {...(feature.testID ? { testID: feature.testID } : {})}
           text={feature.buttonText}
           variant="primary"
           onPress={feature.onPress}
@@ -74,6 +75,15 @@ export function ExampleFeatureCard({ feature }: ExampleFeatureCardProps) {
           icon={feature.icon}
           borderRadius={12}
         />
+        {feature.feedback ? (
+          <Text
+            testID={feature.feedback.testID}
+            accessibilityLiveRegion="polite"
+            style={gutters.marginTop_16}
+          >
+            {feature.feedback.message}
+          </Text>
+        ) : null}
       </View>
     </Card>
   );

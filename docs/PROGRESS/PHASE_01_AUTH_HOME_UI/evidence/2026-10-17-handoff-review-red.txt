@@ -1,0 +1,51 @@
+
+> @sohantalukder/react-native-boilerplate@1.0.0 test
+> jest --runInBand src/modules/home/home.test.tsx
+
+FAIL src/modules/home/home.test.tsx
+  √ uses the supplied timezone and server asOf to display only an upcoming session (193 ms)
+  √ renders all 2a sections, zero price, nullable covers and at most four courses (78 ms)
+  √ shows the course title once when its cover is unavailable (37 ms)
+  √ reserves the design image area when introduction artwork is unavailable (35 ms)
+  √ shows approved course promises outside preview and no invented image icons (48 ms)
+  × does not send My classes to Account when the destination is unavailable (43 ms)
+  √ shows the compact header after scrolling and returns Home to the top (127 ms)
+  √ localizes a recognized region error code instead of showing only the generic error (44 ms)
+  √ isolates item/plus actions and forwards schedule identifiers and access mode (45 ms)
+  √ keeps successful regions while another region fails and retries only that region (60 ms)
+  √ renders loading, empty and error states without inventing courses; preserves stale data (64 ms)
+  √ changes carousel selection by dots and swipes and does not invoke a CTA on selection (30 ms)
+  √ disables unavailable destinations and marks Home as the selected middle tab (28 ms)
+  √ locks duplicate refreshes and retains data during refresh (63 ms)
+
+  ● does not send My classes to Account when the destination is unavailable
+
+    expect(element).toBeDisabled()
+
+    Received element is not disabled:
+      <View
+        accessibilityLabel="Lớp của tôi"
+        accessibilityRole="link"
+        accessibilityState={
+          {
+            "disabled": false,
+          }
+        }
+        accessible={true}
+      />
+
+      115 |   render(<StudentHome {...props} actions={{onTab}} />);
+      116 |   const classes = screen.getByRole('link', {name:'Lớp của tôi'});
+    > 117 |   expect(classes).toBeDisabled();
+          |                   ^
+      118 |   fireEvent.press(classes);
+      119 |   expect(onTab).not.toHaveBeenCalled();
+      120 | });
+
+      at Object.toBeDisabled (src/modules/home/home.test.tsx:117:19)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 13 passed, 14 total
+Snapshots:   0 total
+Time:        3.684 s
+Ran all test suites matching /src\\modules\\home\\home.test.tsx/i.

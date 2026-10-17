@@ -9,6 +9,9 @@ thêm thư viện hay sửa file hạ tầng thì phải viết ADR trước (xe
 2. Đặt `Status: Proposed`, thêm một dòng vào bảng dưới.
 3. Owner (@Bero) duyệt thì đổi sang `Accepted` và ghi `Approved by`.
 4. ADR thay thế ADR cũ: ADR cũ đổi thành `Superseded by ADR-NNNN`, không xoá nội dung cũ.
+5. ADR mới ghi `Created at` theo ISO 8601 có múi giờ bên cạnh `Date`. Khi merge gặp ADR trùng số/tên,
+   đối chiếu ngày giờ tạo để sắp xếp, giữ các quyết định khác nhau và cập nhật số/tham chiếu theo
+   [ADR-0023](ADR-0023-merge-conflicting-adr-by-timestamp.md).
 
 ## Danh sách
 
@@ -30,3 +33,10 @@ thêm thư viện hay sửa file hạ tầng thì phải viết ADR trước (xe
 | [ADR-0014](ADR-0014-docs-workflow.md) | Quy trình docs: IMPLEMENT / PROGRESS, khoá hạ tầng, ADR trước khi thêm công nghệ | Accepted | 2026-10-16 |
 | [ADR-0015](ADR-0015-idempotency-key-uuid.md) | UUID v4 cho Idempotency-Key trên Hermes | Accepted | 2026-10-17 |
 | [ADR-0016](ADR-0016-react-native-cli-compatibility.md) | Đồng bộ CLI với React Native 0.80 | Accepted | 2026-10-17 |
+| [ADR-0017](ADR-0017-ai-self-review-owner-uat.md) | AI tự nghiệm thu trong PROGRESS, owner nghiệm thu cuối cùng bằng UAT | Accepted | 2026-10-17 |
+| [ADR-0018](ADR-0018-phase-01-ui-foundation-exception.md) | Gỡ phụ thuộc vòng để triển khai UI Phase 1 | Accepted | 2026-10-17 |
+| [ADR-0019](ADR-0019-claude-design-handoff-codex-ui.md) | Claude Code đặc tả thiết kế Claude Design, Codex triển khai UI | Accepted | 2026-10-17 |
+| [ADR-0020](ADR-0020-phase-01-design-tokens-home-region.md) | Token màu thiết kế Phase 1, bỏ ghi đè màu vùng Home mobile | Accepted | 2026-10-17 |
+| [ADR-0021](ADR-0021-per-phase-ui-approval-api-uat.md) | Mỗi phase: UI → owner xác nhận → gắn API → UAT | Accepted | 2026-10-17 |
+| [ADR-0022](ADR-0022-phase-01-api-foundation-exception.md) | Ngoại lệ Foundation để gắn API Phase 1 sau duyệt UI | Accepted | 2026-10-17 |
+| [ADR-0023](ADR-0023-merge-conflicting-adr-by-timestamp.md) | Sắp xếp ADR trùng số khi merge theo ngày giờ tạo | Accepted | 2026-10-17 |

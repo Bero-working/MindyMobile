@@ -1,0 +1,60 @@
+# Start on the production Login screen with test credentials entered externally.
+# Credentials stay out of this flow and Maestro command logs. See API progress notes.
+appId: ${APP_ID}
+---
+- assertVisible:
+    id: 'login-screen'
+- tapOn:
+    id: 'login-submit-button'
+- extendedWaitUntil:
+    visible:
+      id: 'home-screen'
+    timeout: 90000
+- assertNotVisible:
+    id: 'login-screen'
+- extendedWaitUntil:
+    notVisible:
+      id: 'home-loading'
+    timeout: 90000
+- extendedWaitUntil:
+    notVisible:
+      id: 'home-schedule-loading'
+    timeout: 90000
+- assertNotVisible:
+    id: 'home-error'
+- assertNotVisible:
+    id: 'home-schedule-error'
+- takeScreenshot: 'phase1-api-home'
+- stopApp
+- launchApp:
+    clearState: false
+- extendedWaitUntil:
+    visible:
+      id: 'home-screen'
+    timeout: 90000
+- assertNotVisible:
+    id: 'login-screen'
+- scrollUntilVisible:
+    element:
+      id: 'session-logout'
+    direction: DOWN
+    timeout: 30000
+- tapOn:
+    id: 'session-logout'
+- extendedWaitUntil:
+    visible:
+      id: 'login-screen'
+    timeout: 90000
+- assertNotVisible:
+    id: 'home-screen'
+- back
+- assertNotVisible:
+    id: 'home-screen'
+- launchApp:
+    clearState: false
+- extendedWaitUntil:
+    visible:
+      id: 'welcome-screen'
+    timeout: 90000
+- assertNotVisible:
+    id: 'home-screen'

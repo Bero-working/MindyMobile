@@ -1,0 +1,94 @@
+appId: ${APP_ID}
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible:
+      id: 'welcome-screen'
+    timeout: 90000
+- tapOn:
+    id: 'phase-one-preview-button'
+- tapOn:
+    id: 'preview-home-button'
+- assertVisible:
+    id: 'home-header'
+- takeScreenshot: 'phase1-home-hero'
+- tapOn:
+    id: 'home-join-class-button'
+- assertVisible:
+    id: 'preview-action-result'
+- tapOn:
+    id: 'preview-tools-toggle'
+- tapOn:
+    id: 'preview-state-loading'
+- tapOn:
+    id: 'preview-tools-toggle'
+- scrollUntilVisible:
+    element:
+      id: 'home-loading'
+    direction: DOWN
+- takeScreenshot: 'phase1-home-loading'
+- tapOn:
+    id: 'preview-tools-toggle'
+- tapOn:
+    id: 'preview-state-empty'
+- tapOn:
+    id: 'preview-tools-toggle'
+- scrollUntilVisible:
+    element:
+      id: 'home-empty'
+    direction: DOWN
+- takeScreenshot: 'phase1-home-empty'
+- tapOn:
+    id: 'preview-tools-toggle'
+- tapOn:
+    id: 'preview-state-error'
+- tapOn:
+    id: 'preview-tools-toggle'
+- scrollUntilVisible:
+    element:
+      id: 'home-error'
+    direction: DOWN
+- takeScreenshot: 'phase1-home-error'
+- tapOn:
+    id: 'home-retry-button'
+- swipe:
+    start: 50%, 40%
+    end: 50%, 60%
+    duration: 500
+- tapOn:
+    id: 'home-tab-home'
+- scrollUntilVisible:
+    element:
+      id: 'home-course-select-preview-0'
+    direction: DOWN
+- tapOn:
+    id: 'home-course-select-preview-0'
+- takeScreenshot: 'phase1-home-courses'
+- assertVisible:
+    id: 'preview-action-result'
+- scrollUntilVisible:
+    element:
+      id: 'home-intro-dot-2'
+    direction: DOWN
+- tapOn:
+    id: 'home-intro-dot-2'
+- scrollUntilVisible:
+    element:
+      id: 'home-compiler-button'
+    direction: DOWN
+- tapOn:
+    id: 'home-compiler-button'
+- scrollUntilVisible:
+    element:
+      id: 'home-about-dot-2'
+    direction: DOWN
+- tapOn:
+    id: 'home-about-dot-2'
+- takeScreenshot: 'phase1-home-about'
+- swipe:
+    start: 50%, 40%
+    end: 50%, 60%
+    duration: 500
+- assertVisible:
+    id: 'home-tab-home'

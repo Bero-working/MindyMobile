@@ -1,0 +1,14 @@
+
+> @sohantalukder/react-native-boilerplate@1.0.0 test:e2e
+> maestro test e2e/flows -e APP_ID=com.mindymobile --format junit --output docs/PROGRESS/PHASE_01_AUTH_HOME_UI/evidence/2026-10-17-maestro.xml
+
+
+Waiting for flows to complete...
+[Passed] api-health (23s)
+[Passed] app-launch (12s)
+[Passed] auth-ui-login (42s)
+[Passed] auth-ui-register (57s)
+[Passed] student-home-ui (50s)
+
+5/5 Flows Passed in 3m 4s
+
