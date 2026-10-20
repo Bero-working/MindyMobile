@@ -91,6 +91,79 @@ it('normalizes backend errors', async () => {
   });
 });
 
+it('keeps the business error when optional details contain backend objects', async () => {
+  mockServer.use(
+    http.post(`${TEST_API_URL}/me/cart/items`, () =>
+      HttpResponse.json(
+        {
+          statusCode: 409,
+          code: 'CLASS_ALREADY_ENROLLED',
+          message: 'You already hold a seat or are enrolled in this class',
+          details: [{ classId: '25449860-d1cb-4949-852a-90d6b42dc2d3' }],
+          requestId: 'cart-seat-conflict',
+        },
+        { status: 409 }
+      )
+    )
+  );
+  await expect(
+    apiInstances.service.post('me/cart/items', { classId: 'class' })
+  ).rejects.toMatchObject({
+    status: 409,
+    code: 'CLASS_ALREADY_ENROLLED',
+    requestId: 'cart-seat-conflict',
+    details: [],
+  });
+});
+
+it.each(['field invalid', ['field invalid']])(
+  'preserves supported error details: %j',
+  async (details) => {
+    mockServer.use(
+      http.get(`${TEST_API_URL}/invalid-field`, () =>
+        HttpResponse.json(
+          {
+            statusCode: 422,
+            code: 'VALIDATION_ERROR',
+            message: 'Invalid',
+            details,
+          },
+          { status: 422 }
+        )
+      )
+    );
+    await expect(
+      apiInstances.service.get('invalid-field')
+    ).rejects.toMatchObject({
+      code: 'VALIDATION_ERROR',
+      details: ['field invalid'],
+    });
+  }
+);
+
+it.each(['code', 'message'])(
+  'rejects error envelopes without %s',
+  async (field) => {
+    const body: Record<string, string | number | { classId: string }[]> = {
+      statusCode: 409,
+      code: 'CLASS_ALREADY_ENROLLED',
+      message: 'Conflict',
+      details: [{ classId: 'class' }],
+    };
+    delete body[field];
+    mockServer.use(
+      http.get(`${TEST_API_URL}/malformed-error`, () =>
+        HttpResponse.json(body, { status: 409 })
+      )
+    );
+    await expect(
+      apiInstances.service.get('malformed-error')
+    ).rejects.toMatchObject({
+      code: 'HTTP_ERROR',
+    });
+  }
+);
+
 it('normalizes network failures', async () => {
   mockServer.use(
     http.get(`${TEST_API_URL}/offline`, () => HttpResponse.error())

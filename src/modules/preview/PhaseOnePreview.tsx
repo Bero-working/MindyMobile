@@ -7,7 +7,8 @@ import { Button } from '@/components/ui/Button';
 import { WelcomeScreen } from '../auth/WelcomeScreen';
 import { LoginScreen } from '../auth/LoginScreen';
 import { RegisterScreen } from '../auth/RegisterScreen';
-import { StudentHome } from '../home/StudentHome';
+import { PhaseTwoPreview } from './PhaseTwoPreview';
+import type { HomeProps } from '../home/types/home.type';
 import { ApiError } from '@/shared/utilities/apiError';
 import routes from '@/navigation/routes';
 import type { NavigationProp } from '@/navigation/types';
@@ -18,13 +19,26 @@ import type {
   DataRegion,
 } from '../home/types/home.type';
 
-type Mode = 'menu' | 'welcome' | 'login' | 'register' | 'home';
+function PreviewHome({
+  onPaymentChange,
+  ...props
+}: HomeProps & { onPaymentChange: (active: boolean) => void }) {
+  return (
+    <PhaseTwoPreview
+      homeProps={props}
+      onPaymentChange={onPaymentChange}
+    />
+  );
+}
+
+type Mode = 'menu' | 'welcome' | 'login' | 'register' | 'home' | 'courses';
 type DataState = 'success' | 'loading' | 'empty' | 'error';
 const pause = () => new Promise<void>((resolve) => setTimeout(resolve, 400));
 
 function DevelopmentPreview() {
   const { t } = useTranslation();
   const navigation = useNavigation<NavigationProp>();
+  const [commercePaying, setCommercePaying] = useState(false);
   const [toolsOpen, setToolsOpen] = useState(false);
   const [mode, setMode] = useState<Mode>('menu');
   const [status, setStatus] = useState<DataState>('success');
@@ -116,7 +130,7 @@ function DevelopmentPreview() {
       testID="phase-one-preview"
       className="flex-1 bg-canvas"
     >
-      {(mode === 'menu' || toolsOpen) && (
+      {(mode === 'menu' || toolsOpen) && !commercePaying && (
         <SafeAreaView
           className={
             mode === 'menu'
@@ -135,7 +149,7 @@ function DevelopmentPreview() {
             <Text className="font-nunito text-[12px] text-muted">
               {t('preview.description')}
             </Text>
-            {mode !== 'menu' && (
+            {mode !== 'menu' && !commercePaying && (
               <Button
                 testID="preview-menu-button"
                 variant="ghost"
@@ -147,7 +161,7 @@ function DevelopmentPreview() {
                 }}
               />
             )}
-            {mode === 'home' && (
+            {(mode === 'home' || mode === 'courses') && (
               <View className="flex-row flex-wrap gap-[4px]">
                 {(['success', 'loading', 'empty', 'error'] as const).map(
                   (item) => (
@@ -208,12 +222,27 @@ function DevelopmentPreview() {
             }}
           />
           <Button
+            testID="preview-courses-button"
+            label={t('preview.courses')}
+            onPress={() => {
+              setStatus('success');
+              setMode('courses');
+              setToolsOpen(false);
+            }}
+          />
+          <Button
             testID="preview-foundation-button"
             variant="outline"
             label={t('preview.foundation')}
             onPress={() => navigation.navigate(routes.example)}
           />
         </ScrollView>
+      ) : mode === 'courses' ? (
+        <PhaseTwoPreview
+          onPaymentChange={setCommercePaying}
+          dataState={status}
+          onRetry={() => setStatus('success')}
+        />
       ) : mode === 'welcome' ? (
         <WelcomeScreen
           onLogin={() => setMode('login')}
@@ -236,7 +265,8 @@ function DevelopmentPreview() {
           onResend={onRegister}
         />
       ) : (
-        <StudentHome
+        <PreviewHome
+          onPaymentChange={setCommercePaying}
           displayName={t('preview.fixtureName')}
           courses={region(status === 'empty' ? [] : courses)}
           schedule={region(status === 'empty' ? null : session)}
@@ -263,7 +293,7 @@ function DevelopmentPreview() {
           }}
         />
       )}
-      {mode !== 'menu' && (
+      {mode !== 'menu' && !commercePaying && (
         <View className="absolute bottom-[112px] left-[12px] z-50">
           <Button
             testID="preview-tools-toggle"
@@ -277,7 +307,7 @@ function DevelopmentPreview() {
           />
         </View>
       )}
-      {!!message && !toolsOpen && (
+      {!!message && !toolsOpen && !commercePaying && (
         <SafeAreaView
           edges={['top']}
           pointerEvents="none"

@@ -1,4 +1,8 @@
 export const colors = {
+  ember: '#C2410C',
+  ribbon: '#EC4A3C',
+  ribbonDeep: '#C8281D',
+  ribbonFold: '#8E1A12',
   canvas: '#FFFFFF',
   mint: '#338A85',
   forest: '#1D5B57',

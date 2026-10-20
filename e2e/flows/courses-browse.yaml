@@ -1,0 +1,52 @@
+appId: ${APP_ID || "com.mindymobile"}
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible:
+      id: 'welcome-screen'
+    timeout: 90000
+- tapOn:
+    id: 'phase-one-preview-button'
+- tapOn:
+    id: 'preview-courses-button'
+- assertVisible:
+    id: 'courses-screen'
+- takeScreenshot: 'phase2-catalog'
+- tapOn:
+    id: 'courses-category-programming'
+- tapOn:
+    id: 'courses-filter-button'
+- tapOn:
+    id: 'courses-filter-mode-OFFLINE'
+- tapOn:
+    id: 'courses-filter-apply'
+- assertVisible:
+    id: 'courses-filter-dot'
+- tapOn:
+    id: 'courses-filter-button'
+- tapOn:
+    id: 'courses-filter-reset'
+- tapOn:
+    id: 'courses-category-all'
+- scrollUntilVisible:
+    element:
+      id: 'courses-page-next'
+    direction: DOWN
+    centerElement: true
+- takeScreenshot: 'courses-lowered-tabs'
+- tapOn:
+    id: 'courses-page-next'
+- assertVisible:
+    id: 'courses-course-demo-6'
+- tapOn:
+    id: 'courses-course-demo-6'
+- assertVisible:
+    id: 'course-sheet'
+- takeScreenshot: 'phase2-course-sheet'
+- back
+- tapOn:
+    id: 'courses-cart-button'
+- assertVisible:
+    id: 'cart-empty'
+- takeScreenshot: 'phase2-cart-empty'

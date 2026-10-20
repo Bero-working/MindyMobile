@@ -1,0 +1,53 @@
+# Start with an authorized STUDENT signed in; use a later class with no enrollment/hold.
+appId: ${APP_ID || "com.mindymobile"}
+---
+- extendedWaitUntil:
+    visible:
+      id: 'home-screen'
+    timeout: 30000
+- tapOn:
+    id: 'home-tab-courses'
+- extendedWaitUntil:
+    visible:
+      id: 'courses-screen'
+    timeout: 30000
+- scrollUntilVisible:
+    element:
+      id: 'courses-course-${COURSE_ID}'
+    direction: DOWN
+    centerElement: true
+- tapOn:
+    id: 'courses-course-${COURSE_ID}'
+- extendedWaitUntil:
+    visible:
+      id: 'course-sheet-classes-scroll'
+    timeout: 30000
+- swipe:
+    from:
+      id: 'course-sheet-classes-scroll'
+    direction: UP
+    duration: 600
+- tapOn:
+    id: 'course-sheet-pick-${CLASS_ID}'
+- assertVisible: '✓ Đã chọn'
+- tapOn:
+    id: 'course-sheet-buy'
+- extendedWaitUntil:
+    visible:
+      id: 'cart-item-${CLASS_ID}'
+    timeout: 30000
+- takeScreenshot: 'api-cart-before-remove'
+- tapOn:
+    id: 'cart-item-remove-${CLASS_ID}'
+- extendedWaitUntil:
+    visible:
+      id: 'cart-empty'
+    timeout: 30000
+- takeScreenshot: 'api-cart-after-remove'
+- back
+- tapOn:
+    id: 'courses-cart-button'
+- extendedWaitUntil:
+    visible:
+      id: 'cart-empty'
+    timeout: 30000

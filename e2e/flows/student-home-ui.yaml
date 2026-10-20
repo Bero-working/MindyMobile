@@ -1,4 +1,4 @@
-appId: ${APP_ID}
+appId: ${APP_ID || "com.mindymobile"}
 ---
 - launchApp:
     clearState: true
@@ -60,13 +60,14 @@ appId: ${APP_ID}
     id: 'home-tab-home'
 - scrollUntilVisible:
     element:
-      id: 'home-course-select-preview-0'
+      id: 'home-course-open-preview-0'
     direction: DOWN
 - tapOn:
-    id: 'home-course-select-preview-0'
-- takeScreenshot: 'phase1-home-courses'
+    id: 'home-course-open-preview-0'
 - assertVisible:
-    id: 'preview-action-result'
+    id: 'course-sheet'
+- takeScreenshot: 'phase2-home-course-sheet'
+- back
 - scrollUntilVisible:
     element:
       id: 'home-intro-dot-2'

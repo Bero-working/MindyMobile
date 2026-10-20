@@ -17,8 +17,12 @@ export type IconName =
   | 'bell'
   | 'cart'
   | 'image'
-  | 'arrow';
+  | 'arrow'
+  | 'filter'
+  | 'clock';
 const paths: Record<IconName, string> = {
+  filter: 'M4 8h9M17 8h3M4 16h3M11 16h9',
+  clock: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 7v5l3 2',
   back: 'M15 18l-6-6 6-6',
   eye: 'M2 12s3-7 10-7 10 7 10 7-3 7-10 7S2 12 2 12',
   eyeOff:
@@ -55,12 +59,26 @@ export function Icon({
       viewBox="0 0 24 24"
       fill="none"
       stroke={color ?? (light ? colors.canvas : colors.muted)}
-      strokeWidth={2}
+      strokeWidth={name === 'arrow' ? 2.4 : 2}
       strokeLinecap="round"
       strokeLinejoin="round"
       accessible={false}
     >
       <Path d={paths[name]} />
+      {name === 'filter' && (
+        <>
+          <Circle
+            cx={15}
+            cy={8}
+            r={2}
+          />
+          <Circle
+            cx={9}
+            cy={16}
+            r={2}
+          />
+        </>
+      )}
       {name === 'eye' && (
         <Circle
           cx={12}

@@ -7,3 +7,5 @@ export {
   StudentHomeRoute,
 } from './auth/AuthRoutes';
 export { PhaseOnePreview } from './preview/PhaseOnePreview';
+export { CoursesRoute } from './courses/CoursesRoute';
+export { PaymentRoute } from './payment/PaymentRoute';

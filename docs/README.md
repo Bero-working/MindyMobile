@@ -22,7 +22,7 @@ quy trình làm việc cố định.
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Lệnh, máy ảo, thứ tự TDD, Definition of Done |
 | [guides/](guides/) | Quy chuẩn kỹ thuật: [typescript](guides/typescript.md), [api-client](guides/api-client.md), [styling](guides/styling.md), [visual-and-motion](guides/visual-and-motion.md), [ux](guides/ux.md), [performance](guides/performance.md), [logging](guides/logging.md), [testing](guides/testing.md), [linting](guides/linting.md) |
 | [adr/](adr/README.md) | Quyết định kiến trúc (ADR) |
-| [API_CONTRACT/](API_CONTRACT/README.md) | Hợp đồng API theo domain |
+| [API_CONTRACT/](API_CONTRACT/README.md) | Hợp đồng API theo domain, đồng bộ từ [API_CONTRACT_BE.md](API_CONTRACT/API_CONTRACT_BE.md) (bản nhận từ BE, chỉ owner cập nhật) |
 | [CORE/GLOBAL_CSS.md](CORE/GLOBAL_CSS.md) | Token màu, font, border (nguồn từ web) |
 | [IMPLEMENT/](IMPLEMENT/README.md) | Spec từng phase: làm gì, tiêu chí nghiệm thu, roadmap |
 | [PROGRESS/](PROGRESS/) | Nhật ký thực hiện, chỉ ghi thêm. Cấu trúc giống `IMPLEMENT/` |
@@ -63,16 +63,19 @@ Spec phase (6) mâu thuẫn với nguồn 1–5 thì **dừng lại hỏi owner*
 
 ### B.2.1 Phân công thiết kế và triển khai UI
 
-Theo [ADR-0019](adr/ADR-0019-claude-design-handoff-codex-ui.md), **Claude Code** chịu trách nhiệm lấy thiết kế từ
-Claude Design, xác định đúng màn hình/phiên bản/biến thể và mô tả kỹ trong `IMPLEMENT/<phase>/` trước khi
-**Codex** triển khai UI tương ứng. README phase ghi nguồn và phạm vi; sub-phase ghi bố cục, thông số UI,
-ảnh/asset, trạng thái, tương tác và tiêu chí nghiệm thu; tài liệu tham chiếu nằm trong `references/` của phase.
+Theo [ADR-0029](adr/ADR-0029-local-ui-base-codex-spec-implementation.md), **Codex mặc định đặc tả trong
+`IMPLEMENT/<phase>/` và có thể đảm nhiệm triển khai**. **Claude có thể đặc tả khi owner yêu cầu**; khi cần
+thiết kế hoặc truy cập Claude Design, owner sẽ giao Claude hỗ trợ và bàn giao kết quả cần thiết.
 
-Codex triển khai theo bàn giao, đối chiếu UI chạy thật với ảnh/đặc tả và ghi bằng chứng, sai khác cùng phần chưa
-kiểm tra vào PROGRESS. Đầu vào thiếu phải được bổ sung; không tự chọn lại thiết kế hoặc thay asset. Thay đổi
-thiết kế được Claude Code cập nhật vào IMPLEMENT trước khi Codex sửa phần UI tương ứng. Owner thực hiện UAT
-cuối phase theo ADR-0017. Owner xác nhận UI trước khi Codex gắn API trong chính phase đó theo ADR-0021;
-bàn giao UI hoặc test xanh không thay thế xác nhận của owner.
+UI base hiện tại là bộ file trong `assets/Student Home Page Design/`: `Student Home.dc.html`, `Auth.dc.html`
+và asset đi kèm. Base có thể thay đổi theo yêu cầu owner. README phase ghi nguồn, màn hình/section/biến thể và
+phạm vi; sub-phase ghi bố cục, thông số UI, ảnh/asset, trạng thái, tương tác, tiêu chí nghiệm thu và các thay đổi
+so với base. Tài liệu tham chiếu bổ sung nằm trong `references/` của phase. Đặc tả được cập nhật trước khi sửa UI.
+
+Codex đối chiếu UI chạy thật với base cộng các thay đổi đã đặc tả, ghi bằng chứng, sai khác và phần chưa kiểm tra
+vào PROGRESS. Đầu vào thiếu phải được ghi rõ và bổ sung; không coi dữ liệu mẫu trong thiết kế là contract.
+Owner xác nhận UI trước bước API của chính phase theo ADR-0021 và thực hiện UAT cuối phase theo ADR-0017;
+việc chọn base, bàn giao UI hoặc test xanh không thay thế các xác nhận này.
 
 ## B.3 Cấu trúc phase
 
@@ -109,7 +112,7 @@ Trạng thái hợp lệ: `Todo` · `In progress` · `Blocked` · `In review` ·
 
 ```
 Trong mỗi phase:
-  1. Claude Code bàn giao thiết kế/đặc tả → Codex triển khai UI, đối chiếu và ghi PROGRESS
+  1. Codex đặc tả (Claude có thể đảm nhiệm khi owner yêu cầu) → triển khai UI (Codex có thể đảm nhiệm), đối chiếu và ghi PROGRESS
   2. Owner xác nhận UI → ghi bằng chứng xác nhận trong PROGRESS
   3. Codex gắn API của chính phase đó theo contract
   4. Dọn dẹp → Kiểm tra → owner UAT (N.99) → Done khi owner xác nhận đạt

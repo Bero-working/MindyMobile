@@ -18,6 +18,8 @@ import {
   RegisterRoute,
   StudentHomeRoute,
   PhaseOnePreview,
+  CoursesRoute,
+  PaymentRoute,
 } from '@/modules';
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -91,6 +93,19 @@ const Navigation = () => {
           <Stack.Screen
             component={PhaseOnePreview}
             name={routes.phaseOnePreview}
+          />
+        )}
+        {user?.role === 'STUDENT' && (
+          <Stack.Screen
+            name={routes.courses}
+            component={CoursesRoute}
+          />
+        )}
+        {user?.role === 'STUDENT' && (
+          <Stack.Screen
+            name={routes.payment}
+            component={PaymentRoute}
+            options={{ gestureEnabled: false }}
           />
         )}
         <Stack.Screen

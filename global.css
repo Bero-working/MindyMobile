@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 :root {
+  /* Phase 2 — ADR-0027 */
+  --ember: 194 65 12;
+  --ribbon: 236 74 60;
+  --ribbon-deep: 200 40 29;
+  --ribbon-fold: 142 26 18;
   /* 1. Màu gốc (brand) */
   --canvas: 255 255 255; /* #FFFFFF */
   --mint: 51 138 133; /* #338A85 */

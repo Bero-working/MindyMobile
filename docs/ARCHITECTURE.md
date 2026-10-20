@@ -28,6 +28,7 @@ Cột "Trạng thái" theo `package.json` hiện tại. Thêm thư viện mới 
 | UI kit cũ | `@sohantalukder/rn-kit` (chỉ giữ `ThemeProvider`, `UiPortalProvider`, `toast`) | Có | [0004](adr/ADR-0004-nativewind-nativecn.md) |
 | Animation | `react-native-reanimated` 3 | Có | [0010](adr/ADR-0010-images-over-cards.md) |
 | Bottom sheet | `@gorhom/bottom-sheet` | Có | — |
+| Mã QR | `react-native-qrcode-svg` (vẽ bằng `react-native-svg`) | **6.3.26** — đã cài ở Phase 2 task 2.4.2 | [0025](adr/ADR-0025-qr-code-rendering.md) |
 | Ảnh | `@d11/react-native-fast-image`, `react-native-svg` | Có | — |
 | List | `FlatList`, `@shopify/flash-list` | Có | — |
 | Form/validation | `zod` | Có | [0009](adr/ADR-0009-no-any-unknown-zod.md) |
@@ -145,6 +146,22 @@ Chi tiết (Http client, `ApiError`, query key, mutation, QueryClient, polling):
 
 ## File hạ tầng (bị khoá)
 
+### Ngoại lệ xử lý lỗi API — ADR-0028 Accepted (2026-10-18)
+
+Owner duyệt “Duyệt ADR-28”. [ADR-0028](adr/ADR-0028-tolerate-optional-error-details.md) cho phép sửa
+`src/config/http/http.config.ts` và test tương ứng để bỏ qua optional details không đúng dạng, giữ code/status/message/
+requestId hợp lệ và details chuỗi/mảng chuỗi. Không đổi cookie, refresh, retry, Origin, kiểu ApiError hoặc file hạ tầng khác.
+
+### Ngoại lệ Phase 2 — ADR-0024, ADR-0025, ADR-0027 Accepted (2026-10-17)
+
+Owner duyệt trong chat (Phase 2, Q4/Q5). [ADR-0024](adr/ADR-0024-phase-02-navigation-routes.md): được sửa
+`src/navigation/index.tsx` để đăng ký `COURSES` và `PAYMENT` trong nhánh phiên STUDENT, kèm test; không đổi provider,
+screenOptions chung, bootstrap/guard phiên. [ADR-0025](adr/ADR-0025-qr-code-rendering.md): được thêm
+`react-native-qrcode-svg` vào `dependencies` ở task 2.4.2, cập nhật bảng tech stack khi cài.
+[ADR-0027](adr/ADR-0027-phase-02-design-tokens.md) (Accepted, Q13): được thêm 4 token `ember`, `ribbon`, `ribbon-deep`,
+`ribbon-fold` vào `global.css`, `tailwind.config.js`, `src/theme/colors.ts` ở task 2.1.1, cập nhật `docs/CORE/GLOBAL_CSS.md`;
+không đổi token cũ. Không mở khoá file khác.
+
 ### Ngoại lệ gắn API Phase 1 — ADR-0022 Accepted
 
 Owner đã duyệt [ADR-0022](adr/ADR-0022-phase-01-api-foundation-exception.md) trong chat ngày2026-10-17.
@@ -244,3 +261,10 @@ Owner đã xác nhận Origin development `http://localhost:3003` trong chat 202
 `.env` dùng giá trị này theo ADR-0002. `APP_ORIGIN` là giá trị header thuộc allowlist,
 không chuyển sang `10.0.2.2` như địa chỉ kết nối `API_URL`. Origin production chưa được
 xác nhận nên `.env.production` giữ trống. Còn blocker điều hướng Login; chưa kiểm tra mutation backend thật.
+
+## Triển khai UI Phase 2 (2026-10-18)
+
+- ADR-0024: thêm routes COURSES và PAYMENT (params orderId) chỉ trong nhánh STUDENT; guard trong route. Sheet mở trên Home/Courses, trạng thái giữ trong controller màn.
+- ADR-0025: đã cài `react-native-qrcode-svg` **6.3.26** (exact), dùng SVG hiện có, không thêm native module. QR được mã hoá tại thiết bị, không gửi sang dịch vụ ảnh.
+- ADR-0027: đồng bộ ember/ribbon/ribbon-deep/ribbon-fold trong CSS, Tailwind, colors.ts và GLOBAL_CSS.md.
+- Đang ở mốc UI trước API theo ADR-0021. Production route chưa có adapter Catalog/Cart/Payment Phase 2, hiện trạng thái lỗi/không có dữ liệu; không hiển thị dữ liệu preview. Preview `__DEV__` có luồng chọn lớp → giỏ → QR giả rõ ràng; không gọi API nghiệp vụ.

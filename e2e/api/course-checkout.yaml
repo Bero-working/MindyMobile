@@ -1,0 +1,67 @@
+# Start with the authorized STUDENT signed in on Home; never store credentials here.
+appId: ${APP_ID || "com.mindymobile"}
+---
+- assertVisible:
+    id: 'home-screen'
+- tapOn:
+    id: 'home-tab-courses'
+- extendedWaitUntil:
+    visible:
+      id: 'courses-screen'
+    timeout: 30000
+- scrollUntilVisible:
+    element:
+      id: 'courses-course-${COURSE_ID}'
+    direction: DOWN
+    centerElement: true
+- tapOn:
+    id: 'courses-course-${COURSE_ID}'
+- extendedWaitUntil:
+    visible:
+      id: 'course-sheet-pick-${CLASS_ID}'
+    timeout: 30000
+- tapOn:
+    id: 'course-sheet-pick-${CLASS_ID}'
+- assertVisible: '✓ Đã chọn'
+- assertNotVisible:
+    id: 'course-sheet-toast'
+- takeScreenshot: 'api-course-draft'
+- tapOn:
+    id: 'course-sheet-add-to-cart'
+- extendedWaitUntil:
+    visible:
+      id: 'course-sheet-toast'
+    timeout: 30000
+- takeScreenshot: 'api-course-added'
+- tapOn:
+    id: 'course-sheet-buy'
+- extendedWaitUntil:
+    visible:
+      id: 'cart-item-${CLASS_ID}'
+    timeout: 30000
+- takeScreenshot: 'api-cart'
+- tapOn:
+    id: 'cart-checkout'
+- extendedWaitUntil:
+    visible:
+      id: 'payment-qr'
+    timeout: 60000
+- assertNotVisible:
+    id: 'preview-tools-toggle'
+- takeScreenshot: 'api-payos-qr'
+- back
+- assertVisible: 'Rời trang thanh toán?'
+- tapOn: 'Ở lại'
+- assertVisible:
+    id: 'payment-qr'
+- back
+- tapOn: 'Rời đi'
+- assertVisible:
+    id: 'courses-screen'
+- tapOn:
+    id: 'courses-cart-button'
+- extendedWaitUntil:
+    visible:
+      id: 'cart-empty'
+    timeout: 30000
+- takeScreenshot: 'api-cart-cleared'

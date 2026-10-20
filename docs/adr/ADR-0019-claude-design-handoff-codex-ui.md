@@ -1,12 +1,14 @@
 # ADR-0019: Claude Code đặc tả thiết kế Claude Design, Codex triển khai UI
 
-- Status: Accepted
+- Status: Superseded by ADR-0029
 - Date: 2026-10-17
 - Author: @Bero (Codex hỗ trợ soạn thảo)
 - Approved by: Owner, chỉ đạo trực tiếp trong chat ngày 2026-10-17: Claude Code lấy design từ Claude Design,
   mô tả kỹ trong IMPLEMENT và Codex dựa vào đó triển khai đúng UI yêu cầu.
 
-> Cập nhật: **Superseded by [ADR-0021](ADR-0021-per-phase-ui-approval-api-uat.md)** đối với luồng bàn giao ở mục 3. Các quyết định còn lại của ADR này tiếp tục có hiệu lực.
+> Cập nhật ngày 2026-10-18: **Superseded by [ADR-0029](ADR-0029-local-ui-base-codex-spec-implementation.md)**.
+> Nguồn UI base và phân công đặc tả/triển khai theo ADR-0029; yêu cầu đặc tả chi tiết và đối chiếu bản chạy được
+> kế thừa trong ADR mới. Trước đó, luồng mục 3 đã được thay thế một phần bởi [ADR-0021](ADR-0021-per-phase-ui-approval-api-uat.md).
 
 ## Context
 

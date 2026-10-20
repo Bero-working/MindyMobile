@@ -55,7 +55,8 @@
     "showPassword": "Show password",
     "hidePassword": "Hide password",
     "back": "Back",
-    "requestId": "Support reference: {{id}}"
+    "requestId": "Support reference: {{id}}",
+    "close": "Close"
   },
   "errors": {
     "generic": "Something went wrong. Please try again.",
@@ -261,7 +262,7 @@
   },
   "preview": {
     "open": "Preview UI (development)",
-    "title": "Phase 1 preview",
+    "title": "UI preview",
     "description": "Illustrative data; no session is created and no API is called.",
     "auth": "Try Auth forms",
     "home": "Student Home 2a",
@@ -284,6 +285,124 @@
     "reset": "Choose another screen",
     "tools": "Preview tools",
     "closeTools": "Close preview tools",
-    "toolsShort": "UI"
+    "toolsShort": "UI",
+    "courses": "Courses · Cart · QR"
+  },
+  "courses": {
+    "recommend": {
+      "title": "Recommended for you",
+      "label": "Recommended: {{title}}",
+      "badge": "RECOMMEND",
+      "view": "View course"
+    },
+    "meta": {
+      "startsAndPrice": "Starts {{date}} · {{price}}"
+    },
+    "categories": {
+      "title": "Categories",
+      "all": "All"
+    },
+    "filter": {
+      "title": "Filters",
+      "mode": "Delivery mode",
+      "all": "All",
+      "ONLINE": "Online",
+      "OFFLINE": "Offline",
+      "apply": "View {{count}} courses",
+      "reset": "Reset"
+    },
+    "grid": {
+      "empty": "No courses match your filters.",
+      "clearFilter": "Reset filters"
+    },
+    "pagination": {
+      "page": "Page {{page}}",
+      "previous": "Previous page",
+      "next": "Next page",
+      "ellipsis": "…"
+    }
+  },
+  "courseSheet": {
+    "openClasses": "Open classes",
+    "classCount": "{{count}} classes",
+    "seats": "{{count}} seats left",
+    "full": "Full",
+    "mentor": "Mentor {{name}}",
+    "pick": "Choose class",
+    "picked": "✓ Selected",
+    "empty": "No open classes for this course.",
+    "more": "Show more",
+    "buy": "Buy now",
+    "added": "Added {{name}} to cart",
+    "removed": "Removed {{name}} from cart",
+    "unpickHint": "Tap to deselect class",
+    "buyHint": "Add a class and open your cart",
+    "addToCart": "Add selected class to cart"
+  },
+  "cart": {
+    "title": "Cart ({{count}})",
+    "empty": "Your cart is empty.",
+    "total": "Total",
+    "checkout": "Checkout",
+    "checkoutPending": "Creating order…",
+    "checkoutUnknown": "The order may have been created.",
+    "checkoutVerify": "Check again",
+    "item": {
+      "meta": "{{name}} · {{mode}} · Starts {{date}}",
+      "priceChanged": "Price has changed",
+      "unavailable": "This class is unavailable — remove it from your cart.",
+      "remove": "Remove",
+      "removeLabel": "Remove {{course}} {{name}} from cart"
+    },
+    "errors": {
+      "CART_ITEM_ALREADY_EXISTS": "This class is already in your cart.",
+      "CART_LIMIT_EXCEEDED": "Your cart already contains 20 classes.",
+      "CLASS_FULL": "This class is full.",
+      "CLASS_NOT_OPEN": "This class is no longer open.",
+      "CLASS_NOT_FOUND": "This class is no longer open.",
+      "CLASS_ALREADY_ENROLLED": "You are already enrolled or have a seat held in this class.",
+      "CART_EMPTY": "Your cart is now empty.",
+      "unavailable": "Remove unavailable classes before checkout.",
+      "generic": "Unable to complete the action. Please try again."
+    }
+  },
+  "payment": {
+    "title": "Payment",
+    "amountLabel": "Amount to pay",
+    "expiresIn": "Expires in {{time}}",
+    "expired": "Expired",
+    "qr": {
+      "label": "Payment QR code for {{amount}}",
+      "caption": "Scan with your banking app",
+      "creating": "Creating payment QR code…",
+      "missing": "No QR code is available for this order.",
+      "expired": "QR code expired"
+    },
+    "info": {
+      "courses": "Courses",
+      "bank": "Bank",
+      "account": "Account number",
+      "owner": "Account name",
+      "amount": "Amount",
+      "note": "Reference",
+      "copy": "Copy"
+    },
+    "note": "Keep the transfer reference unchanged so your payment can be confirmed automatically.",
+    "copied": "Copied {{label}}",
+    "goCourses": "Back to Courses",
+    "leave": {
+      "title": "Leave payment?",
+      "message": "Your seats are held until {{time}}. You cannot reopen this QR code after leaving yet.",
+      "stay": "Stay",
+      "confirm": "Leave"
+    },
+    "errors": {
+      "PAYMENT_UNAVAILABLE": "Payment service is unavailable. Try again later.",
+      "PAYMENT_AMOUNT_INVALID": "Unable to create a payment QR code.",
+      "ORDER_NOT_FOUND": "Order not found.",
+      "ORDER_ACCESS_DENIED": "You cannot access this order.",
+      "generic": "Unable to load payment information."
+    },
+    "minute": "Your QR code expires in one minute."
   }
 }

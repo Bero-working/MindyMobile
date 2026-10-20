@@ -35,8 +35,14 @@ thêm thư viện hay sửa file hạ tầng thì phải viết ADR trước (xe
 | [ADR-0016](ADR-0016-react-native-cli-compatibility.md) | Đồng bộ CLI với React Native 0.80 | Accepted | 2026-10-17 |
 | [ADR-0017](ADR-0017-ai-self-review-owner-uat.md) | AI tự nghiệm thu trong PROGRESS, owner nghiệm thu cuối cùng bằng UAT | Accepted | 2026-10-17 |
 | [ADR-0018](ADR-0018-phase-01-ui-foundation-exception.md) | Gỡ phụ thuộc vòng để triển khai UI Phase 1 | Accepted | 2026-10-17 |
-| [ADR-0019](ADR-0019-claude-design-handoff-codex-ui.md) | Claude Code đặc tả thiết kế Claude Design, Codex triển khai UI | Accepted | 2026-10-17 |
+| [ADR-0019](ADR-0019-claude-design-handoff-codex-ui.md) | Claude Code đặc tả thiết kế Claude Design, Codex triển khai UI | Superseded by ADR-0029 | 2026-10-17 |
 | [ADR-0020](ADR-0020-phase-01-design-tokens-home-region.md) | Token màu thiết kế Phase 1, bỏ ghi đè màu vùng Home mobile | Accepted | 2026-10-17 |
 | [ADR-0021](ADR-0021-per-phase-ui-approval-api-uat.md) | Mỗi phase: UI → owner xác nhận → gắn API → UAT | Accepted | 2026-10-17 |
 | [ADR-0022](ADR-0022-phase-01-api-foundation-exception.md) | Ngoại lệ Foundation để gắn API Phase 1 sau duyệt UI | Accepted | 2026-10-17 |
 | [ADR-0023](ADR-0023-merge-conflicting-adr-by-timestamp.md) | Sắp xếp ADR trùng số khi merge theo ngày giờ tạo | Accepted | 2026-10-17 |
+| [ADR-0024](ADR-0024-phase-02-navigation-routes.md) | Đăng ký route Khoá học và Thanh toán cho Phase 2 | Accepted | 2026-10-17 |
+| [ADR-0025](ADR-0025-qr-code-rendering.md) | Thư viện render mã QR thanh toán | Accepted | 2026-10-17 |
+| [ADR-0026](ADR-0026-be-api-contract-source.md) | Contract API nhận từ BE là nguồn của các file contract theo domain | Proposed | 2026-10-17 |
+| [ADR-0027](ADR-0027-phase-02-design-tokens.md) | Token màu thiết kế Phase 2 (ember, ribbon) | Accepted | 2026-10-17 |
+| [ADR-0028](ADR-0028-tolerate-optional-error-details.md) | Giữ mã lỗi khi metadata details ngoài contract | Accepted | 2026-10-18 |
+| [ADR-0029](ADR-0029-local-ui-base-codex-spec-implementation.md) | Thiết kế local làm UI base, Codex đặc tả và có thể triển khai | Accepted | 2026-10-18 |

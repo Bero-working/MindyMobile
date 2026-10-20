@@ -40,6 +40,11 @@ npm run lint:type-check         # tsc
 
 ## Các bước trong từng phase
 
+Theo [ADR-0029](adr/ADR-0029-local-ui-base-codex-spec-implementation.md), Codex mặc định đặc tả trong
+`docs/IMPLEMENT/<phase>/` và có thể triển khai; Claude có thể đặc tả khi owner yêu cầu. Bộ file
+`assets/Student Home Page Design/` là UI base có thể thay đổi theo yêu cầu owner. Đặc tả ghi rõ nguồn và
+thay đổi so với base trước khi sửa UI; owner sẽ giao Claude khi cần thiết kế hoặc truy cập Claude Design.
+
 Theo [ADR-0021](adr/ADR-0021-per-phase-ui-approval-api-uat.md): **thiết kế và triển khai UI → owner xác nhận UI → gắn API của cùng phase → owner UAT**.
 TDD dưới đây áp dụng trong bước đang làm, không cho phép tự vượt mốc xác nhận UI. UI dùng fixture/callback riêng;
 chỉ bắt đầu service/query/mutation nghiệp vụ thật sau khi owner xác nhận UI. Chỉ chuyển phase Done sau UAT đạt.
@@ -71,10 +76,12 @@ không coi unit test là kết quả E2E.
 Build và cài app debug (`npm run android`), để Metro chạy (`npm start`), sau đó:
 
 ```bash
-npm run test:e2e -- -e APP_ID=com.mindymobile
+npm run test:e2e
 ```
 
-Flow `e2e/flows/app-launch.yaml` nhận `APP_ID` qua `-e`, mở app và kiểm tra `app-root`. Trên macOS, truyền bundle id
+Các flow mặc định `APP_ID` là `com.mindymobile`, nên lệnh trên không cần truyền tham số. Có thể ghi đè bằng
+`npm run test:e2e -- -e APP_ID=<package-hoặc-bundle-id>`; tham số được ưu tiên. Flow `e2e/flows/app-launch.yaml`
+mở app và kiểm tra `app-root`. Trên macOS, truyền bundle id
 iOS thực tế thay vì Android applicationId; kiểm tra `PRODUCT_BUNDLE_IDENTIFIER` trong Xcode project. Flow không gọi
 API nghiệp vụ và không chứa thông tin tài khoản.
 
@@ -100,7 +107,7 @@ cd android
 ./gradlew.bat assembleDebug -PreactNativeArchitectures=x86_64 --max-workers=2
 cd ..
 # Sau khi cài APK và để Metro chạy:
-npm run test:e2e -- -e APP_ID=com.mindymobile
+npm run test:e2e
 ```
 
 ## Definition of Done

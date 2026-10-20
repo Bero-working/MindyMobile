@@ -5,6 +5,10 @@
 - Author: @Bero (Codex hỗ trợ soạn thảo)
 - Approved by: @Bero (chỉ đạo trực tiếp trong chat: “Quy trình sẽ là thiết kế UI -> xác nhận (tôi) -> gắn API -> nghiệm thu UAT”; làm rõ “Đây là quy trình theo từng phase”)
 
+> Cập nhật ngày 2026-10-18: **Superseded by [ADR-0029](ADR-0029-local-ui-base-codex-spec-implementation.md)**
+> đối với yêu cầu Claude Code bắt buộc bàn giao đặc tả trước UI. Codex mặc định đặc tả và có thể triển khai;
+> Claude đặc tả khi owner yêu cầu. Thứ tự UI → owner xác nhận → API → UAT và các mốc xác nhận tiếp tục có hiệu lực.
+
 ## Context
 
 Quy trình hiện tại có bàn giao thiết kế, triển khai và UAT cuối phase nhưng chưa có mốc owner xác nhận UI

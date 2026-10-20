@@ -14,17 +14,23 @@ Chờ duyệt UI và chờ UAT đều có thể là In review nhưng phải ghi 
 | ----- | -------------------------------------------------------- | ---------------------------------------------------------- | --------------- | ---------- | ---------------------------------------------------------------------------------------------------------------- |
 | 0     | [PHASE_00_FOUNDATION](PHASE_00_FOUNDATION/README.md)     | —                                                          | @Bero           | Done       | Owner duyệt đủ UAT và đóng Phase 0 ngày 2026-10-17; dừng chờ refresh theo chỉ đạo, giới hạn bằng chứng ghi trong PROGRESS |
 | 1     | [PHASE_01_AUTH_HOME_UI](PHASE_01_AUTH_HOME_UI/README.md) | Ngoại lệ Foundation/navigator theo ADR-0018 Accepted | @Bero | Done | Owner duyệt UAT Phase 1 trong chat ngày 2026-10-17; giới hạn kiểm thử còn ghi trong PROGRESS, Phase 0 giữ trạng thái riêng |
+| 2 | [PHASE_02_COURSE_CHECKOUT](PHASE_02_COURSE_CHECKOUT/README.md) | Phase 1; ADR-0024, ADR-0025, ADR-0027, ADR-0028 Accepted | @Bero | Done | Owner duyệt lại “UAT phase 2 approve” ngày2026-10-18 21:34 (+07:00), sau sửa E2E9/9 PASS; chi tiết tại PROGRESS |
 | 3+    | —                                                        | Theo từng phase                                            | —               | —          | Owner sẽ thêm các phase màn hình tiếp theo                                                                       |
 
 ## Bàn giao thiết kế UI
 
-Theo [ADR-0019](../adr/ADR-0019-claude-design-handoff-codex-ui.md), Claude Code lấy thiết kế từ Claude Design và
-đặc tả chi tiết trước khi Codex triển khai UI tương ứng. README phase ghi nguồn, màn hình/phiên bản/biến thể;
-sub-phase ghi bố cục, thông số, asset, trạng thái, tương tác và tiêu chí đối chiếu. Lưu ảnh/asset và bản ghi nguồn
-trong `references/` của phase. Mục không áp dụng ghi rõ lý do; đầu vào thiếu phải được đánh dấu và bổ sung.
+Theo [ADR-0029](../adr/ADR-0029-local-ui-base-codex-spec-implementation.md), Codex mặc định đặc tả trong
+`IMPLEMENT/<phase>/` và có thể triển khai; Claude có thể đặc tả nếu owner yêu cầu. Khi cần thiết kế hoặc truy cập
+Claude Design, owner sẽ giao Claude hỗ trợ. Base hiện tại là `assets/Student Home Page Design/`
+(`Student Home.dc.html`, `Auth.dc.html` và asset đi kèm), có thể điều chỉnh theo yêu cầu owner.
 
-Codex bám bản bàn giao, kiểm tra UI chạy thật với ảnh/đặc tả, ghi bằng chứng và sai khác vào PROGRESS để owner xác nhận UI; sau đó mới gắn API và bàn giao UAT theo ADR-0021.
-Thiết kế thay đổi thì Claude Code cập nhật IMPLEMENT trước khi Codex sửa UI tương ứng.
+README phase ghi nguồn, màn hình/section/phiên bản/biến thể; sub-phase ghi bố cục, thông số, asset, trạng thái,
+tương tác, tiêu chí đối chiếu và thay đổi so với base. Lưu ảnh/bản ghi tham chiếu bổ sung trong `references/`
+của phase, liên kết asset nguồn cụ thể. Mục không áp dụng ghi lý do; đầu vào thiếu phải được đánh dấu và bổ sung.
+
+Codex kiểm tra UI chạy thật với base cộng các thay đổi đã đặc tả, ghi bằng chứng và sai khác vào PROGRESS để
+owner xác nhận UI; sau đó mới gắn API và bàn giao UAT theo ADR-0021. Khi có thay đổi, người đặc tả cập nhật
+IMPLEMENT trước khi sửa UI tương ứng; không bắt buộc cập nhật HTML base hoặc chờ Claude nếu đã đủ đầu vào.
 
 ## Tạo phase mới
 

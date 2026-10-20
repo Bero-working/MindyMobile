@@ -8,6 +8,23 @@ Contract tổng hợp từ source BE (nhánh `feat/phase-3-3`, đã chứa dev `
 flow trong `docs/api_flow/` của repo BE. Khi contract lệch với BE, **source code + Swagger (`/docs`) là nguồn sự
 thật**.
 
+## Nguồn contract nhận từ BE
+
+[API_CONTRACT_BE.md](API_CONTRACT_BE.md) là bản contract **nguyên văn nhận từ BE** (repo BE:
+`docs/api_flow/API_CONTRACT_FE.md`). Đây là nguồn của mọi file domain trong thư mục này. Lý do:
+[ADR-0026](../adr/ADR-0026-be-api-contract-source.md).
+
+- Chỉ owner (@Bero) cập nhật `API_CONTRACT_BE.md`, bằng cách chép đè bản mới nhất từ BE. **KHÔNG ĐƯỢC** sửa tay
+  nội dung file này trong repo mobile.
+- Mỗi lần file này đổi, PHẢI đồng bộ phần khác biệt sang file domain tương ứng (README.md và các file theo
+  [bảng đối chiếu](#bảng-đối-chiếu-mục-cũ-sang-file-mới)) trong cùng commit, giữ nguyên số mục (§). So khác biệt
+  bằng `git diff docs/API_CONTRACT/API_CONTRACT_BE.md`.
+- Thay đổi ảnh hưởng spec phase đang làm (`docs/IMPLEMENT/`) hoặc `BUSINESS_RULES.md` thì báo owner trước khi sửa
+  spec/rule theo B.9 của [docs/README.md](../README.md).
+- File domain lệch với `API_CONTRACT_BE.md` thì `API_CONTRACT_BE.md` thắng; sửa file domain cho khớp.
+
+Lần đồng bộ gần nhất: 2026-10-17 (§11.1 hành vi giỏ hàng, §11.4 giỏ bị xoá sau checkout → [cart.md](cart.md)).
+
 ## File theo domain
 
 | File | Nội dung | Mục gốc |
@@ -398,7 +415,8 @@ Khi FE gặp khác biệt khác, ưu tiên Swagger của môi trường đang g�
 
 ## Bảng đối chiếu mục cũ sang file mới
 
-Bản gốc: [API_CONTRACT_FE.legacy.md](API_CONTRACT_FE.legacy.md) (giữ lại tới khi owner xác nhận đã tách đủ).
+Nguồn hiện hành: [API_CONTRACT_BE.md](API_CONTRACT_BE.md). Bản gốc lúc tách:
+[API_CONTRACT_FE.legacy.md](API_CONTRACT_FE.legacy.md) (giữ lại tới khi owner xác nhận đã tách đủ).
 
 | § cũ | Tiêu đề | File mới |
 | --- | --- | --- |

@@ -131,3 +131,12 @@ it('logs in through the production form, resets guest history, and returns expir
   expect(screen.queryByTestId('home-screen')).toBeNull();
   expect(queryClient.getQueryData(['private-test'])).toBeUndefined();
 });
+
+jest.mock('react-native-qrcode-svg', () => ({
+  __esModule: true,
+  default: jest.requireActual('react-native').View,
+}));
+jest.mock('@react-native-clipboard/clipboard', () => ({
+  __esModule: true,
+  default: { setString: jest.fn() },
+}));

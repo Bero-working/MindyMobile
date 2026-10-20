@@ -217,7 +217,7 @@ góc gấp, băng dính · H12 footer nền forest · H13 tab bar nổi bo 26, H
 
 Tiêu chí đối chiếu: chụp từng section trên Pixel 8 (1080×2400, density 420, font 1.0), bộ chọn preview thu gọn,
 đặt cạnh ảnh tham chiếu tương ứng. Sai lệch vị trí/kích thước ≤ 4dp chấp nhận; các sai khác có chủ đích
-(giá ₫, không tự chạy carousel, bóng mascot Android, font 900/nghiêng/mono) liệt kê trong PROGRESS.
+(giá ₫ và không tự chạy carousel là sai khác lịch sử, đã thay bởi yêu cầu owner; bóng mascot Android, font 900/nghiêng/mono) liệt kê trong PROGRESS.
 
 ## API / dữ liệu
 
@@ -277,12 +277,12 @@ Tiêu chí đối chiếu: chụp từng section trên Pixel 8 (1080×2400, dens
   Replace/Edit của công cụ design hoặc tự tạo ảnh thay thế.
 - Ba ghi chú theo thứ tự: “Sáng học, tối dùng luôn” / “Lớp nhỏ, mentor kèm sát” / “Học theo cách của bạn”.
 - Vuốt ngang và bấm chấm đổi slide/ghi chú; giữ vị trí cuộn dọc. Mỗi chấm có label theo số/tên và selected state,
-  không dùng label giống nhau “Chuyển slide”. Không tự chạy carousel theo timer.
+  không dùng label giống nhau “Chuyển slide”. Tự chuyển mục kế tiếp mỗi 3 giây theo chỉ đạo owner 2026-10-18; cuối danh sách lặp về đầu.
 - Terminal `mindy — zsh` và kết quả 3/3 là minh hoạ trong preview; không nhận/chạy/chấm code thật hoặc giả kết quả
   bài tập người dùng. CTA compiler chỉ callback preview/disabled trong app khi chưa có đích.
 - Footer không có link `#` hoặc chính sách chưa tồn tại; email/hotline hiện dạng chữ theo D4.
-- Test cần viết trước: đủ 3 slide/3 ghi chú, đổi đúng index, selected state, CTA riêng, không timer tự chuyển,
-  compiler không gọi API, link thiếu đích không bấm được, Reduce Motion không có animation lặp.
+- Test cần viết trước: đủ 3 slide/3 ghi chú, đổi đúng index, selected state, CTA riêng, timer 3 giây và vòng lặp,
+  compiler không gọi API, link thiếu đích không bấm được, Reduce Motion chuyển trang tức thì, không có animation trượt.
 - testID: `home-intro-slide-{index}`, `home-intro-dot-{index}`, `home-about-dot-{index}` (index 0–2), `home-compiler-button`.
 - i18n key: `home.intro.*`, `home.about.notes.*`, `home.compiler.*`, `home.footer.*`, `home.carousel.goToSlide`.
 
@@ -302,3 +302,12 @@ Tiêu chí đối chiếu: chụp từng section trên Pixel 8 (1080×2400, dens
 - [ ] Đủ trạng thái từng vùng dữ liệu; ảnh dự phòng, chữ dài và cỡ chữ lớn hoạt động.
 - [ ] Không hiển thị số liệu fixture như dữ liệu người dùng thật, không gọi API PLANNED.
 - [ ] Test tương tác/state xanh; Maestro dự kiến `e2e/flows/student-home-ui.yaml`.
+
+### Điều chỉnh của owner — 2026-10-18
+
+Tất cả carousel (Home giới thiệu, Home về Mindy, gợi ý khoá học) tự chuyển sang mục kế tiếp theo thứ tự trái → phải mỗi **3 giây**, lặp về mục đầu. Chạm chấm/vuốt đặt lại thời gian chờ; tạm dừng khi kéo và khi app ở nền. Reduce Motion giữ chu kỳ nhưng bỏ animation trượt. Chỉ đạo trực tiếp của owner thay quy tắc không tự chạy trước đây; không thay mốc UI approval/API.
+
+
+### Hạ thanh tab theo owner — 2026-10-18
+
+Thanh tab nổi Home và Khoá học dùng bottom=max(safeAreaBottom−12dp,0), hạ thêm 12dp so với vị trí safe area trước đó. Catalog giảm đệm cuối từ 120 xuống 100dp cộng safe area, bảo đảm phân trang vẫn cuộn được lên trên thanh tab.

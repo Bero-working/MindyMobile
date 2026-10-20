@@ -1,0 +1,16 @@
+{
+  "apiOrigin": "https://api.quanh123.id.vn",
+  "checkedAt": "2026-10-18T11:12:40.469Z",
+  "cartItemsAfterCheckout": 0,
+  "orderId": "714d0579-c069-4db9-8ab3-12756a905b0e",
+  "orderCode": "MD6R4GYF8CGDY9",
+  "status": "PENDING",
+  "paymentType": "PAYOS",
+  "totalAmount": 1000,
+  "expiresAt": "2026-10-18T11:26:37.352Z",
+  "detailClassIds": [
+    "25449860-d1cb-4949-852a-90d6b42dc2d3"
+  ],
+  "paymentStatus": "PENDING",
+  "qrPresent": true
+}

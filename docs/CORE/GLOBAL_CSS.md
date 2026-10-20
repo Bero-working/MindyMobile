@@ -125,3 +125,7 @@ Thêm theo [ADR-0020](../adr/ADR-0020-phase-01-design-tokens-home-region.md); b�
 
 - Palette bắt buộc trong `AGENTS.md` gồm 5 màu: trắng, mint, forest, coral, headsup. Các màu `sunshine`, `logo-soft` và màu status của admin đang được dùng nhưng nằm ngoài danh sách này, cần thống nhất và ghi lại trong `docs/ui-rules.md`.
 - Tại thời điểm tổng hợp, không có mã hex hard-code trong các file `.tsx`.
+
+## Token Phase 2 — ADR-0027
+
+`ember`: `#C2410C`; `ribbon`: `#EC4A3C`; `ribbon-deep`: `#C8281D`; `ribbon-fold`: `#8E1A12`. Đồng bộ global.css, tailwind.config.js và src/theme/colors.ts.

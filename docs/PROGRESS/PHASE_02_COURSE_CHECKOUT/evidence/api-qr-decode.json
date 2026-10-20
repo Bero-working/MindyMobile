@@ -1,0 +1,10 @@
+{
+  "decodedFromAndroidScreenshot": true,
+  "matchesBackendQrCode": true,
+  "emvCurrency": "704",
+  "emvAmount": "1000",
+  "country": "VN",
+  "crcValid": true,
+  "bankAppScanVerified": false,
+  "moneyTransferred": false
+}

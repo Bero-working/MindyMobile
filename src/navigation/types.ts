@@ -16,6 +16,8 @@ export type RootStackParamList = {
   [routes.register]: undefined;
   [routes.studentHome]: undefined;
   [routes.phaseOnePreview]: undefined;
+  [routes.courses]: undefined;
+  [routes.payment]: { orderId: string };
 };
 
 export type NavigationProp = StackNavigationProp<RootStackParamList>;

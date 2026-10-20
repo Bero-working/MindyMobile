@@ -25,9 +25,10 @@ import { PressableScale } from '@/components/common/PressableScale';
 import { colors } from '@/theme/colors';
 import { motion } from '@/theme/motion';
 import { useHomeController } from './hooks/useHomeController';
-import { CourseTile } from './components/CourseTile';
+import { CourseTile } from '@/components/common/CourseTile';
 import { HomeCarousel } from './components/HomeCarousel';
-import { HomeTabBar, HomeNav } from './components/HomeTabBar';
+import { AppTabBar as HomeTabBar } from '@/components/common/AppTabBar';
+import { BrandBar as HomeNav } from '@/components/common/BrandBar';
 import { HomeButton } from './components/HomeButton';
 import { HomeCompiler } from './components/HomeCompiler';
 import type { HomeProps } from './types/home.type';
@@ -64,7 +65,7 @@ export function StudentHome(props: HomeProps) {
     () => ({
       hero: { paddingTop: insets.top, minHeight: insets.top + 190 },
       top: { paddingTop: insets.top },
-      tabs: { bottom: insets.bottom },
+      tabs: { bottom: Math.max(insets.bottom - 12, 0) },
       footer: { paddingBottom: 130 + insets.bottom },
       mascot: { width: mascotWidth, height: mascotWidth * 0.8 },
       greeting: { maxWidth: width < 360 ? width - mascotWidth - 4 : 218 },
@@ -158,6 +159,7 @@ export function StudentHome(props: HomeProps) {
           <HomeNav
             onTop={top}
             onCart={actions.onCart}
+            cartCount={props.cartCount ?? 0}
           />
           <View
             style={layout.greeting}

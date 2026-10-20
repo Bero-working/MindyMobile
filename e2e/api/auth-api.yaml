@@ -1,6 +1,6 @@
 # Start on the production Login screen with test credentials entered externally.
 # Credentials stay out of this flow and Maestro command logs. See API progress notes.
-appId: ${APP_ID}
+appId: ${APP_ID || "com.mindymobile"}
 ---
 - assertVisible:
     id: 'login-screen'

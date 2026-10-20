@@ -44,6 +44,7 @@ export type HomeActions = {
   onMyClasses?: () => void;
 };
 export type HomeProps = {
+  cartCount?: number;
   sessionControls?: ReactNode;
   displayName: string;
   mascot?: ImageSourcePropType;

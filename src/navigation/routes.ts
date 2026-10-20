@@ -10,6 +10,8 @@ enum routes {
   register = 'REGISTER',
   studentHome = 'STUDENT_HOME',
   phaseOnePreview = 'PHASE_ONE_PREVIEW',
+  courses = 'COURSES',
+  payment = 'PAYMENT',
 }
 
 export default routes;

@@ -1,0 +1,72 @@
+appId: ${APP_ID || "com.mindymobile"}
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible:
+      id: 'welcome-screen'
+    timeout: 90000
+- scrollUntilVisible:
+    element:
+      id: 'phase-one-preview-button'
+    direction: DOWN
+- tapOn:
+    id: 'phase-one-preview-button'
+- tapOn:
+    id: 'preview-courses-button'
+- scrollUntilVisible:
+    element:
+      id: 'courses-course-demo-0'
+    direction: DOWN
+- tapOn:
+    id: 'courses-course-demo-0'
+- scrollUntilVisible:
+    element:
+      id: 'course-sheet-pick-demo-0-a'
+    direction: DOWN
+- tapOn:
+    id: 'course-sheet-pick-demo-0-a'
+- extendedWaitUntil:
+    visible: '✓ Đã chọn'
+    timeout: 10000
+- scrollUntilVisible:
+    element:
+      id: 'course-sheet-buy'
+    direction: DOWN
+- tapOn:
+    id: 'course-sheet-buy'
+- extendedWaitUntil:
+    visible:
+      id: 'cart-item-demo-0-a'
+    timeout: 10000
+- takeScreenshot: 'phase2-cart-filled'
+- tapOn:
+    id: 'cart-checkout'
+- extendedWaitUntil:
+    visible:
+      id: 'payment-qr'
+    timeout: 15000
+- assertNotVisible:
+    id: 'preview-tools-toggle'
+- takeScreenshot: 'phase2-payment-qr'
+- back
+- assertVisible: 'Rời trang thanh toán?'
+- tapOn: 'Ở lại'
+- assertVisible:
+    id: 'payment-qr'
+- scrollUntilVisible:
+    element:
+      id: 'payment-copy-account'
+    direction: DOWN
+- tapOn:
+    id: 'payment-copy-account'
+- assertVisible:
+    id: 'payment-toast'
+- back
+- tapOn: 'Rời đi'
+- assertVisible:
+    id: 'courses-screen'
+- tapOn:
+    id: 'courses-cart-button'
+- assertVisible:
+    id: 'cart-empty'

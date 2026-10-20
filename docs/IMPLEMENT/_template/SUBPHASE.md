@@ -3,12 +3,15 @@
 ## Mô tả
 Phần này hiển thị gì, tương tác gì.
 
-## Đặc tả UI từ Claude Design (Claude Code bàn giao)
+## Đặc tả UI (Codex mặc định; Claude khi owner yêu cầu)
 
-Hoàn thiện trước khi Codex triển khai UI tương ứng theo [ADR-0019](../../adr/ADR-0019-claude-design-handoff-codex-ui.md).
+Hoàn thiện trước khi triển khai UI tương ứng theo [ADR-0029](../../adr/ADR-0029-local-ui-base-codex-spec-implementation.md).
+Codex có thể đảm nhiệm cả đặc tả và triển khai. Base là bộ file trong `assets/Student Home Page Design/`;
+owner có thể yêu cầu điều chỉnh, và giao Claude khi cần thiết kế/truy cập Claude Design.
 Mục không áp dụng ghi rõ lý do; không thay đặc tả bằng mỗi link hoặc câu “giống thiết kế”.
 
 - Nguồn, màn hình/phiên bản/biến thể, thời điểm khảo sát và ảnh tham chiếu: ...
+- Yêu cầu của owner và thay đổi so với base: ...
 - Bố cục: thứ tự các khối, căn chỉnh, kích thước, spacing/padding, vùng cuộn/cố định và safe area: ...
 - Hiển thị: màu/token, font/cỡ/độ đậm/chiều cao dòng, bo góc, viền, bóng, icon: ...
 - Asset: đường dẫn gốc trong `references/`, tỉ lệ, kích thước hiển thị và cách đặt/cắt ảnh: ...

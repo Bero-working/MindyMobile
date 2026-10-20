@@ -31,3 +31,12 @@ describe('App', () => {
     await ReactTestRenderer.act(() => renderer?.unmount());
   });
 });
+
+jest.mock('react-native-qrcode-svg', () => ({
+  __esModule: true,
+  default: jest.requireActual('react-native').View,
+}));
+jest.mock('@react-native-clipboard/clipboard', () => ({
+  __esModule: true,
+  default: { setString: jest.fn() },
+}));

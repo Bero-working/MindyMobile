@@ -1,0 +1,14 @@
+diff --git a/src/config/http/http.config.ts b/src/config/http/http.config.ts
+--- a/src/config/http/http.config.ts
++++ b/src/config/http/http.config.ts
+@@ -38,6 +38,9 @@ const errorSchema = z.object({
+   statusCode: z.number(),
+   code: z.string(),
+   message: z.union([z.string(), z.array(z.string())]),
+-  details: z.union([z.string(), z.array(z.string())]).optional(),
++  details: z
++    .union([z.string(), z.array(z.string())])
++    .optional()
++    .catch(undefined),
+   requestId: z.string().optional(),
+ });

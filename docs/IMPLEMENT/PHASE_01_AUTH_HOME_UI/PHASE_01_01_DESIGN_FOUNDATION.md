@@ -92,8 +92,7 @@ nhẹ do `elevation`.
 - Không reveal khi cuộn, không float mascot, không con trỏ nhấp nháy (thiết kế đã tắt, xem trên).
 - Pressed state: nút “3D” Home (viền đen + bóng `0 4 0 #000`) khi nhấn dịch xuống 3dp và bóng còn 1dp; thẻ khoá học
   nhấn scale 0.97. Dùng `PressableScale`/reanimated sẵn có, 120ms; Reduce Motion → bỏ dịch/scale, chỉ đổi opacity.
-- Carousel: thiết kế tự chuyển mỗi 4,5 giây và dừng 6 giây sau khi người dùng vuốt. Mobile **không tự chuyển**
-  (WCAG 2.2.2, đã chốt ở 1.4.4); đây là sai khác có chủ đích. Chấm đang chọn đổi độ rộng 8 → 28 trong 250ms.
+- Carousel: theo chỉ đạo owner 2026-10-18, tất cả carousel mobile tự chuyển mục kế tiếp mỗi **3 giây**, cuối danh sách về đầu; chạm chấm/vuốt đặt lại chu kỳ. App ở nền hoặc đang kéo thì tạm dừng. Reduce Motion vẫn chuyển mục nhưng không trượt. Quy tắc này thay quyết định không tự chạy cũ ở 1.4.4. Chấm đang chọn đổi độ rộng 8 → 28 trong 250ms.
 
 ### Công cụ preview không được làm lệch layout
 

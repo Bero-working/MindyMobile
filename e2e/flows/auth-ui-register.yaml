@@ -1,4 +1,4 @@
-appId: ${APP_ID}
+appId: ${APP_ID || "com.mindymobile"}
 ---
 - launchApp:
     clearState: true
@@ -72,4 +72,3 @@ appId: ${APP_ID}
     id: 'register-login-link'
 - assertVisible:
     id: 'login-screen'
-

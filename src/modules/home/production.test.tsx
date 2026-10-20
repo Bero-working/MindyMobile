@@ -8,6 +8,7 @@ import '@/config/i18n.config';
 import { StudentHomeRoute } from '@/modules/auth/AuthRoutes';
 import { useStore } from '@/state/store';
 import type { SessionUser } from '@/modules/auth/schemas/authResponse.schema';
+const mockNavigate = jest.fn();
 const user: SessionUser = {
   id: '11111111-1111-4111-8111-111111111111',
   email: 'student@example.test',
@@ -20,7 +21,7 @@ const user: SessionUser = {
 };
 jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual('@react-navigation/native'),
-  useNavigation: () => ({}),
+  useNavigation: () => ({ navigate: mockNavigate }),
 }));
 beforeAll(() => mockServer.listen({ onUnhandledRequest: 'error' }));
 beforeEach(() =>
@@ -64,7 +65,9 @@ it('renders verified production data, keeps unavailable CTAs disabled and logs o
   renderWithProviders(<StudentHomeRoute />);
   expect(screen.getByTestId('home-loading')).toBeTruthy();
   expect(screen.getByText(/API Student/)).toBeTruthy();
-  expect(screen.getByTestId('home-explore-courses-button')).toBeDisabled();
+  expect(screen.getByTestId('home-explore-courses-button')).not.toBeDisabled();
+  fireEvent.press(screen.getByTestId('home-explore-courses-button'));
+  expect(mockNavigate).toHaveBeenCalledWith('COURSES');
   expect(screen.getByTestId('home-tab-account')).toBeDisabled();
   await act(async () => finish());
   await waitFor(() => expect(screen.getByTestId('home-empty')).toBeTruthy());

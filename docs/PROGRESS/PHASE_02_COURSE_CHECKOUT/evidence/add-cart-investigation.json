@@ -1,0 +1,24 @@
+{
+  "getStatus": 200,
+  "getBefore": {
+    "items": [],
+    "totalAmount": 0
+  },
+  "addStatus": 409,
+  "addResponse": {
+    "statusCode": 409,
+    "code": "CLASS_ALREADY_ENROLLED",
+    "message": "You already hold a seat or are enrolled in this class",
+    "details": [
+      {
+        "classId": "25449860-d1cb-4949-852a-90d6b42dc2d3"
+      }
+    ],
+    "requestId": "e0b9952e-0480-4c85-9b96-7f2aad4bb4c4"
+  },
+  "getAfterStatus": 200,
+  "getAfter": {
+    "items": [],
+    "totalAmount": 0
+  }
+}

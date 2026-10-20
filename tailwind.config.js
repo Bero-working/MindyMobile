@@ -9,6 +9,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        ember: token('ember'),
+        ribbon: token('ribbon'),
+        'ribbon-deep': token('ribbon-deep'),
+        'ribbon-fold': token('ribbon-fold'),
         canvas: token('canvas'),
         mint: token('mint'),
         forest: token('forest'),

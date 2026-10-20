@@ -1,4 +1,4 @@
-appId: ${APP_ID}
+appId: ${APP_ID || "com.mindymobile"}
 ---
 - launchApp:
     clearState: true

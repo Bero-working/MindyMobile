@@ -55,7 +55,8 @@
     "showPassword": "Hiện mật khẩu",
     "hidePassword": "Ẩn mật khẩu",
     "back": "Quay lại",
-    "requestId": "Mã hỗ trợ: {{id}}"
+    "requestId": "Mã hỗ trợ: {{id}}",
+    "close": "Đóng"
   },
   "errors": {
     "generic": "Đã xảy ra lỗi. Vui lòng thử lại.",
@@ -261,7 +262,7 @@
   },
   "preview": {
     "open": "Xem thử UI (development)",
-    "title": "Xem thử Phase 1",
+    "title": "Xem thử giao diện",
     "description": "Dữ liệu minh hoạ; không tạo phiên đăng nhập hay gọi API.",
     "auth": "Thử form Auth",
     "home": "Student Home 2a",
@@ -284,6 +285,124 @@
     "reset": "Chọn lại màn hình",
     "tools": "Công cụ xem thử",
     "closeTools": "Thu gọn công cụ",
-    "toolsShort": "UI"
+    "toolsShort": "UI",
+    "courses": "Khoá học · Giỏ · QR"
+  },
+  "courses": {
+    "recommend": {
+      "title": "Gợi ý cho bạn",
+      "label": "Gợi ý: {{title}}",
+      "badge": "RECOMMEND",
+      "view": "Xem khoá học"
+    },
+    "meta": {
+      "startsAndPrice": "Khai giảng {{date}} · {{price}}"
+    },
+    "categories": {
+      "title": "Danh mục",
+      "all": "Tất cả"
+    },
+    "filter": {
+      "title": "Bộ lọc",
+      "mode": "Hình thức",
+      "all": "Tất cả",
+      "ONLINE": "Online",
+      "OFFLINE": "Offline",
+      "apply": "Xem {{count}} khoá học",
+      "reset": "Đặt lại"
+    },
+    "grid": {
+      "empty": "Không có khoá học phù hợp bộ lọc.",
+      "clearFilter": "Đặt lại bộ lọc"
+    },
+    "pagination": {
+      "page": "Trang {{page}}",
+      "previous": "Trang trước",
+      "next": "Trang sau",
+      "ellipsis": "…"
+    }
+  },
+  "courseSheet": {
+    "openClasses": "Lớp đang mở",
+    "classCount": "{{count}} lớp",
+    "seats": "còn {{count}} chỗ",
+    "full": "Hết chỗ",
+    "mentor": "Mentor {{name}}",
+    "pick": "Chọn lớp",
+    "picked": "✓ Đã chọn",
+    "empty": "Khoá học chưa có lớp mở.",
+    "more": "Xem thêm",
+    "buy": "Mua ngay",
+    "added": "Đã thêm lớp {{name}} vào giỏ",
+    "removed": "Đã bỏ {{name}} khỏi giỏ",
+    "unpickHint": "Bấm để bỏ chọn lớp",
+    "buyHint": "Thêm lớp vào giỏ và mở giỏ hàng",
+    "addToCart": "Thêm lớp đã chọn vào giỏ hàng"
+  },
+  "cart": {
+    "title": "Giỏ hàng ({{count}})",
+    "empty": "Giỏ hàng đang trống.",
+    "total": "Tổng cộng",
+    "checkout": "Thanh toán",
+    "checkoutPending": "Đang tạo đơn…",
+    "checkoutUnknown": "Không rõ đơn đã tạo chưa.",
+    "checkoutVerify": "Kiểm tra lại",
+    "item": {
+      "meta": "{{name}} · {{mode}} · KG {{date}}",
+      "priceChanged": "Giá đã thay đổi",
+      "unavailable": "Lớp không còn mở đăng ký — hãy xoá khỏi giỏ.",
+      "remove": "Xoá",
+      "removeLabel": "Xoá {{course}} {{name}} khỏi giỏ"
+    },
+    "errors": {
+      "CART_ITEM_ALREADY_EXISTS": "Lớp đã có trong giỏ.",
+      "CART_LIMIT_EXCEEDED": "Giỏ đã đủ 20 lớp.",
+      "CLASS_FULL": "Lớp đã hết chỗ.",
+      "CLASS_NOT_OPEN": "Lớp không còn mở đăng ký.",
+      "CLASS_NOT_FOUND": "Lớp không còn mở đăng ký.",
+      "CLASS_ALREADY_ENROLLED": "Bạn đã đăng ký hoặc đang được giữ chỗ ở lớp này.",
+      "CART_EMPTY": "Giỏ hàng đã trống.",
+      "unavailable": "Vui lòng xoá lớp không còn mua được trước khi thanh toán.",
+      "generic": "Không thực hiện được. Vui lòng thử lại."
+    }
+  },
+  "payment": {
+    "title": "Thanh toán",
+    "amountLabel": "Số tiền cần thanh toán",
+    "expiresIn": "Hết hạn sau {{time}}",
+    "expired": "Đã hết hạn",
+    "qr": {
+      "label": "Mã QR thanh toán {{amount}}",
+      "caption": "Quét mã bằng app ngân hàng",
+      "creating": "Đang tạo mã thanh toán…",
+      "missing": "Chưa có mã QR cho đơn này.",
+      "expired": "Mã đã hết hạn"
+    },
+    "info": {
+      "courses": "Khoá học",
+      "bank": "Ngân hàng",
+      "account": "Số tài khoản",
+      "owner": "Chủ tài khoản",
+      "amount": "Số tiền",
+      "note": "Nội dung",
+      "copy": "Sao chép"
+    },
+    "note": "Vui lòng giữ nguyên nội dung chuyển khoản để hệ thống tự xác nhận đơn hàng.",
+    "copied": "Đã sao chép {{label}}",
+    "goCourses": "Về trang Khoá học",
+    "leave": {
+      "title": "Rời trang thanh toán?",
+      "message": "Đơn vẫn giữ chỗ tới {{time}}. Hiện chưa mở lại được mã QR sau khi rời trang.",
+      "stay": "Ở lại",
+      "confirm": "Rời đi"
+    },
+    "errors": {
+      "PAYMENT_UNAVAILABLE": "Cổng thanh toán tạm ngưng, thử lại sau.",
+      "PAYMENT_AMOUNT_INVALID": "Không tạo được mã thanh toán.",
+      "ORDER_NOT_FOUND": "Không tìm thấy đơn hàng.",
+      "ORDER_ACCESS_DENIED": "Bạn không có quyền xem đơn hàng.",
+      "generic": "Không tải được thông tin thanh toán."
+    },
+    "minute": "Mã QR còn hiệu lực 1 phút."
   }
 }

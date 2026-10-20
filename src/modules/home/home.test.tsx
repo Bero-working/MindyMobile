@@ -77,14 +77,7 @@ it('renders all 2a sections, zero price, nullable covers and at most four course
   expect(
     screen.getByText(i18n.t('home.greeting', { name: 'An' }))
   ).toBeTruthy();
-  expect(
-    screen.getAllByText(
-      new Intl.NumberFormat('vi-VN', {
-        style: 'currency',
-        currency: 'VND',
-      }).format(0)
-    )
-  ).toHaveLength(4);
+  expect(screen.getAllByText('0 VND')).toHaveLength(4);
   expect(screen.queryByTestId('home-course-c4')).toBeNull();
   expect(screen.getByTestId('home-cover-c0-fallback')).toBeTruthy();
 });
@@ -182,7 +175,7 @@ it('localizes a recognized region error code instead of showing only the generic
   expect(screen.getByText(i18n.t('errors.NETWORK_UNAVAILABLE'))).toBeTruthy();
 });
 
-it('isolates item/plus actions and forwards schedule identifiers and access mode', () => {
+it('opens the course from both tile and arrow and and forwards schedule identifiers and access mode', () => {
   const onCourse = jest.fn();
   const onSelectCourse = jest.fn();
   const onSession = jest.fn();
@@ -192,9 +185,9 @@ it('isolates item/plus actions and forwards schedule identifiers and access mode
       actions={{ onCourse, onSelectCourse, onSession }}
     />
   );
-  fireEvent.press(screen.getByTestId('home-course-select-course-1'));
-  expect(onSelectCourse).toHaveBeenCalledWith('course-1');
-  expect(onCourse).not.toHaveBeenCalled();
+  fireEvent.press(screen.getByTestId('home-course-open-course-1'));
+  expect(onCourse).toHaveBeenCalledWith('course-1');
+  expect(onSelectCourse).not.toHaveBeenCalled();
   fireEvent.press(screen.getByTestId('home-course-course-1'));
   expect(onCourse).toHaveBeenCalledWith('course-1');
   fireEvent.press(screen.getByTestId('home-join-class-button'));
@@ -287,9 +280,25 @@ it('changes carousel selection by dots and swipes and does not invoke a CTA on s
   ).toBe(true);
 });
 
+it('automatically advances both Home carousels after three seconds', () => {
+  jest.useFakeTimers();
+  const view = render(<StudentHome {...props} />);
+  for (const kind of ['intro', 'about'])
+    fireEvent(screen.getByTestId(`home-${kind}-viewport`), 'layout', {
+      nativeEvent: { layout: { width: 320 } },
+    });
+  act(() => jest.advanceTimersByTime(3000));
+  for (const kind of ['intro', 'about'])
+    expect(
+      screen.getByTestId(`home-${kind}-dot-1`).props.accessibilityState.selected
+    ).toBe(true);
+  view.unmount();
+  jest.useRealTimers();
+});
+
 it('disables unavailable destinations and marks Home as the selected middle tab', () => {
   render(<StudentHome {...props} />);
-  expect(screen.getByTestId('home-course-select-course-1')).toBeDisabled();
+  expect(screen.getByTestId('home-course-open-course-1')).toBeDisabled();
   expect(screen.getByTestId('home-compiler-button')).toBeDisabled();
   const tabs = screen.getAllByRole('tab');
   expect(tabs.map((tab) => tab.props.testID)).toEqual([

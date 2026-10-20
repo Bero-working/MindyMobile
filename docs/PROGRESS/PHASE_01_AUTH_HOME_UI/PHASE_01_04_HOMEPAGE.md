@@ -97,3 +97,21 @@ Chỉ ghi thêm kết quả từng task; hiện chưa có entry triển khai.
 - Test: Test header mounted/ẩn controls RED→GREEN. Jest20suite/103test đạt; ESLint, Prettier và TypeScript đạt. Maestro home-header-scroll1/1 thường và1/1 animator_duration_scale0; đã khôi phục settingnull. Ảnh hai trạng thái và báo cáo trong evidence/header-motion-*.png, 2026-10-17-header-motion*.json/txt/xml và 2026-10-17-header-reduced-motion.xml. Ảnh hero dùng screenshot sau quay về đầu trang để tránh ảnh menu trong lúc chuyển route.
 - PR / commit: Chưa tạo.
 - Ghi chú: Sai khác topbar tức thì trong review cũ đã được xử lý. Vẫn chờ owner xác nhận UI theo ADR-0021; không gắn API hoặc tự xác nhận UAT. iOS chưa kiểm tra.
+
+
+### 2026-10-18 00:49 (+07:00) · @Bero
+- Phase: Điều chỉnh carousel theo owner
+- Trạng thái: In review
+- Đã làm: AI áp dụng tự chuyển mỗi 3 giây cho Home intro, Home about và Gợi ý khoá học. Chuyển theo thứ tự trái → phải; cuối danh sách về đầu tức thì, không quét ngược. Dừng khi kéo hoặc app ở nền; thao tác tay khởi động lại nhịp. Reduce Motion vẫn đổi trang mỗi 3 giây nhưng không animation. Cập nhật IMPLEMENT theo chỉ dẫn trực tiếp của owner.
+- Test: Red → Green hook/tích hợp; 168/168 tests, 39 suite PASS; lint, format, type-check PASS. Android carousel-autoplay PASS cả ba carousel; checkout sau autoplay PASS (evidence/autoplay-checkout).
+- PR / commit: Chưa tạo, chưa commit.
+- Ghi chú: Bằng chứng ở Phase 2 evidence/carousel-autoplay; iOS và Reduce Motion native chưa kiểm tra.
+
+
+### 2026-10-18 01:36 (+07:00) · @Bero
+- Phase: Điều chỉnh tab, noti và khoảng trắng theo owner
+- Trạng thái: In review
+- Đã làm: AI hạ thanh tab Home/Khoá học thêm 12dp (bottom=max(insets.bottom−12,0)); catalog giảm đệm cuối 120→100dp cộng safe area. Đưa noti chọn/bỏ lớp lên overlay đầu modal, không chiếm chiều cao hoặc chặn chạm; chưa xây component chung vì owner sẽ làm sau. Bỏ mt-auto ở giá/Mua ngay; modal vừa nội dung, giới hạn 94%, vẫn không cuộn bao ngoài hoặc nhận kéo modal. Chỉ danh sách lớp cuộn. Cập nhật IMPLEMENT và UI_REVIEW theo yêu cầu trực tiếp.
+- Test: Tổng Jest 168/168, 39 suite PASS; ESLint, Prettier và TypeScript PASS trên file thay đổi. Android course-class-scroll PASS cả noti/chọn lớp/vuốt ngoài đứng yên và cuộn nội bộ. courses-browse rerun PASS bộ lọc, phân trang, mở modal, Back, giỏ rỗng. Ảnh evidence/course-modal-top-notice.png và evidence/courses-lowered-tabs.png.
+- PR / commit: Chưa tạo, chưa commit.
+- Ghi chú: Lần browse đầu thất bại do Maestro coi nút phân trang dưới lớp phủ tab là visible; sửa flow centerElement=true để cuộn vào vùng nhìn thấy trước khi bấm, rerun PASS. Raw lỗi giữ tại evidence/tabs-top-notice; final tại evidence/lowered-tabs-final. iOS/chữ lớn chưa kiểm tra lại. UI vẫn chờ owner xác nhận; API 2.6 và UAT 2.99 Todo.

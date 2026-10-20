@@ -1,12 +1,6 @@
+import { useCarouselAutoplay } from '@/shared/hooks/useCarouselAutoplay';
 import { useRef, useState } from 'react';
-import {
-  Image,
-  ScrollView,
-  Text,
-  View,
-  type NativeScrollEvent,
-  type NativeSyntheticEvent,
-} from 'react-native';
+import { Image, ScrollView, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import Animated, {
   useAnimatedStyle,
@@ -78,25 +72,16 @@ export function HomeCarousel({
   preview?: boolean;
 }) {
   const { t } = useTranslation();
-  const [selected, setSelected] = useState(0);
   const [width, setWidth] = useState(0);
   const scroll = useRef<ScrollView>(null);
   const about = kind === 'about';
   const prefix = about ? 'home.about.notes' : 'home.intro';
-  const select = (index: number) => {
-    setSelected(index);
-    scroll.current?.scrollTo({ x: index * width, animated: false });
-  };
-  const onScrollEnd = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-    const pageWidth = event.nativeEvent.layoutMeasurement.width;
-    if (pageWidth > 0)
-      setSelected(
-        Math.max(
-          0,
-          Math.min(2, Math.round(event.nativeEvent.contentOffset.x / pageWidth))
-        )
-      );
-  };
+  const carousel = useCarouselAutoplay({
+    count: keys.length,
+    width,
+    onScrollTo: (options) => scroll.current?.scrollTo(options),
+  });
+  const selected = carousel.index;
   return (
     <View
       testID={`home-${kind}-carousel`}
@@ -129,6 +114,7 @@ export function HomeCarousel({
         </Text>
       )}
       <View
+        testID={`home-${kind}-viewport`}
         onLayout={(event) => {
           const w = event.nativeEvent.layout.width;
           setWidth(w);
@@ -141,7 +127,9 @@ export function HomeCarousel({
           horizontal
           pagingEnabled
           showsHorizontalScrollIndicator={false}
-          onMomentumScrollEnd={onScrollEnd}
+          onMomentumScrollEnd={carousel.onMomentumScrollEnd}
+          onScrollBeginDrag={carousel.onScrollBeginDrag}
+          onScrollEndDrag={carousel.onScrollEndDrag}
           contentContainerClassName="w-[300%]"
         >
           {keys.map((key, index) => (
@@ -292,7 +280,7 @@ export function HomeCarousel({
             })}
             accessibilityState={{ selected: selected === index }}
             testID={`home-${kind}-dot-${index}`}
-            onPress={() => select(index)}
+            onPress={() => carousel.select(index)}
             className="min-h-[44px] items-center justify-center px-[5px]"
           >
             <Dot
