@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="Pixel_8" tests="2" failures="1" time="132.879" timestamp="2026-10-21T20:15:40">
+    <testcase id="courses-browse" name="courses-browse" classname="courses-browse" file="e2e\flows\courses-browse.yaml" time="76.425" timestamp="2026-10-21T20:15:40" status="ERROR">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+      <failure>Assertion is false: id: courses-course-demo-6 is visible</failure>
+    </testcase>
+    <testcase id="cart-checkout-qr" name="cart-checkout-qr" classname="cart-checkout-qr" file="e2e\flows\cart-checkout-qr.yaml" time="56.418" timestamp="2026-10-21T20:16:56" status="SUCCESS">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+    </testcase>
+  </testsuite>
+</testsuites>

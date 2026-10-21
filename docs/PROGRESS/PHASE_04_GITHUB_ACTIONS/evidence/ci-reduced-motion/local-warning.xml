@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="Pixel_8" tests="1" failures="0" time="27.977" timestamp="2026-10-21T19:40:54">
+    <testcase id="mindy-motion-warning" name="mindy-motion-warning" classname="mindy-motion-warning" file="C:\Users\admin\AppData\Local\Temp\mindy-motion-warning.yaml" time="27.959" timestamp="2026-10-21T19:40:54" status="SUCCESS"/>
+  </testsuite>
+</testsuites>
