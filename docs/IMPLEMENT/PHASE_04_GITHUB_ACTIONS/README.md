@@ -34,7 +34,7 @@ File dự kiến: `.github/workflows/ci.yml`; helper nếu cần nằm trong `.g
 - Sự kiện: pull_request cho mọi nhánh đích; push vào nhánh mặc định thực tế của remote (xác định khi triển khai, không đoán từ nhánh hiện tại); workflow_dispatch để chạy tay. Không lọc paths khiến required checks bị treo khi chỉ sửa docs.
 - permissions: contents: read; concurrency theo workflow và PR/ref, huỷ run cũ khi có commit mới; CI=true và HUSKY=0.
 - Mỗi job checkout cùng revision, npm ci theo package-lock.json, cache npm theo lockfile; không cache node_modules hoặc phụ thuộc vào thư mục máy cá nhân.
-- Dự kiến Node 22, JDK 17, Ubuntu 24.04 cho Android; macOS có Xcode hỗ trợ RN 0.80 cho iOS. Chốt phiên bản patch/runtime, runner macOS/Xcode và SHA action cụ thể trong task tương ứng, đối chiếu upstream rồi ghi vào PROGRESS. Không dùng latest cho Maestro.
+- Chốt Node 24.16.0 (thay dự kiến Node 22 sau kiểm chứng Jest), JDK 17, Ubuntu 24.04 cho Android; macOS có Xcode hỗ trợ RN 0.80 cho iOS. Chốt phiên bản patch/runtime, runner macOS/Xcode và SHA action cụ thể trong task tương ứng, đối chiếu upstream rồi ghi vào PROGRESS. Không dùng latest cho Maestro.
 - TypeScript, lint và Jest độc lập; E2E Android chỉ chạy sau cả ba job đạt. Hai job build cuối chỉ chạy khi quality checks và E2E Android đều đạt. Đây là quan hệ chạy trên CI; triển khai sub-phase vẫn tuần tự.
 
 | Job ID ổn định | Lệnh / kết quả | Timeout dự kiến |

@@ -24,7 +24,7 @@ Job lỗi làm các job phụ thuộc bị chặn; không có `continue-on-error
 
 ## Môi trường
 
-- Ubuntu 24.04; Node **22.22.0**; `npm ci` từ package-lock hiện có. Chỉ cache npm,
+- Ubuntu 24.04; Node **24.16.0**; `npm ci` từ package-lock hiện có. Chỉ cache npm,
   không cache node_modules. Gradle dùng setup-gradle v4.4.2, cache PR chỉ đọc.
 - Android: Temurin **17.0.14+7**, SDK/Build Tools 35, NDK 27.1.12297006;
   emulator Google APIs 35 x86_64, 2 cores, RAM 4096 MB, KVM, tắt animation.

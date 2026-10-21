@@ -36,3 +36,11 @@
 - Đã làm: Tạo PR nháp https://github.com/Bero-working/MindyMobile/pull/2 (base feat/phase-03), commit 2e676f8. Run PR đầu: https://github.com/Bero-working/MindyMobile/actions/runs/39568777659. Type checking và ESLint and formatting hosted đã success; Jest đang chạy tại thời điểm entry.
 - Test: Helper packaging negative thiếu APK/AAB/app fail; fixture packaging kiểm tra SHA256/revision PASS; prepare-env chọn production/default API và từ chối newline PASS; redaction Authorization/password/Cookie PASS. Đây là test helper bằng fixture, không phải native build. actionlint 1.7.7 với ShellCheck 0.10.0 và ba helper PASS; sửa newline dư cuối helper. Coverage local: statements 83.62%, branches 81.51%, functions 75%, lines 84.52%, 63 suite/294 test PASS trong 41.694 giây, tự thoát.
 - Ghi chú: Metro chuyển sang Node CLI trực tiếp để trap dừng đúng process. E2E local đang đạt 9/14 flow; chưa kết luận suite. Đang chạy lại Node 22 local; chưa đạt thì không suy từ Node 24. Các kết quả sau sẽ ghi entry mới; UAT giữ Todo.
+
+### 2026-10-21 15:29 (+07:00) · @Bero-working (Codex)
+
+- Phase: 4 Chốt runtime sau kiểm chứng
+- Trạng thái: In progress
+- Quyết định: Cập nhật đặc tả trước khi sửa workflow: Node 24.16.0 thay dự kiến Node 22.22.0. Node 22 trên local treo CPU trong suite Home khi chạy đủ suite, tái hiện cả khi chỉ chạy file Home; riêng test carousel/nativewind/learningFlow chạy đạt. Chưa xác định root cause sâu, không sửa assertion hoặc skip suite để né lỗi. Job Jest hosted Node 22 cũng chưa hoàn tất tại thời điểm entry, chưa có log đầy đủ nên không kết luận cùng nguyên nhân. Node 24.16.0 chạy đủ 63 suite/294 test với coverage trong 41.694 giây, process tự kết thúc; đây là runtime được chọn để kiểm chứng hosted tiếp.
+- Test: Hai quality checks Type checking/ESLint hosted PASS trên cả commit 2e676f8 và f018251. Run 39568777659 cancelled do push commit kế, không được ghi toàn pipeline đạt. Run 39569133471 sẽ bị thay thế bởi commit runtime mới. Giữ giới hạn runtime Node 22 trong nhật ký, không forceExit hay tăng timeout.
+- Ghi chú: Runtime không thêm npm dependency hoặc sửa package.json; engines hiện có cho phép Node >=18. E2E local 13/14 đang qua; kết quả cuối ghi riêng.

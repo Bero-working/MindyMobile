@@ -9,7 +9,7 @@ Tạo `.github/workflows/ci.yml` và job typecheck, dùng script TypeScript hi�
 ### 4.1.1 Chốt môi trường và sự kiện
 
 - Xác định nhánh mặc định từ remote; kiểm tra npm ci trên clean checkout theo package-lock.json. Không thay lockfile bằng npm install để né lỗi CI.
-- Chốt Node 22 patch, runner Ubuntu và các action checkout/setup-node bằng SHA từ upstream; ghi phiên bản và lý do. CI=true, HUSKY=0; cache npm theo lockfile.
+- Chốt Node 24.16.0 (cập nhật từ dự kiến Node 22 sau kiểm chứng runtime), runner Ubuntu và các action checkout/setup-node bằng SHA từ upstream; ghi phiên bản và lý do. CI=true, HUSKY=0; cache npm theo lockfile.
 - Tạo workflow cho pull_request, push nhánh mặc định và workflow_dispatch, permissions contents: read; concurrency theo PR/ref, huỷ run cũ khi có commit mới.
 - Kiểm chứng trước: ghi hiện trạng chưa có workflow; khi thêm phải parse được YAML/expressions, pull_request không cần secret và checkout đúng revision.
 
