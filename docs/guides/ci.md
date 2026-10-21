@@ -1,9 +1,10 @@
 # GitHub Actions CI
 
 Workflow: [.github/workflows/ci.yml](../../.github/workflows/ci.yml).
-Chạy trên PR tới mọi nhánh, push vào `main` (nhánh mặc định đã xác minh từ remote),
-và **Actions → CI → Run workflow** khi workflow có trên default branch.
-PR đầu tiên có thể nhắm `feat/phase-03` vì Phase 3 chưa được merge vào main.
+Chạy trên PR có nhánh đích là `dev` và push vào `dev`, theo yêu cầu owner.
+Push vào `main` và PR có nhánh đích khác `dev` không tự kích hoạt CI.
+Có thể chạy tay bằng **Actions → CI → Run workflow** khi workflow có trên default branch.
+PR kiểm tra CI cần nhắm `dev`; các run PR tới `feat/phase-03` trước đây là bằng chứng của cấu hình cũ.
 Không tự thay branch protection hoặc merge PR.
 
 ## Kết quả và thứ tự
@@ -76,6 +77,8 @@ E2E local cần app debug đã cài, Metro và emulator. Khi APK dùng URL CI, c
 Metro tối đa 180 giây và emulator tối đa 300 giây, reverse port 8081, warm debug bundle tối đa300giây trước assertions, chạy 14 flow
 và kiểm tra JUnit đủ 14 testcase thành công. Fixture có readiness tối đa 30 giây và audit chỉ method/path/status. Cleanup dừng fixture/Metro/logcat và reset font/kích thước.
 Không bỏ assertion hoặc retry test thất bại để làm xanh pipeline.
+
+Giữ animation scale của emulator ở 1.0; tắt transition animation kích hoạt Reduced Motion của Reanimated và tạo LogBox che nút. Cấu hình thực tế lưu trong emulator-animation.log.
 
 Nếu npm ci lỗi, đọc bước cài dependency và giữ nguyên lockfile để tái hiện;
 không thay bằng npm install. Lỗi native/Pods trong file hạ tầng bị khoá cần ADR riêng

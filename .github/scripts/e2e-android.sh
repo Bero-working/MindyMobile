@@ -17,6 +17,11 @@ adb wait-for-device
 adb shell settings put system font_scale 1.0
 adb shell wm size 1080x2400
 adb shell wm density 420
+for animation_scale in window_animation_scale transition_animation_scale animator_duration_scale; do
+  adb shell settings put global "$animation_scale" 1.0
+  printf '%s=' "$animation_scale" >> ci-logs/emulator-animation.log
+  adb shell settings get global "$animation_scale" >> ci-logs/emulator-animation.log
+done
 adb shell wm size | tee ci-logs/emulator-display.log
 adb shell wm density | tee -a ci-logs/emulator-display.log
 adb install -r android/app/build/outputs/apk/debug/app-debug.apk

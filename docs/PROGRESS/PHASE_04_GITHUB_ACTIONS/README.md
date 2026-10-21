@@ -116,3 +116,20 @@
 - Run: 96bf2ea / https://github.com/Bero-working/MindyMobile/actions/runs/39579199882. Quality success; precheck Pixel8 fail trước khi tốn13phút buildAPK. Artifact device-profiles.log xác nhận SDKCLI12 có pixel_7/pixel_7_pro nhưng không pixel_8.
 - Sửa: Dùng profilepixel_7 đã có; đặt wm size1080×2400 và density420 rõ ràng trước test, ghi emulator-display.log, cleanup reset. Đây là viewport đã qua14flowlocalPixel8; CI vẫn API35 x86_64 theo spec. Không đổi UI/testassertions. Giữ prewarm bundle300s trước Maestro.
 - Ghi chú: Nhánhkiểmtra#3 sẽ đồng bộ baseline này rồi chỉ giữ testID sai. Snapshot CLInegative trước vẫn hợp lệ: lệnh Android/iOS không đổi, chỉ thay viewport/readiness của E2E.
+
+### 2026-10-21 19:31 (+07:00) · @Bero-working (Codex)
+
+- Phase: 4.1.1 Điều chỉnh nhánh kích hoạt CI theo yêu cầu owner
+- Trạng thái: Done
+- Đã làm: Đổi bộ lọc push từ main sang dev và giới hạn pull_request tới dev trong .github/workflows/ci.yml. Đồng bộ README Phase 4, đặc tả 4.1, hướng dẫn UAT 4.99 và guide CI; giữ workflow_dispatch. Các entry cũ mô tả main/PR mọi nhánh là lịch sử cấu hình trước thay đổi này.
+- Test: Parse YAML bằng js-yaml PASS; xác nhận push.branches và pull_request.branches đều chỉ có dev, workflow_dispatch và 6 job được giữ nguyên PASS; git diff --check PASS. Chưa kiểm chứng trigger mới trên GitHub Actions; chưa push thay đổi trong lượt này.
+- Ghi chú: AI tự kiểm tra thay đổi trigger; phase vẫn In progress, chưa UAT. GitHub handle xác minh qua API /user với credential hiện có. Các thay đổi Phase 3, .gitignore và e2e/flows/api-health.yaml có sẵn được giữ nguyên.
+
+### 2026-10-21 19:35 (+07:00) · @Bero-working (Codex)
+
+- Phase: 4.4 Chẩn đoán LogBox che thao tác trên runner và tiếp tục CI cho dev
+- Trạng thái: In progress
+- Bằng chứng: Run 39580163195 tại revision 1809131 có quality checks đạt, E2E 6/14 đạt và 8/14 lỗi, hai build cuối skipped đúng needs. Artifact 12339427271 và logcat xác nhận cảnh báo `[Reanimated] Reduced motion setting is enabled on this device.`; ảnh tại evidence/ci-reduced-motion cho thấy LogBox che preview-tools/tab/filter apply. Không coi lỗi thao tác này là kết quả API.
+- Nguyên nhân và sửa: Action emulator đặt disable-animations=true khiến transition_animation_scale=0. NativeProxyCommon.java của Reanimated đang cài đọc chính setting này để bật Reduced Motion. Đổi action sang false và đặt rõ cả ba animation scale 1.0 trước mở app, ghi emulator-animation.log. Không sửa app, native config, dependency hoặc assertions; giữ nguyên 14 flow.
+- Test: Bash syntax helper PASS; parse YAML và assert filter push/PR dev cùng disable-animations=false PASS; diff --check PASS. Hosted mới còn chờ, chưa đánh dấu 4.4/4.5 đạt.
+- PR: Tiếp tục PR #2, chuyển nhánh đích sang dev theo yêu cầu owner. Không merge hoặc thay branch protection/default branch. PROGRESS cũ giữ nguyên làm lịch sử.

@@ -31,7 +31,7 @@ Không suy từ kết quả local cũ thành CI đã đạt. Kết quả khảo 
 
 File dự kiến: `.github/workflows/ci.yml`; helper nếu cần nằm trong `.github/scripts/`.
 
-- Sự kiện: pull_request cho mọi nhánh đích; push vào nhánh mặc định thực tế của remote (xác định khi triển khai, không đoán từ nhánh hiện tại); workflow_dispatch để chạy tay. Không lọc paths khiến required checks bị treo khi chỉ sửa docs.
+- Sự kiện: pull_request có nhánh đích là `dev`; push vào `dev` theo yêu cầu owner, không phụ thuộc nhánh mặc định của remote; workflow_dispatch để chạy tay. Push vào `main` và PR tới nhánh khác `dev` không tự kích hoạt CI. Không lọc paths khiến required checks bị treo khi chỉ sửa docs.
 - permissions: contents: read; concurrency theo workflow và PR/ref, huỷ run cũ khi có commit mới; CI=true và HUSKY=0.
 - Mỗi job checkout cùng revision, npm ci theo package-lock.json, cache npm theo lockfile; không cache node_modules hoặc phụ thuộc vào thư mục máy cá nhân.
 - Chốt Node 24.16.0 (thay dự kiến Node 22 sau kiểm chứng Jest), JDK 17, Ubuntu 24.04 cho Android; macOS có Xcode hỗ trợ RN 0.80 cho iOS. Chốt phiên bản patch/runtime, runner macOS/Xcode và SHA action cụ thể trong task tương ứng, đối chiếu upstream rồi ghi vào PROGRESS. Không dùng latest cho Maestro.
@@ -76,7 +76,7 @@ Không thêm npm dependency trong phương án này. File hạ tầng dự kiế
 - Kiểm tra YAML và expression workflow bằng công cụ phù hợp, kiểm tra bash helper nếu có; ghi tên/phiên bản công cụ vào PROGRESS. Chỉ kiểm tra cú pháp không chứng minh job chạy được.
 - Chạy đủ TypeScript, ESLint, Prettier, Jest, bộ flow tag ci trên Android và hai job build; lưu URL run/revision, thời gian, số test/flow, artifact và giới hạn.
 - Kiểm tra âm bằng thay đổi tạm trên nhánh kiểm tra: type sai, vi phạm ESLint, assertion Jest sai, testID E2E không tồn tại, lệnh build lỗi. Xác nhận từng job trả failure và build sau bị chặn; hoàn tác trước bàn giao.
-- Thử pull_request, push nhánh mặc định và workflow_dispatch khi workflow có trên nhánh phù hợp. Khi chưa thể kiểm tra một sự kiện, ghi chưa kiểm tra; không đánh dấu đạt.
+- Thử pull_request tới `dev`, push vào `dev` và workflow_dispatch khi workflow có trên nhánh phù hợp; xác nhận push vào `main` và PR tới nhánh khác `dev` không tự kích hoạt CI. Khi chưa thể kiểm tra một sự kiện, ghi chưa kiểm tra; không đánh dấu đạt.
 
 ## Tiêu chí nghiệm thu chung
 

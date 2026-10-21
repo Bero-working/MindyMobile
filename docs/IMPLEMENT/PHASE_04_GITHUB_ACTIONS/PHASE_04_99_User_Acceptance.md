@@ -17,7 +17,7 @@
 | # | Thao tác | Kết quả mong đợi |
 | --- | --- | --- |
 | 1 | Mở workflow và phạm vi job | Có đủ 5 nhóm đã chốt; không có Expo Doctor/Image Optimization |
-| 2 | Mở run pull_request, push nhánh mặc định, workflow_dispatch | Trigger đúng cấu hình; revision đúng sự kiện, run mới huỷ run cũ cùng PR/ref |
+| 2 | Mở run pull_request tới `dev`, push vào `dev`, workflow_dispatch; kiểm tra push vào `main` và PR tới nhánh khác `dev` | Chỉ `dev` tự kích hoạt CI qua push/PR; revision đúng sự kiện, run mới huỷ run cũ cùng PR/ref |
 | 3 | Xem job Type checking và bằng chứng ca sai kiểu | Bản chuẩn đạt; lỗi kiểu làm failure, không thay tsconfig để bỏ kiểm tra |
 | 4 | Xem ESLint/Prettier, ADR và diff cấu hình | Mã app/test/config được kiểm tra; chỉ nguồn thiết kế đã duyệt được bỏ qua; ca vi phạm fail |
 | 5 | Xem job Jest và coverage | Toàn bộ suite chạy, process tự thoát, assertion sai fail; không dùng reporter chưa cài |
