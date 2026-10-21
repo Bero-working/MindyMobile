@@ -10,9 +10,9 @@
 
 Phase 4 đưa npm run lint:rules lên GitHub Actions. Lệnh hiện tại là eslint . --cache; cấu hình bỏ qua HTML nhưng còn quét JavaScript trong assets/Student Home Page Design. Đây là bộ nguồn thiết kế để đối chiếu UI, không phải mã React Native của app. Kiểm tra sau UAT Phase 3 ghi lỗi ESLint toàn repo ở asset JavaScript thiết kế cũ.
 
-.eslintrc.js là file hạ tầng bị khoá. Yêu cầu tạo phase và chốt 5 nhóm CI không được coi là đã duyệt sửa file này. ADR này chuẩn bị ngoại lệ hẹp cho task 4.2.1; hiện chưa thay đổi cấu hình hoặc tự chuyển Accepted.
+.eslintrc.js là file hạ tầng bị khoá. Yêu cầu tạo phase và chốt 5 nhóm CI không được coi là đã duyệt sửa file này. ADR này cấp ngoại lệ hẹp cho task 4.2.1 sau xác nhận “Duyệt ADR-0031” của owner trong chat ngày 2026-10-21.
 
-## Decision (đề xuất)
+## Decision
 
 Sau khi owner Accepted, thêm đúng `/assets/Student Home Page Design/**` vào ignorePatterns của .eslintrc.js và cập nhật ngoại lệ/bản đồ CI trong ARCHITECTURE.md cùng thay đổi. Trước khi áp dụng phải rà import để xác nhận app không thực thi JavaScript thuộc cây nguồn thiết kế này.
 

@@ -21,4 +21,3 @@ if not values['API_URL'].startswith(('https://', 'http://')):
 Path('.env.ci').write_text(''.join(f'{key}={value}\n' for key, value in values.items()))
 PY
 printf 'ENVFILE=%s/.env.ci\n' "$GITHUB_WORKSPACE" >> "$GITHUB_ENV"
-

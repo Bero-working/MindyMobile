@@ -28,3 +28,11 @@
 - Test: TypeScript/ESLint/Prettier PASS;63suites/294tests với coverage PASS và process tự thoát; type/lint/format/assertion negative đều fail đúng. actionlint1.7.7 YAML/expression PASS; ShellCheck0.10.0 với3helper PASS; GitBash bash-n PASS. npmci+tsc archive sạch PASS. E2E local đang chạy; hosted/build/events/negative native chưa kiểm tra.
 - PR / commit: Chuẩn bị nhánh codex/phase-04-github-actions từ55a7e12, PR nháp basefeat/phase-03 (remote cùngHEAD; main chưa có Phase3). Không merge hay đổi branch protection. GitHub identity từ credential/API: Bero-working.
 - Ghi chú: Chưa đủ điều kiện UAT; không đặt Done. Runtime/action versions và nguồn tại guides/ci.md. Kết quả chạy tiếp ghi entry mới.
+
+### 2026-10-21 15:25 (+07:00) · @Bero-working (Codex)
+
+- Phase: 4 Kiểm chứng workflow và helper
+- Trạng thái: In progress
+- Đã làm: Tạo PR nháp https://github.com/Bero-working/MindyMobile/pull/2 (base feat/phase-03), commit 2e676f8. Run PR đầu: https://github.com/Bero-working/MindyMobile/actions/runs/39568777659. Type checking và ESLint and formatting hosted đã success; Jest đang chạy tại thời điểm entry.
+- Test: Helper packaging negative thiếu APK/AAB/app fail; fixture packaging kiểm tra SHA256/revision PASS; prepare-env chọn production/default API và từ chối newline PASS; redaction Authorization/password/Cookie PASS. Đây là test helper bằng fixture, không phải native build. actionlint 1.7.7 với ShellCheck 0.10.0 và ba helper PASS; sửa newline dư cuối helper. Coverage local: statements 83.62%, branches 81.51%, functions 75%, lines 84.52%, 63 suite/294 test PASS trong 41.694 giây, tự thoát.
+- Ghi chú: Metro chuyển sang Node CLI trực tiếp để trap dừng đúng process. E2E local đang đạt 9/14 flow; chưa kết luận suite. Đang chạy lại Node 22 local; chưa đạt thì không suy từ Node 24. Các kết quả sau sẽ ghi entry mới; UAT giữ Todo.

@@ -17,7 +17,7 @@ adb shell wm size reset
 adb shell wm density reset
 adb install -r android/app/build/outputs/apk/debug/app-debug.apk
 adb reverse tcp:8081 tcp:8081
-npm start -- --reset-cache > ci-logs/metro.log 2>&1 &
+node node_modules/react-native/cli.js start --reset-cache > ci-logs/metro.log 2>&1 &
 metro_pid=$!
 ready=false
 for ((attempt=0; attempt<90; attempt++)); do
@@ -46,4 +46,3 @@ if len(cases) != 14 or any(list(case.iter('failure')) or list(case.iter('error')
     raise SystemExit(f'Expected 14 successful CI flows; report contains {len(cases)} cases')
 print('All 14 CI flows passed')
 PY
-

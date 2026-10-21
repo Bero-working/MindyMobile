@@ -11,4 +11,3 @@ fi
 chmod +x android/gradlew
 java -version
 sdkmanager --version
-

@@ -38,4 +38,3 @@ products = sorted(target.iterdir())
     'platform': platform,
     'purpose': 'CI debug signing' if platform == 'android' else 'unsigned iOS Simulator',
 }, indent=2) + '\n')
-
