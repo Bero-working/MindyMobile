@@ -8,7 +8,7 @@ Thêm job eslint độc lập, chạy ESLint và Prettier hiện có. Bước h�
 
 ### 4.2.1 Xác nhận phạm vi asset thiết kế
 
-- Tái hiện npm run lint:rules -- --no-cache trên clean checkout; lưu danh sách file/rule lỗi. Đối chiếu [kiểm tra Phase 3](../../PROGRESS/PHASE_03_STUDENT_LEARNING/POST_UAT_CHECK.md), không dùng số lỗi cũ làm kết quả mới.
+- Tái hiện npm run lint:rules -- --no-cache trên clean checkout; lưu danh sách file/rule lỗi. Đối chiếu [kiểm tra Phase 3](../../PROGRESS/PHASE_03_STUDENT_LEARNING/README.md), không dùng số lỗi cũ làm kết quả mới.
 - [ADR-0031](../../adr/ADR-0031-ci-design-assets-eslint-scope.md) đã Accepted trong chat ngày 2026-10-21: đề xuất bỏ qua đúng `/assets/Student Home Page Design/**` trong .eslintrc.js vì đây là nguồn thiết kế, không phải mã app. Kiểm tra import trước khi áp dụng, không ignore cả assets hoặc src/assets.
 - Sau owner Accepted mới sửa ignorePatterns và cập nhật ngoại lệ trong ARCHITECTURE.md cùng thay đổi. Không chỉnh rule, asset gốc hoặc dùng eslint-disable. Nếu lỗi nằm ngoài phạm vi này, ghi rõ và xử lý theo phạm vi/ADR thích hợp.
 - Kiểm chứng trước: lint đang lỗi nguồn thiết kế; sau thay đổi chỉ loại các đường dẫn đã được chốt, không che lỗi app/test/config.

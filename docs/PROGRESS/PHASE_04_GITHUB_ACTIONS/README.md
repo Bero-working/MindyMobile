@@ -52,3 +52,12 @@
 - Test: Maestro 2.11.0, emulator-5554 Pixel_8, 14/14 flow tag ci PASS trong 11m19s; JUnit evidence/local/maestro-ci-report.xml. Đây là APK debug đã cài và Metro có sẵn, chưa chứng minh runner sạch/env.ci hoặc API thật. Flow api-health không chạy. Bản copy app-launch đổi testID thành phase04-deliberately-missing-id fail đúng (1/1 flow failed), report evidence/local/maestro-negative-report.xml; source flow gốc giữ nguyên.
 - Đã làm: Tạo probe tạm trong src/phase04-ci-negative-probe.test.ts để GitHub kiểm tra type sai, biến không dùng và assertion sai cùng run; nhánh PR dùng cho kiểm chứng, chưa bàn giao. Sẽ xoá probe ngay sau khi quan sát failure/needs và chạy lại bản chuẩn. Không giữ probe trong bản cuối.
 - Run: Bản Node24 a037cff đang được kiểm chứng; run Node22 f018251 đã cancelled khi thay runtime, không báo thành công.
+
+### 2026-10-21 15:35 (+07:00) · @Bero-working (Codex)
+
+- Phase: 4 Kiểm chứng âm hosted hoàn tất cho quality gates
+- Trạng thái: In progress
+- Run: https://github.com/Bero-working/MindyMobile/actions/runs/39569983962 trên commit e95881d, Node 24.16.0, PR #2.
+- Test: Type checking fail exit 2 với TS2322 tại probe; ESLint fail exit 1 với no-unused-vars tại probe; Jest fail exit 1 đúng assertion Expected2/Received1. Toàn bộ suite thật vẫn 63/63 suite và 294/294 test PASS, cộng 1 suite/test cố ý sai: 64 suite, 295 test, 57.309 giây, process tự thoát. E2E Android, Build Android và Build iOS Simulator đều skipped do quality gates fail; snapshot evidence/quality-negative-jobs.json. Coverage artifact của lượt lỗi được upload.
+- Đã làm: Xoá probe khỏi source ngay sau khi xác minh; chuẩn bị commit khôi phục để chạy đủ pipeline sạch. Sửa hai liên kết spec đang trỏ audit Phase3 chỉ có local sang README Phase3 đã track; không đưa thay đổi Phase3 của owner vào commit.
+- Ghi chú: Kết quả âm này không chứng minh E2E/native build đạt; tiếp tục run bản khôi phục, UAT chưa bắt đầu.

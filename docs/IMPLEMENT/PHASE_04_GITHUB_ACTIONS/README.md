@@ -13,7 +13,7 @@ Tự động kiểm tra chất lượng và khả năng build MindyMobile trên 
 
 ## Hiện trạng đầu vào
 
-Khảo sát ngày 2026-10-21 từ package.json, cấu hình native, e2e/flows và [kiểm tra sau UAT Phase 3](../../PROGRESS/PHASE_03_STUDENT_LEARNING/POST_UAT_CHECK.md):
+Khảo sát ngày 2026-10-21 từ package.json, cấu hình native, e2e/flows và [kiểm tra sau UAT Phase 3](../../PROGRESS/PHASE_03_STUDENT_LEARNING/README.md):
 
 | Phần | Đã có | Điểm cần xử lý trong phase |
 | --- | --- | --- |
