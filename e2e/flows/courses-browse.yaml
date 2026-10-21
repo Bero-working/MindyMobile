@@ -35,7 +35,14 @@ tags:
     element:
       id: 'courses-page-next'
     direction: DOWN
-    centerElement: true
+    visibilityPercentage: 100
+    centerElement: false
+- swipe:
+    start: 50%, 70%
+    end: 50%, 40%
+    duration: 500
+- assertVisible:
+    id: 'courses-page-next'
 - takeScreenshot: 'courses-lowered-tabs'
 - tapOn:
     id: 'courses-page-next'

@@ -62,6 +62,7 @@ tags:
     direction: DOWN
 - tapOn:
     id: 'payment-copy-account'
+    waitToSettleTimeoutMs: 100
 - assertVisible:
     id: 'payment-toast'
 - back

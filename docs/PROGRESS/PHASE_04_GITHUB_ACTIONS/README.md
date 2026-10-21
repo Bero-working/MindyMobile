@@ -133,3 +133,20 @@
 - Nguyên nhân và sửa: Action emulator đặt disable-animations=true khiến transition_animation_scale=0. NativeProxyCommon.java của Reanimated đang cài đọc chính setting này để bật Reduced Motion. Đổi action sang false và đặt rõ cả ba animation scale 1.0 trước mở app, ghi emulator-animation.log. Không sửa app, native config, dependency hoặc assertions; giữ nguyên 14 flow.
 - Test: Bash syntax helper PASS; parse YAML và assert filter push/PR dev cùng disable-animations=false PASS; diff --check PASS. Hosted mới còn chờ, chưa đánh dấu 4.4/4.5 đạt.
 - PR: Tiếp tục PR #2, chuyển nhánh đích sang dev theo yêu cầu owner. Không merge hoặc thay branch protection/default branch. PROGRESS cũ giữ nguyên làm lịch sử.
+
+### 2026-10-21 20:15 (+07:00) · @Bero-working (Codex)
+
+- Phase: 4.4 Kiểm chứng motion trên hosted và sửa thao tác Maestro
+- Trạng thái: In progress
+- Run: https://github.com/Bero-working/MindyMobile/actions/runs/39600990649 tại afea99e. Quality checks đạt; E2E 12/14 đạt, 2 lỗi; cả hai Release bị chặn đúng needs. emulator-animation.log xác nhận cả ba scale=1.0; audit fixture không có request nghiệp vụ. Các lỗi do LogBox trước đó đã hết.
+- Bằng chứng: Artifact 12346824650, report và hai ảnh tại evidence/ci-interactions/. Pagination hiển thị đầy đủ tại bounds [677,1969][782,2074] nhưng centerElement=true tiếp tục cố kéo phần tử cuối trang tới giữa, hết 20s. Tap payment-copy-account mất 12285ms do đợi settle trong màn countdown cập nhật mỗi giây; toast controller tự ẩn sau 2500ms nên assertion kế tiếp đã quá muộn.
+- Sửa: Đặc tả trước khi sửa flow: courses-browse giữ visibilityPercentage=100 nhưng centerElement=false; cart-checkout-qr giới hạn waitToSettleTimeoutMs=100 trên tap sao chép, giữ nguyên assertVisible payment-toast. Không tăng thời gian toast, timeout assertion hoặc sửa app/native. Đối chiếu tài liệu Maestro scrollUntilVisible và tapOn; đang kiểm tra local hai flow.
+- Ghi chú: Bản kiểm chứng âm 39601188597 cũng đã fail và chặn build; sẽ đồng bộ hai sửa thao tác trước khi chốt bằng chứng testID sai. Chưa đánh dấu E2E/build đạt hoặc UAT.
+
+### 2026-10-21 20:20 (+07:00) · @Bero-working (Codex)
+
+- Phase: 4.4 Hoàn tất sửa thao tác pagination/toast local, chạy lại hosted
+- Trạng thái: In progress
+- Test local: Payment flow PASS 56s với waitToSettleTimeoutMs=100 trên tap copy; courses PASS 70s sau khi cuộn pagination ra khỏi tab bar cố định. Giữ toàn bộ assertions cũ, thêm assertion nút pagination; không đổi app/native/timeout assertion. Bằng chứng tại evidence/ci-interactions và nhật ký 4.4; nhật ký cũng ghi lỗi local trung gian, không gộp thành suite 2/2 đạt cùng lượt.
+- Kiểm chứng âm: Run 39601188597 tại 084e159 fail đúng testID app-launch cố ý sai và chặn Release; đồng thời có hai lỗi thao tác của baseline afea99e. Đính chính ý định entry trước: không cần lặp probe app-launch không đổi sau sửa hai flow khác. Không coi các lỗi thao tác là kiểm chứng âm mong muốn.
+- Ghi chú: Bản sửa chuẩn sẽ chạy lại đủ 14 flow hosted. Chưa có kết quả Release hoặc đủ điều kiện UAT.
