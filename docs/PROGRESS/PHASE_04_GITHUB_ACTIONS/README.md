@@ -44,3 +44,11 @@
 - Quyết định: Cập nhật đặc tả trước khi sửa workflow: Node 24.16.0 thay dự kiến Node 22.22.0. Node 22 trên local treo CPU trong suite Home khi chạy đủ suite, tái hiện cả khi chỉ chạy file Home; riêng test carousel/nativewind/learningFlow chạy đạt. Chưa xác định root cause sâu, không sửa assertion hoặc skip suite để né lỗi. Job Jest hosted Node 22 cũng chưa hoàn tất tại thời điểm entry, chưa có log đầy đủ nên không kết luận cùng nguyên nhân. Node 24.16.0 chạy đủ 63 suite/294 test với coverage trong 41.694 giây, process tự kết thúc; đây là runtime được chọn để kiểm chứng hosted tiếp.
 - Test: Hai quality checks Type checking/ESLint hosted PASS trên cả commit 2e676f8 và f018251. Run 39568777659 cancelled do push commit kế, không được ghi toàn pipeline đạt. Run 39569133471 sẽ bị thay thế bởi commit runtime mới. Giữ giới hạn runtime Node 22 trong nhật ký, không forceExit hay tăng timeout.
 - Ghi chú: Runtime không thêm npm dependency hoặc sửa package.json; engines hiện có cho phép Node >=18. E2E local 13/14 đang qua; kết quả cuối ghi riêng.
+
+### 2026-10-21 15:31 (+07:00) · @Bero-working (Codex)
+
+- Phase: 4 E2E local và chuẩn bị kiểm chứng âm hosted
+- Trạng thái: In progress
+- Test: Maestro 2.11.0, emulator-5554 Pixel_8, 14/14 flow tag ci PASS trong 11m19s; JUnit evidence/local/maestro-ci-report.xml. Đây là APK debug đã cài và Metro có sẵn, chưa chứng minh runner sạch/env.ci hoặc API thật. Flow api-health không chạy. Bản copy app-launch đổi testID thành phase04-deliberately-missing-id fail đúng (1/1 flow failed), report evidence/local/maestro-negative-report.xml; source flow gốc giữ nguyên.
+- Đã làm: Tạo probe tạm trong src/phase04-ci-negative-probe.test.ts để GitHub kiểm tra type sai, biến không dùng và assertion sai cùng run; nhánh PR dùng cho kiểm chứng, chưa bàn giao. Sẽ xoá probe ngay sau khi quan sát failure/needs và chạy lại bản chuẩn. Không giữ probe trong bản cuối.
+- Run: Bản Node24 a037cff đang được kiểm chứng; run Node22 f018251 đã cancelled khi thay runtime, không báo thành công.
