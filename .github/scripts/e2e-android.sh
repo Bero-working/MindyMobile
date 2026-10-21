@@ -15,8 +15,10 @@ cleanup() {
 trap cleanup EXIT
 adb wait-for-device
 adb shell settings put system font_scale 1.0
-adb shell wm size reset
-adb shell wm density reset
+adb shell wm size 1080x2400
+adb shell wm density 420
+adb shell wm size | tee ci-logs/emulator-display.log
+adb shell wm density | tee -a ci-logs/emulator-display.log
 adb install -r android/app/build/outputs/apk/debug/app-debug.apk
 adb reverse tcp:8081 tcp:8081
 python3 -u .github/scripts/preview-api.py > ci-logs/preview-api.log 2>&1 &

@@ -28,7 +28,7 @@ Job lỗi làm các job phụ thuộc bị chặn; không có `continue-on-error
   không cache node_modules. Gradle dùng setup-gradle v4.4.2, cache PR chỉ đọc.
 - Hai job Linux native giải phóng toolchain .NET/Swift/GHC/Boost/CodeQL không dùng và gỡ các NDK khác qua SDK Manager trên runner GitHub-hosted tạm, có guard và log dung lượng. Không chạy helper dọn hệ thống trên máy phát triển.
 - Android: Temurin **17.0.14+7**, SDK/Build Tools 35, NDK 27.1.12297006;
-  emulator Google APIs 35 x86_64, profile Pixel 8 (1080×2400/density420), 2 cores, RAM 4096 MB, KVM, tắt animation.
+  emulator Google APIs 35 x86_64, profile Pixel 7, đặt rõ1080×2400/density420, 2 cores, RAM 4096 MB, KVM, tắt animation.
 - Maestro **2.11.0**, zip release `cli-2.11.0`, xác thực SHA-256
   `5384593cb4e7a106489e75a821d157dd43f4e438df6bc308b72e82c685e1283a`.
   CLI đã đối chiếu `--include-tags`, JUnit, debug-output và test-output-dir.
