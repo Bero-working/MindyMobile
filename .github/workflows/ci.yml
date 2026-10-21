@@ -184,6 +184,14 @@ jobs:
           cache-read-only: ${{ github.event_name == 'pull_request' }}
       - run: bash .github/scripts/android-toolchain.sh
       - run: bash .github/scripts/prepare-env.sh production
+      # CMake autolinking consumes JNI sources generated inside node_modules.
+      # Generate them first on the fresh runner used by this job.
+      - name: Generate Android native code before Release build
+        shell: bash
+        run: |
+          set -o pipefail
+          cd android
+          ./gradlew generateCodegenArtifactsFromSchema --max-workers=2 2>&1 | tee ../ci-logs/android-codegen.log
       - name: Build Release APK and AAB (CI debug signing)
         shell: bash
         run: |

@@ -12,6 +12,7 @@ Thêm hai job build riêng cho Android Release APK/AAB và iOS Simulator Release
 - Tạo .env.ci theo cấu hình Release trong README phase, ENVFILE trỏ đường dẫn tuyệt đối. API_URL phải có giá trị, APP_ENV=production, DEBUG_MODE=false; không đặt APP_ENV=development để né validation.
 - Tạo debug keystore tạm như 4.4 vì debug.keystore không track và release hiện tái sử dụng debug signing. Không lấy khoá production; không đổi signingConfig hoặc Gradle.
 - Chạy npm run build:android và npm run build:android:bundle, không gọi build-release.sh vì còn menu tương tác, yarn và giả định đường dẫn App cũ. Giữ danh sách ABI hiện có cho bản Release.
+- Trước hai lệnh Release, chạy `./gradlew generateCodegenArtifactsFromSchema --max-workers=2` trong android/ để tạo JNI cho các dependency trên runner sạch; lưu android-codegen.log. Run 39618310147 thiếu các thư mục này khi CMake autolinking chạy. Chỉ bổ sung thứ tự lệnh workflow, không sửa Gradle/native/dependency hoặc lấy output từ job E2E.
 - Kiểm tra file android/app/build/outputs/apk/release/app-release.apk và android/app/build/outputs/bundle/release/app-release.aab tồn tại, kích thước >0; upload artifact riêng với SHA-256, revision/run và log build khi lỗi.
 - Artifact ghi rõ CI/debug signing, không phải gói phát hành lên Play Store.
 - Kiểm chứng âm: gây lỗi build có kiểm soát trên nhánh kiểm tra; xác nhận job fail và không có thông báo build đạt/artifact thành công giả. Hoàn tác và build APK/AAB đạt.
