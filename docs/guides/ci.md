@@ -29,7 +29,7 @@ Job lỗi làm các job phụ thuộc bị chặn; không có `continue-on-error
   không cache node_modules. Gradle dùng setup-gradle v4.4.2, cache PR chỉ đọc.
 - Hai job Linux native giải phóng toolchain .NET/Swift/GHC/Boost/CodeQL không dùng và gỡ các NDK khác qua SDK Manager trên runner GitHub-hosted tạm, có guard và log dung lượng. Không chạy helper dọn hệ thống trên máy phát triển.
 - Android: Temurin **17.0.14+7**, SDK/Build Tools 35, NDK 27.1.12297006;
-  emulator Google APIs 35 x86_64, profile Pixel 7, đặt rõ1080×2400/density420, 2 cores, RAM 4096 MB, KVM, tắt animation.
+  emulator Google APIs 35 x86_64, profile Pixel 7, đặt rõ1080×2400/density420, 2 cores, RAM 4096 MB, KVM, animation scale 1.0.
 - Maestro **2.11.0**, zip release `cli-2.11.0`, xác thực SHA-256
   `5384593cb4e7a106489e75a821d157dd43f4e438df6bc308b72e82c685e1283a`.
   CLI đã đối chiếu `--include-tags`, JUnit, debug-output và test-output-dir.
@@ -41,7 +41,8 @@ Job lỗi làm các job phụ thuộc bị chặn; không có `continue-on-error
 
 Runner tạo `.env.ci`, chọn bằng ENVFILE tuyệt đối; không dùng `.env` cá nhân để cấu hình native.
 E2E dùng APP_ENV=development, API_URL=http://127.0.0.1:7777/api/v1 (Android tự ánh xạ sang 10.0.2.2),
-APP_ORIGIN trống và DEBUG_MODE=false. Đây là 14 flow smoke/preview gắn tag `ci`;
+APP_ORIGIN trống và DEBUG_MODE=false. Đây là 13 flow smoke/preview gắn tag `ci`;
+`cart-checkout-qr` mang tag `payment-pending`, loại khỏi CI bắt buộc theo owner vì thanh toán chưa hoàn thiện. Giữ assertions để chạy riêng bằng `maestro test e2e/flows/cart-checkout-qr.yaml` khi sẵn sàng; không coi thanh toán đã đạt.
 `api-health` mang tag `backend`, e2e/api và e2e/backend không chạy trong PR CI.
 Fixture Python cục bộ chỉ phục vụ bootstrap khách: GET /auth/me trả 401 AUTHENTICATION_REQUIRED, rồi POST /auth/refresh trả 401 INVALID_REFRESH_TOKEN theo contract. Không tạo phiên/cookie hợp lệ. Request API khác trả 500 và khiến E2E fail qua audit JSONL; không gọi backend thật. Chạy preview không chứng minh API auth, thanh toán hay quyền truy cập thật.
 
@@ -70,13 +71,15 @@ npm run lint:type-check
 npm run lint:rules -- --no-cache
 npm run lint:code-format
 npm test -- --ci --runInBand --watch=false --coverage
-npm run test:e2e -- --include-tags ci
+npm run test:e2e -- --include-tags ci --config e2e/config-ci.yaml
 ```
 
 E2E local cần app debug đã cài, Metro và emulator. Khi APK dùng URL CI, chạy `python3 .github/scripts/preview-api.py` trên host trước Maestro để phục vụ bootstrap khách. Runner tự build/cài APK, chờ
-Metro tối đa 180 giây và emulator tối đa 300 giây, reverse port 8081, warm debug bundle tối đa300giây trước assertions, chạy 14 flow
-và kiểm tra JUnit đủ 14 testcase thành công. Fixture có readiness tối đa 30 giây và audit chỉ method/path/status. Cleanup dừng fixture/Metro/logcat và reset font/kích thước.
+Metro tối đa 180 giây và emulator tối đa 300 giây, reverse port 8081, warm debug bundle tối đa300giây trước assertions, chạy 13 flow
+và kiểm tra JUnit đủ 13 testcase thành công. Fixture có readiness tối đa 30 giây và audit chỉ method/path/status. Cleanup dừng fixture/Metro/logcat và reset font/kích thước.
 Không bỏ assertion hoặc retry test thất bại để làm xanh pipeline.
+
+CI chạy app-launch và courses-browse trước rồi dừng khi flow lỗi, theo e2e/config-ci.yaml. Suite thành công vẫn phải có đủ 13 testcase không lỗi/skipped; các job Release chỉ mở sau kiểm tra này.
 
 Giữ animation scale của emulator ở 1.0; tắt transition animation kích hoạt Reduced Motion của Reanimated và tạo LogBox che nút. Cấu hình thực tế lưu trong emulator-animation.log.
 

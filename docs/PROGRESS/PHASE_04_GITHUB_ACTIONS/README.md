@@ -150,3 +150,22 @@
 - Test local: Payment flow PASS 56s với waitToSettleTimeoutMs=100 trên tap copy; courses PASS 70s sau khi cuộn pagination ra khỏi tab bar cố định. Giữ toàn bộ assertions cũ, thêm assertion nút pagination; không đổi app/native/timeout assertion. Bằng chứng tại evidence/ci-interactions và nhật ký 4.4; nhật ký cũng ghi lỗi local trung gian, không gộp thành suite 2/2 đạt cùng lượt.
 - Kiểm chứng âm: Run 39601188597 tại 084e159 fail đúng testID app-launch cố ý sai và chặn Release; đồng thời có hai lỗi thao tác của baseline afea99e. Đính chính ý định entry trước: không cần lặp probe app-launch không đổi sau sửa hai flow khác. Không coi các lỗi thao tác là kiểm chứng âm mong muốn.
 - Ghi chú: Bản sửa chuẩn sẽ chạy lại đủ 14 flow hosted. Chưa có kết quả Release hoặc đủ điều kiện UAT.
+
+### 2026-10-21 21:21 (+07:00) · @Bero-working (Codex)
+
+- Phase: 4.4 Kết quả hosted 13/14 và điều tra driver Android
+- Trạng thái: In progress
+- Run: https://github.com/Bero-working/MindyMobile/actions/runs/39607209695 tại c1371b5. Quality checks đạt; E2E 13/14 đạt, courses-browse đã qua; chỉ cart-checkout-qr còn lỗi payment-toast. Hai Release skipped đúng needs. Report và timing tại evidence/ci-interactions/report-13-passed.xml và toast-command-timings.json; artifact 12351730856.
+- Bằng chứng: waitToSettleTimeoutMs=100 đã được parse và thực thi, nhưng tap mất 10938ms; log Maestro từ lúc chạm thực tế tới trả kết quả là 9646ms. Local API37 cùng thao tác mất khoảng 1624ms sau tap và assert toast đạt. Logcat hosted có ClipboardOverlay và cảnh báo QueryController không tìm được idle. Chưa đủ bằng chứng để khẳng định CPU, API level hoặc animation nào là nguyên nhân chính.
+- Đã làm: Đọc source driver Maestro pin cli-2.11.0 và tài liệu upstream; timeout chỉ best-effort, không cắt ngang core hierarchy operation. Chuẩn bị AVD Android35 Google APIs x86_64 riêng trên local để kiểm chứng trực tiếp thay đổi cấu hình máy ảo; chưa đổi app/timeout toast hoặc bỏ assertion. Các thử nghiệm chưa đạt không được ghi xanh.
+- Giới hạn: 4.4/4.5 chưa hoàn tất, chưa đủ điều kiện UAT. PR #3 đã đóng và probe đã hoàn tác; worktree kiểm chứng đã archive, bằng chứng âm được lưu tại evidence/e2e-negative-*.xml/json.
+
+### 2026-10-21 21:35 (+07:00) · @Bero-working (Codex)
+
+- Phase: 4.4 Điều chỉnh phạm vi theo owner, tiếp tục 4.5
+- Trạng thái: In progress
+- Yêu cầu owner: “Luồng thanh toán tôi chưa làm, hãy ignore phần đó”. Loại cart-checkout-qr khỏi bộ CI bắt buộc bằng tag payment-pending; giữ nguyên assertions/file để chạy riêng khi hoàn thiện. Không coi thanh toán đã đạt hoặc tiếp tục sửa luồng này.
+- Triển khai: Bộ tag ci còn đúng 13 flow; config-ci.yaml cố định thứ tự và dừng khi lỗi, guard JUnit yêu cầu 13 testcase thành công trước hai job Release. Đồng bộ IMPLEMENT, hướng dẫn/UAT và tên bước workflow. Push/PR vẫn chỉ tự kích hoạt cho dev.
+- Test: js-yaml/assert kiểm tra đúng 13 flow duy nhất, executionOrder khớp inventory, payment không thuộc ci và triggers dev PASS; actionlint 1.7.7, ShellCheck 0.10.0 và diff --check PASS. Không sửa app/native/dependency. Run c1371b5 trước đã có 13 flow còn lại đạt nhưng cả pipeline vẫn failure; cần run mới để xác nhận suite 13 và mở hai build.
+- Dọn dẹp: Dừng Metro/AVD API35 do Phase 4 tạo; avdmanager xoá Mindy_CI_API35 và Mindy_CI_API35_D, sdkmanager gỡ riêng system image API35 vừa cài. Emulator Pixel_8 của owner vẫn chạy. Giữ thay đổi Phase 3/.gitignore/api-health của owner ngoài commit.
+- Ghi chú: Chưa có kết quả Release/UAT; chuẩn bị push PR #2 để kiểm chứng hosted.

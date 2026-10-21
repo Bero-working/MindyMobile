@@ -25,3 +25,11 @@ Nhật ký triển khai chỉ ghi thêm theo ENTRY.md. Chưa bắt đầu; task 
 - Trạng thái: Done — AI tự nghiệm thu sub-phase; không thay UAT cấp Phase 4.
 - Kiểm tra: Bản sạch a1639e4, run https://github.com/Bero-working/MindyMobile/actions/runs/39571171627, cả Type checking / ESLint and formatting / Unit tests hosted success. Jest 63 suite/294 test, tự thoát, có coverage artifact. Ca âm type/lint/assertion trên run 39569983962 fail đúng và chặn các job sau; probe đã xoá, bản khôi phục xanh. Format âm local exit1; bản chuẩn format xanh. Không thay file khoá ngoài ADR-0031, không thêm dependency.
 - Giới hạn sự kiện: Mới thử pull_request. Push default/workflow_dispatch chưa thử vì workflow chưa merge vào main; ghi rõ trong guide, không tự merge hoặc đổi settings.
+
+### 2026-10-21 20:24 (+07:00) · @Bero-working (Codex)
+
+- Task: 4.1.1 Đổi trigger sang dev theo yêu cầu owner và xác minh PR
+- Trạng thái: Done — tự kiểm tra phần cấu hình; giới hạn sự kiện nêu riêng.
+- Đã làm: Push và pull_request đều lọc branches=[dev]. PR #2 đã đổi base sang dev; run 39600990649 tại afea99e và 39607209695 tại c1371b5 đều được tạo bằng sự kiện pull_request tới dev; cả ba quality jobs đạt. Không đổi default branch hoặc branch protection.
+- Kiểm tra: js-yaml xác nhận hai bộ lọc chỉ có dev, workflow_dispatch còn giữ; actionlint 1.7.7/ShellCheck 0.10.0 đạt. Sau đóng PR #3 và hoàn tác probe, push nhánh kiểm tra không thuộc filter dev; không coi thao tác đó là kiểm thử push dev.
+- Giới hạn: Chưa chạy push dev vì workflow chưa được merge vào dev; chưa workflow_dispatch vì default branch main chưa có workflow. Không push main hoặc merge PR chỉ để tạo bằng chứng trigger. Các entry cũ về push nhánh mặc định là lịch sử trước yêu cầu đổi sang dev.

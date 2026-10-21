@@ -1,0 +1,61 @@
+{
+  "run": 39607209695,
+  "revision": "c1371b515550d2f1bbbbd6710de21e732f511930",
+  "commands": [
+    {
+      "command": {
+        "scrollUntilVisible": {
+          "selector": {
+            "idRegex": "payment-copy-account",
+            "optional": false
+          },
+          "direction": "DOWN",
+          "scrollDuration": "40",
+          "visibilityPercentage": 100,
+          "timeout": "20000",
+          "centerElement": false,
+          "originalSpeedValue": "40",
+          "optional": false,
+          "visibilityPercentageNormalized": 1
+        }
+      },
+      "status": "COMPLETED",
+      "timestamp": 1792591025484,
+      "duration": 629
+    },
+    {
+      "command": {
+        "tapOnElement": {
+          "selector": {
+            "idRegex": "payment-copy-account",
+            "optional": false
+          },
+          "retryIfNoChange": false,
+          "waitUntilVisible": false,
+          "longPress": false,
+          "waitToSettleTimeoutMs": 100,
+          "optional": false
+        }
+      },
+      "status": "COMPLETED",
+      "timestamp": 1792591026113,
+      "duration": 10938
+    },
+    {
+      "command": {
+        "assertConditionCommand": {
+          "condition": {
+            "visible": {
+              "idRegex": "payment-toast",
+              "optional": false
+            }
+          },
+          "optional": false
+        }
+      },
+      "status": "FAILED",
+      "timestamp": 1792591037051,
+      "duration": 17746
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 appId: ${APP_ID || "com.mindymobile"}
 tags:
-  - ci
+  # Owner deferred the unfinished payment flow on 2026-10-21.
+  - payment-pending
 ---
 - launchApp:
     clearState: true

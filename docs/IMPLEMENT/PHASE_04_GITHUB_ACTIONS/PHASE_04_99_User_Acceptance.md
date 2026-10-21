@@ -21,7 +21,7 @@
 | 3 | Xem job Type checking và bằng chứng ca sai kiểu | Bản chuẩn đạt; lỗi kiểu làm failure, không thay tsconfig để bỏ kiểm tra |
 | 4 | Xem ESLint/Prettier, ADR và diff cấu hình | Mã app/test/config được kiểm tra; chỉ nguồn thiết kế đã duyệt được bỏ qua; ca vi phạm fail |
 | 5 | Xem job Jest và coverage | Toàn bộ suite chạy, process tự thoát, assertion sai fail; không dùng reporter chưa cài |
-| 6 | Xem E2E Android và artifact | 14 flow tag ci chạy thực, có screenshot/report; phân biệt preview với API thật; testID sai fail |
+| 6 | Xem E2E Android và artifact | 13 flow tag ci chạy thực; cart-checkout-qr hoãn vì thanh toán chưa hoàn thiện, có screenshot/report; phân biệt preview với API thật; testID sai fail |
 | 7 | Xem run quality/E2E lỗi | Hai job build cuối không chạy; pipeline không báo xanh giả |
 | 8 | Tải artifact Android | Có APK/AAB không rỗng cùng revision/checksum; ghi rõ CI/debug signing |
 | 9 | Tải artifact iOS | Có app Simulator Release từ macOS; không ghi thành IPA hoặc production archive |

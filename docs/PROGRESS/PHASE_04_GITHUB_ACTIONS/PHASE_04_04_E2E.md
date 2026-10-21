@@ -44,3 +44,20 @@ Nhật ký triển khai chỉ ghi thêm theo ENTRY.md. Chưa bắt đầu; task 
 - Sửa và test: Tắt yêu cầu center nhưng giữ visibilityPercentage=100. Lượt local đầu payment PASS 56s, courses thất bại ở bước sau: accessibility tree coi pagination bị tab bar che là visible. Thêm swipe trong vùng danh sách 50%,70% → 50%,40% và assertVisible nút trước tap; courses chạy lại PASS 70s (report 71s tính tổng). Report local-initial.xml giữ cả lỗi trung gian và payment PASS; local-pagination.xml ghi bản sửa cuối đạt. Không bỏ 5 assertion cũ của courses hoặc 6 assertion payment; courses thêm 1 assertion. Không sửa app, toast duration hoặc timeout assertion.
 - Kiểm tra âm hosted: Run 39601188597 xác nhận app-launch fail đúng `phase04-intentional-missing-control`, giữ diagnostics và chặn hai Release. Còn hai lỗi thao tác giống bản chuẩn ở baseline đó; không mô tả run âm này là chỉ có một lỗi. Mã app và app-launch bản chuẩn không đổi trong sửa hai flow, nên bằng chứng missing-testID vẫn áp dụng; không cần chạy lại probe không thay đổi.
 - Nguồn đối chiếu thao tác: https://docs.maestro.dev/reference/commands-available/scrolluntilvisible và https://docs.maestro.dev/reference/commands-available/tapon. YAML parser, kiểm tra giữ assertions và diff --check PASS. Đẩy bản sửa để kiểm chứng đủ 14 flow hosted; 4.4/4.5 chưa đạt.
+
+### 2026-10-21 20:22 (+07:00) · @Bero-working (Codex)
+
+- Task: 4.4.3 Lưu bằng chứng âm và dọn nhánh kiểm tra
+- Trạng thái: In progress
+- Đã làm: Lưu e2e-negative-report.xml và e2e-negative-jobs.json tại evidence/ từ run 39601188597, artifact 12347034442. Đóng PR #3 sau kiểm chứng, không merge. Đồng bộ c1371b5 vào nhánh kiểm tra, hoàn tác testID sai bằng commit 84adcb7 và push; nội dung cây nhánh kiểm tra bằng c1371b5. Worktree kiểm tra được lưu snapshot rồi archive sau khi hoàn tất.
+- Ghi chú: Run chuẩn mới 39607209695 tại c1371b5 đang kiểm chứng hai sửa flow; không mở lại probe không thay đổi. Nhánh bàn giao không chứa testID sai hoặc workflow thử lỗi. Push nhánh kiểm tra sau khi đóng PR không thuộc bộ lọc push dev.
+
+### 2026-10-21 21:35 (+07:00) · @Bero-working (Codex)
+
+- Phase: 4.4 Điều chỉnh phạm vi theo owner, tiếp tục 4.5
+- Trạng thái: In progress
+- Yêu cầu owner: “Luồng thanh toán tôi chưa làm, hãy ignore phần đó”. Loại cart-checkout-qr khỏi bộ CI bắt buộc bằng tag payment-pending; giữ nguyên assertions/file để chạy riêng khi hoàn thiện. Không coi thanh toán đã đạt hoặc tiếp tục sửa luồng này.
+- Triển khai: Bộ tag ci còn đúng 13 flow; config-ci.yaml cố định thứ tự và dừng khi lỗi, guard JUnit yêu cầu 13 testcase thành công trước hai job Release. Đồng bộ IMPLEMENT, hướng dẫn/UAT và tên bước workflow. Push/PR vẫn chỉ tự kích hoạt cho dev.
+- Test: js-yaml/assert kiểm tra đúng 13 flow duy nhất, executionOrder khớp inventory, payment không thuộc ci và triggers dev PASS; actionlint 1.7.7, ShellCheck 0.10.0 và diff --check PASS. Không sửa app/native/dependency. Run c1371b5 trước đã có 13 flow còn lại đạt nhưng cả pipeline vẫn failure; cần run mới để xác nhận suite 13 và mở hai build.
+- Dọn dẹp: Dừng Metro/AVD API35 do Phase 4 tạo; avdmanager xoá Mindy_CI_API35 và Mindy_CI_API35_D, sdkmanager gỡ riêng system image API35 vừa cài. Emulator Pixel_8 của owner vẫn chạy. Giữ thay đổi Phase 3/.gitignore/api-health của owner ngoài commit.
+- Ghi chú: Chưa có kết quả Release/UAT; chuẩn bị push PR #2 để kiểm chứng hosted.

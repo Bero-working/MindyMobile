@@ -6,6 +6,7 @@ Tự động kiểm tra chất lượng và khả năng build MindyMobile trên 
 
 - Có: TypeScript, ESLint, unit/component/integration test bằng Jest, E2E bằng Maestro trên Android Emulator, build Android APK/AAB và iOS Simulator không ký mã.
 - Kèm kiểm tra định dạng Prettier hiện có trong job lint, theo Definition of Done của repo; đây không phải sub-phase mới.
+- Theo yêu cầu owner ngày 2026-10-21, luồng thanh toán chưa hoàn thiện được loại khỏi CI bắt buộc: cart-checkout-qr giữ tag payment-pending, bộ tag ci còn 13 flow. Không đánh dấu luồng thanh toán đạt.
 - Không gồm: Expo Doctor, Image Optimization, phát hành lên store, ký bằng khoá production, deploy backend, E2E iOS hoặc tự thay đổi branch protection.
 - Trạng thái: **In progress**. Đã triển khai workflow và helper 4.1–4.5; đang kiểm chứng local/GitHub, chưa UAT.
 
@@ -21,7 +22,7 @@ Khảo sát ngày 2026-10-21 từ package.json, cấu hình native, e2e/flows v�
 | TypeScript | npm run lint:type-check; noEmit, strict | Giữ nguyên tsconfig và kiểm tra toàn phạm vi đang include |
 | ESLint | npm run lint:rules, npm run lint:code-format | Lint toàn repo đang lỗi JavaScript trong asset thiết kế; cần ngoại lệ hẹp theo ADR-0031 trước khi sửa cấu hình |
 | Jest | npm test; MSW trong Node | Có lịch sử open handles; test:report tham chiếu jest-junit chưa có trong devDependencies, nên không dùng script này |
-| Maestro | npm run test:e2e; 15 flow trong e2e/flows | 14 flow smoke/preview; api-health.yaml cần backend. Phải phân loại trước khi đưa lên CI |
+| Maestro | npm run test:e2e; 15 flow trong e2e/flows | Khảo sát ban đầu 14 flow smoke/preview; hiện 13 flow tag ci, cart-checkout-qr hoãn theo owner; api-health.yaml cần backend |
 | Android | Gradle 8.14.1, SDK/Build Tools 35, NDK 27.1.12297006 | Debug keystore không được track; release hiện ký bằng debug config; APK/AAB chỉ là bản CI |
 | iOS | Podfile, scheme MindyMobile | Cần runner macOS, pod install và build Simulator; Gemfile.lock/Podfile.lock chưa được track |
 

@@ -1,0 +1,39 @@
+{
+  "run_url": "https://github.com/Bero-working/MindyMobile/actions/runs/39601188597",
+  "probe_commit": "084e1593f6bd9389e7c3a37182ba74eb2b8d429a",
+  "baseline": "afea99e73251425da010f0f9d6cc55321e9830b5",
+  "purpose": "Missing app-launch testID must fail; two incidental baseline interaction failures are recorded separately",
+  "jobs": [
+    {
+      "id": 119225806740,
+      "name": "ESLint and formatting",
+      "conclusion": "success"
+    },
+    {
+      "id": 119225806830,
+      "name": "Type checking",
+      "conclusion": "success"
+    },
+    {
+      "id": 119225806849,
+      "name": "Unit tests",
+      "conclusion": "success"
+    },
+    {
+      "id": 119226487925,
+      "name": "E2E Android",
+      "conclusion": "failure"
+    },
+    {
+      "id": 119241380815,
+      "name": "Build Android",
+      "conclusion": "skipped"
+    },
+    {
+      "id": 119241381426,
+      "name": "Build iOS Simulator",
+      "conclusion": "skipped"
+    }
+  ],
+  "artifact_id": 12347034442
+}

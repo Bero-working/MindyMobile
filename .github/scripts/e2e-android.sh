@@ -66,7 +66,7 @@ adb logcat -c
 adb logcat '*:W' > ci-logs/logcat.log 2>&1 &
 logcat_pid=$!
 maestro --version
-npm run test:e2e -- --include-tags ci --format junit --output ci-e2e/report.xml \
+npm run test:e2e -- --include-tags ci --config e2e/config-ci.yaml --format junit --output ci-e2e/report.xml \
   --debug-output ci-e2e/debug --test-output-dir ci-e2e/results 2>&1 | tee ci-logs/maestro.log
 python3 - <<'PY'
 import xml.etree.ElementTree as ET
@@ -74,9 +74,9 @@ import json
 from pathlib import Path
 root = ET.parse('ci-e2e/report.xml').getroot()
 cases = list(root.iter('testcase'))
-if len(cases) != 14 or any(list(case.iter('failure')) or list(case.iter('error')) or list(case.iter('skipped')) for case in cases):
-    raise SystemExit(f'Expected 14 successful CI flows; report contains {len(cases)} cases')
-print('All 14 CI flows passed')
+if len(cases) != 13 or any(list(case.iter('failure')) or list(case.iter('error')) or list(case.iter('skipped')) for case in cases):
+    raise SystemExit(f'Expected 13 successful CI flows; report contains {len(cases)} cases')
+print('All 13 CI flows passed')
 requests = [json.loads(line) for line in Path('ci-e2e/preview-api.jsonl').read_text().splitlines()]
 if not requests or any(request['unexpected'] for request in requests):
     raise SystemExit('Expected only guest bootstrap requests; inspect preview-api.jsonl')

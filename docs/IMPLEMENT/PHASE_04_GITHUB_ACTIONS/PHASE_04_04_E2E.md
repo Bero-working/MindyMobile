@@ -8,10 +8,11 @@ Tự động chạy Maestro trên Android Emulator với bản debug có preview
 
 ### 4.4.1 Phân loại flow
 
-- Rà 15 file hiện có trong e2e/flows. Gắn tag ci cho 14 flow smoke/preview: app-launch, auth-ui-login, auth-ui-register, student-home-ui, courses-browse, course-class-scroll, cart-checkout-qr, carousel-autoplay, student-schedule, student-account, my-classes-detail, my-classes-folders, student-learning-responsive, session-detail-footer.
-- api-health.yaml gắn tag backend; các flow e2e/api và e2e/backend giữ ngoài job PR mặc định. Các flow preview vẫn đi qua bootstrap của app: GET /auth/me và refresh khi 401. Dùng fixture HTTP cục bộ trả lỗi khách theo auth.md và README contract, không tạo phiên; audit fail khi có API ngoài hai route bootstrap. Không flow tag ci nào cần tài khoản/backend thật. Nếu phát hiện phụ thuộc thì sửa phân loại/đặc tả và ghi rõ, không ngầm bỏ flow để báo đủ 14.
+- Rà 15 file hiện có trong e2e/flows. Gắn tag ci cho 13 flow smoke/preview: app-launch, auth-ui-login, auth-ui-register, student-home-ui, courses-browse, course-class-scroll, carousel-autoplay, student-schedule, student-account, my-classes-detail, my-classes-folders, student-learning-responsive, session-detail-footer.
+- api-health.yaml gắn tag backend; các flow e2e/api và e2e/backend giữ ngoài job PR mặc định. Các flow preview vẫn đi qua bootstrap của app: GET /auth/me và refresh khi 401. Dùng fixture HTTP cục bộ trả lỗi khách theo auth.md và README contract, không tạo phiên; audit fail khi có API ngoài hai route bootstrap. Không flow tag ci nào cần tài khoản/backend thật. Nếu phát hiện phụ thuộc thì sửa phân loại/đặc tả và ghi rõ, không ngầm bỏ flow để báo đủ 13. Theo yêu cầu owner ngày 2026-10-21, cart-checkout-qr mang tag payment-pending và nằm ngoài CI bắt buộc vì luồng thanh toán chưa triển khai xong; giữ file/assertions để chạy riêng khi hoàn thiện, không coi là đã đạt.
 - Lệnh dự kiến: npm run test:e2e -- --include-tags ci. Kiểm tra CLI nhận tham số, phát hiện đủ flow và không có 0 test. Tag không thay assertions hoặc cơ chế preview.
-- Đồng bộ thao tác Maestro với màn hình thực tế: pagination nằm cuối ScrollView chỉ cần hiện đầy đủ (visibilityPercentage=100, centerElement=false), không ép kéo tới giữa màn hình khi đã chạm đáy. Thêm một swipe trong vùng danh sách từ 50%,70% tới 50%,40% để đưa pagination khỏi tab bar cố định rồi assertVisible nút trước khi chạm; accessibility tree có thể coi phần tử bị tab bar che là visible. Khi chạm nút sao chép ở màn có countdown cập nhật mỗi giây, giới hạn waitToSettleTimeoutMs=100 cho thao tác tap để kiểm tra toast 2.5 giây ngay sau đó; giữ nguyên assertVisible payment-toast, không kéo dài toast hoặc bỏ kiểm tra. Lý do và bằng chứng thời gian ghi tại PROGRESS.
+- CI truyền thêm --config e2e/config-ci.yaml để cố định thứ tự toàn bộ 13 flow: app-launch và courses-browse chạy đầu, continueOnFailure=false để báo lỗi sớm. Mỗi flow vẫn clearState và độc lập; không bỏ flow khỏi suite thành công. Guard JUnit vẫn yêu cầu đúng 13 testcase không lỗi/skipped trước khi mở hai job Release. Không áp cấu hình này ngầm cho lệnh local không truyền --config.
+- Đồng bộ thao tác Maestro với màn hình thực tế: pagination nằm cuối ScrollView chỉ cần hiện đầy đủ (visibilityPercentage=100, centerElement=false), không ép kéo tới giữa màn hình khi đã chạm đáy. Thêm một swipe trong vùng danh sách từ 50%,70% tới 50%,40% để đưa pagination khỏi tab bar cố định rồi assertVisible nút trước khi chạm; accessibility tree có thể coi phần tử bị tab bar che là visible. Luồng thanh toán và kiểm tra payment-toast không thuộc nghiệm thu CI hiện tại theo phạm vi owner đã chốt; không tiếp tục sửa luồng này trong Phase 4. Lý do và bằng chứng thời gian ghi tại PROGRESS.
 - Kiểm chứng trước: liệt kê flow mặc định có api-health cần server; sau phân loại, bộ ci không gọi api-health và vẫn đủ hành trình UI đã liệt kê.
 
 ### 4.4.2 Chuẩn bị native và emulator
@@ -37,7 +38,7 @@ Tự động chạy Maestro trên Android Emulator với bản debug có preview
 ## Tiêu chí nghiệm thu
 
 - [ ] Clean runner build/cài/mở app debug, Metro và emulator sẵn sàng.
-- [ ] Toàn bộ 14 flow đã phân loại chạy đạt; api-health không nằm trong bộ PR bắt buộc.
+- [ ] Toàn bộ 13 flow tag ci chạy đạt; api-health và cart-checkout-qr không nằm trong bộ PR bắt buộc, thanh toán ghi rõ chưa kiểm tra.
 - [ ] Không dùng backend production/tài khoản thật; không bỏ assertions hoặc sửa app để luôn pass.
 - [ ] TestID sai làm job fail; có báo cáo/log/screenshot và cleanup khi lỗi.
 - [ ] Build cuối bị chặn nếu E2E lỗi; PROGRESS ghi số flow/revision/toolchain và giới hạn backend.
