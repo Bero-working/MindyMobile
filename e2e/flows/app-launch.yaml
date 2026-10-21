@@ -6,7 +6,7 @@ tags:
     clearState: true
 - extendedWaitUntil:
     visible:
-      id: 'phase04-intentional-missing-control'
+      id: 'app-root'
     timeout: 30000
 - assertVisible:
-    id: 'phase04-intentional-missing-control'
+    id: 'app-root'
