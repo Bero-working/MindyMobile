@@ -87,3 +87,10 @@
 - Run: a1639e4 / https://github.com/Bero-working/MindyMobile/actions/runs/39571171627 hoàn tất failure. Debug x86_64 build SUCCESSFUL trong12m55s,543tasks. Lỗi gốc sau đó: cài Google APIs Intel x86_64 system image → No space left on device; adb5554 connection refused là lỗi cleanup sau cài đặt, emulator chưa sẵn sàng. Không phải lỗi assertions hoặc buildAPK. Hai job Release skipped.
 - Sửa: prepare-linux-runner.sh chỉ cho phép GitHub-hosted Linux tạm; dọn .NET/Swift/GHC/Boost/CodeQL không dùng, ghi df trước/sau. Android toolchain gỡ NDK khác qua SDK Manager, giữ/cài27.1.12297006. Áp dụng cho E2E và Build Android để chừa chỗ cho system image/native outputs. Không sửa native hoặc file máy phát triển.
 - Ghi chú: Run34d23a0 chứa fixture đang được thay bằng bản bổ sung dung lượng trước khi lặp build tốn thời gian. Giữ nguyên assertions và runtimegates. Bằng chứng native full pipeline vẫn chưa đủ, tiếp tục kiểm chứng.
+
+### 2026-10-21 16:04 (+07:00) · @Bero-working (Codex)
+
+- Phase: 4 Kiểm tra guard và tài nguyên emulator
+- Trạng thái: In progress
+- Test: Helper dọn dung lượng chạy trên máy local trả exit1 ngay trước lệnh dọn; chỉ áp dụng GITHUB_ACTIONS=true, RUNNER_OS=Linux, RUNNER_ENVIRONMENT=github-hosted. Đối chiếu GitHub Variables reference và RunnerContext upstream xác nhận biến RUNNER_ENVIRONMENT được export. Không xoá toolchain trên máy phát triển.
+- Sửa: Dừng Gradle daemon sau APK debug trước khi boot emulator để nhường RAM cho AVD4096M và Metro. Giữ nguyên Gradle/native config; lỗi lệnh vẫn fail theo pipefail. Các thay đổi dung lượng/bootstrap fixture đang chờ xác minh runner sạch, chưa đánh dấu4.4/4.5 đạt.

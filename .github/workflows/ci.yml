@@ -109,6 +109,7 @@ jobs:
           set -o pipefail
           cd android
           ./gradlew assembleDebug -PreactNativeArchitectures=x86_64 --max-workers=2 2>&1 | tee ../ci-logs/android-debug.log
+          ./gradlew --stop 2>&1 | tee -a ../ci-logs/android-debug.log
       - name: Install pinned Maestro
         shell: bash
         run: |
