@@ -2,7 +2,7 @@
 
 ## Mô tả
 
-Thêm job unit-tests chạy toàn bộ Jest suite hiện có, gồm unit/component/integration và MSW. Bước hạ tầng; UI/API mới không áp dụng. Trạng thái **In progress**, sau 4.2.
+Thêm job unit-tests chạy toàn bộ Jest suite hiện có, gồm unit/component/integration và MSW. Bước hạ tầng; UI/API mới không áp dụng. Trạng thái **Done**, sau 4.2.
 
 ## Task
 
@@ -22,7 +22,7 @@ Thêm job unit-tests chạy toàn bộ Jest suite hiện có, gồm unit/compone
 
 ## Tiêu chí nghiệm thu
 
-- [ ] Toàn bộ suite được phát hiện và chạy, số test/suite được ghi vào PROGRESS.
-- [ ] Jest tự kết thúc, không forceExit; không phụ thuộc backend thật.
-- [ ] Assertion sai làm job fail; bản bàn giao đạt, có artifact coverage.
-- [ ] Không tham chiếu reporter chưa cài; thay đổi file khoá nếu phát sinh có ADR riêng.
+- [x] Toàn bộ suite được phát hiện và chạy, số test/suite được ghi vào PROGRESS.
+- [x] Jest tự kết thúc, không forceExit; không phụ thuộc backend thật.
+- [x] Assertion sai làm job fail; bản bàn giao đạt, có artifact coverage.
+- [x] Không tham chiếu reporter chưa cài; thay đổi file khoá nếu phát sinh có ADR riêng.

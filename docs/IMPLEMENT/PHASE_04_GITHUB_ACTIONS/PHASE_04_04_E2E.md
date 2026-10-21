@@ -9,16 +9,17 @@ Tự động chạy Maestro trên Android Emulator với bản debug có preview
 ### 4.4.1 Phân loại flow
 
 - Rà 15 file hiện có trong e2e/flows. Gắn tag ci cho 14 flow smoke/preview: app-launch, auth-ui-login, auth-ui-register, student-home-ui, courses-browse, course-class-scroll, cart-checkout-qr, carousel-autoplay, student-schedule, student-account, my-classes-detail, my-classes-folders, student-learning-responsive, session-detail-footer.
-- api-health.yaml gắn tag backend; các flow e2e/api và e2e/backend giữ ngoài job PR mặc định. Xác minh không flow tag ci nào cần tài khoản/backend thật. Nếu phát hiện phụ thuộc thì sửa phân loại/đặc tả và ghi rõ, không ngầm bỏ flow để báo đủ 14.
+- api-health.yaml gắn tag backend; các flow e2e/api và e2e/backend giữ ngoài job PR mặc định. Các flow preview vẫn đi qua bootstrap của app: GET /auth/me và refresh khi 401. Dùng fixture HTTP cục bộ trả lỗi khách theo auth.md và README contract, không tạo phiên; audit fail khi có API ngoài hai route bootstrap. Không flow tag ci nào cần tài khoản/backend thật. Nếu phát hiện phụ thuộc thì sửa phân loại/đặc tả và ghi rõ, không ngầm bỏ flow để báo đủ 14.
 - Lệnh dự kiến: npm run test:e2e -- --include-tags ci. Kiểm tra CLI nhận tham số, phát hiện đủ flow và không có 0 test. Tag không thay assertions hoặc cơ chế preview.
 - Kiểm chứng trước: liệt kê flow mặc định có api-health cần server; sau phân loại, bộ ci không gọi api-health và vẫn đủ hành trình UI đã liệt kê.
 
 ### 4.4.2 Chuẩn bị native và emulator
 
 - Runner Ubuntu 24.04 có KVM; JDK 17; SDK/Build Tools 35, NDK 27.1.12297006 theo Gradle hiện tại. Chốt image emulator x86_64 API 35 và bản Maestro 2.11.0 sau khi xác nhận upstream/khả năng chạy. Pin action emulator theo SHA; lưu version/ABI thực tế.
-- Tạo .env.ci với APP_ENV=development, APP_ORIGIN trống, DEBUG_MODE=false và API_URL kiểm tra không cần server; ENVFILE phải được chọn trước khi build. Không đưa tài khoản/secret vào source hoặc log.
+- Tạo .env.ci với APP_ENV=development, APP_ORIGIN trống, DEBUG_MODE=false và API_URL=http://127.0.0.1:7777/api/v1 dành riêng fixture bootstrap cục bộ; ENVFILE phải được chọn trước khi build. Không đưa tài khoản/secret vào source hoặc log.
 - Tạo debug keystore tạm ở ~/.android/debug.keystore với alias/password debug chuẩn để Gradle dùng config hiện tại; không sửa android/**.
 - Cấp quyền chạy gradlew trong runner; assembleDebug với -PreactNativeArchitectures=x86_64 --max-workers=2. Cài APK vào emulator, APP_ID=com.mindymobile.
+- Khởi động preview-api.py trên loopback port 7777, chờ health tối đa 30 giây; chỉ whitelist GET /auth/me và POST /auth/refresh với 401 theo contract. Giữ chuỗi bootstrap/refresh theo contract; ghi audit method/path/status, không headers/body/query. Reset/dừng fixture trong cleanup.
 - Chạy Metro nền với log riêng, chờ endpoint /status báo sẵn sàng và adb wait-for-device/boot hoàn tất trước khi chạy Maestro; adb reverse tcp:8081 tcp:8081. Giữ Metro suốt lượt test và dừng bằng cleanup/trap.
 - Cho emulator ít nhất 4 GB RAM khi runner đáp ứng; ghi cấu hình tài nguyên, tắt animation. Kiểm tra font scale/kích thước được flow responsive đặt hoặc reset, không để flow làm ảnh hưởng ca sau.
 - Nếu cần sửa native/Metro/config khoá để chạy được, tách ADR riêng; không ép tắt Hermes/New Architecture để né lỗi.

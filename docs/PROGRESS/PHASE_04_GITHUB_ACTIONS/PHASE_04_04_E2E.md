@@ -19,3 +19,10 @@ Nhật ký triển khai chỉ ghi thêm theo ENTRY.md. Chưa bắt đầu; task 
 - Trạng thái: In progress — triển khai xong phần mã, kiểm chứng hosted còn chờ.
 - Đã làm / kiểm tra: 4.4.3: Workflow kiểm tra JUnit đủ14case không skipped/failure; sanitise diagnostics. Đang chạy14flow trên emulator5554 với APK/Metro có sẵn, không coi là clean-runner build hay API thật. Kết quả cuối sẽ ghi entry riêng.
 - PR / commit: Sẽ bổ sung khi tạo PR nháp.
+
+### 2026-10-21 15:58 (+07:00) · @Bero-working (Codex)
+
+- Task: 4.4.1–4.4.3 — đính chính phụ thuộc bootstrap
+- Trạng thái: In progress
+- Đã làm: Các flow ci cần phản hồi khách của bootstrap trước preview. Dùng fixtureloopback chỉ whitelist GET /auth/me và POST /auth/refresh trả401 theo contract; mọi API khác fail qua audit. Fixture không tạo user/session, không sửa app hoặc bỏ assertions. Rà native debug manifest đã cho cleartextHTTP; giữ nguyên file native.
+- Test: Fixture readiness/401/refresh/500/audit realHTTP PASS; APK debug x86_64 trên runner sạch a1639e4 build thành công; chưa kết luận E2E hosted vì URL cũ chưa có fixture. Chạy lại revision nhúng URL mới.

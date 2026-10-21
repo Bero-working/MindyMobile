@@ -2,7 +2,7 @@
 
 ## Mô tả
 
-Thêm job eslint độc lập, chạy ESLint và Prettier hiện có. Bước hạ tầng; UI/API không áp dụng. Trạng thái **In progress**. Bắt đầu sau 4.1; task sửa cấu hình cần ADR-0031 Accepted.
+Thêm job eslint độc lập, chạy ESLint và Prettier hiện có. Bước hạ tầng; UI/API không áp dụng. Trạng thái **Done**. Bắt đầu sau 4.1; task sửa cấu hình cần ADR-0031 Accepted.
 
 ## Task
 
@@ -22,7 +22,7 @@ Thêm job eslint độc lập, chạy ESLint và Prettier hiện có. Bước h�
 
 ## Tiêu chí nghiệm thu
 
-- [ ] ADR Accepted và ARCHITECTURE cập nhật trước/cùng lần sửa .eslintrc.js.
-- [ ] Hai lệnh hiện có dùng chung local và CI, không lỗi; warning được ghi rõ.
-- [ ] Asset nguồn giữ nguyên; src, tests, __tests__ và cấu hình đang được lint không bị loại.
-- [ ] Ca vi phạm rule/format đều fail; không bỏ qua lỗi hoặc tự format trên runner.
+- [x] ADR Accepted và ARCHITECTURE cập nhật trước/cùng lần sửa .eslintrc.js.
+- [x] Hai lệnh hiện có dùng chung local và CI, không lỗi; warning được ghi rõ.
+- [x] Asset nguồn giữ nguyên; src, tests, __tests__ và cấu hình đang được lint không bị loại.
+- [x] Ca vi phạm rule/format đều fail; không bỏ qua lỗi hoặc tự format trên runner.

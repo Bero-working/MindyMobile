@@ -70,3 +70,12 @@
 - Test: Type checking, ESLint and formatting, Unit tests đều hosted success. Jest 63 suite/294 test PASS trong 50.319 giây, coverage 83.62/81.51/75/84.52%, tự thoát. E2E fail exit127 trước native build vì sdkmanager không có trong PATH; Build Android/iOS skipped đúng dependency. Chưa có APK/AAB/app artifact.
 - Sửa: Helper tìm sdkmanager trong ANDROID_HOME/cmdline-tools thay vì giả định PATH; ghi cmdline-tools/platform-tools/emulator vào GITHUB_PATH. Khởi tạo ci-logs và ghi toolchain log trước cài SDK để lỗi chuẩn bị cũng có diagnostics. Không sửa native/dependency hoặc thêm action. Đối chiếu Ubuntu2404 runner-images xác nhận SDK root /usr/local/lib/android/sdk, command-line tools đã cài; image run ubuntu24/20261018.339.
 - Ghi chú: Lỗi upload trống của run này xảy ra do bước toolchain dừng trước mkdir cũ; bản sửa bắt đầu tạo log ngay đầu helper. Tiếp tục kiểm chứng runner sạch; không coi quality PASS là E2E/build PASS.
+
+### 2026-10-21 15:58 (+07:00) · @Bero-working (Codex)
+
+- Phase: 4 Xác minh phụ thuộc bootstrap và thêm fixture CI
+- Trạng thái: In progress
+- Phát hiện: Navigation chạy useAuthSession trước Welcome/preview; URL example.invalid làm NETWORK_ERROR và chặn vào Welcome. Phân loại cũ thiếu phụ thuộc bootstrap dù 14 flow chỉ dùng preview. Cập nhật đặc tả/guide cho fixture HTTP cục bộ; không bỏ flow hoặc thay assertions.
+- Sửa: preview-api.py (Python stdlib) trên loopback 7777, GET /api/v1/auth/me → 401 AUTHENTICATION_REQUIRED, POST /api/v1/auth/refresh → 401 INVALID_REFRESH_TOKEN theo auth.md và API_CONTRACT/README. Không cấp session/cookie hợp lệ hoặc gọi backend thật. API khác trả500 và audit khiến job fail; audit chỉ method/path/status. Development ENVFILE dùng127.0.0.1:7777, env.ts hiện có tự ánh xạ10.0.2.2. E2E khởi động/health/cleanup fixture, curl có timeout hữu hạn và deadline readiness. Không sửa navigator/auth/HTTP/native/config khoá hoặc thêm dependency.
+- Test: Fixture real HTTP readiness/guest/refresh PASS; request /orders bị500 và đánh unexpected; query token fixture không xuất hiện trong audit. Bash syntax PASS. Maestro CLI trong zip có class major61, xác nhận tương thích Java17. Bản a1639e4 đã qua toolchain và build x86_64 debug APK, đang bước chạy flow; thay run để APK mới nhúng URL fixture, không coi run cũ là14flow CI đạt.
+- Tự nghiệm thu: 4.1–4.3 Done với hosted quality và kiểm chứng âm; 4.4/4.5 tiếp tục, Phase4/UAT chưa Done. Giữ14/14 local preview và nguồn API thật là hai bằng chứng riêng.

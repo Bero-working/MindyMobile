@@ -2,7 +2,7 @@
 
 ## Mô tả
 
-Tạo `.github/workflows/ci.yml` và job typecheck, dùng script TypeScript hiện có. Bước hạ tầng; UI, API, testID và i18n không áp dụng. Trạng thái **In progress**.
+Tạo `.github/workflows/ci.yml` và job typecheck, dùng script TypeScript hiện có. Bước hạ tầng; UI, API, testID và i18n không áp dụng. Trạng thái **Done**.
 
 ## Task
 
@@ -26,7 +26,7 @@ Tạo `.github/workflows/ci.yml` và job typecheck, dùng script TypeScript hi�
 
 ## Tiêu chí nghiệm thu
 
-- [ ] npm ci và TypeScript đạt trên clean runner; không tạo output JS.
-- [ ] Ca sai kiểu làm job fail, bản đã hoàn tác đạt.
-- [ ] Events, permissions, concurrency, cache và timeout đúng README phase.
-- [ ] Không thay package.json, tsconfig hoặc dependency; PROGRESS có bằng chứng.
+- [x] npm ci và TypeScript đạt trên clean runner; không tạo output JS.
+- [x] Ca sai kiểu làm job fail, bản đã hoàn tác đạt.
+- [x] Events, permissions, concurrency, cache và timeout đúng README phase.
+- [x] Không thay package.json, tsconfig hoặc dependency; PROGRESS có bằng chứng.

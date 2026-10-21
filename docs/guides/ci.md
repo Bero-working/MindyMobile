@@ -38,10 +38,10 @@ Job lỗi làm các job phụ thuộc bị chặn; không có `continue-on-error
   emulator-runner v2.34.0, ruby/setup-ruby v1.207.0, upload-artifact v4.6.2 đều pin commit SHA.
 
 Runner tạo `.env.ci`, chọn bằng ENVFILE tuyệt đối; không dùng `.env` cá nhân để cấu hình native.
-E2E dùng APP_ENV=development, API_URL=https://example.invalid/api/v1,
+E2E dùng APP_ENV=development, API_URL=http://127.0.0.1:7777/api/v1 (Android tự ánh xạ sang 10.0.2.2),
 APP_ORIGIN trống và DEBUG_MODE=false. Đây là 14 flow smoke/preview gắn tag `ci`;
 `api-health` mang tag `backend`, e2e/api và e2e/backend không chạy trong PR CI.
-Chạy preview không chứng minh API auth, thanh toán hay quyền truy cập thật.
+Fixture Python cục bộ chỉ phục vụ bootstrap khách: GET /auth/me trả 401 AUTHENTICATION_REQUIRED, rồi POST /auth/refresh trả 401 INVALID_REFRESH_TOKEN theo contract. Không tạo phiên/cookie hợp lệ. Request API khác trả 500 và khiến E2E fail qua audit JSONL; không gọi backend thật. Chạy preview không chứng minh API auth, thanh toán hay quyền truy cập thật.
 
 Release dùng APP_ENV=production và DEBUG_MODE=false. Repository variables tuỳ chọn:
 
@@ -71,9 +71,9 @@ npm test -- --ci --runInBand --watch=false --coverage
 npm run test:e2e -- --include-tags ci
 ```
 
-E2E local cần app debug đã cài, Metro và emulator. Runner tự build/cài APK, chờ
+E2E local cần app debug đã cài, Metro và emulator. Khi APK dùng URL CI, chạy `python3 .github/scripts/preview-api.py` trên host trước Maestro để phục vụ bootstrap khách. Runner tự build/cài APK, chờ
 Metro tối đa 180 giây và emulator tối đa 300 giây, reverse port 8081, chạy 14 flow
-và kiểm tra JUnit đủ 14 testcase thành công. Cleanup dừng Metro/logcat và reset font/kích thước.
+và kiểm tra JUnit đủ 14 testcase thành công. Fixture có readiness tối đa 30 giây và audit chỉ method/path/status. Cleanup dừng fixture/Metro/logcat và reset font/kích thước.
 Không bỏ assertion hoặc retry test thất bại để làm xanh pipeline.
 
 Nếu npm ci lỗi, đọc bước cài dependency và giữ nguyên lockfile để tái hiện;

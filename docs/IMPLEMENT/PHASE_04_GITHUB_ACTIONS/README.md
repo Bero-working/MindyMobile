@@ -51,7 +51,7 @@ Artifact: coverage, báo cáo/log E2E đã loại dữ liệu nhạy cảm, log 
 ## Môi trường và build
 
 - Tạo file `.env.ci` trong runner, chọn bằng ENVFILE trước khi build native; không sửa/đọc ra log nội dung .env cá nhân đang được track.
-- Debug E2E: APP_ENV=development, DEBUG_MODE=false, APP_ORIGIN để trống, API_URL là địa chỉ dành riêng cho kiểm tra không cần backend. Preview không được coi là kiểm thử API thật.
+- Debug E2E: APP_ENV=development, DEBUG_MODE=false, APP_ORIGIN để trống, API_URL=http://127.0.0.1:7777/api/v1 (env development tự ánh xạ Android sang 10.0.2.2). Fixture Python cục bộ chỉ trả GET /auth/me → 401 AUTHENTICATION_REQUIRED và POST /auth/refresh → 401 INVALID_REFRESH_TOKEN theo contract để bootstrap khách; request API khác trả 500 và làm E2E fail qua audit. Không có tài khoản, cookie hợp lệ hoặc backend nghiệp vụ; preview không được coi là kiểm thử API thật.
 - Build Release CI: APP_ENV=production, DEBUG_MODE=false, API_URL không rỗng. Mặc định dùng `https://example.invalid/api/v1` cho bản chỉ kiểm tra build; có thể dùng repository variable CI_API_URL trỏ staging. APP_ORIGIN chỉ nhận CI_APP_ORIGIN đã được backend xác nhận, nếu chưa có thì để trống. Các giá trị này là cấu hình nhúng trong app, không phải nơi giữ secret.
 - Không gọi backend production, không tạo enrollment/giao dịch để làm CI xanh. Flow api-health và các thư mục e2e/api, e2e/backend không thuộc job PR bắt buộc; chỉ chạy riêng khi có môi trường và yêu cầu kiểm thử API.
 - Build Android debug phục vụ E2E thuộc job e2e-android, không thay kết quả build Release APK/AAB cuối pipeline. Tạo debug keystore tạm trên runner để khớp signingConfigs hiện có, không thay Gradle.
@@ -61,9 +61,9 @@ Artifact: coverage, báo cáo/log E2E đã loại dữ liệu nhạy cảm, log 
 
 | # | File | Phụ thuộc | Trạng thái |
 | --- | --- | --- | --- |
-| 4.1 | [Type checking và khung workflow](PHASE_04_01_TYPE_CHECKING.md) | Phase 0–3 Done | In progress |
-| 4.2 | [ESLint và định dạng](PHASE_04_02_LINTING.md) | 4.1; ADR-0031 Accepted trước sửa .eslintrc.js | In progress |
-| 4.3 | [Unit test](PHASE_04_03_UNIT_TEST.md) | 4.2 | In progress |
+| 4.1 | [Type checking và khung workflow](PHASE_04_01_TYPE_CHECKING.md) | Phase 0–3 Done | Done |
+| 4.2 | [ESLint và định dạng](PHASE_04_02_LINTING.md) | 4.1; ADR-0031 Accepted trước sửa .eslintrc.js | Done |
+| 4.3 | [Unit test](PHASE_04_03_UNIT_TEST.md) | 4.2 | Done |
 | 4.4 | [E2E Android](PHASE_04_04_E2E.md) | 4.3 | In progress |
 | 4.5 | [Build Android và iOS](PHASE_04_05_BUILD.md) | 4.4 | In progress |
 | 4.99 | [User Acceptance](PHASE_04_99_User_Acceptance.md) | 4.5 → Dọn dẹp → Kiểm tra | Todo |

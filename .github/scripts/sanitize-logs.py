@@ -4,7 +4,7 @@ import re
 
 for folder in ('ci-logs', 'ci-e2e'):
     for path in Path(folder).rglob('*'):
-        if not path.is_file() or path.suffix not in ('.log', '.txt', '.json', '.xml', '.html'):
+        if not path.is_file() or path.suffix not in ('.log', '.txt', '.json', '.jsonl', '.xml', '.html'):
             continue
         text = path.read_text(errors='replace')
         text = re.sub(r'(?im)((?:authorization|cookie|set-cookie)\s*[:=]\s*)[^\r\n]+', r'\1[REDACTED]', text)

@@ -6,7 +6,7 @@ export APP_ENV="$mode"
 export API_URL="${CI_API_URL:-https://example.invalid/api/v1}"
 export APP_ORIGIN="${CI_APP_ORIGIN:-}"
 if [[ "$mode" == development ]]; then
-  export API_URL=https://example.invalid/api/v1
+  export API_URL=http://127.0.0.1:7777/api/v1
   export APP_ORIGIN=''
 fi
 python3 - <<'PY'
