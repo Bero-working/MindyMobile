@@ -1,7 +1,15 @@
 #!/usr/bin/env bash
 set -euo pipefail
-sdkmanager 'platforms;android-35' 'build-tools;35.0.0' 'ndk;27.1.12297006'
 mkdir -p "$HOME/.android" ci-logs
+exec > >(tee ci-logs/android-toolchain.log) 2>&1
+sdk_root="${ANDROID_HOME:-${ANDROID_SDK_ROOT:?Android SDK root is required}}"
+sdkmanager_path=$(find "$sdk_root/cmdline-tools" -maxdepth 3 -type f -name sdkmanager -print -quit)
+if [[ -z "$sdkmanager_path" ]]; then
+  echo 'SDK Manager was not found inside the runner Android SDK' >&2
+  exit 1
+fi
+printf '%s\n' "$(dirname "$sdkmanager_path")" "$sdk_root/platform-tools" "$sdk_root/emulator" >> "$GITHUB_PATH"
+"$sdkmanager_path" 'platforms;android-35' 'build-tools;35.0.0' 'ndk;27.1.12297006'
 if [[ ! -f "$HOME/.android/debug.keystore" ]]; then
   keytool -genkeypair -keystore "$HOME/.android/debug.keystore" \
     -storepass android -alias androiddebugkey -keypass android \
@@ -10,4 +18,4 @@ if [[ ! -f "$HOME/.android/debug.keystore" ]]; then
 fi
 chmod +x android/gradlew
 java -version
-sdkmanager --version
+"$sdkmanager_path" --version

@@ -61,3 +61,12 @@
 - Test: Type checking fail exit 2 với TS2322 tại probe; ESLint fail exit 1 với no-unused-vars tại probe; Jest fail exit 1 đúng assertion Expected2/Received1. Toàn bộ suite thật vẫn 63/63 suite và 294/294 test PASS, cộng 1 suite/test cố ý sai: 64 suite, 295 test, 57.309 giây, process tự thoát. E2E Android, Build Android và Build iOS Simulator đều skipped do quality gates fail; snapshot evidence/quality-negative-jobs.json. Coverage artifact của lượt lỗi được upload.
 - Đã làm: Xoá probe khỏi source ngay sau khi xác minh; chuẩn bị commit khôi phục để chạy đủ pipeline sạch. Sửa hai liên kết spec đang trỏ audit Phase3 chỉ có local sang README Phase3 đã track; không đưa thay đổi Phase3 của owner vào commit.
 - Ghi chú: Kết quả âm này không chứng minh E2E/native build đạt; tiếp tục run bản khôi phục, UAT chưa bắt đầu.
+
+### 2026-10-21 15:41 (+07:00) · @Bero-working (Codex)
+
+- Phase: 4 Kiểm chứng runner sạch / sửa PATH Android
+- Trạng thái: In progress
+- Run: https://github.com/Bero-working/MindyMobile/actions/runs/39570425701, commit 6cc61b6.
+- Test: Type checking, ESLint and formatting, Unit tests đều hosted success. Jest 63 suite/294 test PASS trong 50.319 giây, coverage 83.62/81.51/75/84.52%, tự thoát. E2E fail exit127 trước native build vì sdkmanager không có trong PATH; Build Android/iOS skipped đúng dependency. Chưa có APK/AAB/app artifact.
+- Sửa: Helper tìm sdkmanager trong ANDROID_HOME/cmdline-tools thay vì giả định PATH; ghi cmdline-tools/platform-tools/emulator vào GITHUB_PATH. Khởi tạo ci-logs và ghi toolchain log trước cài SDK để lỗi chuẩn bị cũng có diagnostics. Không sửa native/dependency hoặc thêm action. Đối chiếu Ubuntu2404 runner-images xác nhận SDK root /usr/local/lib/android/sdk, command-line tools đã cài; image run ubuntu24/20261018.339.
+- Ghi chú: Lỗi upload trống của run này xảy ra do bước toolchain dừng trước mkdir cũ; bản sửa bắt đầu tạo log ngay đầu helper. Tiếp tục kiểm chứng runner sạch; không coi quality PASS là E2E/build PASS.
