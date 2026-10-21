@@ -51,6 +51,10 @@ while ((SECONDS < metro_deadline)); do
   sleep 2
 done
 if [[ "$ready" != true ]]; then echo 'Metro readiness timed out' >&2; exit 1; fi
+echo 'Prebuild the Android development bundle before starting UI assertions'
+curl --fail --silent --show-error --connect-timeout 5 --max-time 300 \
+  'http://127.0.0.1:8081/index.bundle?platform=android&dev=true&lazy=true&minify=false&app=com.mindymobile&modulesOnly=false&runModule=true&excludeSource=true&sourcePaths=url-server' \
+  --output /dev/null --write-out 'Bundle ready: %{size_download} bytes in %{time_total}s\n'
 adb logcat -c
 adb logcat '*:W' > ci-logs/logcat.log 2>&1 &
 logcat_pid=$!

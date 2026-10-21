@@ -15,13 +15,13 @@ Tự động chạy Maestro trên Android Emulator với bản debug có preview
 
 ### 4.4.2 Chuẩn bị native và emulator
 
-- Runner Ubuntu 24.04 có KVM; JDK 17; SDK/Build Tools 35, NDK 27.1.12297006 theo Gradle hiện tại. Chốt image emulator x86_64 API 35 và bản Maestro 2.11.0 sau khi xác nhận upstream/khả năng chạy. Pin action emulator theo SHA; lưu version/ABI thực tế.
+- Runner Ubuntu 24.04 có KVM; JDK 17; SDK/Build Tools 35, NDK 27.1.12297006 theo Gradle hiện tại. Chốt image emulator x86_64 API 35, profile pixel_8 (baseline1080×2400/density420, đối chiếu14flow local) và bản Maestro 2.11.0 sau khi xác nhận upstream/khả năng chạy. Pin action emulator theo SHA; lưu version/ABI thực tế.
 - Trên runner GitHub-hosted Linux tạm, giải phóng toolchain .NET/Swift/GHC/Boost/CodeQL không dùng và gỡ NDK khác qua sdkmanager; giữ NDK27.1.12297006. Guard không cho bước dọn hệ thống chạy ngoài runner tạm; ghi df và log trước/sau để đủ chỗ cho APK + system image.
 - Tạo .env.ci với APP_ENV=development, APP_ORIGIN trống, DEBUG_MODE=false và API_URL=http://127.0.0.1:7777/api/v1 dành riêng fixture bootstrap cục bộ; ENVFILE phải được chọn trước khi build. Không đưa tài khoản/secret vào source hoặc log.
 - Tạo debug keystore tạm ở ~/.android/debug.keystore với alias/password debug chuẩn để Gradle dùng config hiện tại; không sửa android/**.
 - Cấp quyền chạy gradlew trong runner; assembleDebug với -PreactNativeArchitectures=x86_64 --max-workers=2. Cài APK vào emulator, APP_ID=com.mindymobile.
 - Khởi động preview-api.py trên loopback port 7777, chờ health tối đa 30 giây; chỉ whitelist GET /auth/me và POST /auth/refresh với 401 theo contract. Giữ chuỗi bootstrap/refresh theo contract; ghi audit method/path/status, không headers/body/query. Reset/dừng fixture trong cleanup.
-- Chạy Metro nền với log riêng, chờ endpoint /status báo sẵn sàng và adb wait-for-device/boot hoàn tất trước khi chạy Maestro; adb reverse tcp:8081 tcp:8081. Giữ Metro suốt lượt test và dừng bằng cleanup/trap.
+- Chạy Metro nền với log riêng, chờ endpoint /status báo sẵn sàng và adb wait-for-device/boot hoàn tất trước khi chạy Maestro; adb reverse tcp:8081 tcp:8081. Sau /status, tải debug index.bundle với query Android/RN và timeout300giây trước Maestro để hoàn tất cold bundle. Giữ Metro suốt lượt test và dừng bằng cleanup/trap.
 - Cho emulator ít nhất 4 GB RAM khi runner đáp ứng; ghi cấu hình tài nguyên, tắt animation. Kiểm tra font scale/kích thước được flow responsive đặt hoặc reset, không để flow làm ảnh hưởng ca sau.
 - Nếu cần sửa native/Metro/config khoá để chạy được, tách ADR riêng; không ép tắt Hermes/New Architecture để né lỗi.
 

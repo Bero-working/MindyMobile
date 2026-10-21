@@ -1,0 +1,34 @@
+{
+  "run_url": "https://github.com/Bero-working/MindyMobile/actions/runs/39576534489",
+  "implementation_commit": "c8597c09756171204fe77fa74a72f96e875a7db0",
+  "probe_commit": "bcb3193dcb569e4330cc1c209e9265b39032c7e4",
+  "purpose": "Controlled invalid build options on isolated validation branch; expected job failures",
+  "jobs": [
+    {
+      "id": 119143322749,
+      "name": "Android invalid build option (expected failure)",
+      "conclusion": "failure",
+      "package_step": "skipped",
+      "html_url": "https://github.com/Bero-working/MindyMobile/actions/runs/39576534489/job/119143322749"
+    },
+    {
+      "id": 119143323116,
+      "name": "iOS invalid build option (expected failure)",
+      "conclusion": "failure",
+      "package_step": "skipped",
+      "html_url": "https://github.com/Bero-working/MindyMobile/actions/runs/39576534489/job/119143323116"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 12333868903,
+      "name": "ios-negative-39576534489",
+      "size_in_bytes": 4921
+    },
+    {
+      "id": 12333734186,
+      "name": "android-negative-39576534489",
+      "size_in_bytes": 1531
+    }
+  ]
+}
