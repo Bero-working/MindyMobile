@@ -9,3 +9,10 @@ export {
 export { PhaseOnePreview } from './preview/PhaseOnePreview';
 export { CoursesRoute } from './courses/CoursesRoute';
 export { PaymentRoute } from './payment/PaymentRoute';
+
+export {
+  StudentScheduleRoute,
+  StudentAccountRoute,
+  MyClassesRoute,
+  StudentClassDetailRoute,
+} from './my-classes/LearningRoutes';

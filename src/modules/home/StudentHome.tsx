@@ -363,6 +363,9 @@ export function StudentHome(props: HomeProps) {
             {(['courses', 'schedule', 'account'] as const).map((tab) => (
               <PressableScale
                 key={tab}
+                testID={
+                  tab === 'account' ? 'home-my-classes' : `home-footer-${tab}`
+                }
                 accessibilityRole="link"
                 accessibilityLabel={t(
                   tab === 'account'
@@ -429,6 +432,7 @@ export function StudentHome(props: HomeProps) {
         className="absolute inset-x-[12px]"
       >
         <HomeTabBar
+          learningEnabled={props.learningEnabled ?? false}
           onTab={actions.onTab}
           onTop={top}
         />

@@ -1,4 +1,4 @@
-import { Text, View } from 'react-native';
+import { Text, View, useWindowDimensions } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { PressableScale } from './PressableScale';
 import { Icon, type IconName } from './Icon';
@@ -16,17 +16,36 @@ export function AppTabBar({
   onTop,
   selected = 'home',
   prefix = 'home',
+  learningEnabled = false,
 }: {
   onTab: HomeActions['onTab'];
   onTop: () => void;
-  selected?: 'home' | 'courses';
+  selected?: 'home' | 'courses' | 'schedule' | 'account';
   prefix?: string;
+  learningEnabled?: boolean;
 }) {
   const { t } = useTranslation();
+  const { width, fontScale } = useWindowDimensions();
+  const roomy = learningEnabled && (width <= 360 || fontScale >= 1.3);
+  const enabled = (id: (typeof tabs)[number]['id']) =>
+    id === 'home' ||
+    (!!onTab &&
+      (id === 'courses' ||
+        (learningEnabled && (id === 'schedule' || id === 'account'))));
   return (
-    <View className="relative h-[96px] flex-row items-end px-[4px]">
+    <View
+      className={
+        roomy
+          ? 'relative h-[116px] flex-row items-end px-[4px]'
+          : 'relative h-[96px] flex-row items-end px-[4px]'
+      }
+    >
       <View
-        className="absolute inset-x-[0px] bottom-[0px] h-[68px] rounded-[26px] bg-canvas shadow-xl shadow-forest/20"
+        className={
+          roomy
+            ? 'absolute inset-x-[0px] bottom-[0px] h-[88px] rounded-[26px] bg-canvas shadow-xl shadow-forest/20'
+            : 'absolute inset-x-[0px] bottom-[0px] h-[68px] rounded-[26px] bg-canvas shadow-xl shadow-forest/20'
+        }
         accessible={false}
       />
       {tabs.map(({ id, icon }) => (
@@ -34,8 +53,12 @@ export function AppTabBar({
           key={id}
           className={
             id === 'home'
-              ? 'h-[96px] flex-1 items-center'
-              : 'h-[68px] flex-1 justify-center'
+              ? roomy
+                ? 'h-[116px] flex-1 items-center'
+                : 'h-[96px] flex-1 items-center'
+              : roomy
+                ? 'h-[88px] flex-1 justify-center'
+                : 'h-[68px] flex-1 justify-center'
           }
         >
           <PressableScale
@@ -43,15 +66,13 @@ export function AppTabBar({
             accessibilityRole="tab"
             accessibilityLabel={t(`home.tabs.${id}`)}
             accessibilityHint={
-              id !== 'home' && (id !== 'courses' || !onTab)
-                ? t('home.actions.unavailable')
-                : undefined
+              !enabled(id) ? t('home.actions.unavailable') : undefined
             }
             accessibilityState={{
               selected: id === selected,
-              disabled: id !== 'home' && (id !== 'courses' || !onTab),
+              disabled: !enabled(id),
             }}
-            disabled={id !== 'home' && (id !== 'courses' || !onTab)}
+            disabled={!enabled(id)}
             onPress={() => (id === 'home' ? onTop() : onTab?.(id))}
             className={
               id === 'home'
@@ -79,11 +100,11 @@ export function AppTabBar({
                   color={id === selected ? colors.canvas : colors.muted}
                 />
                 <Text
-                  numberOfLines={1}
+                  numberOfLines={roomy ? 2 : 1}
                   className={
                     id === selected
-                      ? 'font-nunito-extrabold text-[10.5px] text-canvas'
-                      : 'font-nunito-extrabold text-[10.5px] text-muted'
+                      ? 'text-center font-nunito-extrabold text-[10.5px] text-canvas'
+                      : 'text-center font-nunito-extrabold text-[10.5px] text-muted'
                   }
                 >
                   {t(`home.tabs.${id}`)}

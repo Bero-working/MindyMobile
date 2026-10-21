@@ -2,6 +2,20 @@ import Svg, { Path, Circle, Rect } from 'react-native-svg';
 import { colors } from '@/theme/colors';
 
 export type IconName =
+  | 'check'
+  | 'video'
+  | 'folder'
+  | 'folder-open'
+  | 'camera'
+  | 'edit'
+  | 'monitor'
+  | 'award'
+  | 'check-calendar'
+  | 'globe'
+  | 'help'
+  | 'document'
+  | 'bag'
+  | 'logout'
   | 'back'
   | 'eye'
   | 'eyeOff'
@@ -21,6 +35,21 @@ export type IconName =
   | 'filter'
   | 'clock';
 const paths: Record<IconName, string> = {
+  check: 'M5 12l4 4L19 6',
+  video: 'M3 6h12v12H3zM15 10l6-4v12l-6-4z',
+  folder: 'M3 5h7l2 3h9v12H3z',
+  'folder-open': 'M3 8V5h7l2 3h9M3 10h19l-3 10H4z',
+  camera: 'M3 7h4l2-3h6l2 3h4v14H3zM16 13a4 4 0 1 1-8 0 4 4 0 0 1 8 0',
+  edit: 'M4 16 16 4l4 4L8 20H4zM13 7l4 4',
+  monitor: 'M3 4h18v13H3zM12 17v4M8 21h8',
+  award: 'M16 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0M9 12l-1 9 4-2 4 2-1-9',
+  'check-calendar': 'M3 5h18v16H3zM7 3v4M17 3v4M3 10h18M8 15l3 3 5-5',
+  globe:
+    'M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0M3 12h18M12 3c5 5 5 13 0 18-5-5-5-13 0-18',
+  help: 'M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0M9 9a3 3 0 0 1 6 0c0 2-3 2-3 5M12 17h.01',
+  document: 'M5 3h10l4 4v14H5zM14 3v5h5M8 12h8M8 16h6',
+  bag: 'M5 6h14l-1 15H6zM9 6V4h6v2',
+  logout: 'M10 3H4v18h6M9 12h12M17 8l4 4-4 4',
   filter: 'M4 8h9M17 8h3M4 16h3M11 16h9',
   clock: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 7v5l3 2',
   back: 'M15 18l-6-6 6-6',

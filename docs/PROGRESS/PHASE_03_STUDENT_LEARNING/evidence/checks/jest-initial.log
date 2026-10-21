@@ -1,0 +1,65 @@
+PASS src/modules/auth/sessionNavigation.test.tsx (11.242 s)
+PASS src/modules/my-classes/studentLearning.integration.test.tsx
+PASS src/modules/preview/learningFlow.test.tsx
+PASS src/modules/preview/commerceFlow.test.tsx
+PASS src/modules/my-classes/MyClassesScreen.test.tsx
+PASS src/modules/home/home.test.tsx
+PASS src/modules/courses/productionCommerce.test.tsx
+PASS src/config/nativewind.test.tsx
+PASS src/modules/my-classes/services/learning.service.test.ts
+PASS src/modules/auth/auth.test.tsx
+PASS src/modules/account/AccountScreen.test.tsx
+PASS src/modules/home/production.test.tsx
+PASS src/modules/courses/catalog.test.tsx
+PASS src/modules/payment/hooks/usePaymentQuery.test.tsx
+PASS src/modules/my-classes/ClassDetailScreen.test.tsx
+PASS src/modules/auth/navigation.test.tsx
+PASS src/modules/cart/hooks/useCartController.test.tsx
+PASS src/modules/schedule/ScheduleScreen.test.tsx
+PASS __tests__/App.test.tsx
+PASS src/modules/cart/hooks/useCartQuery.test.tsx
+PASS src/modules/courses/filter.test.tsx
+PASS src/modules/courses/courseSheet.test.tsx
+PASS src/modules/my-classes/hooks/useLearningQuery.test.tsx
+PASS src/modules/courses/hooks/useCourseDetailQuery.test.tsx
+PASS src/modules/courses/hooks/useCatalogQuery.test.tsx
+PASS src/modules/courses/routes.test.tsx
+PASS src/modules/auth/hooks/useAuthSession.test.tsx
+PASS src/config/http/http.config.test.ts
+PASS src/modules/home/hooks/useHomeQuery.test.tsx
+PASS src/modules/cart/cart.test.tsx
+PASS src/components/ui/ui.test.tsx
+PASS src/shared/hooks/useCarouselAutoplay.test.tsx
+PASS src/theme/motion.test.ts
+PASS src/modules/courses/services/catalog.service.test.ts
+PASS src/modules/payment/payment.test.tsx
+PASS src/config/testInfrastructure.test.tsx
+PASS src/modules/cart/services/cart.service.test.ts
+PASS src/modules/example/hooks/useExampleController.test.ts
+PASS src/modules/payment/services/payment.service.test.ts
+PASS src/modules/home/services/home.service.test.ts
+PASS src/modules/auth/services/auth.service.test.ts
+PASS src/modules/my-classes/services/resumeOrder.service.test.ts
+PASS src/modules/example/services/example.service.test.ts
+PASS src/modules/payment/bankInfo.test.tsx
+PASS src/modules/schedule/calendar.test.ts
+PASS src/modules/courses/selection.test.tsx
+PASS src/shared/utilities/apiError.test.ts
+PASS src/modules/payment/countdown.test.tsx
+PASS src/modules/my-classes/access.test.ts
+PASS src/modules/auth/hooks/useAuthForm.test.ts
+PASS src/shared/utilities/logger.test.ts
+PASS src/theme/regions.test.ts
+PASS src/theme/colors.test.ts
+PASS src/config/queryClient.test.ts
+PASS src/shared/utilities/formatVnd.test.ts
+PASS src/modules/courses/summarizeSchedule.test.ts
+PASS src/shared/utilities/idempotencyKey.test.ts
+PASS src/shared/utilities/cn.test.ts
+PASS src/config/i18n.config.test.ts
+
+Test Suites: 59 passed, 59 total
+Tests:       281 passed, 281 total
+Snapshots:   0 total
+Time:        48.202 s, estimated 75 s
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

@@ -1,0 +1,39 @@
+appId: ${APP_ID || "com.mindymobile"}
+---
+- launchApp
+- extendedWaitUntil:
+    visible:
+      id: 'home-screen'
+    timeout: 90000
+- tapOn:
+    id: 'home-tab-schedule'
+- assertVisible:
+    id: 'schedule-screen'
+- assertVisible:
+    id: 'schedule-empty'
+- takeScreenshot: 'phase3-api-schedule'
+- tapOn:
+    id: 'schedule-tab-account'
+- extendedWaitUntil:
+    visible:
+      id: 'account-my-classes'
+    timeout: 30000
+- takeScreenshot: 'phase3-api-account'
+- tapOn:
+    id: 'account-my-classes'
+- extendedWaitUntil:
+    visible:
+      id: 'my-classes-empty'
+    timeout: 30000
+- assertNotVisible:
+    id: 'my-classes-view-history'
+- takeScreenshot: 'phase3-api-my-classes'
+- assertNotVisible:
+    id: 'class-detail-screen'
+- pressKey: Back
+- assertVisible:
+    id: 'account-screen'
+- tapOn:
+    id: 'account-tab-home'
+- assertVisible:
+    id: 'home-screen'

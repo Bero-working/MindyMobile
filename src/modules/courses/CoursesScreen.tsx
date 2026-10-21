@@ -285,7 +285,8 @@ export function CoursesScreen(props: CatalogProps) {
           prefix="courses"
           selected="courses"
           onTop={props.onHome}
-          onTab={() => {}}
+          learningEnabled={!!props.onLearningTab}
+          onTab={props.onLearningTab ?? (() => {})}
         />
       </View>
     </View>

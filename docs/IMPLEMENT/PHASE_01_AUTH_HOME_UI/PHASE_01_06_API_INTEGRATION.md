@@ -35,7 +35,11 @@ reset stack khi mất phiên. Giữ nguyên thiết kế và preview chỉ devel
 
 - Bootstrap chưa hoàn tất: không chớp Home/dữ liệu người dùng cũ, không lặp request vô hạn.
 - Refresh thất bại hoặc đổi user: clear cache và reset stack, Back không trở lại dữ liệu cũ; phản hồi cũ không khôi phục phiên.
-- Staff đăng nhập: không vào Home hoặc gọi `me/schedule` Student.
+- Staff đăng nhập: không vào Home hoặc gọi `me/schedule` Student. Theo yêu cầu owner ngày 2026-10-20,
+  Admin/Mentor/Manager đăng nhập từ form phải nhận lỗi `INVALID_CREDENTIALS` ngay trong khối lỗi của Login
+  (“Email hoặc mật khẩu không đúng.”), giữ dữ liệu nhập và không chuyển sang màn chặn có nút Đăng xuất.
+  Kết thúc phiên cookie vừa được backend cấp trước khi báo lỗi; không nhận user staff vào session của app.
+  Không tạo mã hỗ trợ giả nếu backend login thành công không cung cấp requestId.
 - Lịch phân trang/hủy buổi/đang diễn ra: không chọn nhầm “buổi tiếp theo” hoặc lấy thời gian thiết bị thay `asOf`/`timeZone`.
 - Mutation mất response: giữ dữ liệu/lỗi có thể thử lại chủ động; không gửi lặp register/resend/login tự động.
 

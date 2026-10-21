@@ -44,6 +44,7 @@ export type HomeActions = {
   onMyClasses?: () => void;
 };
 export type HomeProps = {
+  learningEnabled?: boolean;
   cartCount?: number;
   sessionControls?: ReactNode;
   displayName: string;

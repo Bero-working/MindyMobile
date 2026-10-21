@@ -35,7 +35,7 @@ afterEach(() => {
   mockServer.resetHandlers();
 });
 afterAll(() => mockServer.close());
-it('does not flash Home during bootstrap and directs authenticated staff to an explanatory state', async () => {
+it('does not flash Home during bootstrap and shows an invalid account message for staff', async () => {
   let finish: () => void = () => {};
   const response = new Promise<void>((resolve) => {
     finish = resolve;
@@ -59,8 +59,57 @@ it('does not flash Home during bootstrap and directs authenticated staff to an e
   );
   expect(screen.queryByTestId('home-screen')).toBeNull();
   expect(screen.queryByTestId('login-submit-button')).toBeNull();
-  expect(screen.getByText(/nhân sự|staff account/)).toBeTruthy();
+  expect(
+    screen.getByText(
+      /Sai tài khoản hoặc mật khẩu|Incorrect account or password/
+    )
+  ).toBeTruthy();
 });
+it.each(['ADMIN', 'MENTOR', 'MANAGER'])(
+  'keeps %s login on the form with a credentials error and ends its backend session',
+  async (role) => {
+    let logoutCount = 0;
+    mockServer.use(
+      http.get(TEST_API_URL + '/auth/me', () =>
+        HttpResponse.json(
+          { statusCode: 401, code: 'NO_SESSION', message: 'Guest' },
+          { status: 401 }
+        )
+      ),
+      http.post(TEST_API_URL + '/auth/login', () =>
+        HttpResponse.json({
+          user: { ...user, role },
+          accessTokenExpiresAt: '2026-10-17T16:00:00Z',
+        })
+      ),
+      http.post(TEST_API_URL + '/auth/logout', () => {
+        logoutCount++;
+        return new HttpResponse(null, { status: 204 });
+      })
+    );
+    render(<App />);
+    await waitFor(() =>
+      expect(screen.getByTestId('welcome-login-button')).toBeTruthy()
+    );
+    fireEvent.press(screen.getByTestId('welcome-login-button'));
+    fireEvent.changeText(screen.getByTestId('login-email-input'), user.email);
+    fireEvent.changeText(screen.getByTestId('login-password-input'), 'secret');
+    fireEvent.press(screen.getByTestId('login-submit-button'));
+    await waitFor(() =>
+      expect(screen.getByTestId('login-form-error')).toBeTruthy()
+    );
+    expect(screen.getByText('Email hoặc mật khẩu không đúng.')).toBeTruthy();
+    expect(screen.getByTestId('login-email-input').props.value).toBe(
+      user.email
+    );
+    expect(screen.getByTestId('login-password-input').props.value).toBe(
+      'secret'
+    );
+    expect(screen.queryByTestId('home-screen')).toBeNull();
+    expect(useStore.getState().sessionUser).toBeNull();
+    expect(logoutCount).toBe(1);
+  }
+);
 it('logs in through the production form, resets guest history, and returns expired sessions to Login', async () => {
   mockServer.use(
     http.get(TEST_API_URL + '/auth/me', () =>

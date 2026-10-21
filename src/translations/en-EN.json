@@ -120,7 +120,7 @@
     "session": {
       "error": "We could not verify your session. Please try again.",
       "logout": "Sign out",
-      "staff": "You are signed in with a staff account. This role is not available in the mobile app yet."
+      "staff": "Incorrect account or password."
     }
   },
   "home": {
@@ -404,5 +404,203 @@
       "generic": "Unable to load payment information."
     },
     "minute": "Your QR code expires in one minute."
+  },
+  "learning": {
+    "back": "Back",
+    "cancel": "Cancel",
+    "stale": "Showing previous data",
+    "refreshing": "Refreshing…",
+    "delivery": {
+      "ONLINE": "Online",
+      "OFFLINE": "At the center"
+    },
+    "sessionStatus": {
+      "SCHEDULED": "Scheduled",
+      "IN_PROGRESS": "In progress",
+      "COMPLETED": "Ended",
+      "CANCELLED": "Cancelled"
+    },
+    "classStatus": {
+      "DRAFT": "Preparing",
+      "OPEN": "Open",
+      "IN_PROGRESS": "In progress",
+      "COMPLETED": "Ended",
+      "CANCELLED": "Cancelled"
+    }
+  },
+  "schedule": {
+    "month": "{{month}}, {{year}}",
+    "goToday": "Tap to return to this week and select today",
+    "classCode": "Class code",
+    "delivery": { "ONLINE": "Online", "OFFLINE": "Offline" },
+    "room": "Room: {{room}}",
+    "mentor": "Mentor: {{name}}",
+    "timeSeparator": "–",
+    "weekdays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "title": "Schedule",
+    "previous": "‹",
+    "previousWeek": "Previous week",
+    "next": "›",
+    "nextWeek": "Next week",
+    "week": "{{from}} – {{to}}",
+    "today": "Today",
+    "dayLabel": "{{day}}, {{count}} sessions. {{today}}",
+    "count": "{{count}} sessions",
+    "days": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    "noSessionsOnDay": "No sessions on {{day}}.",
+    "state": {
+      "empty": "No sessions this week",
+      "description": "Sessions appear when your classes grant schedule access."
+    }
+  },
+  "account": {
+    "orders": "My orders",
+    "editProfile": "Edit profile",
+    "certificates": "Certificates",
+    "attendance": "Attendance history",
+    "push": "Push notifications",
+    "help": "Help",
+    "policy": "Terms & policies",
+    "changeAvatar": "Change avatar",
+    "unavailable": "This feature is not available yet",
+    "title": "Account",
+    "avatar": "Initials avatar for {{name}}",
+    "profile": "Personal information",
+    "notUpdated": "Not provided",
+    "language": "Language",
+    "languages": {
+      "vi-VN": "Tiếng Việt",
+      "en-EN": "English"
+    },
+    "fields": {
+      "displayName": "Full name",
+      "email": "Email",
+      "phone": "Phone",
+      "role": "Role"
+    },
+    "roles": {
+      "STUDENT": "Student",
+      "MENTOR": "Mentor",
+      "MANAGER": "Manager",
+      "ADMIN": "Administrator"
+    },
+    "logout": "Log out",
+    "confirmLogout": "Log out of your account?",
+    "state": {
+      "empty": "Account information unavailable",
+      "description": "Please reload your session information."
+    }
+  },
+  "myClasses": {
+    "count": "{{count}} classes",
+    "historyTitle": "Class history",
+    "switchView": "Switch between current classes and history",
+    "collapseSymbol": "⌄",
+    "title": "My classes",
+    "view": {
+      "current": "Current",
+      "history": "History"
+    },
+    "loaded": "{{count}} classes loaded",
+    "open": "View class",
+    "preview": "Preview",
+    "resume": "Continue payment",
+    "review": "Payment under review",
+    "expires": "Expires: {{date}}",
+    "explore": "Explore courses",
+    "loadMore": "Load more",
+    "moreError": "The list is incomplete. Please retry.",
+    "state": {
+      "empty": "No classes in this list",
+      "description": "Classes are grouped by the courses you enrolled in."
+    },
+    "empty": {
+      "current": "You have no classes in the current list.",
+      "history": "You have no enrollment history."
+    },
+    "access": {
+      "ACTIVE_ENROLLMENT": "Full access",
+      "PENDING_CASH": "Awaiting cash confirmation — preview only",
+      "PENDING_PAYOS": "Awaiting payment",
+      "HOLD_EXPIRED": "Reservation expired",
+      "ENROLLMENT_CANCELLED": "Enrollment cancelled",
+      "ENROLLMENT_COMPLETED": "Completed",
+      "CLASS_CANCELLED": "Class cancelled",
+      "STATE_MISMATCH": "Class information is inconsistent. Please contact the center."
+    }
+  },
+  "classDetail": {
+    "session": {
+      "date": "Date",
+      "time": "Time",
+      "room": "Room",
+      "heading": "{{code}} · Session {{number}}/{{total}}",
+      "unit": "Unit: {{title}}",
+      "content": "Session content",
+      "noContent": "Detailed session content has not been provided.",
+      "objectives": "Objectives",
+      "noObjectives": "Session objectives have not been provided.",
+      "materials": "Materials"
+    },
+    "sessionsLabel": "Sessions",
+    "startDate": "Starts",
+    "endDate": "Ends",
+    "deliveryLabel": "Format",
+    "mentorLabel": "Mentor",
+    "participants": {
+      "open": "View teacher and students",
+      "mentorClass": "Teacher of {{code}}",
+      "students": "Students",
+      "pending": "The student list is not available yet."
+    },
+    "more": "Show more",
+    "less": "Show less",
+    "title": "Class details",
+    "preview": "Awaiting cash payment confirmation — preview only",
+    "noMentor": "Mentor not assigned",
+    "noRoom": "Room not assigned",
+    "sessionCount": "{{count}} sessions",
+    "sessionNumber": "Session {{number}}",
+    "rowToday": "Today",
+    "rowUpcoming": "Upcoming",
+    "noUnits": "This class has no units or sessions yet.",
+    "missingSession": "This session is no longer in the class schedule.",
+    "join": "Join Google Meet",
+    "linkError": "Unable to open the link. Please try again.",
+    "denied": "You cannot access this class",
+    "notFound": "Class not found",
+    "returnToList": "Return to your classes to refresh access.",
+    "state": {
+      "empty": "Class details unavailable",
+      "description": "Please return to your class list."
+    }
+  },
+  "learningPreview": {
+    "nextCourse": "Advanced web development",
+    "title": "Phase 3 preview",
+    "schedule": "Schedule",
+    "account": "Account",
+    "classes": "My classes",
+    "success": "Data",
+    "loading": "Loading",
+    "empty": "Empty",
+    "error": "Error",
+    "course": "Web application development",
+    "class": "Evening Web class",
+    "unit": "Programming foundations",
+    "session": "Introduction to web applications",
+    "mentor": "Sample mentor",
+    "name": "Mindy student",
+    "exit": "Back to preview menu",
+    "openTools": "States",
+    "logoutError": "Simulate logout failure"
   }
 }

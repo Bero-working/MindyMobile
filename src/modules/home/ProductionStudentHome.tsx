@@ -1,5 +1,5 @@
 import { View } from 'react-native';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import type { NavigationProp } from '@/navigation/types';
 import routes from '@/navigation/routes';
@@ -12,12 +12,21 @@ import type { SessionUser } from '@/modules/auth/schemas/authResponse.schema';
 import { useCartQuery } from '@/modules/cart/hooks/useCartQuery';
 import { useHomeQuery } from './hooks/useHomeQuery';
 import { StudentHome } from './StudentHome';
+import { navigateLearningTab } from '../my-classes/LearningRoutes';
 
 export function ProductionStudentHome({ user }: { user: SessionUser }) {
   const { t } = useTranslation();
   const data = useHomeQuery();
   const cart = useCartQuery();
   const navigation = useNavigation<NavigationProp>();
+  const refresh = useRef(data.onRefresh);
+  refresh.current = data.onRefresh;
+  useEffect(() => {
+    if (!navigation.addListener) return;
+    return navigation.addListener('focus', () => {
+      refresh.current().catch(() => {});
+    });
+  }, [navigation]);
   const [sheet, setSheet] = useState<'course' | 'cart' | null>(null);
   const [courseId, setCourseId] = useState('');
   const openCourse = (id: string) => {
@@ -29,6 +38,7 @@ export function ProductionStudentHome({ user }: { user: SessionUser }) {
     <>
       <StudentHome
         {...data}
+        learningEnabled
         cartCount={cart.data?.items.length ?? 0}
         displayName={user.displayName}
         actions={{
@@ -36,9 +46,14 @@ export function ProductionStudentHome({ user }: { user: SessionUser }) {
           onSelectCourse: openCourse,
           onCart: () => setSheet('cart'),
           onExplore: () => navigation.navigate(routes.courses),
-          onTab: (tab) => {
-            if (tab === 'courses') navigation.navigate(routes.courses);
-          },
+          onTab: (tab) => navigateLearningTab(navigation, tab),
+          onMyClasses: () =>
+            navigation.navigate(routes.myClasses, { origin: 'home' }),
+          onSession: (session) =>
+            navigation.navigate(routes.studentClassDetail, {
+              classId: session.classId,
+              sessionId: session.sessionId,
+            }),
         }}
         sessionControls={
           <View className="mt-4 gap-3">

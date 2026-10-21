@@ -125,3 +125,27 @@ kiểm thử hoặc UAT. Khi bàn giao cần ghi rõ nguồn Claude Auth, Studen
 - Test: Chỉ cập nhật tài liệu theo xác nhận của owner; không chạy lại Jest/build/Maestro hoặc thao tác backend. Bằng chứng trước đó: Jest 132/132, lint/format/TypeScript PASS, Android UI 4/4 và API thật 1/1 theo entry 22:12. Không có mô tả từng bước hoặc môi trường UAT mới từ owner.
 - PR / commit: Chưa tạo.
 - Ghi chú: Xác minh GitHub handle qua connector GitHub get_user_login: LogKoNger. Giữ nguyên giới hạn bằng chứng đã ghi: native refresh khi access/refresh hết hạn hoặc bị thu hồi, staff login thật, register/resend email thật, iOS/release/TalkBack thủ công chưa có kết quả mới. Owner duyệt UAT tổng thể Phase 1; không suy ra các ca chưa chạy đã PASS hoặc Foundation đã nghiệm thu. Phase 0 giữ Blocked và UAT riêng. Các entry lịch sử được giữ nguyên.
+
+### 2026-10-20 14:58 (+07:00) · @LogKoNger
+- Phase: 1 Bổ sung xác nhận UAT và đổi thông báo tài khoản staff
+- Trạng thái: Done — giữ xác nhận UAT tổng thể trước đó; thay đổi thông báo đã triển khai theo yêu cầu owner.
+- Đã làm: Owner xác nhận trong chat “Phiên đăng nhập và refresh tôi xác nhận done”, “Đăng kí/gửi lại email tôi đã test thành công”, “talkback ok”. Ghi nhận các phần này đạt theo owner, không suy diễn thành lượt chạy mới của AI hoặc thêm chi tiết môi trường/ca thu hồi chưa được mô tả. Owner gửi ảnh màn tài khoản staff và yêu cầu đổi thông báo sang sai tài khoản/mật khẩu. Đổi chuỗi vi/en thành “Sai tài khoản hoặc mật khẩu.” / “Incorrect account or password.”; giữ nút Đăng xuất, chặn Home và lịch Student như hiện có. Đồng bộ đặc tả 1.6, hướng dẫn UAT và kiểm thử điều hướng.
+- Test: Jest sessionNavigation 1 suite/2 test PASS; ESLint file test và Prettier ba file src thay đổi đạt. Lượt Jest có cảnh báo request me/cart chưa có mock và tiến trình chưa tự thoát sau khi báo PASS; dừng tiến trình sau kết quả. Chưa chạy lại Android/E2E hoặc kiểm thử iOS/release cho thay đổi thông báo.
+- PR / commit: Chưa tạo.
+- Ghi chú: Dùng handle đã được xác minh ở entry 2026-10-17 22:42; CLI gh không có trong môi trường hiện tại. Không sửa các entry lịch sử hoặc tự tích điều kiện Dọn dẹp/chuyển In review vốn chưa có bản ghi đầy đủ. Xác nhận hôm nay bổ sung kết quả owner cho phiên/refresh, email và TalkBack; không thay bằng chứng kỹ thuật cũ.
+
+### 2026-10-20 15:01 (+07:00) · @LogKoNger
+- Phase: 1.6 Đổi phản hồi login staff sang lỗi trong form
+- Trạng thái: Done — triển khai yêu cầu chỉnh lỗi Login của owner.
+- Đã làm: Owner gửi ảnh màn chặn và khối lỗi Login, yêu cầu hiển thị như ảnh lỗi. Thay đổi trước chỉ đổi copy chưa đáp ứng cách hiển thị mới. Cập nhật đặc tả và UAT: login ADMIN/MENTOR/MANAGER kết thúc phiên backend vừa được cấp, trả INVALID_CREDENTIALS cho khối FormFeedback của Login, giữ email/password và không nhận sessionUser staff; không đi sang màn riêng có nút Đăng xuất. Dùng copy lỗi sẵn có “Email hoặc mật khẩu không đúng.” và kiểu nền peach/chữ headsup. Không tạo requestId giả vì response login thành công không có mã hỗ trợ. Nếu logout backend lỗi, giữ xử lý lỗi tương ứng và không nhận phiên vào app. Màn fallback cho cookie staff có sẵn từ trước vẫn được giữ; thay đổi này áp dụng khi submit Login.
+- Test: Ba ca hồi quy ADMIN/MENTOR/MANAGER chạy RED trước thay đổi (chưa có login-form-error), sau thay đổi GREEN. SessionNavigation và useAuthSession: 2 suite/12 test PASS; ESLint, Prettier các file code thay đổi và TypeScript PASS. Jest dùng forceExit do tiến trình mở đã ghi nhận trước; vẫn có cảnh báo me/cart chưa mock ở ca Student cũ. Không chạy native/E2E trong lượt này.
+- PR / commit: Chưa tạo.
+- Ghi chú: Giữ xác nhận UAT trước của owner, không tự xác nhận owner đã test phản hồi mới. Không sửa navigator, HTTP foundation hoặc các thay đổi Phase 3 đang có trong workspace.
+
+### 2026-10-20 15:04 (+07:00) · @LogKoNger
+- Phase: 1 Owner duyệt phản hồi lỗi Login cho Admin/Mentor/Manager
+- Trạng thái: Done.
+- Đã làm: Owner xác nhận trực tiếp “Được duyệt” sau bàn giao thay đổi login ADMIN/MENTOR/MANAGER ở lại form và hiển thị “Email hoặc mật khẩu không đúng.” trong khối lỗi, giữ dữ liệu nhập. Ghi nhận duyệt thay đổi này trong tài liệu UAT 1.99. Phase 1 và 1.99 tiếp tục Done theo xác nhận UAT đã có.
+- Test: Chỉ ghi nhận approval, không chạy kiểm thử mới. Kết quả 12 test, lint/format/TypeScript ở entry 15:01 được giữ nguyên; không suy ra môi trường hoặc ca test mới từ xác nhận duyệt.
+- PR / commit: Chưa tạo.
+- Ghi chú: Approval áp dụng cho phản hồi Login vừa bàn giao; không thay kết quả kiểm tra hoặc bản ghi lịch sử khác.

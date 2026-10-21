@@ -68,7 +68,11 @@ it('renders verified production data, keeps unavailable CTAs disabled and logs o
   expect(screen.getByTestId('home-explore-courses-button')).not.toBeDisabled();
   fireEvent.press(screen.getByTestId('home-explore-courses-button'));
   expect(mockNavigate).toHaveBeenCalledWith('COURSES');
-  expect(screen.getByTestId('home-tab-account')).toBeDisabled();
+  expect(screen.getByTestId('home-tab-account')).not.toBeDisabled();
+  fireEvent.press(screen.getByTestId('home-tab-account'));
+  expect(mockNavigate).toHaveBeenCalledWith('STUDENT_ACCOUNT', undefined, {
+    pop: true,
+  });
   await act(async () => finish());
   await waitFor(() => expect(screen.getByTestId('home-empty')).toBeTruthy());
   expect(screen.queryByTestId('home-next-session')).toBeNull();

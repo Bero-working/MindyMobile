@@ -60,6 +60,14 @@ export function useAuthActions() {
           code: 'SESSION_CHANGED',
           message: 'Session changed',
         });
+      if (result.user.role !== 'STUDENT') {
+        await authService.logout();
+        throw new ApiError({
+          statusCode: 401,
+          code: 'INVALID_CREDENTIALS',
+          message: 'Invalid credentials',
+        });
+      }
       await client.cancelQueries();
       if (useStore.getState().generation !== generation)
         throw new ApiError({

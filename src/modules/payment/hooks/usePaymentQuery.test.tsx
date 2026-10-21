@@ -12,6 +12,10 @@ import {
 } from '../../../../tests/fixtures/commerce';
 import { useStore } from '@/state/store';
 import { usePaymentQuery } from './usePaymentQuery';
+import {
+  enrollmentDto,
+  learningPage,
+} from '../../../../tests/fixtures/learning';
 let calls = 0;
 beforeAll(() => mockServer.listen({ onUnhandledRequest: 'error' }));
 beforeEach(() => {
@@ -36,6 +40,48 @@ afterEach(() => {
   jest.useRealTimers();
 });
 afterAll(() => mockServer.close());
+it('resumes an existing PayOS order but rechecks review state before retrying its link', async () => {
+  let review = false;
+  mockServer.use(
+    http.get(base + '/me/classes', () =>
+      HttpResponse.json(
+        learningPage([
+          {
+            ...enrollmentDto(),
+            enrollmentStatus: 'PENDING_PAYMENT',
+            accessMode: 'NONE',
+            accessReason: 'PENDING_PAYOS',
+            canViewClass: false,
+            canViewSchedule: false,
+            order: {
+              orderId: id(500),
+              orderCode: 'ORDER500',
+              orderStatus: 'PENDING',
+              paymentType: 'PAYOS',
+              expiresAt: '2099-01-01T00:00:00Z',
+              paidAt: null,
+              requiresReview: review,
+            },
+          },
+        ])
+      )
+    )
+  );
+  const { result } = renderHookWithProviders(() =>
+    usePaymentQuery(id(500), true)
+  );
+  await waitFor(() =>
+    expect(result.current.payment?.qrCode).toBe('000201SAMPLE')
+  );
+  expect(calls).toBe(1);
+  review = true;
+  act(() => result.current.onRetry());
+  await waitFor(() =>
+    expect(result.current.errorCode).toBe('PAYMENT_ORDER_INVALID')
+  );
+  expect(result.current.payment).toBeNull();
+  expect(calls).toBe(1);
+});
 it('creates a QR for a pending order and can explicitly retry the safe link endpoint', async () => {
   const { result } = renderHookWithProviders(() => usePaymentQuery(id(500)));
   await waitFor(() =>

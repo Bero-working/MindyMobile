@@ -15,6 +15,9 @@ export type CourseClass = {
 };
 export type Category = { id: string; name: string };
 export type CatalogProps = {
+  onLearningTab?:
+    | ((tab: import('@/modules/home/types/home.type').HomeTab) => void)
+    | undefined;
   courses: DataRegion<Course[]>;
   recommendations: DataRegion<Course[]>;
   categories: DataRegion<Category[]>;

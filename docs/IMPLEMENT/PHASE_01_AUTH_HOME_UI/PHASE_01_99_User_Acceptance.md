@@ -11,6 +11,12 @@ Ghi nhận sau nghiệm thu: owner đã xác nhận UAT Phase 1 đạt. Các che
 bằng chứng đã ghi nhận, không tự đánh dấu các ca chưa chạy là đạt. Xem entry nghiệm thu ngày 2026-10-17
 trong [PROGRESS cấp phase](../../PROGRESS/PHASE_01_AUTH_HOME_UI/README.md).
 
+Cập nhật owner ngày 2026-10-20: phiên đăng nhập/refresh được xác nhận Done; đăng ký/gửi lại email đã test
+thành công; TalkBack OK. Đây là kết quả do owner xác nhận, không phải lượt kiểm thử mới của AI.
+Theo yêu cầu mới cùng ngày, Admin/Mentor/Manager đăng nhập từ form nhận lỗi “Email hoặc mật khẩu không đúng.”
+trong khối lỗi Login như ảnh owner cung cấp; không chuyển sang màn riêng có nút Đăng xuất.
+Owner đã duyệt phản hồi mới bằng xác nhận “Được duyệt” trong chat ngày 2026-10-20 15:04 (+07:00).
+
 - [x] Nguồn Claude Auth/Home2a, bản trích và asset đã được bàn giao; phiên bản ghi trong IMPLEMENT1.1.
 - [x] Phụ thuộc Foundation/navigator/shared UI có ngoại lệ ADR-0018 Accepted; không coi Foundation đã nghiệm thu.
 - [x] Owner đã xác nhận UI trong chat: “UI phase 1 đã được approve”, ngày2026-10-17; xem PROGRESS cấp phase.
@@ -60,7 +66,7 @@ mockup. Màn production đã nối adapter backend; nghiệm thu UI qua preview 
 | --- | --- | --- |
 | API1 | Login Student ACTIVE, tắt/mở lại app | Home hiện tên/dữ liệu thật; auth/me phục hồi phiên bằng cookie, không chớp dữ liệu cũ |
 | API2 | Đăng xuất ở cuối Home, bấm Android Back và mở lại app | Không quay lại Home/dữ liệu riêng; Login sau logout và Welcome ở lần khởi động guest mới |
-| API3 | Login staff; bootstrap chậm hoặc lỗi mạng | Staff chỉ thấy giải thích vai trò và Logout, không gọi lịch Student; pending/error có thử lại, không giả guest khi lỗi mạng |
+| API3 | Login Admin/Mentor/Manager; bootstrap chậm hoặc lỗi mạng | Login giữ nguyên form và hiện “Email hoặc mật khẩu không đúng.”, không nhận phiên staff hoặc gọi lịch Student; pending/error có thử lại, không giả guest khi lỗi mạng |
 | API4 | Register/resend trên email test được phép gửi thư | 202 trung lập, màn kiểm tra email; không tạo phiên, không gửi lặp tự động, lỗi gửi lại riêng |
 | API5 | Lịch nhiều trang, buổi huỷ/past/in-progress, FULL/CASH_PREVIEW | Chọn buổi SCHEDULED sắp tới theo asOf/timeZone máy chủ; không có buổi trong7ngày thì rỗng, không thay fixture |
 | API6 | Catalog lỗi/lịch thành công và ngược lại; pull refresh/retry | Hai vùng độc lập, retry đúng vùng, không gọi API featured hoặc mở màn chưa triển khai |

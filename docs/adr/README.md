@@ -46,3 +46,4 @@ thêm thư viện hay sửa file hạ tầng thì phải viết ADR trước (xe
 | [ADR-0027](ADR-0027-phase-02-design-tokens.md) | Token màu thiết kế Phase 2 (ember, ribbon) | Accepted | 2026-10-17 |
 | [ADR-0028](ADR-0028-tolerate-optional-error-details.md) | Giữ mã lỗi khi metadata details ngoài contract | Accepted | 2026-10-18 |
 | [ADR-0029](ADR-0029-local-ui-base-codex-spec-implementation.md) | Thiết kế local làm UI base, Codex đặc tả và có thể triển khai | Accepted | 2026-10-18 |
+| [ADR-0030](ADR-0030-phase-03-navigation-routes.md) | Đăng ký route Student Learning cho Phase 3 | Accepted | 2026-10-20 |

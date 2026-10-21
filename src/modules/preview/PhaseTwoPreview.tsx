@@ -7,8 +7,16 @@ import { FilterSheet } from '../courses/components/FilterSheet';
 import { CartSheet } from '../cart/components/CartSheet';
 import { useCourseSelection } from '../courses/hooks/useCourseSelection';
 import { StudentHome } from '../home/StudentHome';
-import type { HomeProps, DataRegion } from '../home/types/home.type';
+import type {
+  HomeProps,
+  HomeActions,
+  DataRegion,
+} from '../home/types/home.type';
 type PreviewProps = {
+  initialTab?: 'home' | 'courses';
+  onLearning?: ((next: 'schedule' | 'account' | 'classes') => void) | undefined;
+  onLearningSession?: HomeActions['onSession'] | undefined;
+  onPreviewTab?: ((tab: 'home' | 'courses') => void) | undefined;
   homeProps?: HomeProps;
   dataState?: 'success' | 'empty' | 'loading' | 'error';
   onRetry?: () => void;
@@ -24,6 +32,10 @@ export function PhaseTwoPreview(props: PreviewProps) {
   return __DEV__ ? <CommercePreview {...props} /> : null;
 }
 function CommercePreview({
+  initialTab,
+  onLearning,
+  onLearningSession,
+  onPreviewTab,
   homeProps,
   dataState = 'success',
   onRetry,
@@ -32,8 +44,11 @@ function CommercePreview({
   const { t } = useTranslation();
   const fixtures = useMemo(commerceFixtures, []);
   const [tab, setTab] = useState<'home' | 'courses'>(
-    homeProps ? 'home' : 'courses'
+    initialTab ?? (homeProps ? 'home' : 'courses')
   );
+  useEffect(() => {
+    onPreviewTab?.(tab);
+  }, [tab, onPreviewTab]);
   const [page, setPage] = useState(1);
   const [categoryId, setCategory] = useState<string | null>(null);
   const [deliveryMode, setMode] = useState<DeliveryMode>();
@@ -191,6 +206,7 @@ function CommercePreview({
     <View className="flex-1">
       {tab === 'home' ? (
         <StudentHome
+          learningEnabled={!!onLearning}
           {...(homeProps ?? {
             displayName: t('preview.fixtureName'),
             courses: region(fixtures.courses.slice(0, 4)),
@@ -205,11 +221,29 @@ function CommercePreview({
             onSelectCourse: openCourse,
             onExplore: () => setTab('courses'),
             onCart: () => setSheet('cart'),
-            onTab: () => setTab('courses'),
+            ...(onLearning
+              ? {
+                  onMyClasses: () => onLearning('classes'),
+                  onSession: onLearningSession ?? (() => onLearning('classes')),
+                }
+              : {}),
+            onTab: (next) => {
+              if (onLearning && (next === 'schedule' || next === 'account'))
+                onLearning(next);
+              else setTab('courses');
+            },
           }}
         />
       ) : (
         <CoursesScreen
+          onLearningTab={
+            onLearning
+              ? (next) => {
+                  if (next === 'schedule' || next === 'account')
+                    onLearning(next);
+                }
+              : undefined
+          }
           courses={region(
             dataState === 'empty'
               ? []

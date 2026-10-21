@@ -1,0 +1,39 @@
+appId: ${APP_ID || "com.mindymobile"}
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible:
+      id: 'welcome-screen'
+    timeout: 90000
+- scrollUntilVisible:
+    element:
+      id: 'phase-one-preview-button'
+    direction: DOWN
+- tapOn:
+    id: 'phase-one-preview-button'
+- scrollUntilVisible:
+    element:
+      id: 'preview-classes-button'
+    direction: DOWN
+- tapOn:
+    id: 'preview-classes-button'
+- tapOn:
+    id: 'my-classes-open-full'
+- scrollUntilVisible:
+    element:
+      id: 'class-detail-session-full-session'
+    direction: DOWN
+- tapOn:
+    id: 'class-detail-session-full-session'
+- assertVisible:
+    id: 'class-session-materials'
+- assertVisible:
+    id: 'class-session-join'
+- takeScreenshot: 'phase3-session-footer'
+- pressKey: Back
+- assertVisible:
+    id: 'class-detail-screen'
+- assertNotVisible:
+    id: 'class-session-screen'
+- takeScreenshot: 'phase3-detail-footer'

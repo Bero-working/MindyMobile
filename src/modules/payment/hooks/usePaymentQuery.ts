@@ -12,6 +12,7 @@ import {
   waitForPayosLink,
 } from '../services/payment.service';
 import type { Payment, PaymentOrder } from '../types/payment.type';
+import { verifiedResumeOrder } from '@/modules/my-classes/services/resumeOrder.service';
 
 export const orderQueryKeys = {
   detail: (scope: StudentScope, orderId: string) =>
@@ -33,13 +34,21 @@ const sleep = (ms: number, signal: AbortSignal) =>
     }, ms);
     signal.addEventListener('abort', abort, { once: true });
   });
-export function usePaymentQuery(orderId: string) {
+export function usePaymentQuery(orderId: string, verifyEnrollment = false) {
   const scope = useStudentScope();
   const order = useQuery({
-    queryKey: orderQueryKeys.detail(scope, orderId),
-    queryFn: ({ signal }) => paymentService.order(orderId, signal),
+    queryKey: [
+      ...orderQueryKeys.detail(scope, orderId),
+      verifyEnrollment ? 'resume' : 'checkout',
+    ],
+    queryFn: ({ signal }) =>
+      verifyEnrollment
+        ? verifiedResumeOrder(orderId, signal)
+        : paymentService.order(orderId, signal),
     enabled: scope.enabled && !!orderId,
     gcTime: 0,
+    staleTime: 0,
+    retry: false,
   });
   const [payment, setPayment] = useState<Payment | null>(null);
   const [linkError, setLinkError] = useState<string | null>(null);
@@ -48,6 +57,9 @@ export function usePaymentQuery(orderId: string) {
   const payable =
     scope.enabled &&
     order.data?.status === 'PENDING' &&
+    order.isSuccess &&
+    !order.isFetching &&
+    order.data.payment?.status !== 'REQUIRES_REVIEW' &&
     order.data.paymentType === 'PAYOS';
   const createLink = useCallback(() => {
     activeRequest.current?.abort();
@@ -56,11 +68,16 @@ export function usePaymentQuery(orderId: string) {
     const current = ++run.current;
     setPayment(null);
     setLinkError(null);
-    waitForPayosLink(orderId, {
-      sleep: (ms) => sleep(ms, controller.signal),
-      signal: controller.signal,
-      cancelled: () => run.current !== current,
-    })
+    const prepare = async () => {
+      if (verifyEnrollment)
+        await verifiedResumeOrder(orderId, controller.signal);
+      return waitForPayosLink(orderId, {
+        sleep: (ms) => sleep(ms, controller.signal),
+        signal: controller.signal,
+        cancelled: () => run.current !== current,
+      });
+    };
+    prepare()
       .then((result) => {
         if (run.current !== current) return;
         if (result.status === 'CREATING' || result.status === 'PENDING')
@@ -77,7 +94,7 @@ export function usePaymentQuery(orderId: string) {
           return;
         setLinkError(cause instanceof ApiError ? cause.code : 'generic');
       });
-  }, [orderId]);
+  }, [orderId, verifyEnrollment]);
   useEffect(() => {
     if (payable) createLink();
     return () => {
@@ -104,7 +121,7 @@ export function usePaymentQuery(orderId: string) {
         : ('success' as const),
     orderErrorCode: order.error?.code ?? null,
     order: view,
-    payment,
+    payment: payable ? payment : null,
     // A closed or non-PayOS order cannot get a link; show it as expired instead of calling the API.
     errorCode: order.data && !payable ? 'PAYMENT_ORDER_INVALID' : linkError,
     onRetry: () => {

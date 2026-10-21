@@ -40,9 +40,15 @@ function StudentPayment() {
   const { t } = useTranslation();
   const navigation = useNavigation<NavigationProp>();
   const route = useRoute<RouteProp<RootStackParamList, routes.payment>>();
-  const data = usePaymentQuery(route.params?.orderId ?? '');
+  const data = usePaymentQuery(
+    route.params?.orderId ?? '',
+    route.params?.origin === 'learning'
+  );
   const controller = usePaymentController();
-  const leave = () => navigation.navigate(routes.courses);
+  const leave = () =>
+    route.params?.origin === 'learning' && navigation.canGoBack()
+      ? navigation.goBack()
+      : navigation.navigate(routes.courses);
   if (data.status !== 'success' || !data.order)
     return (
       <SafeAreaView className="flex-1 justify-center gap-4 bg-canvas p-6">

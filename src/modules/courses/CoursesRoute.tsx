@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { navigateLearningTab } from '../my-classes/LearningRoutes';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
@@ -48,6 +49,7 @@ function StudentCourses() {
   return (
     <>
       <CoursesScreen
+        onLearningTab={(tab) => navigateLearningTab(navigation, tab)}
         courses={catalog.courses}
         recommendations={catalog.recommendations}
         categories={catalog.categories}

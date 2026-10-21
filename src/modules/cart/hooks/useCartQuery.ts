@@ -43,6 +43,9 @@ export function useCartActions() {
       await Promise.all([
         client.invalidateQueries({ queryKey: key, exact: true }),
         client.invalidateQueries({
+          queryKey: ['student-learning', ...scopeKey(scope)],
+        }),
+        client.invalidateQueries({
           queryKey: ['home', ...scopeKey(scope), 'schedule'],
         }),
       ]);

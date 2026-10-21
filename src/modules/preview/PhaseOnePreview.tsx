@@ -8,6 +8,7 @@ import { WelcomeScreen } from '../auth/WelcomeScreen';
 import { LoginScreen } from '../auth/LoginScreen';
 import { RegisterScreen } from '../auth/RegisterScreen';
 import { PhaseTwoPreview } from './PhaseTwoPreview';
+import { PhaseThreePreview } from './PhaseThreePreview';
 import type { HomeProps } from '../home/types/home.type';
 import { ApiError } from '@/shared/utilities/apiError';
 import routes from '@/navigation/routes';
@@ -31,7 +32,16 @@ function PreviewHome({
   );
 }
 
-type Mode = 'menu' | 'welcome' | 'login' | 'register' | 'home' | 'courses';
+type Mode =
+  | 'menu'
+  | 'welcome'
+  | 'login'
+  | 'register'
+  | 'home'
+  | 'courses'
+  | 'schedule'
+  | 'account'
+  | 'classes';
 type DataState = 'success' | 'loading' | 'empty' | 'error';
 const pause = () => new Promise<void>((resolve) => setTimeout(resolve, 400));
 
@@ -48,7 +58,13 @@ function DevelopmentPreview() {
     const subscription = BackHandler.addEventListener(
       'hardwareBackPress',
       () => {
-        if (mode === 'menu') return false;
+        if (
+          mode === 'menu' ||
+          mode === 'schedule' ||
+          mode === 'account' ||
+          mode === 'classes'
+        )
+          return false;
         setMode(mode === 'login' || mode === 'register' ? 'welcome' : 'menu');
         setMessage('');
         return true;
@@ -125,6 +141,13 @@ function DevelopmentPreview() {
       : {}),
     onRetry: () => setStatus('success'),
   });
+  if (mode === 'schedule' || mode === 'account' || mode === 'classes')
+    return (
+      <PhaseThreePreview
+        initial={mode}
+        onExit={() => setMode('menu')}
+      />
+    );
   return (
     <View
       testID="phase-one-preview"
@@ -204,6 +227,17 @@ function DevelopmentPreview() {
       )}
       {mode === 'menu' ? (
         <ScrollView contentContainerClassName="gap-[16px] p-[24px]">
+          {(['schedule', 'account', 'classes'] as const).map((next) => (
+            <Button
+              key={next}
+              testID={`preview-${next}-button`}
+              label={t(`learningPreview.${next}`)}
+              onPress={() => {
+                setMode(next);
+                setToolsOpen(false);
+              }}
+            />
+          ))}
           <Button
             testID="preview-auth-button"
             label={t('preview.auth')}

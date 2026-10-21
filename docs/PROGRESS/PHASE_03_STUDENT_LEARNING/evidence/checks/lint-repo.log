@@ -1,0 +1,683 @@
+
+> @sohantalukder/react-native-boilerplate@1.0.0 lint:rules
+> eslint . --cache
+
+
+D:\FPT_University\FA26\WDP301\MindyMobile\assets\Student Home Page Design\image-slot.js
+   145:14  error  'e' is defined but never used                                          @typescript-eslint/no-unused-vars
+   220:91  error  'e' is defined but never used                                          @typescript-eslint/no-unused-vars
+   260:26  error  'createImageBitmap' is not defined                                     no-undef
+   271:7   error  Expected an assignment or function call and instead saw an expression  @typescript-eslint/no-unused-expressions
+   439:27  error  'HTMLElement' is not defined                                           no-undef
+   582:34  error  'CustomEvent' is not defined                                           no-undef
+   583:75  error  Missing trailing comma                                                 comma-dangle
+   710:9   error  Unexpected console statement                                           no-console
+   726:22  error  'ResizeObserver' is not defined                                        no-undef
+   827:32  error  'CustomEvent' is not defined                                           no-undef
+   829:56  error  Missing trailing comma                                                 comma-dangle
+   862:29  error  Assignment to property of function parameter 'e'                       no-param-reassign
+   925:9   error  Unexpected console statement                                           no-console
+  1222:8   error  'customElements' is not defined                                        no-undef
+  1223:5   error  'customElements' is not defined                                        no-undef
+
+D:\FPT_University\FA26\WDP301\MindyMobile\assets\Student Home Page Design\support.js
+     2:1    error    Strings must use singlequote                                           quotes
+     5:25   warning  Arrow function should not return assignment                            no-return-assign
+     5:146  error    Assignment to property of function parameter 'obj'                     no-param-reassign
+     6:80   error    Strings must use singlequote                                           quotes
+     6:97   error    Strings must use singlequote                                           quotes
+    11:29   error    Strings must use singlequote                                           quotes
+    16:30   error    Strings must use singlequote                                           quotes
+    25:34   error    Strings must use singlequote                                           quotes
+    27:40   error    Strings must use singlequote                                           quotes
+    29:30   error    Strings must use singlequote                                           quotes
+    33:46   error    Strings must use singlequote                                           quotes
+    33:51   error    Strings must use singlequote                                           quotes
+    35:14   error    Missing trailing comma                                                 comma-dangle
+    41:35   error    Strings must use singlequote                                           quotes
+    44:21   error    'DOMParser' is not defined                                             no-undef
+    44:54   error    Strings must use singlequote                                           quotes
+    45:40   error    Strings must use singlequote                                           quotes
+    47:30   error    Strings must use singlequote                                           quotes
+    51:46   error    Strings must use singlequote                                           quotes
+    51:51   error    Strings must use singlequote                                           quotes
+    53:14   error    Missing trailing comma                                                 comma-dangle
+    64:38   error    Strings must use singlequote                                           quotes
+    68:61   error    Strings must use singlequote                                           quotes
+    71:20   error    Strings must use singlequote                                           quotes
+    76:25   error    Strings must use singlequote                                           quotes
+    81:26   error    Strings must use singlequote                                           quotes
+    81:40   error    Strings must use singlequote                                           quotes
+    82:40   error    Strings must use singlequote                                           quotes
+    82:64   error    Strings must use singlequote                                           quotes
+    82:71   error    Strings must use singlequote                                           quotes
+   132:23   error    Strings must use singlequote                                           quotes
+   134:36   error    Strings must use singlequote                                           quotes
+   137:43   error    Strings must use singlequote                                           quotes
+   154:47   error    'location' is not defined                                              no-undef
+   159:13   error    'location' is not defined                                              no-undef
+   159:64   error    Strings must use singlequote                                           quotes
+   165:34   error    Strings must use singlequote                                           quotes
+   166:38   error    Strings must use singlequote                                           quotes
+   167:17   error    Strings must use singlequote                                           quotes
+   170:35   error    Strings must use singlequote                                           quotes
+   189:21   warning  Expected 'undefined' and instead saw 'void'                            no-void
+   207:23   warning  Expected 'undefined' and instead saw 'void'                            no-void
+   208:21   error    Strings must use singlequote                                           quotes
+   208:54   error    Strings must use singlequote                                           quotes
+   216:14   error    Strings must use singlequote                                           quotes
+   218:14   error    Strings must use singlequote                                           quotes
+   220:14   error    Strings must use singlequote                                           quotes
+   221:21   warning  Expected '===' and instead saw '=='                                    eqeqeq
+   223:21   warning  Expected '!==' and instead saw '!='                                    eqeqeq
+   226:21   error    Strings must use singlequote                                           quotes
+   227:18   error    Strings must use singlequote                                           quotes
+   228:18   error    Strings must use singlequote                                           quotes
+   229:18   error    Strings must use singlequote                                           quotes
+   230:18   error    Strings must use singlequote                                           quotes
+   230:38   warning  Expected 'undefined' and instead saw 'void'                            no-void
+   240:23   error    Strings must use singlequote                                           quotes
+   241:28   error    Strings must use singlequote                                           quotes
+   252:17   error    Strings must use singlequote                                           quotes
+   252:30   error    Strings must use singlequote                                           quotes
+   253:22   error    Strings must use singlequote                                           quotes
+   253:35   error    Strings must use singlequote                                           quotes
+   254:38   error    Strings must use singlequote                                           quotes
+   254:51   error    Strings must use singlequote                                           quotes
+   254:75   error    Strings must use singlequote                                           quotes
+   255:39   error    Strings must use singlequote                                           quotes
+   255:62   error    Strings must use singlequote                                           quotes
+   257:36   error    Strings must use singlequote                                           quotes
+   257:46   error    Strings must use singlequote                                           quotes
+   257:57   error    Strings must use singlequote                                           quotes
+   265:23   warning  Expected 'undefined' and instead saw 'void'                            no-void
+   266:30   warning  Expected 'undefined' and instead saw 'void'                            no-void
+   269:23   error    Strings must use singlequote                                           quotes
+   271:24   warning  Expected 'undefined' and instead saw 'void'                            no-void
+   272:29   warning  Expected 'undefined' and instead saw 'void'                            no-void
+   274:30   error    Strings must use singlequote                                           quotes
+   278:27   error    Strings must use singlequote                                           quotes
+   279:32   error    Strings must use singlequote                                           quotes
+   285:33   warning  Expected 'undefined' and instead saw 'void'                            no-void
+   287:29   warning  Expected 'undefined' and instead saw 'void'                            no-void
+   290:16   warning  Expected 'undefined' and instead saw 'void'                            no-void
+   297:20   error    Strings must use singlequote                                           quotes
+   299:5    error    Strings must use singlequote                                           quotes
+   300:7    error    Strings must use singlequote                                           quotes
+   304:13   error    Strings must use singlequote                                           quotes
+   305:12   error    Strings must use singlequote                                           quotes
+   306:12   error    Strings must use singlequote                                           quotes
+   307:12   error    Strings must use singlequote                                           quotes
+   308:12   error    Strings must use singlequote                                           quotes
+   309:9    error    Strings must use singlequote                                           quotes
+   310:9    error    Strings must use singlequote                                           quotes
+   311:9    error    Strings must use singlequote                                           quotes
+   312:14   error    Strings must use singlequote                                           quotes
+   312:30   error    Missing trailing comma                                                 comma-dangle
+   318:14   error    Strings must use singlequote                                           quotes
+   319:15   error    Strings must use singlequote                                           quotes
+   320:14   error    Strings must use singlequote                                           quotes
+   321:15   error    Strings must use singlequote                                           quotes
+   322:16   error    Strings must use singlequote                                           quotes
+   323:14   error    Strings must use singlequote                                           quotes
+   324:17   error    Strings must use singlequote                                           quotes
+   325:18   error    Strings must use singlequote                                           quotes
+   326:16   error    Strings must use singlequote                                           quotes
+   327:19   error    Strings must use singlequote                                           quotes
+   328:19   error    Strings must use singlequote                                           quotes
+   329:14   error    Strings must use singlequote                                           quotes
+   330:13   error    Strings must use singlequote                                           quotes
+   331:20   error    Strings must use singlequote                                           quotes
+   332:20   error    Strings must use singlequote                                           quotes
+   333:18   error    Strings must use singlequote                                           quotes
+   334:18   error    Strings must use singlequote                                           quotes
+   335:17   error    Strings must use singlequote                                           quotes
+   336:20   error    Strings must use singlequote                                           quotes
+   337:18   error    Strings must use singlequote                                           quotes
+   338:20   error    Strings must use singlequote                                           quotes
+   339:21   error    Strings must use singlequote                                           quotes
+   340:21   error    Strings must use singlequote                                           quotes
+   341:22   error    Strings must use singlequote                                           quotes
+   342:20   error    Strings must use singlequote                                           quotes
+   343:19   error    Strings must use singlequote                                           quotes
+   344:26   error    Strings must use singlequote                                           quotes
+   345:27   error    Strings must use singlequote                                           quotes
+   346:19   error    Strings must use singlequote                                           quotes
+   347:17   error    Strings must use singlequote                                           quotes
+   348:18   error    Strings must use singlequote                                           quotes
+   349:20   error    Strings must use singlequote                                           quotes
+   350:18   error    Strings must use singlequote                                           quotes
+   351:16   error    Strings must use singlequote                                           quotes
+   352:18   error    Strings must use singlequote                                           quotes
+   353:18   error    Strings must use singlequote                                           quotes
+   354:17   error    Strings must use singlequote                                           quotes
+   355:23   error    Strings must use singlequote                                           quotes
+   356:21   error    Strings must use singlequote                                           quotes
+   357:27   error    Strings must use singlequote                                           quotes
+   358:22   error    Strings must use singlequote                                           quotes
+   358:39   error    Missing trailing comma                                                 comma-dangle
+   362:5    error    Strings must use singlequote                                           quotes
+   362:40   error    Strings must use singlequote                                           quotes
+   363:5    error    Strings must use singlequote                                           quotes
+   369:76   error    Strings must use singlequote                                           quotes
+   373:5    error    Assignment to function parameter 'html'                                no-param-reassign
+   375:20   error    Strings must use singlequote                                           quotes
+   375:34   error    Strings must use singlequote                                           quotes
+   375:46   error    Strings must use singlequote                                           quotes
+   377:5    error    Assignment to function parameter 'html'                                no-param-reassign
+   377:44   error    Strings must use singlequote                                           quotes
+   378:5    error    Assignment to function parameter 'html'                                no-param-reassign
+   378:44   error    Strings must use singlequote                                           quotes
+   379:5    error    Assignment to function parameter 'html'                                no-param-reassign
+   381:7    error    Assignment to function parameter 'html'                                no-param-reassign
+   382:20   error    Strings must use singlequote                                           quotes
+   382:37   error    Strings must use singlequote                                           quotes
+   382:51   error    Strings must use singlequote                                           quotes
+   383:9    error    Strings must use singlequote                                           quotes
+   393:34   error    Strings must use singlequote                                           quotes
+   394:30   error    Strings must use singlequote                                           quotes
+   397:25   error    Strings must use singlequote                                           quotes
+   407:22   error    Strings must use singlequote                                           quotes
+   409:44   warning  Unexpected use of '&'                                                  no-bitwise
+   409:72   error    Strings must use singlequote                                           quotes
+   409:85   error    Strings must use singlequote                                           quotes
+   420:20   error    Strings must use singlequote                                           quotes
+   420:42   error    Strings must use singlequote                                           quotes
+   424:19   error    Strings must use singlequote                                           quotes
+   428:26   error    Strings must use singlequote                                           quotes
+   432:20   error    Strings must use singlequote                                           quotes
+   433:26   error    Strings must use singlequote                                           quotes
+   433:45   error    Strings must use singlequote                                           quotes
+   433:75   error    Strings must use singlequote                                           quotes
+   433:102  error    Strings must use singlequote                                           quotes
+   436:21   error    Strings must use singlequote                                           quotes
+   436:36   error    Strings must use singlequote                                           quotes
+   437:26   error    Strings must use singlequote                                           quotes
+   437:39   error    Strings must use singlequote                                           quotes
+   438:33   error    Strings must use singlequote                                           quotes
+   439:35   error    Strings must use singlequote                                           quotes
+   446:5    error    Strings must use singlequote                                           quotes
+   447:5    error    Strings must use singlequote                                           quotes
+   448:5    error    Strings must use singlequote                                           quotes
+   449:5    error    Strings must use singlequote                                           quotes
+   450:5    error    Strings must use singlequote                                           quotes
+   451:5    error    Strings must use singlequote                                           quotes
+   452:5    error    Strings must use singlequote                                           quotes
+   453:5    error    Strings must use singlequote                                           quotes
+   454:5    error    Strings must use singlequote                                           quotes
+   455:5    error    Strings must use singlequote                                           quotes
+   455:16   error    Missing trailing comma                                                 comma-dangle
+   458:34   error    Strings must use singlequote                                           quotes
+   458:97   error    Strings must use singlequote                                           quotes
+   459:22   warning  Expected 'undefined' and instead saw 'void'                            no-void
+   462:48   error    Strings must use singlequote                                           quotes
+   465:44   warning  Expected 'undefined' and instead saw 'void'                            no-void
+   468:40   error    Strings must use singlequote                                           quotes
+   473:29   error    'Node' is not defined                                                  no-undef
+   474:27   error    Strings must use singlequote                                           quotes
+   490:26   error    Strings must use singlequote                                           quotes
+   491:29   error    Strings must use singlequote                                           quotes
+   491:60   error    Strings must use singlequote                                           quotes
+   491:94   error    Strings must use singlequote                                           quotes
+   491:102  error    Strings must use singlequote                                           quotes
+   504:28   error    'Node' is not defined                                                  no-undef
+   506:93   error    Strings must use singlequote                                           quotes
+   513:26   error    'Node' is not defined                                                  no-undef
+   514:29   error    Strings must use singlequote                                           quotes
+   514:44   error    Strings must use singlequote                                           quotes
+   515:41   error    Strings must use singlequote                                           quotes
+   515:71   error    Strings must use singlequote                                           quotes
+   518:45   error    Strings must use singlequote                                           quotes
+   523:26   error    'Node' is not defined                                                  no-undef
+   534:36   error    Strings must use singlequote                                           quotes
+   539:17   error    Strings must use singlequote                                           quotes
+   547:48   error    Strings must use singlequote                                           quotes
+   551:27   error    'Node' is not defined                                                  no-undef
+   552:27   error    'Node' is not defined                                                  no-undef
+   555:17   error    Strings must use singlequote                                           quotes
+   556:17   error    Strings must use singlequote                                           quotes
+   557:17   error    Strings must use singlequote                                           quotes
+   558:17   error    Strings must use singlequote                                           quotes
+   559:17   error    Strings must use singlequote                                           quotes
+   564:33   error    Strings must use singlequote                                           quotes
+   564:40   error    Strings must use singlequote                                           quotes
+   567:5    error    Unexpected console statement                                           no-console
+   567:18   error    Strings must use singlequote                                           quotes
+   567:52   error    Strings must use singlequote                                           quotes
+   567:66   error    Strings must use singlequote                                           quotes
+   570:35   error    Strings must use singlequote                                           quotes
+   571:23   error    Strings must use singlequote                                           quotes
+   572:40   error    Strings must use singlequote                                           quotes
+   580:15   warning  Unexpected use of '&'                                                  no-bitwise
+   582:19   warning  Expected 'undefined' and instead saw 'void'                            no-void
+   584:45   error    Strings must use singlequote                                           quotes
+   586:17   error    Strings must use singlequote                                           quotes
+   587:38   error    Strings must use singlequote                                           quotes
+   588:17   error    Strings must use singlequote                                           quotes
+   588:36   error    Strings must use singlequote                                           quotes
+   593:15   error    Strings must use singlequote                                           quotes
+   593:34   error    Strings must use singlequote                                           quotes
+   598:13   error    Strings must use singlequote                                           quotes
+   599:34   error    Strings must use singlequote                                           quotes
+   606:40   error    Strings must use singlequote                                           quotes
+   607:18   error    Strings must use singlequote                                           quotes
+   607:47   error    Strings must use singlequote                                           quotes
+   612:49   error    Strings must use singlequote                                           quotes
+   612:60   error    Strings must use singlequote                                           quotes
+   613:36   error    Strings must use singlequote                                           quotes
+   613:45   error    Strings must use singlequote                                           quotes
+   614:44   error    Strings must use singlequote                                           quotes
+   614:73   error    Strings must use singlequote                                           quotes
+   616:37   error    Strings must use singlequote                                           quotes
+   616:48   error    Strings must use singlequote                                           quotes
+   621:24   warning  Expected 'undefined' and instead saw 'void'                            no-void
+   624:81   error    Strings must use singlequote                                           quotes
+   629:48   warning  Expected 'undefined' and instead saw 'void'                            no-void
+   647:48   error    Strings must use singlequote                                           quotes
+   647:60   error    Strings must use singlequote                                           quotes
+   648:37   error    Strings must use singlequote                                           quotes
+   653:17   warning  Expected 'undefined' and instead saw 'void'                            no-void
+   662:34   error    Strings must use singlequote                                           quotes
+   662:61   error    Strings must use singlequote                                           quotes
+   662:77   error    Strings must use singlequote                                           quotes
+   663:24   error    Strings must use singlequote                                           quotes
+   664:24   error    Strings must use singlequote                                           quotes
+   665:35   error    Strings must use singlequote                                           quotes
+   666:38   error    Strings must use singlequote                                           quotes
+   667:24   error    Strings must use singlequote                                           quotes
+   669:56   error    Strings must use singlequote                                           quotes
+   676:69   warning  Expected 'undefined' and instead saw 'void'                            no-void
+   676:75   error    Missing trailing comma                                                 comma-dangle
+   680:19   error    Strings must use singlequote                                           quotes
+   681:33   error    Strings must use singlequote                                           quotes
+   692:23   error    Strings must use singlequote                                           quotes
+   692:57   error    Strings must use singlequote                                           quotes
+   695:23   error    Strings must use singlequote                                           quotes
+   695:55   error    Strings must use singlequote                                           quotes
+   695:66   error    Strings must use singlequote                                           quotes
+   697:37   error    Strings must use singlequote                                           quotes
+   697:65   error    Strings must use singlequote                                           quotes
+   697:98   error    Strings must use singlequote                                           quotes
+   697:119  error    Strings must use singlequote                                           quotes
+   697:145  error    Strings must use singlequote                                           quotes
+   697:158  error    Strings must use singlequote                                           quotes
+   699:55   error    Strings must use singlequote                                           quotes
+   700:60   error    Strings must use singlequote                                           quotes
+   700:68   error    Strings must use singlequote                                           quotes
+   701:35   error    Strings must use singlequote                                           quotes
+   702:38   error    Strings must use singlequote                                           quotes
+   703:24   error    Strings must use singlequote                                           quotes
+   706:56   error    Strings must use singlequote                                           quotes
+   707:71   error    Strings must use singlequote                                           quotes
+   711:42   error    Strings must use singlequote                                           quotes
+   718:29   error    Strings must use singlequote                                           quotes
+   719:25   error    Strings must use singlequote                                           quotes
+   719:33   error    Strings must use singlequote                                           quotes
+   725:72   warning  Expected 'undefined' and instead saw 'void'                            no-void
+   728:20   error    Strings must use singlequote                                           quotes
+   729:9    error    Strings must use singlequote                                           quotes
+   730:40   error    Strings must use singlequote                                           quotes
+   730:52   error    Missing trailing comma                                                 comma-dangle
+   733:37   error    Strings must use singlequote                                           quotes
+   735:26   warning  Expected 'undefined' and instead saw 'void'                            no-void
+   738:16   error    Missing trailing comma                                                 comma-dangle
+   740:28   error    Strings must use singlequote                                           quotes
+   745:19   error    Strings must use singlequote                                           quotes
+   745:40   error    Strings must use singlequote                                           quotes
+   745:76   error    Strings must use singlequote                                           quotes
+   749:19   warning  Expected 'undefined' and instead saw 'void'                            no-void
+   750:19   error    Strings must use singlequote                                           quotes
+   751:33   error    Strings must use singlequote                                           quotes
+   758:26   warning  Expected 'undefined' and instead saw 'void'                            no-void
+   761:22   error    Missing trailing comma                                                 comma-dangle
+   763:28   error    Strings must use singlequote                                           quotes
+   768:26   error    Strings must use singlequote                                           quotes
+   773:44   error    Strings must use singlequote                                           quotes
+   778:45   warning  Unexpected use of '|'                                                  no-bitwise
+   778:46   warning  Unexpected use of '<<'                                                 no-bitwise
+   779:23   error    Strings must use singlequote                                           quotes
+   779:30   warning  Unexpected use of '>>>'                                                no-bitwise
+   782:5    error    Strings must use singlequote                                           quotes
+   783:7    error    Strings must use singlequote                                           quotes
+   786:29   error    Strings must use singlequote                                           quotes
+   786:66   error    Strings must use singlequote                                           quotes
+   786:73   error    Strings must use singlequote                                           quotes
+   789:35   error    Strings must use singlequote                                           quotes
+   791:36   error    Strings must use singlequote                                           quotes
+   791:59   error    Strings must use singlequote                                           quotes
+   792:61   error    Strings must use singlequote                                           quotes
+   799:9    error    Strings must use singlequote                                           quotes
+   799:29   error    Missing trailing comma                                                 comma-dangle
+   803:19   error    Strings must use singlequote                                           quotes
+   803:43   error    Strings must use singlequote                                           quotes
+   804:20   error    Strings must use singlequote                                           quotes
+   804:37   error    Strings must use singlequote                                           quotes
+   804:57   warning  Expected 'undefined' and instead saw 'void'                            no-void
+   805:21   error    Strings must use singlequote                                           quotes
+   805:41   error    Strings must use singlequote                                           quotes
+   810:84   error    Strings must use singlequote                                           quotes
+   819:27   error    Strings must use singlequote                                           quotes
+   820:27   error    Strings must use singlequote                                           quotes
+   822:27   error    Strings must use singlequote                                           quotes
+   826:7    error    Expected an assignment or function call and instead saw an expression  @typescript-eslint/no-unused-expressions
+   829:7    error    Expected an assignment or function call and instead saw an expression  @typescript-eslint/no-unused-expressions
+   844:16   error    The Function constructor is eval                                       no-new-func
+   845:7    error    Strings must use singlequote                                           quotes
+   846:7    error    Strings must use singlequote                                           quotes
+   847:7    error    Strings must use singlequote                                           quotes
+   856:51   error    Strings must use singlequote                                           quotes
+   857:51   error    Strings must use singlequote                                           quotes
+   866:10   error    Missing trailing comma                                                 comma-dangle
+   868:35   error    Strings must use singlequote                                           quotes
+   868:54   error    Strings must use singlequote                                           quotes
+   870:7    error    Strings must use singlequote                                           quotes
+   872:20   error    Strings must use singlequote                                           quotes
+   872:52   error    Strings must use singlequote                                           quotes
+   872:70   error    Strings must use singlequote                                           quotes
+   874:20   error    Missing trailing comma                                                 comma-dangle
+   877:9    error    Strings must use singlequote                                           quotes
+   878:22   error    Strings must use singlequote                                           quotes
+   879:24   error    Strings must use singlequote                                           quotes
+   879:31   error    Strings must use singlequote                                           quotes
+   884:23   warning  Expected 'undefined' and instead saw 'void'                            no-void
+   885:33   error    Strings must use singlequote                                           quotes
+   894:29   error    Strings must use singlequote                                           quotes
+   895:29   error    Strings must use singlequote                                           quotes
+   896:29   error    Strings must use singlequote                                           quotes
+   900:29   error    Strings must use singlequote                                           quotes
+   901:29   error    Strings must use singlequote                                           quotes
+   907:29   error    Strings must use singlequote                                           quotes
+   908:29   error    Strings must use singlequote                                           quotes
+   909:29   error    Strings must use singlequote                                           quotes
+   914:29   error    Strings must use singlequote                                           quotes
+   915:29   error    Strings must use singlequote                                           quotes
+   932:9    error    Unexpected console statement                                           no-console
+   933:11   error    Strings must use singlequote                                           quotes
+   933:60   error    Strings must use singlequote                                           quotes
+   935:35   error    Strings must use singlequote                                           quotes
+   948:11   error    Unexpected console statement                                           no-console
+   952:44   error    Strings must use singlequote                                           quotes
+   964:17   error    '__name' is assigned a value but never used                            @typescript-eslint/no-unused-vars
+   964:25   error    '__hintSize' is assigned a value but never used                        @typescript-eslint/no-unused-vars
+   964:37   error    '__tplId' is assigned a value but never used                           @typescript-eslint/no-unused-vars
+   964:46   error    '__hostStyle' is assigned a value but never used                       @typescript-eslint/no-unused-vars
+   969:41   error    Strings must use singlequote                                           quotes
+   987:13   error    Unexpected console statement                                           no-console
+   998:11   error    Unexpected console statement                                           no-console
+  1009:13   error    Unexpected console statement                                           no-console
+  1015:13   error    Unexpected console statement                                           no-console
+  1025:13   error    Unexpected console statement                                           no-console
+  1031:21   error    Strings must use singlequote                                           quotes
+  1031:52   error    Strings must use singlequote                                           quotes
+  1031:75   error    Strings must use singlequote                                           quotes
+  1031:98   error    Strings must use singlequote                                           quotes
+  1031:119  error    Strings must use singlequote                                           quotes
+  1032:80   warning  Expected 'undefined' and instead saw 'void'                            no-void
+  1033:123  warning  Expected 'undefined' and instead saw 'void'                            no-void
+  1037:11   error    Strings must use singlequote                                           quotes
+  1038:11   error    Strings must use singlequote                                           quotes
+  1038:44   error    Missing trailing comma                                                 comma-dangle
+  1044:24   error    Missing trailing comma                                                 comma-dangle
+  1045:18   error    Strings must use singlequote                                           quotes
+  1047:13   error    Strings must use singlequote                                           quotes
+  1048:45   error    Strings must use singlequote                                           quotes
+  1052:22   error    Strings must use singlequote                                           quotes
+  1052:49   error    Missing trailing comma                                                 comma-dangle
+  1058:13   error    Strings must use singlequote                                           quotes
+  1059:45   error    Strings must use singlequote                                           quotes
+  1061:15   error    Strings must use singlequote                                           quotes
+  1062:28   error    Strings must use singlequote                                           quotes
+  1062:46   error    Strings must use singlequote                                           quotes
+  1062:70   error    Strings must use singlequote                                           quotes
+  1063:29   error    Strings must use singlequote                                           quotes
+  1068:38   error    Missing trailing comma                                                 comma-dangle
+  1075:13   error    Strings must use singlequote                                           quotes
+  1087:11   error    Unexpected console statement                                           no-console
+  1088:37   error    Strings must use singlequote                                           quotes
+  1093:11   error    Strings must use singlequote                                           quotes
+  1094:56   error    Strings must use singlequote                                           quotes
+  1094:74   error    Strings must use singlequote                                           quotes
+  1096:13   error    Strings must use singlequote                                           quotes
+  1097:26   error    Strings must use singlequote                                           quotes
+  1097:44   error    Strings must use singlequote                                           quotes
+  1097:68   error    Strings must use singlequote                                           quotes
+  1108:40   error    Strings must use singlequote                                           quotes
+  1131:26   error    Missing trailing comma                                                 comma-dangle
+  1138:39   error    Strings must use singlequote                                           quotes
+  1138:50   warning  Expected 'undefined' and instead saw 'void'                            no-void
+  1143:19   error    Strings must use singlequote                                           quotes
+  1144:19   error    Strings must use singlequote                                           quotes
+  1145:23   error    Strings must use singlequote                                           quotes
+  1146:23   error    Strings must use singlequote                                           quotes
+  1147:19   error    Strings must use singlequote                                           quotes
+  1148:19   error    Strings must use singlequote                                           quotes
+  1151:32   warning  Expected 'undefined' and instead saw 'void'                            no-void
+  1152:25   error    Strings must use singlequote                                           quotes
+  1156:48   error    Strings must use singlequote                                           quotes
+  1156:67   error    Strings must use singlequote                                           quotes
+  1158:22   error    Strings must use singlequote                                           quotes
+  1159:25   error    Strings must use singlequote                                           quotes
+  1159:73   error    Strings must use singlequote                                           quotes
+  1163:34   error    Strings must use singlequote                                           quotes
+  1164:31   warning  Expected 'undefined' and instead saw 'void'                            no-void
+  1181:42   error    Strings must use singlequote                                           quotes
+  1185:27   error    Strings must use singlequote                                           quotes
+  1198:7    error    Unexpected console statement                                           no-console
+  1198:20   error    Strings must use singlequote                                           quotes
+  1198:59   error    Strings must use singlequote                                           quotes
+  1198:72   error    Strings must use singlequote                                           quotes
+  1200:18   error    Strings must use singlequote                                           quotes
+  1201:35   error    Missing trailing comma                                                 comma-dangle
+  1207:38   error    Strings must use singlequote                                           quotes
+  1211:31   error    Strings must use singlequote                                           quotes
+  1213:21   error    Strings must use singlequote                                           quotes
+  1213:30   error    Strings must use singlequote                                           quotes
+  1213:43   error    Missing trailing comma                                                 comma-dangle
+  1218:9    error    The Function constructor is eval                                       no-new-func
+  1218:22   error    Strings must use singlequote                                           quotes
+  1218:31   error    Strings must use singlequote                                           quotes
+  1218:41   error    Strings must use singlequote                                           quotes
+  1218:52   error    Strings must use singlequote                                           quotes
+  1226:54   error    Strings must use singlequote                                           quotes
+  1231:9    error    Unexpected console statement                                           no-console
+  1232:11   error    Strings must use singlequote                                           quotes
+  1234:11   error    Strings must use singlequote                                           quotes
+  1236:11   error    Strings must use singlequote                                           quotes
+  1244:18   error    Strings must use singlequote                                           quotes
+  1244:96   error    Missing trailing comma                                                 comma-dangle
+  1246:9    error    Unexpected console statement                                           no-console
+  1247:11   error    Strings must use singlequote                                           quotes
+  1249:11   error    Strings must use singlequote                                           quotes
+  1249:24   error    Strings must use singlequote                                           quotes
+  1261:83   error    Strings must use singlequote                                           quotes
+  1262:24   error    Strings must use singlequote                                           quotes
+  1263:25   error    Strings must use singlequote                                           quotes
+  1267:90   error    Strings must use singlequote                                           quotes
+  1267:98   error    Strings must use singlequote                                           quotes
+  1269:9    error    Unexpected console statement                                           no-console
+  1270:11   error    Strings must use singlequote                                           quotes
+  1272:11   error    Strings must use singlequote                                           quotes
+  1274:11   error    Strings must use singlequote                                           quotes
+  1276:11   error    Strings must use singlequote                                           quotes
+  1278:11   error    Strings must use singlequote                                           quotes
+  1278:60   error    Strings must use singlequote                                           quotes
+  1278:90   error    Strings must use singlequote                                           quotes
+  1289:30   error    'customElements' is not defined                                        no-undef
+  1296:11   error    Unexpected console statement                                           no-console
+  1297:13   error    Strings must use singlequote                                           quotes
+  1299:13   error    Strings must use singlequote                                           quotes
+  1299:74   error    Strings must use singlequote                                           quotes
+  1311:15   error    'customElements' is not defined                                        no-undef
+  1322:19   error    'customElements' is not defined                                        no-undef
+  1325:25   error    Strings must use singlequote                                           quotes
+  1326:25   error    Strings must use singlequote                                           quotes
+  1329:22   error    'customElements' is not defined                                        no-undef
+  1330:11   error    Unexpected console statement                                           no-console
+  1331:13   error    Strings must use singlequote                                           quotes
+  1333:13   error    Strings must use singlequote                                           quotes
+  1335:13   error    Strings must use singlequote                                           quotes
+  1335:50   error    Strings must use singlequote                                           quotes
+  1335:99   error    Strings must use singlequote                                           quotes
+  1344:40   error    Strings must use singlequote                                           quotes
+  1350:27   error    Strings must use singlequote                                           quotes
+  1350:64   error    Strings must use singlequote                                           quotes
+  1350:102  error    'HTMLElement' is not defined                                           no-undef
+  1359:5    error    Strings must use singlequote                                           quotes
+  1364:25   error    Strings must use singlequote                                           quotes
+  1365:24   error    Strings must use singlequote                                           quotes
+  1371:20   error    Strings must use singlequote                                           quotes
+  1374:25   error    Strings must use singlequote                                           quotes
+  1374:42   error    Strings must use singlequote                                           quotes
+  1374:113  error    Strings must use singlequote                                           quotes
+  1375:9    error    Strings must use singlequote                                           quotes
+  1376:13   error    Strings must use singlequote                                           quotes
+  1376:22   error    Strings must use singlequote                                           quotes
+  1376:31   error    Strings must use singlequote                                           quotes
+  1381:31   error    Strings must use singlequote                                           quotes
+  1387:43   error    Strings must use singlequote                                           quotes
+  1387:71   error    Strings must use singlequote                                           quotes
+  1395:20   error    Strings must use singlequote                                           quotes
+  1396:42   error    Strings must use singlequote                                           quotes
+  1396:60   error    Strings must use singlequote                                           quotes
+  1397:43   error    Strings must use singlequote                                           quotes
+  1398:36   error    Strings must use singlequote                                           quotes
+  1398:54   error    Strings must use singlequote                                           quotes
+  1402:45   error    Strings must use singlequote                                           quotes
+  1407:29   error    Strings must use singlequote                                           quotes
+  1409:20   error    Strings must use singlequote                                           quotes
+  1411:19   error    Strings must use singlequote                                           quotes
+  1411:36   error    Strings must use singlequote                                           quotes
+  1417:38   error    Strings must use singlequote                                           quotes
+  1423:29   error    Strings must use singlequote                                           quotes
+  1423:64   error    Strings must use singlequote                                           quotes
+  1424:21   error    Strings must use singlequote                                           quotes
+  1425:38   error    Strings must use singlequote                                           quotes
+  1426:17   error    Strings must use singlequote                                           quotes
+  1431:43   error    Strings must use singlequote                                           quotes
+  1437:23   error    Strings must use singlequote                                           quotes
+  1439:25   error    Strings must use singlequote                                           quotes
+  1439:57   error    Strings must use singlequote                                           quotes
+  1439:88   error    Strings must use singlequote                                           quotes
+  1442:42   error    Strings must use singlequote                                           quotes
+  1447:30   error    Strings must use singlequote                                           quotes
+  1447:48   error    Strings must use singlequote                                           quotes
+  1449:31   error    Strings must use singlequote                                           quotes
+  1449:57   error    Strings must use singlequote                                           quotes
+  1449:87   error    Strings must use singlequote                                           quotes
+  1452:25   error    Strings must use singlequote                                           quotes
+  1453:47   error    Strings must use singlequote                                           quotes
+  1453:57   error    Strings must use singlequote                                           quotes
+  1454:48   error    Strings must use singlequote                                           quotes
+  1454:59   error    Strings must use singlequote                                           quotes
+  1456:47   error    Strings must use singlequote                                           quotes
+  1456:78   error    Strings must use singlequote                                           quotes
+  1456:105  warning  Expected 'undefined' and instead saw 'void'                            no-void
+  1457:43   error    Strings must use singlequote                                           quotes
+  1459:46   error    Strings must use singlequote                                           quotes
+  1460:40   error    Strings must use singlequote                                           quotes
+  1461:35   error    Strings must use singlequote                                           quotes
+  1461:44   error    Strings must use singlequote                                           quotes
+  1462:47   error    Strings must use singlequote                                           quotes
+  1463:35   error    Strings must use singlequote                                           quotes
+  1463:63   error    Strings must use singlequote                                           quotes
+  1465:40   error    Strings must use singlequote                                           quotes
+  1466:35   error    Strings must use singlequote                                           quotes
+  1466:63   error    Strings must use singlequote                                           quotes
+  1467:17   warning  Expected 'undefined' and instead saw 'void'                            no-void
+  1476:32   error    Strings must use singlequote                                           quotes
+  1499:20   error    Strings must use singlequote                                           quotes
+  1499:38   error    Strings must use singlequote                                           quotes
+  1499:83   error    Strings must use singlequote                                           quotes
+  1499:126  error    Strings must use singlequote                                           quotes
+  1505:41   error    Strings must use singlequote                                           quotes
+  1506:22   error    Strings must use singlequote                                           quotes
+  1512:15   error    Strings must use singlequote                                           quotes
+  1513:17   error    Strings must use singlequote                                           quotes
+  1517:19   error    Strings must use singlequote                                           quotes
+  1518:37   error    Strings must use singlequote                                           quotes
+  1522:34   error    Strings must use singlequote                                           quotes
+  1527:24   error    Strings must use singlequote                                           quotes
+  1527:46   error    Strings must use singlequote                                           quotes
+  1528:33   error    Strings must use singlequote                                           quotes
+  1530:16   error    Strings must use singlequote                                           quotes
+  1543:5    error    Assignment to function parameter 'css'                                 no-param-reassign
+  1547:17   error    Strings must use singlequote                                           quotes
+  1551:19   error    Strings must use singlequote                                           quotes
+  1552:39   error    Strings must use singlequote                                           quotes
+  1554:22   error    Strings must use singlequote                                           quotes
+  1555:22   error    Strings must use singlequote                                           quotes
+  1556:22   error    Strings must use singlequote                                           quotes
+  1565:102  error    Strings must use singlequote                                           quotes
+  1565:122  error    Strings must use singlequote                                           quotes
+  1572:26   error    Strings must use singlequote                                           quotes
+  1576:32   error    Strings must use singlequote                                           quotes
+  1579:19   error    Strings must use singlequote                                           quotes
+  1580:42   error    Strings must use singlequote                                           quotes
+  1580:65   error    Strings must use singlequote                                           quotes
+  1581:37   error    Strings must use singlequote                                           quotes
+  1581:49   error    Strings must use singlequote                                           quotes
+  1581:65   error    Strings must use singlequote                                           quotes
+  1581:77   error    Strings must use singlequote                                           quotes
+  1583:15   error    Strings must use singlequote                                           quotes
+  1583:67   error    Strings must use singlequote                                           quotes
+  1596:15   error    Strings must use singlequote                                           quotes
+  1603:23   error    Missing trailing comma                                                 comma-dangle
+  1617:8    error    Missing trailing comma                                                 comma-dangle
+  1622:23   error    Strings must use singlequote                                           quotes
+  1640:18   error    Missing trailing comma                                                 comma-dangle
+  1646:35   error    Strings must use singlequote                                           quotes
+  1646:68   error    Strings must use singlequote                                           quotes
+  1648:36   warning  Expected 'undefined' and instead saw 'void'                            no-void
+  1649:37   error    Strings must use singlequote                                           quotes
+  1653:11   error    Unexpected console statement                                           no-console
+  1656:13   error    Strings must use singlequote                                           quotes
+  1658:13   error    Strings must use singlequote                                           quotes
+  1660:18   error    Strings must use singlequote                                           quotes
+  1667:11   error    Unexpected console statement                                           no-console
+  1670:13   error    Strings must use singlequote                                           quotes
+  1679:16   error    Unexpected console statement                                           no-console
+  1697:9    error    Unexpected console statement                                           no-console
+  1697:23   error    Strings must use singlequote                                           quotes
+  1707:28   error    Strings must use singlequote                                           quotes
+  1708:33   error    Strings must use singlequote                                           quotes
+  1715:9    error    Unexpected console statement                                           no-console
+  1716:11   error    Strings must use singlequote                                           quotes
+  1718:11   error    Strings must use singlequote                                           quotes
+  1721:31   error    Strings must use singlequote                                           quotes
+  1727:20   error    Strings must use singlequote                                           quotes
+  1737:44   error    Strings must use singlequote                                           quotes
+  1742:20   error    Strings must use singlequote                                           quotes
+  1743:28   error    Strings must use singlequote                                           quotes
+  1745:27   error    Strings must use singlequote                                           quotes
+  1746:28   error    Strings must use singlequote                                           quotes
+  1748:27   error    Strings must use singlequote                                           quotes
+  1751:32   warning  Expected 'undefined' and instead saw 'void'                            no-void
+  1757:76   error    Strings must use singlequote                                           quotes
+  1787:22   error    Missing trailing comma                                                 comma-dangle
+  1796:17   warning  Expected 'undefined' and instead saw 'void'                            no-void
+  1805:29   error    Strings must use singlequote                                           quotes
+  1810:22   warning  Expected 'undefined' and instead saw 'void'                            no-void
+  1813:8    error    Missing trailing comma                                                 comma-dangle
+  1819:38   error    Strings must use singlequote                                           quotes
+  1820:21   error    Strings must use singlequote                                           quotes
+  1826:40   error    Strings must use singlequote                                           quotes
+  1830:25   error    Strings must use singlequote                                           quotes
+  1845:51   error    Missing trailing comma                                                 comma-dangle
+  1846:19   warning  Expected 'undefined' and instead saw 'void'                            no-void
+  1850:20   error    Strings must use singlequote                                           quotes
+  1851:44   error    Strings must use singlequote                                           quotes
+  1860:19   error    Strings must use singlequote                                           quotes
+  1863:44   error    Missing trailing comma                                                 comma-dangle
+  1865:11   error    Strings must use singlequote                                           quotes
+  1875:57   error    Strings must use singlequote                                           quotes
+  1899:47   error    Missing trailing comma                                                 comma-dangle
+  1903:33   error    Strings must use singlequote                                           quotes
+  1904:36   error    Strings must use singlequote                                           quotes
+  1908:5    error    Unexpected console statement                                           no-console
+  1908:19   error    Strings must use singlequote                                           quotes
+
+D:\FPT_University\FA26\WDP301\MindyMobile\src\modules\my-classes\ClassDetailScreen.test.tsx
+  70:3  warning  Script URL is a form of eval  no-script-url
+
+✖ 670 problems (626 errors, 44 warnings)
+  563 errors and 0 warnings potentially fixable with the `--fix` option.
