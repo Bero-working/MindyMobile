@@ -1,5 +1,11 @@
 import '../../../tests/mocks/nativeUi';
-import { act, fireEvent, screen, waitFor } from '@testing-library/react-native';
+import {
+  act,
+  cleanupAsync,
+  fireEvent,
+  screen,
+  waitFor,
+} from '@testing-library/react-native';
 import { http, HttpResponse } from 'msw';
 import { mockServer } from '../../../tests/mocks/server';
 import { TEST_API_URL } from '../../../tests/mocks/constants';
@@ -8,6 +14,7 @@ import { useStore } from '@/state/store';
 import { render } from '@testing-library/react-native';
 import App from '@/index';
 import { apiInstances } from '@/config/http/apiInstance.config';
+const defaultQueryOptions = queryClient.getDefaultOptions();
 const user = {
   id: '11111111-1111-4111-8111-111111111111',
   email: 'student@example.test',
@@ -20,6 +27,12 @@ const user = {
 };
 beforeAll(() => mockServer.listen({ onUnhandledRequest: 'error' }));
 beforeEach(() => {
+  // Session invalidation can remove queries while their screens are still mounted.
+  // Keep their later unmount from scheduling a production-length GC timer.
+  queryClient.setDefaultOptions({
+    ...defaultQueryOptions,
+    queries: { ...defaultQueryOptions.queries, gcTime: 0 },
+  });
   queryClient.clear();
   useStore.setState({
     user: null,
@@ -30,11 +43,15 @@ beforeEach(() => {
     hasSessionHistory: false,
   });
 });
-afterEach(() => {
+afterEach(async () => {
+  await cleanupAsync();
   queryClient.clear();
   mockServer.resetHandlers();
 });
-afterAll(() => mockServer.close());
+afterAll(() => {
+  queryClient.setDefaultOptions(defaultQueryOptions);
+  mockServer.close();
+});
 it('does not flash Home during bootstrap and shows an invalid account message for staff', async () => {
   let finish: () => void = () => {};
   const response = new Promise<void>((resolve) => {

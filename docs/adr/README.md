@@ -47,3 +47,4 @@ thêm thư viện hay sửa file hạ tầng thì phải viết ADR trước (xe
 | [ADR-0028](ADR-0028-tolerate-optional-error-details.md) | Giữ mã lỗi khi metadata details ngoài contract | Accepted | 2026-10-18 |
 | [ADR-0029](ADR-0029-local-ui-base-codex-spec-implementation.md) | Thiết kế local làm UI base, Codex đặc tả và có thể triển khai | Accepted | 2026-10-18 |
 | [ADR-0030](ADR-0030-phase-03-navigation-routes.md) | Đăng ký route Student Learning cho Phase 3 | Accepted | 2026-10-20 |
+| [ADR-0031](ADR-0031-ci-design-assets-eslint-scope.md) | Phạm vi ESLint cho nguồn thiết kế trong CI | Accepted | 2026-10-21 |

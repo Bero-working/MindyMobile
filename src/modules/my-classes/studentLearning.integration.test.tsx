@@ -1,5 +1,6 @@
 import '../../../tests/mocks/nativeUi';
 import {
+  cleanupAsync,
   fireEvent,
   render,
   screen,
@@ -19,6 +20,7 @@ import { queryClient } from '@/config/queryClient';
 import { useStore } from '@/state/store';
 import App from '@/index';
 
+const defaultQueryOptions = queryClient.getDefaultOptions();
 const user = {
   id: learningId(999),
   email: 'student@example.test',
@@ -31,6 +33,11 @@ const user = {
 };
 beforeAll(() => mockServer.listen({ onUnhandledRequest: 'error' }));
 beforeEach(() => {
+  // Logout removes queries before every observer has unmounted.
+  queryClient.setDefaultOptions({
+    ...defaultQueryOptions,
+    queries: { ...defaultQueryOptions.queries, gcTime: 0 },
+  });
   queryClient.clear();
   useStore.setState({
     sessionUser: user,
@@ -81,11 +88,15 @@ beforeEach(() => {
     )
   );
 });
-afterEach(() => {
+afterEach(async () => {
+  await cleanupAsync();
   queryClient.clear();
   mockServer.resetHandlers();
 });
-afterAll(() => mockServer.close());
+afterAll(() => {
+  queryClient.setDefaultOptions(defaultQueryOptions);
+  mockServer.close();
+});
 it('uses guarded production routes, read-only schedule, verified detail and clears learning data on logout', async () => {
   render(<App />);
   await waitFor(() => expect(screen.getByTestId('home-screen')).toBeTruthy());

@@ -9,6 +9,8 @@ https://sohantalukder.github.io/react-native-boilerplate/docs/configuration/ (đ
 
 ## Lệnh
 
+GitHub Actions, toolchain, cách chạy lại và tải artifact: [hướng dẫn CI](guides/ci.md).
+
 ```bash
 npm install
 npm start                       # Metro

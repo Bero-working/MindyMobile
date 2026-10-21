@@ -146,6 +146,13 @@ Chi tiết (Http client, `ApiError`, query key, mutation, QueryClient, polling):
 
 ## File hạ tầng (bị khoá)
 
+### Ngoại lệ Phase 4 — ADR-0031 Accepted (2026-10-21)
+
+Owner duyệt “Duyệt ADR-0031” trong chat. ESLint bỏ qua đúng
+`/assets/Student Home Page Design/**`, nguồn thiết kế không được app import.
+Không đổi rule hay loại `src/assets`, mã app, test và cấu hình khỏi lint.
+CI nằm tại `.github/workflows/ci.yml`; xem [hướng dẫn CI](guides/ci.md).
+
 ### Ngoại lệ Phase 3 — ADR-0030 Accepted (2026-10-20)
 
 Owner duyệt trong chat ngày2026-10-20 và cho phép gắn API Phase3. Được sửa `src/navigation/index.tsx` để đăng ký STUDENT_SCHEDULE, STUDENT_ACCOUNT, MY_CLASSES, STUDENT_CLASS_DETAIL trong nhánh STUDENT; kèm routes/types/module exports/test. Params chỉ ID/ngữ cảnh, không DTO/meetingUrl; không đổi Stack/providers/auth guard/screenOptions/HTTP/bootstrap/dependency. Lịch học chỉ xem, điểm vào session từ Home hoặc detail lớp.
