@@ -94,3 +94,12 @@
 - Trạng thái: In progress
 - Test: Helper dọn dung lượng chạy trên máy local trả exit1 ngay trước lệnh dọn; chỉ áp dụng GITHUB_ACTIONS=true, RUNNER_OS=Linux, RUNNER_ENVIRONMENT=github-hosted. Đối chiếu GitHub Variables reference và RunnerContext upstream xác nhận biến RUNNER_ENVIRONMENT được export. Không xoá toolchain trên máy phát triển.
 - Sửa: Dừng Gradle daemon sau APK debug trước khi boot emulator để nhường RAM cho AVD4096M và Metro. Giữ nguyên Gradle/native config; lỗi lệnh vẫn fail theo pipefail. Các thay đổi dung lượng/bootstrap fixture đang chờ xác minh runner sạch, chưa đánh dấu4.4/4.5 đạt.
+
+### 2026-10-21 16:43 (+07:00) · @Bero-working (Codex)
+
+- Phase: 4 Đối chiếu ảnh lỗi E2E hosted và chốt viewport/readiness
+- Trạng thái: In progress
+- Run: c8597c0 / https://github.com/Bero-working/MindyMobile/actions/runs/39574120066. Quality success; debugAPK build đạt; E2E1/14pass,13/14fail, hai Release skipped.
+- Bằng chứng: Artifact12335720100 chứa screenshot320×640. compact-welcome.png cho thấy nút preview nằm dưới fold và LogBoxtoast che vùngtap sau khi scroll; Metro có LaunchingDevTools do toast nhận tap. cold-bundle.png cho thấy flowđầu cònBundling77% khi hết thời gian. Audit28request chỉ GET/auth/me + POST/auth/refresh đúng401,0unexpected; bootstrapfixture hoạt động. Ảnh giữ tại evidence/ci-viewport-failure/.
+- Sửa: Chốt AVD pixel_8 theo baseline14flowlocal1080×2400/density420 (localAPI37; CIAPI35 theo spec). Kiểm tra profile bằng avdmanager trước build. Prewarm index.bundle cùng queryRN Android, curl fail/timeout300s trước Maestro; không tăng timeout assertions hoặc bỏ assertions. Giữ flow/layout/app nguyên trạng; thêm readiness hạ tầng.
+- Kiểm chứng âm: PRkiểmtra#3 / run39576534489: Android invalidGradleoption exit1, iOS invalidXcodeoption exit64, packagingđềuskipped, logsartifactđạt. Snapshot evidence/native-negative-jobs.json. Testbranch sẽ cập nhật baselineviewport/readiness mới rồi chỉ giữ testIDsai cho kiểm chứng E2E; không đưa lỗi thử vào PR#2.
