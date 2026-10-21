@@ -9,7 +9,16 @@ if [[ -z "$sdkmanager_path" ]]; then
   exit 1
 fi
 printf '%s\n' "$(dirname "$sdkmanager_path")" "$sdk_root/platform-tools" "$sdk_root/emulator" >> "$GITHUB_PATH"
+if [[ "${GITHUB_ACTIONS:-}" == true && "${RUNNER_ENVIRONMENT:-}" == github-hosted ]]; then
+  # Keep only the NDK required by this repository on the disposable runner.
+  for ndk_dir in "$sdk_root"/ndk/*; do
+    if [[ -d "$ndk_dir" && "${ndk_dir##*/}" != 27.1.12297006 ]]; then
+      "$sdkmanager_path" --uninstall "ndk;${ndk_dir##*/}"
+    fi
+  done
+fi
 "$sdkmanager_path" 'platforms;android-35' 'build-tools;35.0.0' 'ndk;27.1.12297006'
+df -h /
 if [[ ! -f "$HOME/.android/debug.keystore" ]]; then
   keytool -genkeypair -keystore "$HOME/.android/debug.keystore" \
     -storepass android -alias androiddebugkey -keypass android \

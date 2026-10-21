@@ -26,6 +26,7 @@ Job lỗi làm các job phụ thuộc bị chặn; không có `continue-on-error
 
 - Ubuntu 24.04; Node **24.16.0**; `npm ci` từ package-lock hiện có. Chỉ cache npm,
   không cache node_modules. Gradle dùng setup-gradle v4.4.2, cache PR chỉ đọc.
+- Hai job Linux native giải phóng toolchain .NET/Swift/GHC/Boost/CodeQL không dùng và gỡ các NDK khác qua SDK Manager trên runner GitHub-hosted tạm, có guard và log dung lượng. Không chạy helper dọn hệ thống trên máy phát triển.
 - Android: Temurin **17.0.14+7**, SDK/Build Tools 35, NDK 27.1.12297006;
   emulator Google APIs 35 x86_64, 2 cores, RAM 4096 MB, KVM, tắt animation.
 - Maestro **2.11.0**, zip release `cli-2.11.0`, xác thực SHA-256

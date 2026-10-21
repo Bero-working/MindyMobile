@@ -79,3 +79,11 @@
 - Sửa: preview-api.py (Python stdlib) trên loopback 7777, GET /api/v1/auth/me → 401 AUTHENTICATION_REQUIRED, POST /api/v1/auth/refresh → 401 INVALID_REFRESH_TOKEN theo auth.md và API_CONTRACT/README. Không cấp session/cookie hợp lệ hoặc gọi backend thật. API khác trả500 và audit khiến job fail; audit chỉ method/path/status. Development ENVFILE dùng127.0.0.1:7777, env.ts hiện có tự ánh xạ10.0.2.2. E2E khởi động/health/cleanup fixture, curl có timeout hữu hạn và deadline readiness. Không sửa navigator/auth/HTTP/native/config khoá hoặc thêm dependency.
 - Test: Fixture real HTTP readiness/guest/refresh PASS; request /orders bị500 và đánh unexpected; query token fixture không xuất hiện trong audit. Bash syntax PASS. Maestro CLI trong zip có class major61, xác nhận tương thích Java17. Bản a1639e4 đã qua toolchain và build x86_64 debug APK, đang bước chạy flow; thay run để APK mới nhúng URL fixture, không coi run cũ là14flow CI đạt.
 - Tự nghiệm thu: 4.1–4.3 Done với hosted quality và kiểm chứng âm; 4.4/4.5 tiếp tục, Phase4/UAT chưa Done. Giữ14/14 local preview và nguồn API thật là hai bằng chứng riêng.
+
+### 2026-10-21 16:02 (+07:00) · @Bero-working (Codex)
+
+- Phase: 4 Chẩn đoán dung lượng runner Android
+- Trạng thái: In progress
+- Run: a1639e4 / https://github.com/Bero-working/MindyMobile/actions/runs/39571171627 hoàn tất failure. Debug x86_64 build SUCCESSFUL trong12m55s,543tasks. Lỗi gốc sau đó: cài Google APIs Intel x86_64 system image → No space left on device; adb5554 connection refused là lỗi cleanup sau cài đặt, emulator chưa sẵn sàng. Không phải lỗi assertions hoặc buildAPK. Hai job Release skipped.
+- Sửa: prepare-linux-runner.sh chỉ cho phép GitHub-hosted Linux tạm; dọn .NET/Swift/GHC/Boost/CodeQL không dùng, ghi df trước/sau. Android toolchain gỡ NDK khác qua SDK Manager, giữ/cài27.1.12297006. Áp dụng cho E2E và Build Android để chừa chỗ cho system image/native outputs. Không sửa native hoặc file máy phát triển.
+- Ghi chú: Run34d23a0 chứa fixture đang được thay bằng bản bổ sung dung lượng trước khi lặp build tốn thời gian. Giữ nguyên assertions và runtimegates. Bằng chứng native full pipeline vẫn chưa đủ, tiếp tục kiểm chứng.
