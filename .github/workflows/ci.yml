@@ -103,11 +103,11 @@ jobs:
           cache-read-only: ${{ github.event_name == 'pull_request' }}
       - run: bash .github/scripts/android-toolchain.sh
       - run: bash .github/scripts/prepare-env.sh development
-      - name: Verify Pixel 8 device profile
+      - name: Verify Pixel 7 device profile
         shell: bash
         run: |
           avdmanager list device > ci-logs/device-profiles.log
-          grep -F '"pixel_8"' ci-logs/device-profiles.log
+          grep -F '"pixel_7"' ci-logs/device-profiles.log
       - name: Build x86_64 debug APK
         shell: bash
         run: |
@@ -135,7 +135,7 @@ jobs:
           api-level: 35
           target: google_apis
           arch: x86_64
-          profile: pixel_8
+          profile: pixel_7
           cores: 2
           ram-size: 4096M
           emulator-boot-timeout: 300

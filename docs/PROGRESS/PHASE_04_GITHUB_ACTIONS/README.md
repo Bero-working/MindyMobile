@@ -103,3 +103,16 @@
 - Bằng chứng: Artifact12335720100 chứa screenshot320×640. compact-welcome.png cho thấy nút preview nằm dưới fold và LogBoxtoast che vùngtap sau khi scroll; Metro có LaunchingDevTools do toast nhận tap. cold-bundle.png cho thấy flowđầu cònBundling77% khi hết thời gian. Audit28request chỉ GET/auth/me + POST/auth/refresh đúng401,0unexpected; bootstrapfixture hoạt động. Ảnh giữ tại evidence/ci-viewport-failure/.
 - Sửa: Chốt AVD pixel_8 theo baseline14flowlocal1080×2400/density420 (localAPI37; CIAPI35 theo spec). Kiểm tra profile bằng avdmanager trước build. Prewarm index.bundle cùng queryRN Android, curl fail/timeout300s trước Maestro; không tăng timeout assertions hoặc bỏ assertions. Giữ flow/layout/app nguyên trạng; thêm readiness hạ tầng.
 - Kiểm chứng âm: PRkiểmtra#3 / run39576534489: Android invalidGradleoption exit1, iOS invalidXcodeoption exit64, packagingđềuskipped, logsartifactđạt. Snapshot evidence/native-negative-jobs.json. Testbranch sẽ cập nhật baselineviewport/readiness mới rồi chỉ giữ testIDsai cho kiểm chứng E2E; không đưa lỗi thử vào PR#2.
+
+### 2026-10-21 16:44 (+07:00) · @Bero-working (Codex)
+
+- Đính chính entry viewport/readiness trước: Audit thực tế có26request, không phải28.13flow cần Welcome tạo GET/me + POST/refresh; app-launch chỉ assertroot nên không bắt buộc chờ bootstrap.0unexpected vẫn chính xác. Không dùng số28 làm bằng chứng.
+- Task: 4.4 kiểm chứng âm — PR#3 cập nhật baseline96bf2ea, commit kiểmtra e5093911e51a012c0d3927b5ceb8f0f0c4afaec1, chỉ giữ app-launch testID sai. Gỡ workflow CLInegative khỏi head sau khi các ca đã xác minh; lịch sử/run39576534489 và artifact vẫn giữ. PR#2 không chứa testID sai hay workflow negative.
+
+### 2026-10-21 16:51 (+07:00) · @Bero-working (Codex)
+
+- Phase: 4 Chốt profile có sẵn trên runner
+- Trạng thái: In progress
+- Run: 96bf2ea / https://github.com/Bero-working/MindyMobile/actions/runs/39579199882. Quality success; precheck Pixel8 fail trước khi tốn13phút buildAPK. Artifact device-profiles.log xác nhận SDKCLI12 có pixel_7/pixel_7_pro nhưng không pixel_8.
+- Sửa: Dùng profilepixel_7 đã có; đặt wm size1080×2400 và density420 rõ ràng trước test, ghi emulator-display.log, cleanup reset. Đây là viewport đã qua14flowlocalPixel8; CI vẫn API35 x86_64 theo spec. Không đổi UI/testassertions. Giữ prewarm bundle300s trước Maestro.
+- Ghi chú: Nhánhkiểmtra#3 sẽ đồng bộ baseline này rồi chỉ giữ testID sai. Snapshot CLInegative trước vẫn hợp lệ: lệnh Android/iOS không đổi, chỉ thay viewport/readiness của E2E.
