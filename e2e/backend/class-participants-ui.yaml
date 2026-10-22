@@ -1,0 +1,18 @@
+appId: ${APP_ID || "com.mindymobile"}
+---
+# Run while a verified class detail is already open; does not reset the login.
+- assertVisible:
+    id: 'class-detail-screen'
+- takeScreenshot: 'class-floating-footer'
+- tapOn:
+    id: 'class-detail-participants'
+- assertVisible:
+    id: 'class-participants-sheet'
+- assertVisible:
+    id: 'class-participants-pending'
+- takeScreenshot: 'class-participants-pending'
+- pressKey: Back
+- assertNotVisible:
+    id: 'class-participants-sheet'
+- assertVisible:
+    id: 'class-detail-screen'

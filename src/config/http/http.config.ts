@@ -31,7 +31,10 @@ const errorSchema = z.object({
   statusCode: z.number(),
   code: z.string(),
   message: z.union([z.string(), z.array(z.string())]),
-  details: z.union([z.string(), z.array(z.string())]).optional(),
+  details: z
+    .union([z.string(), z.array(z.string())])
+    .optional()
+    .catch(undefined),
   requestId: z.string().optional(),
 });
 const normalizeError = (error: Error): ApiError => {

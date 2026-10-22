@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="test" tests="14" failures="8" time="775.954" timestamp="2026-10-21T10:12:35">
+    <testcase id="student-schedule" name="student-schedule" classname="student-schedule" file="e2e/flows/student-schedule.yaml" time="58.82" timestamp="2026-10-21T10:12:35" status="SUCCESS">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+    </testcase>
+    <testcase id="my-classes-detail" name="my-classes-detail" classname="my-classes-detail" file="e2e/flows/my-classes-detail.yaml" time="61.27" timestamp="2026-10-21T10:13:34" status="SUCCESS">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+    </testcase>
+    <testcase id="carousel-autoplay" name="carousel-autoplay" classname="carousel-autoplay" file="e2e/flows/carousel-autoplay.yaml" time="60.586" timestamp="2026-10-21T10:14:35" status="ERROR">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+      <failure>No visible element found: id: home-intro-dot-0</failure>
+    </testcase>
+    <testcase id="courses-browse" name="courses-browse" classname="courses-browse" file="e2e/flows/courses-browse.yaml" time="57.257" timestamp="2026-10-21T10:15:36" status="ERROR">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+      <failure>Assertion is false: id: courses-filter-dot is visible</failure>
+    </testcase>
+    <testcase id="course-class-scroll" name="course-class-scroll" classname="course-class-scroll" file="e2e/flows/course-class-scroll.yaml" time="67.292" timestamp="2026-10-21T10:16:33" status="ERROR">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+      <failure>Assertion is false: id: course-sheet-toast is visible</failure>
+    </testcase>
+    <testcase id="auth-ui-register" name="auth-ui-register" classname="auth-ui-register" file="e2e/flows/auth-ui-register.yaml" time="95.137" timestamp="2026-10-21T10:17:41" status="ERROR">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+      <failure>Assertion is false: id: register-check-email is visible</failure>
+    </testcase>
+    <testcase id="app-launch" name="app-launch" classname="app-launch" file="e2e/flows/app-launch.yaml" time="16.06" timestamp="2026-10-21T10:19:16" status="SUCCESS">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+    </testcase>
+    <testcase id="student-account" name="student-account" classname="student-account" file="e2e/flows/student-account.yaml" time="56.312" timestamp="2026-10-21T10:19:32" status="SUCCESS">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+    </testcase>
+    <testcase id="my-classes-folders" name="my-classes-folders" classname="my-classes-folders" file="e2e/flows/my-classes-folders.yaml" time="33.327" timestamp="2026-10-21T10:20:28" status="SUCCESS">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+    </testcase>
+    <testcase id="student-home-ui" name="student-home-ui" classname="student-home-ui" file="e2e/flows/student-home-ui.yaml" time="50.49" timestamp="2026-10-21T10:21:01" status="ERROR">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+      <failure>Element not found: Id matching regex: preview-state-loading</failure>
+    </testcase>
+    <testcase id="session-detail-footer" name="session-detail-footer" classname="session-detail-footer" file="e2e/flows/session-detail-footer.yaml" time="37.057" timestamp="2026-10-21T10:21:52" status="SUCCESS">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+    </testcase>
+    <testcase id="cart-checkout-qr" name="cart-checkout-qr" classname="cart-checkout-qr" file="e2e/flows/cart-checkout-qr.yaml" time="50.036" timestamp="2026-10-21T10:22:29" status="ERROR">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+      <failure>Assertion is false: id: cart-item-demo-0-a is visible</failure>
+    </testcase>
+    <testcase id="student-learning-responsive" name="student-learning-responsive" classname="student-learning-responsive" file="e2e/flows/student-learning-responsive.yaml" time="48.855" timestamp="2026-10-21T10:23:19" status="ERROR">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+      <failure>Assertion is false: id: account-screen is visible</failure>
+    </testcase>
+    <testcase id="auth-ui-login" name="auth-ui-login" classname="auth-ui-login" file="e2e/flows/auth-ui-login.yaml" time="83.305" timestamp="2026-10-21T10:24:08" status="ERROR">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+      <failure>Element not found: Id matching regex: preview-error-toggle</failure>
+    </testcase>
+  </testsuite>
+</testsuites>

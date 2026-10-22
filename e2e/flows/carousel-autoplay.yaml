@@ -1,0 +1,47 @@
+appId: ${APP_ID || "com.mindymobile"}
+tags:
+  - ci
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible:
+      id: 'welcome-screen'
+    timeout: 90000
+- scrollUntilVisible:
+    element:
+      id: 'phase-one-preview-button'
+    direction: DOWN
+- tapOn:
+    id: 'phase-one-preview-button'
+- tapOn:
+    id: 'preview-courses-button'
+- tapOn:
+    id: 'courses-recommend-dot-0'
+- extendedWaitUntil:
+    visible:
+      id: 'courses-recommend-demo-1'
+    timeout: 8000
+- takeScreenshot: 'autoplay-recommend-next'
+- tapOn:
+    id: 'courses-tab-home'
+- scrollUntilVisible:
+    element:
+      id: 'home-intro-dot-0'
+    direction: DOWN
+- tapOn:
+    id: 'home-intro-dot-0'
+- extendedWaitUntil:
+    visible: 'Không ai phải học một mình.'
+    timeout: 8000
+- takeScreenshot: 'autoplay-home-intro-next'
+- scrollUntilVisible:
+    element:
+      id: 'home-about-dot-0'
+    direction: DOWN
+- tapOn:
+    id: 'home-about-dot-0'
+- extendedWaitUntil:
+    visible: 'Lớp nhỏ, mentor kèm sát'
+    timeout: 8000
+- takeScreenshot: 'autoplay-home-about-next'

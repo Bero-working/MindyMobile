@@ -1,0 +1,76 @@
+{
+  "run": "https://github.com/Bero-working/MindyMobile/actions/runs/39700197090",
+  "artifact_id": 12393459024,
+  "tests": 13,
+  "failures": 0,
+  "skipped": 0,
+  "bootstrap_requests": 26,
+  "unexpected_requests": 0,
+  "flows": [
+    {
+      "name": "app-launch",
+      "time": "20.274",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "courses-browse",
+      "time": "100.957",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "auth-ui-login",
+      "time": "85.788",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "auth-ui-register",
+      "time": "95.448",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "student-home-ui",
+      "time": "496.987",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "course-class-scroll",
+      "time": "63.835",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "carousel-autoplay",
+      "time": "77.225",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "student-schedule",
+      "time": "62.549",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "student-account",
+      "time": "65.177",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "my-classes-detail",
+      "time": "64.575",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "my-classes-folders",
+      "time": "35.252",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "student-learning-responsive",
+      "time": "62.53",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "session-detail-footer",
+      "time": "41.362",
+      "status": "SUCCESS"
+    }
+  ]
+}

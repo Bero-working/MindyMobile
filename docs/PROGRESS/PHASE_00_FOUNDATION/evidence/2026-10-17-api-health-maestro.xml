@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="Pixel_8_2" tests="2" failures="0" time="35.459" timestamp="2026-10-17T14:02:28">
+    <testcase id="api-health" name="api-health" classname="api-health" file="e2e\flows\api-health.yaml" time="23.5" timestamp="2026-10-17T14:02:28" status="SUCCESS"/>
+    <testcase id="app-launch" name="app-launch" classname="app-launch" file="e2e\flows\app-launch.yaml" time="11.929" timestamp="2026-10-17T14:02:51" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

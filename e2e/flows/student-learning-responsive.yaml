@@ -1,0 +1,73 @@
+appId: ${APP_ID || "com.mindymobile"}
+tags:
+  - ci
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible:
+      id: 'welcome-screen'
+    timeout: 90000
+- scrollUntilVisible:
+    element:
+      id: 'phase-one-preview-button'
+    direction: DOWN
+- tapOn:
+    id: 'phase-one-preview-button'
+- tapOn:
+    id: 'preview-schedule-button'
+- assertVisible:
+    id: 'schedule-screen'
+- takeScreenshot: 'phase3-responsive-schedule'
+- scrollUntilVisible:
+    element:
+      id: 'schedule-session-full-session'
+    direction: DOWN
+- tapOn:
+    id: 'schedule-session-full-session'
+- assertVisible:
+    id: 'schedule-screen'
+- assertNotVisible:
+    id: 'class-session-screen'
+- tapOn:
+    id: 'schedule-tab-account'
+- assertVisible:
+    id: 'account-screen'
+- takeScreenshot: 'phase3-responsive-account'
+- scrollUntilVisible:
+    element:
+      id: 'account-my-classes'
+    direction: DOWN
+- tapOn:
+    id: 'account-my-classes'
+- assertVisible:
+    id: 'my-classes-screen'
+- takeScreenshot: 'phase3-responsive-folders'
+- scrollUntilVisible:
+    element:
+      id: 'my-classes-open-full'
+    direction: DOWN
+- tapOn:
+    id: 'my-classes-open-full'
+- scrollUntilVisible:
+    element:
+      id: 'class-detail-session-full-session'
+    direction: DOWN
+- tapOn:
+    id: 'class-detail-session-full-session'
+- scrollUntilVisible:
+    element:
+      id: 'class-session-join'
+    direction: DOWN
+- assertVisible:
+    id: 'class-session-join'
+- tapOn:
+    id: 'class-session-close'
+- tapOn:
+    id: 'class-detail-back'
+- tapOn:
+    id: 'my-classes-tab-courses'
+- assertVisible:
+    id: 'courses-screen'
+- assertNotVisible:
+    id: 'courses-my-classes'

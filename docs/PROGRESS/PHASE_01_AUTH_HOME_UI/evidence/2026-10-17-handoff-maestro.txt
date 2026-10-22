@@ -1,0 +1,14 @@
+
+> @sohantalukder/react-native-boilerplate@1.0.0 test:e2e
+> maestro test e2e/flows -e APP_ID=com.mindymobile --format junit --output docs/PROGRESS/PHASE_01_AUTH_HOME_UI/evidence/2026-10-17-handoff-maestro.xml
+
+
+Waiting for flows to complete...
+[Passed] api-health (20s)
+[Passed] app-launch (8s)
+[Passed] auth-ui-login (47s)
+[Passed] auth-ui-register (53s)
+[Failed] student-home-ui (1m 4s) (No visible element found: id: home-course-select-preview-0)
+
+1/5 Flow Failed
+

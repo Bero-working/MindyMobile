@@ -1,0 +1,54 @@
+{
+  "command": "npm run test:e2e -- --test-output-dir <evidence>",
+  "appIdArgumentProvided": false,
+  "flows": [
+    {
+      "flow": "api-health",
+      "passed": true,
+      "commands": 10
+    },
+    {
+      "flow": "app-launch",
+      "passed": true,
+      "commands": 5
+    },
+    {
+      "flow": "auth-ui-login",
+      "passed": true,
+      "commands": 29
+    },
+    {
+      "flow": "auth-ui-register",
+      "passed": true,
+      "commands": 34
+    },
+    {
+      "flow": "carousel-autoplay",
+      "passed": true,
+      "commands": 19
+    },
+    {
+      "flow": "cart-checkout-qr",
+      "passed": true,
+      "commands": 32
+    },
+    {
+      "flow": "course-class-scroll",
+      "passed": true,
+      "commands": 32
+    },
+    {
+      "flow": "courses-browse",
+      "passed": true,
+      "commands": 27
+    },
+    {
+      "flow": "student-home-ui",
+      "passed": true,
+      "commands": 42
+    }
+  ],
+  "passed": 9,
+  "total": 9,
+  "duration": "7m12s"
+}

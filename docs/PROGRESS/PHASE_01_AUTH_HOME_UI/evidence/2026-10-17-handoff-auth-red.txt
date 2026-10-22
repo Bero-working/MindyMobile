@@ -1,0 +1,57 @@
+
+> @sohantalukder/react-native-boilerplate@1.0.0 test
+> jest --runInBand src/modules/auth/auth.test.tsx
+
+FAIL src/modules/auth/auth.test.tsx (5.541 s)
+  auth foundation and Welcome
+    × keeps brand text out of the Auth artwork and provides the design placeholders (426 ms)
+    √ renders the supplied brand mascot as decoration without a repeated screen-reader announcement (8 ms)
+    √ renders scrollable shell content and provides intentional Welcome callbacks (20 ms)
+  Login
+    √ validates the login password length 0 (3 ms)
+    √ validates the login password length 1 (1 ms)
+    √ validates the login password length 128
+    √ validates the login password length 129
+    √ blocks invalid submit and validates on blur (145 ms)
+    √ locks duplicate submissions, preserves password whitespace and hands off staff without a student redirect (78 ms)
+    √ shows generic credentials errors with request id and keeps entered values (109 ms)
+    √ disables submission with an explanation when no integration is supplied (15 ms)
+  Register
+    √ validates display name length 1 (1 ms)
+    √ validates display name length 150 (1 ms)
+    √ validates display name length 151
+    √ keeps check-email after a failed resend and blocks duplicate resends (166 ms)
+    √ validates registration password length 5 (1 ms)
+    √ validates registration password length 6
+    √ validates registration password length 128
+    √ validates registration password length 129
+    √ validates optional phone length 0
+    √ validates optional phone length 6 (1 ms)
+    √ validates optional phone length 7 (1 ms)
+    √ validates optional phone length 32
+    √ validates optional phone length 33 (1 ms)
+    √ rejects blank display name and mismatched confirmation; excludes UI-only fields from the payload (1 ms)
+    √ shows neutral check-email on accepted registration and resends only on a press (232 ms)
+    √ preserves registration values and maps known 422 fields without exposing backend text (188 ms)
+
+  ● auth foundation and Welcome › keeps brand text out of the Auth artwork and provides the design placeholders
+
+    expect(received).toBeNull()
+
+    Received: {"_fiber": {"_debugHookTypes": null, "_debugInfo": null, "_debugNeedsRemount": false, "_debugOwner": [FiberNode], "_debugStack": [Error: react-stack-top-frame], "_debugTask": null, "actualDuration": -0, "actualStartTime": 1792244353629, "alternate": null, "child": [FiberNode], "childLanes": 0, "deletions": null, "dependencies": null, "elementType": "Text", "flags": 0, "index": 0, "key": null, "lanes": 0, "memoizedProps": [Object], "memoizedState": null, "mode": 1, "pendingProps": [Object], "ref": null, "refCleanup": null, "return": [FiberNode], "selfBaseDuration": -0, "sibling": null, "stateNode": [Object], "subtreeFlags": 0, "tag": 5, "treeBaseDuration": -0, "type": "Text", "updateQueue": null}}
+
+      68 |   it('keeps brand text out of the Auth artwork and provides the design placeholders', () => {
+      69 |     const view = render(<WelcomeScreen onLogin={jest.fn()} onRegister={jest.fn()} />);
+    > 70 |     expect(screen.queryByText(i18n.t('auth.brandName'))).toBeNull();
+         |                                                          ^
+      71 |     view.unmount();
+      72 |     render(<LoginScreen />);
+      73 |     expect(screen.getByTestId('login-email-input').props.placeholder).toBe('ten@email.com');
+
+      at Object.toBeNull (src/modules/auth/auth.test.tsx:70:58)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 26 passed, 27 total
+Snapshots:   0 total
+Time:        5.974 s
+Ran all test suites matching /src\\modules\\auth\\auth.test.tsx/i.

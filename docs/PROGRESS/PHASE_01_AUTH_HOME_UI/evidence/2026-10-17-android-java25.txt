@@ -1,0 +1,29 @@
+
+> @sohantalukder/react-native-boilerplate@1.0.0 android
+> react-native run-android
+
+info A dev server is already running for this project on port 8081.
+info Installing the app...
+Starting a Gradle Daemon, 1 incompatible Daemon could not be reused, use --status for details
+
+info 💡 Tip: Make sure that you have set up your development environment correctly, by running npx react-native doctor. To read more about doctor command visit: https://github.com/react-native-community/cli/blob/main/packages/cli-doctor/README.md#doctor 
+
+
+FAILURE: Build failed with an exception.
+
+* Where:
+Settings file 'D:\FPT_University\FA26\WDP301\MindyMobile\android\settings.gradle' line: 2
+
+* What went wrong:
+Error resolving plugin [id: 'com.facebook.react.settings']
+> 25.0.3
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 6s
+info Run CLI with --verbose flag for more details.
+error Failed to install the app. Command failed with exit code 1: gradlew.bat app:installDebug -PreactNativeDevServerPort=8081 FAILURE: Build failed with an exception. * Where: Settings file 'D:\FPT_University\FA26\WDP301\MindyMobile\android\settings.gradle' line: 2 * What went wrong: Error resolving plugin [id: 'com.facebook.react.settings'] > 25.0.3 * Try: > Run with --stacktrace option to get the stack trace. > Run with --info or --debug option to get more log output. > Run with --scan to get full insights. > Get more help at https://help.gradle.org. BUILD FAILED in 6s.

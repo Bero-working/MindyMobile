@@ -32,8 +32,8 @@
 /src/theme/                        @Bero
 /src/shared/utilities/logger.ts    @Bero
 /src/shared/utilities/apiError.ts  @Bero
-# Bật sau khi Phase 0 nghiệm thu:
-# /src/components/ui/              @Bero
+# Phase 0 đã được owner nghiệm thu ngày 2026-10-17.
+/src/components/ui/                @Bero
 
 /tests/mocks/server.ts             @Bero
 /tests/utils/                      @Bero

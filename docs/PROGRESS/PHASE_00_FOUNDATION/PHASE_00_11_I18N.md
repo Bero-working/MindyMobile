@@ -25,3 +25,19 @@ Nhật ký thực hiện task của [0.11 i18n](../../IMPLEMENT/PHASE_00_FOUNDAT
 - Test: E2E app-launch xanh; kiểm tra native UI hierarchy và screenshot.
 - PR / commit: Chưa có, workspace không có .git.
 - Ghi chú: Không gọi API nghiệp vụ trong flow mở app. Bằng chứng trong evidence/2026-10-17-native-foundation.png, evidence/2026-10-17-main-app.png và JSON cùng tên.
+
+### 2026-10-17 13:35 (+07:00) · @Bero
+- Phase: 0.11.1–0.11.2 Triển khai lại / AI tự kiểm tra
+- Trạng thái: In review
+- Đã làm: AI kiểm tra vi-VN mặc định, parity key, danh sách chỉ vi-VN/en-EN và lưu lựa chọn ngôn ngữ.
+- Test: 3 test i18n xanh; không còn bn-BN trong source app.
+- PR / commit: Chưa tạo; kiểm tra trên working tree từ 5087fbf (main).
+- Ghi chú: Kiểm tra hiển thị mặc định trực tiếp trên Android ghi trong nhật ký phase; không có kiểm tra iOS. Codex thực hiện; handle dùng lại xác nhận trực tiếp đã ghi trong nhật ký trước, vì máy không có gh CLI.
+
+### 2026-10-17 14:24 (+07:00) · @Bero
+- Phase: Đồng bộ nghiệm thu sub-phase theo UAT 1–4a
+- Trạng thái: Done
+- Đã làm: Tick checklist nghiệm thu và đồng bộ bảng sub-phase theo xác nhận trực tiếp của owner về UAT bước 1–4a. NativeWind, Nunito, theme và i18n tương ứng phạm vi đã chấp nhận.
+- Test: Chỉ cập nhật tài liệu, không đổi code; dùng bằng chứng test/native đã ghi trong nhật ký trước, không chạy lại test.
+- PR / commit: Chưa tạo.
+- Ghi chú: Done chỉ cho sub-phase này; Phase 0/0.99 chưa Done. Bằng chứng native/font của lần kiểm tra trước; không ghi đã xem lại màn kiểm tra tạm trên emulator, chưa chạy iOS trên Windows. Codex ghi nhận quyết định owner, không tự nghiệm thu thay owner.

@@ -6,6 +6,8 @@ import { queryClient } from '../queryClient';
 import { useStore } from '@/state/store';
 import { ApiError } from '@/shared/utilities/apiError';
 import { createIdempotencyKey } from '@/shared/utilities/idempotencyKey';
+import { env } from '@/config/env';
+import { Http } from './http.config';
 
 beforeAll(() => mockServer.listen({ onUnhandledRequest: 'error' }));
 afterEach(() => {
@@ -88,6 +90,79 @@ it('normalizes backend errors', async () => {
     requestId: 'r1',
   });
 });
+
+it('keeps the business error when optional details contain backend objects', async () => {
+  mockServer.use(
+    http.post(`${TEST_API_URL}/me/cart/items`, () =>
+      HttpResponse.json(
+        {
+          statusCode: 409,
+          code: 'CLASS_ALREADY_ENROLLED',
+          message: 'You already hold a seat or are enrolled in this class',
+          details: [{ classId: '25449860-d1cb-4949-852a-90d6b42dc2d3' }],
+          requestId: 'cart-seat-conflict',
+        },
+        { status: 409 }
+      )
+    )
+  );
+  await expect(
+    apiInstances.service.post('me/cart/items', { classId: 'class' })
+  ).rejects.toMatchObject({
+    status: 409,
+    code: 'CLASS_ALREADY_ENROLLED',
+    requestId: 'cart-seat-conflict',
+    details: [],
+  });
+});
+
+it.each(['field invalid', ['field invalid']])(
+  'preserves supported error details: %j',
+  async (details) => {
+    mockServer.use(
+      http.get(`${TEST_API_URL}/invalid-field`, () =>
+        HttpResponse.json(
+          {
+            statusCode: 422,
+            code: 'VALIDATION_ERROR',
+            message: 'Invalid',
+            details,
+          },
+          { status: 422 }
+        )
+      )
+    );
+    await expect(
+      apiInstances.service.get('invalid-field')
+    ).rejects.toMatchObject({
+      code: 'VALIDATION_ERROR',
+      details: ['field invalid'],
+    });
+  }
+);
+
+it.each(['code', 'message'])(
+  'rejects error envelopes without %s',
+  async (field) => {
+    const body: Record<string, string | number | { classId: string }[]> = {
+      statusCode: 409,
+      code: 'CLASS_ALREADY_ENROLLED',
+      message: 'Conflict',
+      details: [{ classId: 'class' }],
+    };
+    delete body[field];
+    mockServer.use(
+      http.get(`${TEST_API_URL}/malformed-error`, () =>
+        HttpResponse.json(body, { status: 409 })
+      )
+    );
+    await expect(
+      apiInstances.service.get('malformed-error')
+    ).rejects.toMatchObject({
+      code: 'HTTP_ERROR',
+    });
+  }
+);
 
 it('normalizes network failures', async () => {
   mockServer.use(
@@ -287,4 +362,92 @@ it.each([
   if (method === 'POST') await apiInstances.service.post(path, {});
   else if (method === 'PATCH') await apiInstances.service.patch(path, {});
   else await apiInstances.service.delete(path);
+});
+
+it('blocks protected mutations before sending when APP_ORIGIN is missing', async () => {
+  const origin = env.APP_ORIGIN;
+  const handler = jest.fn(() => HttpResponse.json({ ok: true }));
+  mockServer.use(
+    http.post(`${TEST_API_URL}/manager/materials/m1/approve`, handler)
+  );
+  try {
+    env.APP_ORIGIN = '';
+    await expect(
+      apiInstances.service.post('manager/materials/m1/approve', {
+        expectedRevision: 1,
+      })
+    ).rejects.toMatchObject({ code: 'APP_ORIGIN_REQUIRED' });
+    expect(handler).not.toHaveBeenCalled();
+  } finally {
+    env.APP_ORIGIN = origin;
+  }
+});
+
+it('encodes timezone offsets and query values without losing zero or false', async () => {
+  mockServer.use(
+    http.get(`${TEST_API_URL}/test/query`, ({ request }) => {
+      const params = new URL(request.url).searchParams;
+      expect(params.get('from')).toBe('2026-10-17T09:00:00+07:00');
+      expect(params.get('page')).toBe('0');
+      expect(params.get('active')).toBe('false');
+      expect(params.getAll('role')).toEqual(['STUDENT', 'MENTOR']);
+      expect(params.has('missing')).toBe(false);
+      expect(params.has('empty')).toBe(false);
+      return HttpResponse.json({ ok: true });
+    })
+  );
+  await expect(
+    apiInstances.service.get('test/query', {
+      params: {
+        from: '2026-10-17T09:00:00+07:00',
+        page: 0,
+        active: false,
+        role: ['STUDENT', 'MENTOR'],
+        missing: undefined,
+        empty: null,
+      },
+    })
+  ).resolves.toEqual({ ok: true });
+});
+
+it('shares one refresh across HTTP instances using the same backend', async () => {
+  const otherClient = new Http(TEST_API_URL);
+  let refreshed = false;
+  let refreshes = 0;
+  mockServer.use(
+    http.get(`${TEST_API_URL}/test/shared-session`, () =>
+      refreshed
+        ? HttpResponse.json({ ok: true })
+        : HttpResponse.json(
+            {
+              statusCode: 401,
+              code: 'AUTHENTICATION_REQUIRED',
+              message: 'Expired',
+            },
+            { status: 401 }
+          )
+    ),
+    http.post(`${TEST_API_URL}/auth/refresh`, async () => {
+      refreshes++;
+      await delay(40);
+      refreshed = true;
+      return new HttpResponse(null, { status: 200 });
+    })
+  );
+  await expect(
+    Promise.all([
+      apiInstances.service.get('test/shared-session'),
+      otherClient.get('test/shared-session'),
+    ])
+  ).resolves.toEqual([{ ok: true }, { ok: true }]);
+  expect(refreshes).toBe(1);
+});
+
+it('does not retry mutations after a transport failure', async () => {
+  const handler = jest.fn(() => HttpResponse.error());
+  mockServer.use(http.post(`${TEST_API_URL}/test/no-retry`, handler));
+  await expect(
+    apiInstances.service.post('test/no-retry', { expectedVersion: 1 })
+  ).rejects.toMatchObject({ code: 'NETWORK_ERROR' });
+  expect(handler).toHaveBeenCalledTimes(1);
 });

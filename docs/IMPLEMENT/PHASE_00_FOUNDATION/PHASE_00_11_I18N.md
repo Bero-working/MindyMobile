@@ -19,5 +19,8 @@ Thêm tiếng Việt làm ngôn ngữ mặc định.
 - Test cần viết trước: test danh sách ngôn ngữ hỗ trợ chỉ còn `vi-VN`, `en-EN`.
 
 ## Tiêu chí nghiệm thu
-- [ ] App mở lần đầu hiển thị tiếng Việt.
-- [ ] Test key parity giữa các file ngôn ngữ xanh.
+- [x] App mở lần đầu hiển thị tiếng Việt.
+- [x] Test key parity giữa các file ngôn ngữ xanh.
+
+Owner @Bero đã chấp nhận phạm vi này qua UAT bước 1–4a ngày 2026-10-17.
+Chi tiết và giới hạn xem [file UAT](PHASE_00_99_User_Acceptance.md).

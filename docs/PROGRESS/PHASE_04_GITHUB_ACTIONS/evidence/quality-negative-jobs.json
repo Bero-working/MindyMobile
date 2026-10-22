@@ -1,0 +1,38 @@
+[
+  {
+    "id": 119121585613,
+    "name": "ESLint and formatting",
+    "conclusion": "failure",
+    "html_url": "https://github.com/Bero-working/MindyMobile/actions/runs/39569983962/job/119121585613"
+  },
+  {
+    "id": 119121585904,
+    "name": "Type checking",
+    "conclusion": "failure",
+    "html_url": "https://github.com/Bero-working/MindyMobile/actions/runs/39569983962/job/119121585904"
+  },
+  {
+    "id": 119121585927,
+    "name": "Unit tests",
+    "conclusion": "failure",
+    "html_url": "https://github.com/Bero-working/MindyMobile/actions/runs/39569983962/job/119121585927"
+  },
+  {
+    "id": 119122311363,
+    "name": "E2E Android",
+    "conclusion": "skipped",
+    "html_url": "https://github.com/Bero-working/MindyMobile/actions/runs/39569983962/job/119122311363"
+  },
+  {
+    "id": 119122312143,
+    "name": "Build Android",
+    "conclusion": "skipped",
+    "html_url": "https://github.com/Bero-working/MindyMobile/actions/runs/39569983962/job/119122312143"
+  },
+  {
+    "id": 119122312394,
+    "name": "Build iOS Simulator",
+    "conclusion": "skipped",
+    "html_url": "https://github.com/Bero-working/MindyMobile/actions/runs/39569983962/job/119122312394"
+  }
+]

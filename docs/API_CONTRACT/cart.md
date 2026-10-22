@@ -38,6 +38,20 @@ Role **STUDENT**. Quy tắc nghiệp vụ:
 `currentPriceAmount` là giá sẽ tính khi checkout (có thể khác `priceSnapshot`, cần hiện thay đổi).
 `isPurchasable=false` → lớp không còn mua được, hiện cảnh báo và gợi ý bỏ khỏi giỏ. `totalAmount` chỉ để hiển thị.
 
+Chi tiết hành vi (đối chiếu source 2026-10-17):
+
+- Chưa từng thêm lớp → `200 { "items": [], "totalAmount": 0 }` (không 404).
+- `items` sort theo thời điểm thêm (`addedAt` tăng dần).
+- `totalAmount` = tổng `currentPriceAmount` của **mọi** item, kể cả item `isPurchasable=false`.
+- `isPurchasable` = khoá học active **và** lớp `OPEN` **và** chưa qua `endDate`. Field này **không** xét
+  chỗ trống: lớp hết chỗ vẫn `isPurchasable=true`, checkout sẽ trả 409 `CLASS_FULL`.
+- Lớp không còn đọc được (bị xoá dữ liệu) bị bỏ khỏi `items` mà không báo lỗi.
+- **Sau checkout thành công, server xoá toàn bộ giỏ trong cùng transaction tạo order.** Refetch
+  `GET /me/cart` sẽ nhận `items: []`, `totalAmount: 0`; FE hiển thị đúng response, không tự giữ item cũ.
+  Checkout thất bại (409/422) → giỏ giữ nguyên, refetch để hiện trạng thái mới (giá, `isPurchasable`).
+- Hai checkout đồng thời của cùng học viên: request sau chờ khoá giỏ rồi nhận 409 `CART_EMPTY`,
+  không tạo order trùng.
+
 ### 11.2 POST `/api/v1/me/cart/items` — 201 `CartDto`
 
 Body `{ "classId": "<UUID v4 lớp OPEN>" }`. Lỗi: 404 `CLASS_NOT_FOUND`, 409 `CART_ITEM_ALREADY_EXISTS`,
@@ -78,6 +92,9 @@ Body `{ "paymentType": "PAYOS" }` hoặc `"CASH"`. Checkout **toàn bộ giỏ**
 
 Lỗi: 409 `CART_EMPTY`, `CLASS_NOT_OPEN`, `CLASS_FULL`, `CLASS_ALREADY_ENROLLED`. Không tự retry khi mất
 response; GET `/me/orders` để kiểm trước.
+
+Thành công: giỏ đã bị xoá phía server (xem §11.1) → refetch `GET /me/cart` (badge giỏ = 0),
+`GET /me/classes`. Một lỗi bất kỳ → **không** tạo order nào, giỏ giữ nguyên.
 
 Sau checkout:
 

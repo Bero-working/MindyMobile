@@ -37,8 +37,11 @@ Cài NativeWind v4 và các thư viện đi kèm, tạo file cấu hình Tailwin
 - Test cần viết trước: smoke test ở 0.1.1.
 
 ## Tiêu chí nghiệm thu
-- [ ] Một `View` dùng `className="bg-mint"` hiện đúng màu `#338A85` trên Android Emulator.
-- [ ] SVG import như component vẫn chạy (metro transformer còn nguyên).
-- [ ] `npm test`, `npm run lint:type-check` xanh.
-- [ ] Bảng tech stack trong [ARCHITECTURE.md](../../ARCHITECTURE.md#tech-stack) đổi NativeWind, cva/clsx/tailwind-merge
+- [x] Một `View` dùng `className="bg-mint"` hiện đúng màu `#338A85` trên Android Emulator.
+- [x] SVG import như component vẫn chạy (metro transformer còn nguyên).
+- [x] `npm test`, `npm run lint:type-check` xanh.
+- [x] Bảng tech stack trong [ARCHITECTURE.md](../../ARCHITECTURE.md#tech-stack) đổi NativeWind, cva/clsx/tailwind-merge
       sang "Có".
+
+Owner @Bero đã chấp nhận phạm vi này qua UAT bước 1–4a ngày 2026-10-17.
+Chi tiết và giới hạn xem [file UAT](PHASE_00_99_User_Acceptance.md).

@@ -39,6 +39,18 @@ Chuyển Http client của template sang xác thực bằng cookie: bỏ Bearer 
 - Test cần viết trước: request tới route cần `Origin` có header đúng giá trị env.
 
 ## Tiêu chí nghiệm thu
-- [ ] Không còn code đọc/ghi token trong MMKV hoặc gắn Bearer.
-- [ ] Test interceptor (refresh một lần cho request song song, refresh lỗi xoá cache) xanh.
-- [ ] Backend đã xác nhận `APP_ORIGIN` nằm trong `CORS_ORIGINS`.
+- [x] Không còn code đọc/ghi token trong MMKV hoặc gắn Bearer.
+- [x] Test interceptor (refresh một lần cho request song song, refresh lỗi xoá cache) xanh; lượt bước 5 ngày 2026-10-17: 28/28 test PASS.
+- [x] Owner xác nhận Origin development `http://localhost:3003` trong phản hồi chat 2026-10-17; đã cấu hình trong `.env`.
+
+Production chưa có Origin được xác nhận, giữ `.env.production` trống. Mục 0.4 đã `Done` theo xác nhận owner; trước đó bị chặn
+do còn mutation cần Origin thật (bước 6). Owner đã duyệt bước 5 trong chat ngày 2026-10-17;
+kiểm tra refresh khi hết hạn trên native đang tiếp tục để bổ sung bằng chứng. Login/auth navigator đã được nối
+theo ADR-0022; kiểm tra Android login/cookie sau mở lại app/logout/Back đã đạt ở Phase1. Xem
+[nhật ký API](../../PROGRESS/PHASE_01_AUTH_HOME_UI/PHASE_01_06_API_INTEGRATION.md). Owner UAT bước 6 chưa xác nhận.
+
+## Xác nhận nghiệm thu cuối Phase 0
+
+- Trạng thái: **Done** theo xác nhận owner trong chat ngày 2026-10-17: “Bước 6 approve và done phase 0, không cần đợi refresh”.
+- Checklist kiểm thử phía trên giữ mức bằng chứng đã ghi; việc đóng theo owner không bổ sung kết quả cho ca chưa chạy.
+- Chi tiết nghiệm thu và giới hạn tại [PROGRESS cấp phase](../../PROGRESS/PHASE_00_FOUNDATION/README.md).

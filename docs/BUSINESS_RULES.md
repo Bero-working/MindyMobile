@@ -76,7 +76,13 @@ Lý do: [ADR-0011](adr/ADR-0011-no-optimistic-update.md). Cách làm trong code:
 
 ## 7. Định dạng tiền và ngày giờ
 
-- Tiền: `priceAmount` là số nguyên VND, hiển thị bằng
-  `Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' })`.
+- Tiền: `priceAmount` là số nguyên VND, hiển thị dạng `1.500.000 VND`: nhóm nghìn bằng dấu chấm
+  (`Intl.NumberFormat('vi-VN')`), sau đó một khoảng trắng và `VND`. Dùng chung một hàm `formatVnd`. Owner chốt trong
+  chat ngày 2026-10-17 (Phase 2, Q10), thay cách hiển thị `Intl` currency (`1.500.000 ₫`) trước đây.
 - Ngày giờ: hiển thị theo field `timeZone` của response (hiện là `Asia/Ho_Chi_Minh`), không theo múi giờ máy.
 - Ngày thuần (`YYYY-MM-DD`) không chuyển qua `Date` để tránh lệch ngày.
+
+
+### Điều chỉnh chọn lớp của owner — 2026-10-18
+
+Chọn/bỏ chọn lớp trong modal chỉ thay đổi lựa chọn tạm, không thay đổi giỏ. Hiện tại mỗi khoá chỉ chọn và giữ tối đa một lớp trong giỏ; chọn lớp khác thay lựa chọn cũ. Nút icon giỏ cạnh Mua ngay xác nhận thêm lớp đã chọn, giữ modal mở. Mua ngay xác nhận thêm lớp đã chọn rồi mở giỏ. Nếu đổi lớp của cùng khoá đã có trong giỏ, thêm lớp mới thành công trước khi bỏ lớp cũ; thêm thất bại giữ lớp cũ. Chưa chọn lớp hoặc lớp đã hết chỗ thì khoá cả hai hành động. Quy tắc một lớp mỗi khoá có thể được owner điều chỉnh sau.

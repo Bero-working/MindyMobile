@@ -1,0 +1,259 @@
+
+> @sohantalukder/react-native-boilerplate@1.0.0 test
+> jest --runInBand --json --outputFile=docs/PROGRESS/PHASE_01_AUTH_HOME_UI/evidence/2026-10-17-jest.json
+
+PASS src/modules/home/home.test.tsx
+PASS __tests__/App.test.tsx
+PASS src/modules/auth/auth.test.tsx
+PASS src/config/nativewind.test.tsx
+PASS src/modules/auth/navigation.test.tsx
+PASS src/modules/example/hooks/useExampleController.test.ts
+  ● Console
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'GET' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'GET' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'GET' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+PASS src/config/http/http.config.test.ts
+  ● Console
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'POST' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'POST' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'POST' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'GET' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'GET' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'GET' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'GET' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'GET' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'GET' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'POST' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'GET' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'GET' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'GET' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'GET' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'POST' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'GET' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'POST' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'GET' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'POST' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'GET' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'GET' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'POST' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'POST' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'GET' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'GET' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'POST' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'PATCH' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'POST' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'DELETE' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'GET' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'GET' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'GET' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'POST' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'GET' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'GET' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'POST' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+PASS src/components/ui/ui.test.tsx
+PASS src/theme/motion.test.ts
+PASS src/config/testInfrastructure.test.tsx
+  ● Console
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'GET' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'GET' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+PASS src/modules/example/services/example.service.test.ts
+  ● Console
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'GET' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'GET' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+    console.log
+      🐛 DEBUG: HTTP request { method: 'GET' }
+
+      at Object.apply (src/shared/utilities/logger.ts:76:18)
+
+PASS src/modules/auth/hooks/useAuthForm.test.ts
+PASS src/config/i18n.config.test.ts
+PASS src/shared/utilities/logger.test.ts
+PASS src/theme/regions.test.ts
+PASS src/config/queryClient.test.ts
+PASS src/theme/colors.test.ts
+PASS src/shared/utilities/cn.test.ts
+PASS src/shared/utilities/apiError.test.ts
+PASS src/shared/utilities/idempotencyKey.test.ts
+
+Test Suites: 20 passed, 20 total
+Tests:       97 passed, 97 total
+Snapshots:   0 total
+Time:        12.012 s
+Ran all test suites.
+Test results written to: docs\PROGRESS\PHASE_01_AUTH_HOME_UI\evidence\2026-10-17-jest.json

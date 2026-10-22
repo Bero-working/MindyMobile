@@ -9,6 +9,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        ember: token('ember'),
+        ribbon: token('ribbon'),
+        'ribbon-deep': token('ribbon-deep'),
+        'ribbon-fold': token('ribbon-fold'),
         canvas: token('canvas'),
         mint: token('mint'),
         forest: token('forest'),
@@ -38,6 +42,22 @@ module.exports = {
         'pastel-red': token('pastel-red'),
         'ink-soft': token('ink-soft'),
         'ink-gray': token('ink-gray'),
+        'forest-deep': token('forest-deep'),
+        'forest-night': token('forest-night'),
+        teal: token('teal'),
+        aqua: token('aqua'),
+        cream: token('cream'),
+        tape: token('tape'),
+        cover: {
+          a: token('cover-a'),
+          'a-soft': token('cover-a-soft'),
+          b: token('cover-b'),
+          'b-soft': token('cover-b-soft'),
+          c: token('cover-c'),
+          'c-soft': token('cover-c-soft'),
+          d: token('cover-d'),
+          'd-soft': token('cover-d-soft'),
+        },
 
         background: token('background'),
         foreground: token('foreground'),

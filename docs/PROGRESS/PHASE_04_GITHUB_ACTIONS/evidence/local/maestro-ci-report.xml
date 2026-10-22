@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="Pixel_8" tests="14" failures="0" time="678.547" timestamp="2026-10-21T15:17:41">
+    <testcase id="app-launch" name="app-launch" classname="app-launch" file="e2e\flows\app-launch.yaml" time="15.485" timestamp="2026-10-21T15:17:41" status="SUCCESS">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+    </testcase>
+    <testcase id="auth-ui-login" name="auth-ui-login" classname="auth-ui-login" file="e2e\flows\auth-ui-login.yaml" time="54.773" timestamp="2026-10-21T15:17:57" status="SUCCESS">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+    </testcase>
+    <testcase id="auth-ui-register" name="auth-ui-register" classname="auth-ui-register" file="e2e\flows\auth-ui-register.yaml" time="56.312" timestamp="2026-10-21T15:18:51" status="SUCCESS">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+    </testcase>
+    <testcase id="carousel-autoplay" name="carousel-autoplay" classname="carousel-autoplay" file="e2e\flows\carousel-autoplay.yaml" time="50.508" timestamp="2026-10-21T15:19:48" status="SUCCESS">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+    </testcase>
+    <testcase id="cart-checkout-qr" name="cart-checkout-qr" classname="cart-checkout-qr" file="e2e\flows\cart-checkout-qr.yaml" time="47.598" timestamp="2026-10-21T15:20:38" status="SUCCESS">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+    </testcase>
+    <testcase id="course-class-scroll" name="course-class-scroll" classname="course-class-scroll" file="e2e\flows\course-class-scroll.yaml" time="38.973" timestamp="2026-10-21T15:21:26" status="SUCCESS">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+    </testcase>
+    <testcase id="courses-browse" name="courses-browse" classname="courses-browse" file="e2e\flows\courses-browse.yaml" time="64.547" timestamp="2026-10-21T15:22:05" status="SUCCESS">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+    </testcase>
+    <testcase id="my-classes-detail" name="my-classes-detail" classname="my-classes-detail" file="e2e\flows\my-classes-detail.yaml" time="51.98" timestamp="2026-10-21T15:23:09" status="SUCCESS">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+    </testcase>
+    <testcase id="my-classes-folders" name="my-classes-folders" classname="my-classes-folders" file="e2e\flows\my-classes-folders.yaml" time="28.487" timestamp="2026-10-21T15:24:01" status="SUCCESS">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+    </testcase>
+    <testcase id="session-detail-footer" name="session-detail-footer" classname="session-detail-footer" file="e2e\flows\session-detail-footer.yaml" time="29.495" timestamp="2026-10-21T15:24:30" status="SUCCESS">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+    </testcase>
+    <testcase id="student-account" name="student-account" classname="student-account" file="e2e\flows\student-account.yaml" time="45.379" timestamp="2026-10-21T15:24:59" status="SUCCESS">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+    </testcase>
+    <testcase id="student-home-ui" name="student-home-ui" classname="student-home-ui" file="e2e\flows\student-home-ui.yaml" time="91.8" timestamp="2026-10-21T15:25:45" status="SUCCESS">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+    </testcase>
+    <testcase id="student-learning-responsive" name="student-learning-responsive" classname="student-learning-responsive" file="e2e\flows\student-learning-responsive.yaml" time="47.953" timestamp="2026-10-21T15:27:16" status="SUCCESS">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+    </testcase>
+    <testcase id="student-schedule" name="student-schedule" classname="student-schedule" file="e2e\flows\student-schedule.yaml" time="55.189" timestamp="2026-10-21T15:28:04" status="SUCCESS">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+    </testcase>
+  </testsuite>
+</testsuites>

@@ -7,10 +7,6 @@ export interface ExampleUser {
   username: string;
 }
 
-export interface UsersResponse {
-  users: ExampleUser[];
-}
-
 export interface ExampleFeatureViewItem {
   title: string;
   description: string;
@@ -18,4 +14,6 @@ export interface ExampleFeatureViewItem {
   onPress: () => void;
   isLoading: boolean;
   buttonText: string;
+  testID?: string;
+  feedback?: { message: string; testID: string };
 }

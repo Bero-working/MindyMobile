@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="Pixel_8_2" tests="1" failures="0" time="35.02" timestamp="2026-10-17T21:03:55">
+    <testcase id="phase-one-design" name="phase-one-design" classname="phase-one-design" file="e2e\visual\phase-one-design.yaml" time="35.003" timestamp="2026-10-17T21:03:55" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

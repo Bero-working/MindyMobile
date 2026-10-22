@@ -1,0 +1,64 @@
+appId: ${APP_ID || "com.mindymobile"}
+tags:
+  - ci
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible:
+      id: 'welcome-screen'
+    timeout: 90000
+- tapOn:
+    id: 'phase-one-preview-button'
+- tapOn:
+    id: 'preview-classes-button'
+- assertVisible:
+    id: 'my-classes-screen'
+- takeScreenshot: 'phase3-my-classes'
+- tapOn:
+    id: 'my-classes-open-full'
+- assertVisible:
+    id: 'class-detail-screen'
+- takeScreenshot: 'phase3-full-detail'
+- tapOn:
+    id: 'class-detail-session-full-session'
+- assertVisible:
+    id: 'class-session-join'
+- tapOn:
+    id: 'class-session-close'
+- tapOn:
+    id: 'class-detail-back'
+- tapOn:
+    id: 'my-classes-course-web-next'
+- scrollUntilVisible:
+    element:
+      id: 'my-classes-open-cash'
+    direction: DOWN
+- tapOn:
+    id: 'my-classes-open-cash'
+- assertVisible:
+    id: 'class-detail-preview'
+- takeScreenshot: 'phase3-cash-preview'
+- scrollUntilVisible:
+    element:
+      id: 'class-detail-session-cash-session'
+    direction: DOWN
+- tapOn:
+    id: 'class-detail-session-cash-session'
+- assertNotVisible:
+    id: 'class-session-join'
+- takeScreenshot: 'phase3-preview-session'
+- tapOn:
+    id: 'class-session-close'
+- tapOn:
+    id: 'class-detail-back'
+- scrollUntilVisible:
+    element:
+      id: 'my-classes-resume-pending'
+    direction: DOWN
+- assertNotVisible:
+    id: 'my-classes-resume-review'
+- tapOn:
+    id: 'my-classes-resume-pending'
+- assertVisible:
+    id: 'payment-screen'

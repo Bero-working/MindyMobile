@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="test" tests="14" failures="3" time="840.112" timestamp="2026-10-21T12:56:53">
+    <testcase id="student-schedule" name="student-schedule" classname="student-schedule" file="e2e/flows/student-schedule.yaml" time="60.417" timestamp="2026-10-21T12:56:53" status="SUCCESS">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+    </testcase>
+    <testcase id="my-classes-detail" name="my-classes-detail" classname="my-classes-detail" file="e2e/flows/my-classes-detail.yaml" time="56.202" timestamp="2026-10-21T12:57:53" status="SUCCESS">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+    </testcase>
+    <testcase id="carousel-autoplay" name="carousel-autoplay" classname="carousel-autoplay" file="e2e/flows/carousel-autoplay.yaml" time="65.098" timestamp="2026-10-21T12:58:49" status="SUCCESS">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+    </testcase>
+    <testcase id="courses-browse" name="courses-browse" classname="courses-browse" file="e2e/flows/courses-browse.yaml" time="75.2" timestamp="2026-10-21T12:59:54" status="ERROR">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+      <failure>No visible element found: id: courses-page-next</failure>
+    </testcase>
+    <testcase id="course-class-scroll" name="course-class-scroll" classname="course-class-scroll" file="e2e/flows/course-class-scroll.yaml" time="51.639" timestamp="2026-10-21T13:01:10" status="SUCCESS">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+    </testcase>
+    <testcase id="auth-ui-register" name="auth-ui-register" classname="auth-ui-register" file="e2e/flows/auth-ui-register.yaml" time="80.195" timestamp="2026-10-21T13:02:01" status="SUCCESS">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+    </testcase>
+    <testcase id="app-launch" name="app-launch" classname="app-launch" file="e2e/flows/app-launch.yaml" time="34.293" timestamp="2026-10-21T13:03:22" status="ERROR">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+      <failure>Assertion is false: id: phase04-intentional-missing-control is visible</failure>
+    </testcase>
+    <testcase id="student-account" name="student-account" classname="student-account" file="e2e/flows/student-account.yaml" time="53.191" timestamp="2026-10-21T13:03:56" status="SUCCESS">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+    </testcase>
+    <testcase id="my-classes-folders" name="my-classes-folders" classname="my-classes-folders" file="e2e/flows/my-classes-folders.yaml" time="28.335" timestamp="2026-10-21T13:04:49" status="SUCCESS">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+    </testcase>
+    <testcase id="student-home-ui" name="student-home-ui" classname="student-home-ui" file="e2e/flows/student-home-ui.yaml" time="109.784" timestamp="2026-10-21T13:05:17" status="SUCCESS">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+    </testcase>
+    <testcase id="session-detail-footer" name="session-detail-footer" classname="session-detail-footer" file="e2e/flows/session-detail-footer.yaml" time="30.431" timestamp="2026-10-21T13:07:07" status="SUCCESS">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+    </testcase>
+    <testcase id="cart-checkout-qr" name="cart-checkout-qr" classname="cart-checkout-qr" file="e2e/flows/cart-checkout-qr.yaml" time="79.953" timestamp="2026-10-21T13:07:38" status="ERROR">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+      <failure>Assertion is false: id: payment-toast is visible</failure>
+    </testcase>
+    <testcase id="student-learning-responsive" name="student-learning-responsive" classname="student-learning-responsive" file="e2e/flows/student-learning-responsive.yaml" time="48.807" timestamp="2026-10-21T13:08:58" status="SUCCESS">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+    </testcase>
+    <testcase id="auth-ui-login" name="auth-ui-login" classname="auth-ui-login" file="e2e/flows/auth-ui-login.yaml" time="66.463" timestamp="2026-10-21T13:09:46" status="SUCCESS">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+    </testcase>
+  </testsuite>
+</testsuites>

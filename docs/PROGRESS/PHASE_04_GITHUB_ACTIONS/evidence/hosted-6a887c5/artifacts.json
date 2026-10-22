@@ -1,0 +1,38 @@
+[
+  {
+    "id": 12395885542,
+    "name": "android-build-logs-39700197090-1",
+    "size_in_bytes": 18151,
+    "expired": false
+  },
+  {
+    "id": 12395198712,
+    "name": "android-release-ci-debug-signed-39700197090-1",
+    "size_in_bytes": 85095301,
+    "expired": false
+  },
+  {
+    "id": 12394901712,
+    "name": "ios-simulator-release-39700197090-1",
+    "size_in_bytes": 14953672,
+    "expired": false
+  },
+  {
+    "id": 12394513487,
+    "name": "ios-build-logs-39700197090-1",
+    "size_in_bytes": 590687,
+    "expired": false
+  },
+  {
+    "id": 12393459024,
+    "name": "e2e-android-39700197090-1",
+    "size_in_bytes": 9150500,
+    "expired": false
+  },
+  {
+    "id": 12392187974,
+    "name": "unit-tests-39700197090-1",
+    "size_in_bytes": 993229,
+    "expired": false
+  }
+]

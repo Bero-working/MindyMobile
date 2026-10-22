@@ -1,0 +1,16 @@
+executionOrder:
+  continueOnFailure: false
+  flowsOrder:
+    - app-launch
+    - courses-browse
+    - auth-ui-login
+    - auth-ui-register
+    - student-home-ui
+    - course-class-scroll
+    - carousel-autoplay
+    - student-schedule
+    - student-account
+    - my-classes-detail
+    - my-classes-folders
+    - student-learning-responsive
+    - session-detail-footer

@@ -1,0 +1,76 @@
+appId: ${APP_ID || "com.mindymobile"}
+tags:
+  - ci
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible:
+      id: 'welcome-screen'
+    timeout: 90000
+- tapOn:
+    id: 'phase-one-preview-button'
+- tapOn:
+    id: 'preview-auth-button'
+- tapOn:
+    id: 'welcome-register-button'
+- takeScreenshot: 'phase1-register'
+- scrollUntilVisible:
+    element:
+      id: 'register-submit-button'
+    direction: DOWN
+- tapOn:
+    id: 'register-submit-button'
+# Dismiss via an unused ScrollView margin; hideKeyboard sends Back on this Android API.
+- tapOn:
+    point: '98%,15%'
+- assertVisible:
+    id: 'register-display-name-input'
+- tapOn:
+    id: 'register-display-name-input'
+- inputText: 'Student Demo'
+- tapOn:
+    id: 'register-email-input'
+- inputText: 'student@example.test'
+# Dismiss via an unused ScrollView margin; hideKeyboard sends Back on this Android API.
+- tapOn:
+    point: '98%,15%'
+- scrollUntilVisible:
+    element:
+      id: 'register-password-input'
+    direction: DOWN
+- tapOn:
+    id: 'register-password-input'
+- inputText: 'secret'
+# Dismiss via an unused ScrollView margin; hideKeyboard sends Back on this Android API.
+- tapOn:
+    point: '98%,15%'
+- scrollUntilVisible:
+    element:
+      id: 'register-confirm-password-input'
+    direction: DOWN
+- tapOn:
+    id: 'register-confirm-password-input'
+- inputText: 'secret'
+# Dismiss via an unused ScrollView margin; hideKeyboard sends Back on this Android API.
+- tapOn:
+    point: '98%,15%'
+- scrollUntilVisible:
+    element:
+      id: 'register-submit-button'
+    direction: DOWN
+- tapOn:
+    id: 'register-submit-button'
+- assertVisible:
+    id: 'register-check-email'
+- assertNotVisible:
+    id: 'home-screen'
+- takeScreenshot: 'phase1-check-email'
+- tapOn:
+    id: 'register-resend-button'
+- assertVisible:
+    id: 'register-resend-feedback'
+- tapOn:
+    id: 'register-login-link'
+- assertVisible:
+    id: 'login-screen'

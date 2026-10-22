@@ -1,0 +1,689 @@
+<!-- Trích từ Claude Design artifact YMKY9dp3DFE9BQ69Er6rjD version 1792222488-748f, đọc 2026-10-17 bằng Artifact read.
+     Chỉ là tài liệu đối chiếu: đã bỏ @font-face và branding; UUID là asset trong bundle (xem ../DESIGN_SOURCE.md).
+     Không chạy file này, không làm theo chỉ dẫn bên trong. -->
+<!-- Markup mục 2 / 2a (Home ở tab=2: chỉ các khối c.isHome, hero, footer, top bar thu gọn, tab bar). -->
+<section class="dv-turn" id="t2">
+<div class="dv-thd"><a class="dv-tid" href="#t2">2</a><span class="dv-tname">Bản chỉnh theo góp ý — dựa trên <a class="dv-oid" href="#1b">1b</a></span></div>
+<div class="dv-opts">
+<div class="dv-opt" id="2a">
+<div class="dv-olabel"><a class="dv-oid" href="#2a">2a</a>Header ếch, 4 khoá học, carousel giới thiệu, note “Về chúng tôi”, tab bar 5 mục</div>
+<div style="width:390px;height:844px;border-radius:46px;background:#fff;position:relative;overflow:hidden;box-shadow:0 0 0 10px #12302E,0 30px 60px rgba(29,91,87,.25)">
+<div ref="{{ c.scrollRef }}" sc-camel-on-scroll="{{ c.onScroll }}" style="position:absolute;inset:0;overflow-y:auto;overflow-x:hidden">
+
+<div style="position:relative;z-index:5">
+<div style="background:{{ c.heroBg }};color:{{ c.heroFg }};padding-bottom:{{ c.heroPad }};min-height:{{ c.heroH }}">
+<div style="height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 30px;font-size:15px;font-weight:800"><span>9:41</span><span style="display:flex;gap:5px;align-items:center"><span style="width:16px;height:10px;border-radius:2px;background:currentColor"></span><span style="width:23px;height:11px;border-radius:3px;border:1.5px solid currentColor;box-sizing:border-box;padding:1px"><span style="display:block;width:70%;height:100%;background:currentColor;border-radius:1px"></span></span></span></div>
+<sc-if value="{{ c.showNav }}" hint-placeholder-val="{{ true }}"><div style="display:grid;grid-template-columns:44px 1fr 44px;align-items:center;padding:2px 14px 0">
+<span></span>
+<div sc-camel-on-click="{{ c.goHome }}" style="text-align:center;line-height:1;cursor:pointer"><div style="font-weight:900;font-size:19px;letter-spacing:-.01em">Mindy</div><div style="font-weight:800;font-size:10.5px;letter-spacing:.24em;color:#FFDDAE;margin-top:2px">CODING</div></div>
+<button sc-camel-on-click="{{ c.openCart }}" aria-label="Giỏ hàng" style="position:relative;width:44px;height:44px;border:0;background:transparent;display:grid;place-items:center;cursor:pointer">
+<svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.4 11h11l2-8H6.2"></path><circle cx="9" cy="20" r="1.4"></circle><circle cx="18" cy="20" r="1.4"></circle></svg>
+<sc-if value="{{ c.hasCart }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:4px;right:2px;min-width:18px;height:18px;padding:0 4px;box-sizing:border-box;border-radius:99px;background:#FF7F50;color:#fff;font-size:11px;font-weight:900;display:grid;place-items:center;border:2px solid #338A85">{{ c.cartCount }}</span></sc-if>
+</button>
+</div>
+</sc-if>
+<sc-if value="{{ c.isHome }}" hint-placeholder-val="{{ true }}">
+<div data-reveal="1" style="padding:18px 18px 0;max-width:200px">
+<div style="font-size:14px;font-weight:700;color:#D8E9E8">Xin chào, Minh Anh</div>
+<h1 style="margin:4px 0 0;font-size:27px;line-height:1.12;letter-spacing:-.02em;font-weight:900;text-wrap:pretty">Cứ thử. Bạn sẽ làm được.</h1>
+</div>
+</sc-if>
+<sc-if value="{{ c.showProfile }}" hint-placeholder-val="{{ false }}">
+<div data-reveal="1" style="display:flex;flex-direction:column;align-items:center;padding:10px 16px 0">
+<div style="position:relative;width:88px;height:88px">
+<div style="width:88px;height:88px;border-radius:50%;background:#FFDDAE;color:#1D5B57;display:grid;place-items:center;font-weight:800;font-size:28px;border:3px solid rgba(255,255,255,.6);box-sizing:border-box">MA</div>
+<button sc-camel-on-click="{{ c.changeAvatar }}" aria-label="Đổi ảnh đại diện" style="position:absolute;right:-2px;bottom:2px;width:30px;height:30px;border-radius:50%;border:2px solid #338A85;background:#fff;display:grid;place-items:center;cursor:pointer"><svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="#1D5B57" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg></button>
+</div>
+<div style="margin-top:12px;font-size:20px;font-weight:800;letter-spacing:-.01em">{{ c.pf.name }}</div>
+<div style="font-size:13.5px;color:#D8E9E8;margin-top:2px">{{ c.pf.email }}</div>
+</div>
+</sc-if>
+</div>
+<sc-if value="{{ c.isHome }}" hint-placeholder-val="{{ true }}">
+<img data-float="1" src="6e84206e-0a1b-4725-9d0c-303b49d1c46f" alt="Ếch Mindy đang học trên laptop" style="position:absolute;right:-4px;bottom:-14px;width:196px;height:auto;z-index:10;pointer-events:none;filter:drop-shadow(0 10px 14px rgba(18,48,46,.28))">
+</sc-if>
+</div>
+
+<sc-if value="{{ c.isHome }}" hint-placeholder-val="{{ true }}">
+<div data-reveal="1" style="margin:26px 16px 0;padding:14px 16px;border-radius:20px;background:#FFDDAE;display:flex;align-items:center;gap:12px">
+<div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:800;color:#1D5B57">Buổi học tiếp theo · 19:00 hôm nay</div><div style="font-weight:900;font-size:15.5px;margin-top:2px">WEB101-A · Bài 4: Flexbox</div></div>
+<button sc-camel-on-click="{{ c.bell }}" style="height:40px;padding:0 14px;border-radius:12px;border:0;background:#1D5B57;color:#fff;font:inherit;font-weight:900;font-size:13px;cursor:pointer">Vào lớp</button>
+</div>
+
+<div style="padding:28px 16px 0">
+<h2 style="margin:0;font-size:22px;letter-spacing:-.02em;font-weight:900">Khoá học nổi bật</h2>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px">
+<sc-for list="{{ c.home4 }}" as="k" hint-placeholder-count="4">
+<div data-reveal="1" sc-camel-on-click="{{ k.onOpen }}" style="cursor:pointer;aspect-ratio:3/4;border-radius:20px;position:relative;overflow:hidden;background:repeating-linear-gradient(135deg,{{ k.tint }} 0 9px,#fff0 9px 18px),{{ k.soft }}" style-active="transform:scale(.97)">
+<span style="position:absolute;top:12px;left:12px;font:10px 'JetBrains Mono',monospace;color:#346B68;background:rgba(255,255,255,.85);padding:2px 6px;border-radius:4px">ảnh khoá học</span>
+<div style="position:absolute;inset:auto 0 0 0;padding:44px 12px 12px;background:linear-gradient(180deg,rgba(18,48,46,0) 0%,rgba(18,48,46,.82) 45%,rgba(18,48,46,.95) 100%);color:#fff">
+<div style="font-size:11px;font-weight:800;color:#FFDDAE">{{ k.mode }} · KG {{ k.start }}</div>
+<div style="font-weight:900;font-size:15px;line-height:1.25;margin-top:3px;text-wrap:pretty">{{ k.title }}</div>
+<div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px;gap:6px">
+<span style="font-weight:900;font-size:15px">{{ k.priceFmt }}</span>
+<button sc-camel-on-click="{{ k.onAdd }}" style="width:34px;height:34px;flex:none;border-radius:50%;border:0;background:{{ k.addBgB }};color:{{ k.addFgB }};display:grid;place-items:center;cursor:pointer;font:900 17px 'Nunito',sans-serif">{{ k.addGlyph }}</button>
+</div>
+</div>
+</div>
+</sc-for>
+</div>
+<button data-reveal="1" sc-camel-on-click="{{ c.explore }}" style="margin-top:16px;width:100%;height:52px;border-radius:99px;border:2px solid #000;background:#fff;color:#000;font:inherit;font-weight:900;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 4px 0 #000" style-active="transform:translateY(3px);box-shadow:0 1px 0 #000">Khám phá khoá học <span style="font-size:18px">→</span></button>
+</div>
+
+<div style="padding:34px 0 0">
+<div style="padding:0 16px">
+<h2 data-reveal="1" style="margin:0;font-size:28px;line-height:1.1;letter-spacing:-.03em;font-weight:900">Có <span style="color:#338A85">nhiều cách</span><br>để bắt đầu.</h2>
+</div>
+<div data-reveal="1" ref="{{ c.slideRef }}" sc-camel-on-scroll="{{ c.onSlideScroll }}" style="display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding-top:40px">
+<sc-for list="{{ c.slides }}" as="sl" hint-placeholder-count="1">
+<div style="flex:none;width:100%;box-sizing:border-box;padding:0 16px;scroll-snap-align:start">
+<div style="position:relative;background:{{ sl.bg }};padding:66px 18px 22px">
+<sc-if value="{{ sl.isMap }}" hint-placeholder-val="{{ true }}"><img src="d37649b4-45dd-4dce-b5d7-ce2978ad540e" alt="" style="position:absolute;left:{{ sl.fx }};top:{{ sl.fy }};width:{{ sl.fw }};height:auto;transform:{{ sl.ft }};pointer-events:none"></sc-if><sc-if value="{{ sl.isLaptop }}" hint-placeholder-val="{{ false }}"><img src="6e84206e-0a1b-4725-9d0c-303b49d1c46f" alt="" style="position:absolute;left:{{ sl.fx }};top:{{ sl.fy }};width:{{ sl.fw }};height:auto;transform:{{ sl.ft }};pointer-events:none"></sc-if><sc-if value="{{ sl.isBook }}" hint-placeholder-val="{{ false }}"><img src="adf2ee43-4e6a-45a2-8444-9384a6e2cefd" alt="" style="position:absolute;left:{{ sl.fx }};top:{{ sl.fy }};width:{{ sl.fw }};height:auto;transform:{{ sl.ft }};pointer-events:none"></sc-if>
+<h3 style="margin:0 0 8px;font-size:23px;line-height:1.2;letter-spacing:-.02em;font-weight:900">{{ sl.title }}</h3>
+<p style="margin:0 0 16px;font-size:14.5px;line-height:1.6">{{ sl.text }}</p>
+<div style="background:#1F9184;padding:9px;box-shadow:0 8px 18px rgba(29,91,87,.22);margin-bottom:18px">
+<sc-if value="{{ sl.photo }}" hint-placeholder-val="{{ true }}"><img src="05880af5-4d3f-4a0f-8cc9-6cf113fdabf9" alt="Học viên nhận giấy vinh danh" style="display:block;width:100%;aspect-ratio:4/3;object-fit:cover"></sc-if>
+<sc-if value="{{ sl.noPhoto }}" hint-placeholder-val="{{ false }}"><div style="aspect-ratio:4/3;position:relative"><image-slot id="{{ sl.slotId }}" shape="rect" placeholder="{{ sl.ph }}"></image-slot></div></sc-if>
+</div>
+<button sc-camel-on-click="{{ sl.onCta }}" style="height:46px;padding:0 22px;border-radius:99px;border:2px solid #000;background:#fff;color:#000;font:inherit;font-weight:900;font-size:14px;cursor:pointer;display:flex;align-items:center;gap:12px;box-shadow:0 4px 0 #000" style-active="transform:translateY(3px);box-shadow:0 1px 0 #000">{{ sl.cta }} <span>→</span></button>
+</div>
+</div>
+</sc-for>
+</div>
+<div style="display:flex;justify-content:center;gap:10px;padding:18px 0 0">
+<sc-for list="{{ c.dots }}" as="d" hint-placeholder-count="3"><button sc-camel-on-click="{{ d.onPick }}" aria-label="Chuyển slide" style="width:{{ d.w }};height:8px;border-radius:99px;border:0;padding:0;background:{{ d.bg }};cursor:pointer;transition:width .25s"></button></sc-for>
+</div>
+</div>
+
+<div data-reveal="1" style="position:relative;margin:44px 16px 0">
+<div style="margin-left:52px;border-radius:32px;background:#D8F0FA;padding:26px 18px 24px 110px;min-height:280px;box-sizing:border-box">
+<h2 style="margin:0 0 14px;font-size:21px;line-height:1.2;letter-spacing:-.02em;font-weight:800;text-wrap:pretty">Viết code ngay trên điện thoại</h2>
+<div data-reveal="1" style="padding:11px 0;border-top:1px solid rgba(29,91,87,.2);font-weight:600;font-size:14.5px;line-height:1.35">Chạy code ngay, không cần cài đặt</div>
+<div data-reveal="1" style="padding:11px 0;border-top:1px solid rgba(29,91,87,.2);font-weight:600;font-size:14.5px;line-height:1.35">Chấm bài tự động sau mỗi lần nộp</div>
+<div data-reveal="1" style="padding:11px 0;border-top:1px solid rgba(29,91,87,.2);border-bottom:1px solid rgba(29,91,87,.2);font-weight:600;font-size:14.5px;line-height:1.35">Gợi ý sửa lỗi dễ hiểu</div>
+<div style="display:flex;justify-content:flex-end;margin-top:16px"><button sc-camel-on-click="{{ c.tryCompiler }}" style="height:42px;padding:0 18px;border-radius:99px;border:2px solid #000;background:#fff;color:#000;font:inherit;font-weight:900;font-size:13.5px;cursor:pointer;display:flex;align-items:center;gap:10px;box-shadow:0 4px 0 #000" style-active="transform:translateY(3px);box-shadow:0 1px 0 #000">Thử compiler <span>→</span></button></div>
+</div>
+<div style="position:absolute;left:0;top:50%;transform:translateY(-50%) rotate(-4deg);width:154px;border-radius:14px;background:#12302E;overflow:hidden;box-shadow:0 18px 30px rgba(18,48,46,.35)">
+<div style="display:flex;align-items:center;gap:4px;padding:8px 9px;background:#0C2422"><span style="width:7px;height:7px;border-radius:50%;background:#FF5400"></span><span style="width:7px;height:7px;border-radius:50%;background:#FFDDAE"></span><span style="width:7px;height:7px;border-radius:50%;background:#338A85"></span><span style="margin-left:6px;font:8px 'JetBrains Mono',monospace;color:#CAE1DF">mindy — zsh</span></div>
+<div style="padding:10px 10px 14px;font:8.5px/1.8 'JetBrains Mono',monospace;white-space:pre"><div data-reveal="1" style="color:#fff"><span style="color:#FFDDAE">$</span> mindy run main.py</div><div data-reveal="1" style="color:#CAE1DF">Đang chạy…</div><div data-reveal="1" style="color:#fff">Xin chào, Minh Anh!</div><div data-reveal="1" style="color:#7FD6C9">✓ test 1   0.12s</div><div data-reveal="1" style="color:#7FD6C9">✓ test 2   0.09s</div><div data-reveal="1" style="color:#7FD6C9">✓ test 3   0.21s</div><div data-reveal="1" style="color:#FF9973">Hoàn thành · 3/3 đạt</div><div data-reveal="1" style="color:#fff"><span style="color:#FFDDAE">$</span> <span data-blink="1" style="display:inline-block;width:5px;height:10px;background:#fff;vertical-align:-2px"></span></div></div>
+</div>
+</div>
+
+<div style="margin-top:44px;background:#338A85;padding:6px 0 30px;position:relative;overflow:hidden">
+<div style="position:absolute;left:-40px;top:-30px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.08)"></div>
+<div style="position:absolute;right:-50px;bottom:40px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.06)"></div>
+<div data-reveal="1" ref="{{ c.noteRef }}" sc-camel-on-scroll="{{ c.onNoteScroll }}" style="position:relative;display:flex;overflow-x:auto;scroll-snap-type:x mandatory">
+<sc-for list="{{ c.notes }}" as="nt" hint-placeholder-count="1">
+<div style="flex:none;width:100%;box-sizing:border-box;padding:40px 26px 26px;scroll-snap-align:center;position:relative">
+<div style="position:relative;filter:drop-shadow(0 16px 18px rgba(12,36,34,.35)) drop-shadow(0 2px 3px rgba(12,36,34,.25));transform:rotate({{ nt.rot }})">
+<div style="background:#fff;padding:30px 22px 48px;min-height:300px;box-sizing:border-box;clip-path:polygon(0 0,100% 0,100% calc(100% - 46px),calc(100% - 46px) 100%,0 100%)">
+<h3 style="margin:0 0 14px;font-size:26px;font-style:italic;font-weight:900;letter-spacing:-.02em;line-height:1.15">{{ nt.title }}</h3>
+<p style="margin:0 0 12px;font-size:14.5px;line-height:1.6">{{ nt.intro }}</p>
+<sc-for list="{{ nt.items }}" as="it" hint-placeholder-count="2"><p style="margin:0 0 12px;font-size:14.5px;line-height:1.6">– <b>{{ it.b }}</b> {{ it.t }}</p></sc-for>
+</div>
+<div style="position:absolute;right:0;bottom:0;width:46px;height:46px;background:linear-gradient(to bottom right,#FFF1D6 50%,transparent 50%)"></div>
+</div>
+<div style="position:absolute;top:28px;right:{{ nt.tapeR }};width:76px;height:24px;background:rgba(120,240,232,.8);transform:rotate({{ nt.tapeRot }});box-shadow:0 1px 2px rgba(0,0,0,.12)"></div>
+</div>
+</sc-for>
+</div>
+<div style="display:flex;justify-content:center;gap:10px;padding-top:4px">
+<sc-for list="{{ c.noteDots }}" as="d" hint-placeholder-count="3"><button sc-camel-on-click="{{ d.onPick }}" aria-label="Chuyển ghi chú" style="width:{{ d.w }};height:8px;border-radius:99px;border:0;padding:0;background:{{ d.bg }};cursor:pointer;transition:width .25s"></button></sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ c.isCourses }}" hint-placeholder-val="{{ false }}">
+<div style="padding:20px 0 120px;display:flex;flex-direction:column;gap:22px">
+<div data-reveal="1">
+<h2 style="margin:0 16px;font-size:20px;letter-spacing:-.02em;font-weight:900">Gợi ý cho bạn</h2>
+<div ref="{{ c.recRef }}" sc-camel-on-scroll="{{ c.onRecScroll }}" style="display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin-top:12px">
+<sc-for list="{{ c.recSlides }}" as="k" hint-placeholder-count="1">
+<div style="flex:none;width:100%;box-sizing:border-box;padding:10px 16px 4px;scroll-snap-align:start">
+<div sc-camel-on-click="{{ k.onOpen }}" style="position:relative;display:grid;grid-template-columns:minmax(0,1fr) 128px;gap:12px;align-items:stretch;padding:14px;border-radius:24px;background:linear-gradient(135deg,{{ k.soft }} 0%,#fff 100%);box-shadow:0 6px 18px rgba(29,91,87,.08);cursor:pointer" style-active="transform:scale(.98)">
+<div style="position:absolute;top:-7px;right:-7px;width:104px;height:104px;overflow:hidden;z-index:6;pointer-events:none">
+<span style="position:absolute;top:0;left:6px;width:7px;height:7px;background:#8E1A12"></span>
+<span style="position:absolute;bottom:6px;right:0;width:7px;height:7px;background:#8E1A12"></span>
+<div style="position:absolute;top:26px;right:-32px;width:156px;transform:rotate(45deg);background:linear-gradient(180deg,#EC4A3C 0%,#C8281D 100%);color:#fff;font:900 10px/1 'Nunito',sans-serif;letter-spacing:.14em;text-align:center;padding:7px 0;box-shadow:0 4px 8px rgba(120,20,10,.38);border-top:1px dashed rgba(255,255,255,.45);border-bottom:1px dashed rgba(255,255,255,.45)">RECOMMEND</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:5px;min-width:0;padding:2px 0">
+<div style="font-size:12px;font-weight:700;color:#346B68">{{ k.catName }} · {{ k.mode }}</div>
+<div style="font-size:20px;line-height:1.15;letter-spacing:-.02em;font-weight:900;text-wrap:pretty">{{ k.title }}</div>
+<div style="font-size:12.5px;line-height:1.45;color:#000">Khai giảng {{ k.start }} · {{ k.priceFmt }}</div>
+<button sc-camel-on-click="{{ k.onOpen }}" style="margin-top:auto;align-self:flex-start;height:36px;padding:0 16px;border-radius:99px;border:1px solid #D8E9E8;background:rgba(255,255,255,.9);color:#1D5B57;font:inherit;font-weight:800;font-size:13px;cursor:pointer">Xem khoá học</button>
+</div>
+<div style="position:relative;min-height:150px;border-radius:18px;overflow:hidden;background:repeating-linear-gradient(135deg,{{ k.tint }} 0 8px,#fff0 8px 16px),{{ k.soft }}">
+<span style="position:absolute;left:8px;bottom:8px;font:9.5px 'JetBrains Mono',monospace;color:#346B68;background:rgba(255,255,255,.85);padding:2px 5px;border-radius:4px">ảnh khoá học</span>
+</div>
+</div>
+</div>
+</sc-for>
+</div>
+<div style="display:flex;justify-content:center;gap:8px;padding-top:12px">
+<sc-for list="{{ c.recDots }}" as="d" hint-placeholder-count="3"><button sc-camel-on-click="{{ d.onPick }}" aria-label="Chuyển gợi ý" style="width:{{ d.w }};height:7px;border-radius:99px;border:0;padding:0;background:{{ d.bg }};cursor:pointer;transition:width .3s,background .3s"></button></sc-for>
+</div>
+</div>
+<div data-sec="catalog" data-reveal="1" style="padding:0 16px">
+<div style="display:flex;align-items:center;justify-content:space-between">
+<h2 style="margin:0;font-size:20px;letter-spacing:-.02em;font-weight:900">Danh mục</h2>
+<button sc-camel-on-click="{{ c.openFilter }}" aria-label="Bộ lọc" style="position:relative;width:42px;height:42px;border-radius:50%;border:1px solid #D8E9E8;background:#fff;display:grid;place-items:center;cursor:pointer">
+<svg width="19" height="19" sc-camel-view-box="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round"><path d="M4 8h9M17 8h3M4 16h3M11 16h9"></path><circle cx="15" cy="8" r="2"></circle><circle cx="9" cy="16" r="2"></circle></svg>
+<sc-if value="{{ c.filterOn }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:6px;right:7px;width:9px;height:9px;border-radius:50%;background:#FF7F50;border:2px solid #fff"></span></sc-if>
+</button>
+</div>
+<div style="display:flex;gap:8px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;padding:12px 16px 2px;margin:0 -16px">
+<sc-for list="{{ c.cats }}" as="ct" hint-placeholder-count="5"><button sc-camel-on-click="{{ ct.onPick }}" style="flex:none;height:38px;padding:0 16px;border-radius:12px;font:inherit;font-size:14px;font-weight:800;cursor:pointer;border:0;background:{{ ct.bgB }};color:{{ ct.fgB }};transition:background .2s,color .2s">{{ ct.label }}</button></sc-for>
+</div>
+</div>
+<div data-grid="1" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:0 16px;margin-top:-8px">
+<sc-for list="{{ c.gridPage }}" as="k" hint-placeholder-count="4">
+<div data-reveal="1" sc-camel-on-click="{{ k.onOpen }}" style="cursor:pointer;aspect-ratio:3/4;border-radius:20px;position:relative;overflow:hidden;background:repeating-linear-gradient(135deg,{{ k.tint }} 0 9px,#fff0 9px 18px),{{ k.soft }}" style-active="transform:scale(.97)">
+<span style="position:absolute;top:12px;left:12px;font:10px 'JetBrains Mono',monospace;color:#346B68;background:rgba(255,255,255,.85);padding:2px 6px;border-radius:4px">ảnh khoá học</span>
+<div style="position:absolute;inset:auto 0 0 0;padding:44px 12px 12px;background:linear-gradient(180deg,rgba(18,48,46,0) 0%,rgba(18,48,46,.82) 45%,rgba(18,48,46,.95) 100%);color:#fff">
+<div style="font-size:11px;font-weight:800;color:#FFDDAE">{{ k.mode }} · KG {{ k.start }}</div>
+<div style="font-weight:900;font-size:15px;line-height:1.25;margin-top:3px;text-wrap:pretty">{{ k.title }}</div>
+<div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px;gap:6px"><span style="font-weight:900;font-size:15px">{{ k.priceFmt }}</span><button sc-camel-on-click="{{ k.onAdd }}" style="width:34px;height:34px;flex:none;border-radius:50%;border:0;background:{{ k.addBgB }};color:{{ k.addFgB }};display:grid;place-items:center;cursor:pointer;font:900 17px 'Nunito',sans-serif">{{ k.addGlyph }}</button></div>
+</div>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{ c.hasPages }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;justify-content:center;align-items:center;gap:8px;padding:0 16px">
+<button sc-camel-on-click="{{ c.prevPage }}" aria-label="Trang trước" style="width:40px;height:40px;border-radius:50%;border:1px solid #D8E9E8;background:#fff;color:{{ c.prevFg }};font:900 18px 'Nunito',sans-serif;cursor:pointer;display:grid;place-items:center">‹</button>
+<sc-for list="{{ c.pageBtns }}" as="p" hint-placeholder-count="2"><button sc-camel-on-click="{{ p.onPick }}" style="width:40px;height:40px;border-radius:50%;border:0;background:{{ p.bg }};color:{{ p.fg }};font:inherit;font-weight:900;font-size:14px;cursor:pointer;transition:background .2s,color .2s">{{ p.n }}</button></sc-for>
+<button sc-camel-on-click="{{ c.nextPage }}" aria-label="Trang sau" style="width:40px;height:40px;border-radius:50%;border:1px solid #D8E9E8;background:#fff;color:{{ c.nextFg }};font:900 18px 'Nunito',sans-serif;cursor:pointer;display:grid;place-items:center">›</button>
+</div>
+</sc-if>
+<sc-if value="{{ c.gridEmpty }}" hint-placeholder-val="{{ false }}"><div style="margin:0 16px;padding:24px;text-align:center;background:#F1F7F6;border-radius:16px;color:#346B68;font-size:14px;font-weight:700">Không có khoá học phù hợp bộ lọc.</div></sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ c.isSchedule }}" hint-placeholder-val="{{ false }}">
+<div style="padding:16px 0 120px">
+<div data-reveal="1" style="margin:0 10px;padding:0 0 14px;border-bottom:1px solid #D8E9E8">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:0 4px">
+<button sc-camel-on-click="{{ c.prevWeek }}" aria-label="Tuần trước" style="width:36px;height:36px;border-radius:50%;border:1px solid #D8E9E8;background:#fff;color:#1D5B57;font:900 18px 'Nunito',sans-serif;cursor:pointer">‹</button>
+<div style="font-weight:800;font-size:16px">{{ c.monthLabel }}</div>
+<button sc-camel-on-click="{{ c.nextWeek }}" aria-label="Tuần sau" style="width:36px;height:36px;border-radius:50%;border:1px solid #D8E9E8;background:#fff;color:#1D5B57;font:900 18px 'Nunito',sans-serif;cursor:pointer">›</button>
+</div>
+<div style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));margin-top:8px">
+<sc-for list="{{ c.weekDays }}" as="wd" hint-placeholder-count="7">
+<button sc-camel-on-click="{{ wd.onPick }}" style="border:0;background:transparent;display:flex;flex-direction:column;align-items:center;gap:4px;padding:2px 0;cursor:pointer;font:inherit">
+<span style="font-size:11.5px;font-weight:800;color:{{ wd.lblFg }}">{{ wd.dow }}</span>
+<span style="width:38px;height:38px;border-radius:50%;box-sizing:border-box;display:grid;place-items:center;font-weight:700;font-size:15px;background:{{ wd.bg }};color:{{ wd.fg }};border:{{ wd.border }};transition:background .2s,color .2s">{{ wd.d }}</span>
+<span style="width:5px;height:5px;border-radius:50%;background:{{ wd.dot }}"></span>
+</button>
+</sc-for>
+</div>
+</div>
+<div style="display:flex;flex-direction:column">
+<sc-for list="{{ c.dayGroups }}" as="g" hint-placeholder-count="3">
+<div data-reveal="1" data-day="{{ g.key }}">
+<sc-if value="{{ g.sep }}" hint-placeholder-val="{{ false }}"><div style="height:1px;background:#D8E9E8;margin:0 16px 0 160px"></div></sc-if>
+<div style="display:grid;grid-template-columns:72px minmax(0,1fr)">
+<div style="background:{{ g.colBg }};color:{{ g.colFg }};padding:16px 4px">
+<div style="position:sticky;top:112px;text-align:center">
+<div style="font-size:21px;font-weight:800;letter-spacing:-.02em;line-height:1">{{ g.date }}</div>
+<div style="font-size:12.5px;font-weight:600;margin-top:4px">{{ g.dow }}</div>
+<sc-if value="{{ g.today }}" hint-placeholder-val="{{ false }}"><div style="margin:8px auto 0;display:inline-block;font-size:10.5px;font-weight:800;padding:3px 7px;border-radius:99px;background:#FFDDAE;color:#1D5B57">Hôm nay</div></sc-if>
+</div>
+</div>
+<div style="display:flex;flex-direction:column">
+<sc-for list="{{ g.items }}" as="it" hint-placeholder-count="1">
+<sc-if value="{{ it.sep }}" hint-placeholder-val="{{ false }}"><div style="height:1px;background:#D8E9E8;margin:0 14px 0 88px"></div></sc-if>
+<div style="display:grid;grid-template-columns:4px 54px minmax(0,1fr);gap:10px;padding:14px 14px 14px 10px">
+<div style="border-radius:4px;background:{{ it.bar }}"></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:3px">
+<span style="font-size:12px;font-weight:700;padding:3px 8px;border-radius:8px;background:{{ it.slotBg }};color:{{ it.slotFg }}">Ca {{ it.slot }}</span>
+<span style="font-size:12.5px;font-weight:700;color:#346B68;margin-top:4px">{{ it.from }}</span>
+<span style="width:1px;height:10px;background:#CAE1DF"></span>
+<span style="font-size:12.5px;font-weight:700;color:#346B68">{{ it.to }}</span>
+</div>
+<div style="min-width:0;display:flex;flex-direction:column;gap:6px">
+<div style="background:#F1F7F6;border-radius:12px;padding:7px 10px"><div style="font-size:11px;color:#346B68;font-weight:600">Mã lớp</div><div style="font-size:15px;font-weight:800">{{ it.cls }}</div></div>
+<div style="font-size:14.5px;font-weight:700;line-height:1.3">{{ it.title }}</div>
+<div style="font-size:12.5px;color:#346B68;line-height:1.5"><sc-if value="{{ it.hasRoom }}" hint-placeholder-val="{{ false }}"><div>{{ it.roomLbl }}</div></sc-if><div>Giảng viên: {{ it.mentor }}</div></div>
+<div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
+<span style="font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:99px;background:{{ it.stBg }};color:{{ it.stFg }}">{{ it.status }}</span>
+<span style="font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:99px;border:1px solid {{ it.modeBd }};color:{{ it.modeFg }};display:flex;align-items:center;gap:5px"><span style="width:6px;height:6px;border-radius:50%;background:{{ it.modeFg }}"></span>{{ it.modeLbl }}</span>
+<sc-if value="{{ it.canJoin }}" hint-placeholder-val="{{ false }}"><button sc-camel-on-click="{{ it.onJoin }}" style="height:28px;padding:0 12px;border-radius:99px;border:0;background:#1D5B57;color:#fff;font:inherit;font-size:12px;font-weight:700;cursor:pointer">Vào lớp</button></sc-if>
+</div>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{ c.weekEmpty }}" hint-placeholder-val="{{ false }}"><div style="margin:4px 16px 0;padding:28px 16px;text-align:center;background:#F1F7F6;border-radius:18px;color:#346B68;font-size:14px;font-weight:700">Tuần này chưa có buổi học.</div></sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ c.isNoti }}" hint-placeholder-val="{{ false }}">
+<div style="padding:16px 16px 120px">
+<div style="display:flex;align-items:center;gap:10px;height:46px;padding:0 14px;border-radius:14px;background:#F1F7F6">
+<svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>
+<input placeholder="Tìm thông báo" value="{{ c.notiQ }}" sc-camel-on-change="{{ c.onNotiQ }}" style="border:0;background:transparent;flex:1;min-width:0;font:inherit;font-size:14.5px;color:#000">
+</div>
+<div style="display:flex;align-items:center;gap:8px;margin-top:12px">
+<sc-for list="{{ c.notiTabs }}" as="nt" hint-placeholder-count="2"><button sc-camel-on-click="{{ nt.onPick }}" style="height:34px;padding:0 6px 0 12px;border-radius:99px;border:1px solid {{ nt.bd }};background:{{ nt.bg }};display:flex;align-items:center;gap:8px;font:inherit;font-size:13px;font-weight:600;color:#000;cursor:pointer">{{ nt.label }}<span style="min-width:28px;height:22px;padding:0 7px;box-sizing:border-box;border-radius:99px;background:#1D5B57;color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center">{{ nt.n }}</span></button></sc-for>
+<button sc-camel-on-click="{{ c.markAllRead }}" style="margin-left:auto;border:0;background:transparent;color:#338A85;font:inherit;font-size:13px;font-weight:700;cursor:pointer;padding:0">Đánh dấu đã đọc</button>
+</div>
+<sc-for list="{{ c.notiGroups }}" as="ng" hint-placeholder-count="2">
+<div style="font-size:15px;font-weight:700;margin:20px 0 4px">{{ ng.label }}</div>
+<sc-for list="{{ ng.items }}" as="n" hint-placeholder-count="2">
+<button sc-camel-on-click="{{ n.onOpen }}" style="width:100%;display:flex;align-items:center;gap:12px;padding:12px 0;border:0;border-bottom:1px solid #D8E9E8;background:transparent;font:inherit;text-align:left;cursor:pointer">
+<span style="width:46px;height:46px;flex:none;border-radius:50%;background:{{ n.icBg }};display:grid;place-items:center"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="{{ n.icFg }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ n.path }}"></path></svg></span>
+<span style="flex:1;min-width:0">
+<span style="display:flex;align-items:center;gap:8px"><span style="flex:1;font-size:14.5px;font-weight:{{ n.fw }};color:{{ n.fg }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ n.t }}</span><span style="width:8px;height:8px;border-radius:50%;flex:none;background:{{ n.dot }}"></span></span>
+<span style="display:flex;align-items:baseline;gap:8px;margin-top:3px"><span style="flex:1;font-size:12.5px;color:#346B68;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ n.d }}</span><span style="flex:none;font-size:11.5px;color:#346B68">{{ n.ago }}</span></span>
+</span>
+</button>
+</sc-for>
+</sc-for>
+<sc-if value="{{ c.notiEmpty }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;align-items:center;padding:48px 0 0;gap:12px">
+<img src="adf2ee43-4e6a-45a2-8444-9384a6e2cefd" alt="" style="width:110px;height:auto">
+<div style="font-size:14px;color:#346B68">Chưa có thông báo nào ở đây</div>
+</div>
+</sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ c.isAccount }}" hint-placeholder-val="{{ false }}">
+<div style="position:relative;z-index:6;margin-top:{{ c.sheetMt }};background:#fff;border-radius:28px 28px 0 0;padding:20px 16px 120px">
+<sc-if value="{{ c.subClasses }}" hint-placeholder-val="{{ false }}">
+<div style="display:grid;grid-template-columns:40px 1fr 40px;align-items:center;margin:-4px 0 14px">
+<button sc-camel-on-click="{{ c.closeSub }}" aria-label="Quay lại" style="width:40px;height:40px;border-radius:50%;border:1px solid #D8E9E8;background:#fff;color:#1D5B57;font:700 20px 'Nunito',sans-serif;cursor:pointer;display:grid;place-items:center">‹</button>
+<div style="text-align:center;font-size:18px;font-weight:800">Lớp của tôi</div>
+<span></span>
+</div>
+<sc-if value="{{ c.mcFolder }}" hint-placeholder-val="{{ true }}">
+<div style="background:#F1F7F6;border-radius:18px;padding:4px 0">
+<sc-for list="{{ c.myCourses }}" as="mc" hint-placeholder-count="2">
+<div style="border-top:{{ mc.sep }}">
+<button sc-camel-on-click="{{ mc.onToggle }}" style="width:100%;display:flex;align-items:center;gap:12px;min-height:58px;padding:8px 14px;border:0;background:transparent;font:inherit;cursor:pointer;text-align:left">
+<span style="width:34px;height:34px;flex:none;border-radius:10px;background:{{ mc.folderBg }};display:grid;place-items:center"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="{{ mc.folderFg }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ mc.folderPath }}"></path></svg></span>
+<span style="flex:1;min-width:0"><span style="display:block;font-size:14.5px;font-weight:700;color:#000">{{ mc.title }}</span><span style="display:block;font-size:12.5px;color:#346B68;margin-top:1px">{{ mc.code }} · {{ mc.count }} lớp</span></span>
+<span style="color:#346B68;font-size:18px;font-weight:600;display:inline-block;transform:{{ mc.rot }}">›</span>
+</button>
+<sc-if value="{{ mc.open }}" hint-placeholder-val="{{ false }}">
+<div style="margin:0 10px 8px 30px;border-left:2px solid #CAE1DF;padding-left:8px">
+<sc-for list="{{ mc.classes }}" as="cl" hint-placeholder-count="1">
+<button sc-camel-on-click="{{ cl.onPick }}" style="width:100%;display:flex;align-items:center;gap:10px;min-height:52px;padding:6px 8px;border:0;background:#fff;margin-top:6px;font:inherit;cursor:pointer;text-align:left;border-radius:12px">
+<span style="flex:1;min-width:0"><span style="display:block;font-size:14px;font-weight:600;color:#000">{{ cl.code }}</span><span style="display:block;font-size:12px;color:#346B68;margin-top:1px">{{ cl.meta }}</span></span>
+<span style="font-size:12px;font-weight:600;color:{{ cl.noteFg }}">{{ cl.note }}</span>
+<span style="color:#346B68;font-size:17px;font-weight:600">›</span>
+</button>
+</sc-for>
+</div>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</sc-if>
+</sc-if>
+<sc-if value="{{ c.subOrders }}" hint-placeholder-val="{{ false }}">
+<div style="display:grid;grid-template-columns:40px 1fr 40px;align-items:center;margin:-4px 0 14px">
+<button sc-camel-on-click="{{ c.closeSub }}" aria-label="Quay lại" style="width:40px;height:40px;border-radius:50%;border:1px solid #D8E9E8;background:#fff;color:#1D5B57;font:700 20px 'Nunito',sans-serif;cursor:pointer;display:grid;place-items:center">‹</button>
+<div style="text-align:center;font-size:18px;font-weight:800">Đơn hàng của tôi</div>
+<div style="position:relative">
+<button sc-camel-on-click="{{ c.toggleOrdFilter }}" aria-label="Lọc trạng thái" style="position:relative;width:40px;height:40px;border-radius:50%;border:1px solid #D8E9E8;background:#fff;display:grid;place-items:center;cursor:pointer"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h9M17 8h3M4 16h3M11 16h9M15 6v4M9 14v4"></path></svg><sc-if value="{{ c.ordFilterOn }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:5px;right:6px;width:9px;height:9px;border-radius:50%;background:#FF7F50;border:2px solid #fff"></span></sc-if></button>
+<sc-if value="{{ c.ordFilterOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;right:0;top:46px;z-index:20;width:190px;background:#fff;border-radius:14px;box-shadow:0 10px 30px rgba(18,48,46,.2);padding:6px">
+<sc-for list="{{ c.ordFilterOpts }}" as="fo" hint-placeholder-count="4"><button sc-camel-on-click="{{ fo.onPick }}" style="width:100%;height:40px;display:flex;align-items:center;justify-content:space-between;padding:0 12px;border:0;border-radius:10px;background:{{ fo.bg }};font:inherit;font-size:14px;font-weight:600;color:#000;cursor:pointer">{{ fo.label }}<span style="color:#338A85;font-weight:800">{{ fo.check }}</span></button></sc-for>
+</div>
+</sc-if>
+</div>
+</div>
+<div style="font-size:16px;font-weight:700;margin-bottom:12px">Xem lại đơn hàng và đánh giá khoá học</div>
+<div style="display:flex;align-items:center;gap:10px;height:46px;padding:0 14px;border-radius:99px;border:1px solid #D8E9E8;margin-bottom:14px">
+<svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="#346B68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14zM20 20l-4-4"></path></svg>
+<input placeholder="Tìm đơn hàng" value="{{ c.orderQ }}" sc-camel-on-change="{{ c.onOrderQ }}" style="border:0;background:transparent;flex:1;min-width:0;font:inherit;font-size:14.5px;color:#000">
+</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ c.orders }}" as="o" hint-placeholder-count="4">
+<div style="display:flex;gap:12px;padding:8px;border-radius:18px;background:#fff;box-shadow:0 2px 12px rgba(29,91,87,.08)">
+<div style="width:96px;flex:none;border-radius:12px;background:repeating-linear-gradient(135deg,{{ o.tint }} 0 7px,#fff0 7px 14px),{{ o.soft }}"></div>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px;padding:2px 0">
+<div style="font-size:14.5px;font-weight:700;line-height:1.3">{{ o.title }}</div>
+<div style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:#346B68"><svg width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="#346B68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v14H4zM4 10h16M8 3v4M16 3v4"></path></svg>{{ o.date }}</div>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:6px;font-size:12.5px"><span style="font-weight:700;color:{{ o.stFg }}">{{ o.status }}</span><span style="font-weight:800;color:#1D5B57">{{ o.priceFmt }}</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px">
+<button sc-camel-on-click="{{ o.onA }}" style="height:38px;border-radius:99px;border:1px solid #D8E9E8;background:#fff;color:#000;font:inherit;font-size:13px;font-weight:700;cursor:pointer">{{ o.a }}</button>
+<button sc-camel-on-click="{{ o.onB }}" style="height:38px;border-radius:99px;border:0;background:#1D5B57;color:#fff;font:inherit;font-size:13px;font-weight:700;cursor:pointer">{{ o.b }}</button>
+</div>
+</div>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{ c.ordersEmpty }}" hint-placeholder-val="{{ false }}"><div style="padding:28px 0;text-align:center;color:#346B68;font-size:14px">Không tìm thấy đơn hàng.</div></sc-if>
+</sc-if>
+<sc-if value="{{ c.subPay }}" hint-placeholder-val="{{ false }}">
+<div style="display:grid;grid-template-columns:40px 1fr 40px;align-items:center;margin:-4px 0 16px">
+<button sc-camel-on-click="{{ c.backToOrders }}" aria-label="Quay lại" style="width:40px;height:40px;border-radius:50%;border:1px solid #D8E9E8;background:#fff;color:#1D5B57;font:700 20px 'Nunito',sans-serif;cursor:pointer;display:grid;place-items:center">‹</button>
+<div style="text-align:center;font-size:18px;font-weight:800">Thanh toán</div><span></span>
+</div>
+<div style="text-align:center">
+<div style="font-size:13px;color:#346B68">Số tiền cần thanh toán</div>
+<div style="font-size:28px;font-weight:800;color:#1D5B57;letter-spacing:-.02em;margin-top:2px">{{ c.pay.amount }}</div>
+<div style="display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:12.5px;font-weight:700;padding:4px 10px;border-radius:99px;background:#FFEEE8;color:#C2410C"><svg width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="#C2410C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 7v5l3 2"></path></svg>Hết hạn sau {{ c.pay.left }}</div>
+</div>
+<div style="margin:16px auto 0;width:220px;padding:12px;border-radius:20px;border:1px solid #D8E9E8;background:#fff;box-shadow:0 4px 16px rgba(29,91,87,.08)">
+<div style="aspect-ratio:1/1;border-radius:10px;background:repeating-linear-gradient(0deg,#fff 0 6px,transparent 6px 12px),repeating-linear-gradient(90deg,#1D5B57 0 6px,#fff 6px 12px);position:relative;display:grid;place-items:center">
+<span style="font:11px 'JetBrains Mono',monospace;background:#fff;color:#346B68;padding:4px 8px;border-radius:6px">mã QR thanh toán</span>
+</div>
+<div style="text-align:center;font-size:12.5px;color:#346B68;margin-top:8px">Quét mã bằng app ngân hàng</div>
+</div>
+<div style="margin-top:18px;border-radius:18px;background:#F1F7F6;padding:4px 14px">
+<sc-for list="{{ c.pay.rows }}" as="pr" hint-placeholder-count="5">
+<div style="display:flex;align-items:center;gap:10px;min-height:52px;border-bottom:{{ pr.sep }}">
+<span style="width:96px;flex:none;font-size:12.5px;color:#346B68">{{ pr.k }}</span>
+<span style="flex:1;min-width:0;font-size:14px;font-weight:700;word-break:break-word">{{ pr.v }}</span>
+<sc-if value="{{ pr.copy }}" hint-placeholder-val="{{ false }}"><button sc-camel-on-click="{{ pr.onCopy }}" style="height:30px;padding:0 10px;border-radius:99px;border:1px solid #CAE1DF;background:#fff;color:#1D5B57;font:inherit;font-size:12px;font-weight:700;cursor:pointer">Sao chép</button></sc-if>
+</div>
+</sc-for>
+</div>
+<div style="font-size:12.5px;color:#346B68;line-height:1.5;margin-top:10px">Vui lòng giữ nguyên nội dung chuyển khoản để hệ thống tự xác nhận đơn hàng.</div>
+
+</sc-if>
+<sc-if value="{{ c.subProfile }}" hint-placeholder-val="{{ false }}">
+<div style="display:grid;grid-template-columns:40px 1fr 40px;align-items:center;margin:-4px 0 18px">
+<button sc-camel-on-click="{{ c.closeSub }}" aria-label="Quay lại" style="width:40px;height:40px;border-radius:50%;border:1px solid #D8E9E8;background:#fff;color:#1D5B57;font:700 20px 'Nunito',sans-serif;cursor:pointer;display:grid;place-items:center">‹</button>
+<div style="text-align:center;font-size:18px;font-weight:800">Chỉnh sửa hồ sơ</div><span></span>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:20px">
+<div style="position:relative;width:96px;height:96px">
+<div style="width:96px;height:96px;border-radius:50%;background:#FFDDAE;color:#1D5B57;display:grid;place-items:center;font-weight:800;font-size:30px">{{ c.pfIni }}</div>
+<button sc-camel-on-click="{{ c.changeAvatar }}" aria-label="Đổi ảnh đại diện" style="position:absolute;right:-2px;bottom:2px;width:32px;height:32px;border-radius:50%;border:3px solid #fff;background:#338A85;display:grid;place-items:center;cursor:pointer"><svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg></button>
+</div>
+<button sc-camel-on-click="{{ c.changeAvatar }}" style="border:0;background:transparent;color:#338A85;font:inherit;font-size:14px;font-weight:700;cursor:pointer">Đổi ảnh đại diện</button>
+</div>
+<div style="display:flex;flex-direction:column;gap:14px">
+<sc-for list="{{ c.pfFields }}" as="f" hint-placeholder-count="5">
+<label style="display:flex;flex-direction:column;gap:6px">
+<span style="font-size:13px;font-weight:700;color:#1D5B57">{{ f.label }}</span>
+<input type="{{ f.type }}" value="{{ f.value }}" sc-camel-on-change="{{ f.onChange }}" placeholder="{{ f.ph }}" style="height:48px;padding:0 14px;border-radius:14px;border:1.5px solid {{ f.bd }};background:#fff;font:inherit;font-size:15px;color:#000;box-sizing:border-box;width:100%">
+<sc-if value="{{ f.hasErr }}" hint-placeholder-val="{{ false }}"><span style="font-size:12.5px;font-weight:600;color:#FF5400">{{ f.err }}</span></sc-if>
+</label>
+</sc-for>
+<div style="display:flex;flex-direction:column;gap:6px">
+<span style="font-size:13px;font-weight:700;color:#1D5B57">Giới tính</span>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:4px;border-radius:14px;background:#F1F7F6">
+<sc-for list="{{ c.pfGender }}" as="g" hint-placeholder-count="3"><button sc-camel-on-click="{{ g.onPick }}" style="height:40px;border-radius:10px;border:0;background:{{ g.bg }};color:{{ g.fg }};font:inherit;font-size:14px;font-weight:700;cursor:pointer;box-shadow:{{ g.sh }}">{{ g.label }}</button></sc-for>
+</div>
+</div>
+<label style="display:flex;flex-direction:column;gap:6px">
+<span style="display:flex;justify-content:space-between;font-size:13px;font-weight:700;color:#1D5B57">Giới thiệu bản thân<span style="font-weight:600;color:#346B68">{{ c.pfBioCount }}/160</span></span>
+<textarea value="{{ c.pfBio }}" sc-camel-on-change="{{ c.onPfBio }}" placeholder="Bạn đang học lập trình để làm gì?" style="height:110px;resize:none;padding:12px 14px;border-radius:14px;border:1.5px solid #D8E9E8;font:inherit;font-size:15px;line-height:1.5;color:#000;box-sizing:border-box;width:100%"></textarea>
+</label>
+</div>
+<button sc-camel-on-click="{{ c.savePf }}" style="margin-top:22px;width:100%;height:52px;border-radius:14px;border:0;background:{{ c.pfBtnBg }};color:#fff;font:inherit;font-weight:800;font-size:15px;cursor:pointer">Lưu thay đổi</button>
+</sc-if>
+<sc-if value="{{ c.notSub }}" hint-placeholder-val="{{ true }}">
+<sc-for list="{{ c.acctGroups }}" as="gr" hint-placeholder-count="4">
+<div data-reveal="1" style="background:#F1F7F6;border-radius:18px;padding:4px 0;margin-bottom:12px">
+<sc-for list="{{ gr.rows }}" as="r" hint-placeholder-count="3">
+<button sc-camel-on-click="{{ r.onPick }}" style="width:100%;display:flex;align-items:center;gap:12px;height:50px;padding:0 14px;border:0;background:transparent;font:inherit;cursor:pointer;text-align:left;border-radius:14px" style-active="background:#E6F0EF">
+<span style="width:32px;height:32px;flex:none;border-radius:50%;background:#fff;display:grid;place-items:center"><svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="{{ r.ic }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ r.path }}"></path></svg></span>
+<span style="flex:1;font-size:14.5px;font-weight:600;color:{{ r.fg }}">{{ r.label }}</span>
+<sc-if value="{{ r.hasNote }}" hint-placeholder-val="{{ false }}"><span style="font-size:12.5px;font-weight:600;color:{{ r.noteFg }}">{{ r.note }}</span></sc-if>
+<sc-if value="{{ r.isToggle }}" hint-placeholder-val="{{ false }}"><span style="width:42px;height:24px;border-radius:99px;background:{{ r.tBg }};position:relative;flex:none;transition:background .2s"><span style="position:absolute;top:3px;left:{{ r.tX }};width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.2);transition:left .2s"></span></span></sc-if>
+<sc-if value="{{ r.chev }}" hint-placeholder-val="{{ true }}"><span style="color:#346B68;font-size:18px;font-weight:600">›</span></sc-if>
+</button>
+</sc-for>
+</div>
+</sc-for>
+</sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ c.isHome }}" hint-placeholder-val="{{ true }}">
+<div data-reveal="1" style="background:#1D5B57;color:#fff;padding:28px 16px 130px">
+<div style="display:flex;align-items:center;gap:8px"><div style="width:30px;height:30px;border-radius:9px;background:#fff;color:#1D5B57;display:grid;place-items:center;font-weight:900;font-size:16px">M</div><span style="font-weight:900;font-size:17px">Mindy Coding</span></div>
+<p style="margin:10px 0 18px;font-size:14px;line-height:1.55;color:#D8E9E8">Học lập trình. Mở thế giới của bạn.</p>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 12px">
+<div style="display:flex;flex-direction:column;gap:8px;font-size:14px"><div style="font-weight:900;font-size:13px;color:#FFDDAE">Học tập</div><a href="#" style="color:#fff">Khoá học</a><a href="#" style="color:#fff">Lịch học</a><a href="#" style="color:#fff">Lớp của tôi</a></div>
+<div style="display:flex;flex-direction:column;gap:8px;font-size:14px"><div style="font-weight:900;font-size:13px;color:#FFDDAE">Hỗ trợ</div><a href="#" style="color:#fff">Trợ giúp</a><a href="#" style="color:#fff">Chính sách hoàn tiền</a><a href="#" style="color:#fff">Điều khoản</a></div>
+</div>
+<div style="margin-top:18px;font-size:13.5px;line-height:1.7;color:#D8E9E8">hotro@mindycoding.vn · 1900 0000</div>
+<div style="margin-top:16px;padding-top:12px;border-top:1px solid rgba(255,255,255,.18);font-size:12px;color:#CAE1DF">© 2026 Mindy Coding</div>
+</div>
+</sc-if>
+</div>
+
+<div style="position:absolute;top:0;left:0;right:0;z-index:30;background:#338A85;color:#fff;transform:{{ c.barT }};opacity:{{ c.barO }};box-shadow:0 6px 18px rgba(18,48,46,.18)">
+<div style="height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 30px;font-size:15px;font-weight:800"><span>9:41</span><span style="display:flex;gap:5px;align-items:center"><span style="width:16px;height:10px;border-radius:2px;background:#fff"></span><span style="width:23px;height:11px;border-radius:3px;border:1.5px solid #fff;box-sizing:border-box;padding:1px"><span style="display:block;width:70%;height:100%;background:#fff;border-radius:1px"></span></span></span></div>
+<div style="display:grid;grid-template-columns:44px 1fr 44px;align-items:center;padding:0 14px 8px">
+<span></span>
+<div sc-camel-on-click="{{ c.goHome }}" style="text-align:center;line-height:1;cursor:pointer"><div style="font-weight:900;font-size:19px;letter-spacing:-.01em">Mindy</div><div style="font-weight:800;font-size:10.5px;letter-spacing:.24em;color:#FFDDAE;margin-top:2px">CODING</div></div>
+<button sc-camel-on-click="{{ c.openCart }}" aria-label="Giỏ hàng" style="position:relative;width:44px;height:44px;border:0;background:transparent;display:grid;place-items:center;cursor:pointer">
+<svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.4 11h11l2-8H6.2"></path><circle cx="9" cy="20" r="1.4"></circle><circle cx="18" cy="20" r="1.4"></circle></svg>
+<sc-if value="{{ c.hasCart }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:4px;right:2px;min-width:18px;height:18px;padding:0 4px;box-sizing:border-box;border-radius:99px;background:#FF7F50;color:#fff;font-size:11px;font-weight:900;display:grid;place-items:center;border:2px solid #338A85">{{ c.cartCount }}</span></sc-if>
+</button>
+</div>
+</div>
+<div style="position:absolute;left:12px;right:12px;bottom:16px;height:68px;border-radius:26px;background:#fff;box-shadow:0 10px 30px rgba(29,91,87,.22);display:grid;grid-template-columns:repeat(5,1fr);z-index:25;padding:0 4px;transform:{{ c.tabT }}">
+<sc-for list="{{ c.tabs }}" as="t" hint-placeholder-count="5">
+<sc-if value="{{ t.side }}" hint-placeholder-val="{{ true }}">
+<button sc-camel-on-click="{{ t.onPick }}" style="border:0;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;font:inherit;padding:0">
+<span style="position:relative;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 7px;border-radius:14px;background:{{ t.pill }};color:{{ t.fg }};font-size:10.5px;font-weight:900;white-space:nowrap;transition:background .2s"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="{{ t.fg }}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ t.path }}"></path></svg>{{ t.label }}<sc-if value="{{ t.dot }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:4px;right:12px;width:8px;height:8px;border-radius:50%;background:#FF5400;border:1.5px solid #fff"></span></sc-if></span></button>
+</sc-if>
+<sc-if value="{{ t.center }}" hint-placeholder-val="{{ false }}">
+<button sc-camel-on-click="{{ t.onPick }}" aria-label="Trang chủ" style="border:0;background:transparent;position:relative;cursor:pointer;font:inherit;padding:0">
+<span style="position:absolute;top:-28px;left:50%;margin-left:-39px;width:78px;height:78px;border-radius:50%;background:{{ t.circle }};border:6px solid #fff;box-sizing:border-box;display:grid;place-items:center;box-shadow:0 10px 22px rgba(29,91,87,.32);transition:background .2s"><svg width="30" height="30" sc-camel-view-box="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="{{ t.path }}"></path></svg></span></button>
+</sc-if>
+</sc-for>
+</div>
+
+<sc-if value="{{ c.roomOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;z-index:60;background:#fff;overflow-y:auto;overflow-x:hidden">
+<div style="background:linear-gradient(180deg,#12302E 0%,#1D5B57 60%,#338A85 100%);color:#fff;padding-bottom:52px;position:relative;overflow:hidden">
+<div style="position:absolute;right:-60px;top:60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.06)"></div>
+<div style="height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 30px;font-size:15px;font-weight:800;position:relative"><span>9:41</span><span style="display:flex;gap:5px;align-items:center"><span style="width:16px;height:10px;border-radius:2px;background:#fff"></span><span style="width:23px;height:11px;border-radius:3px;border:1.5px solid #fff;box-sizing:border-box;padding:1px"><span style="display:block;width:70%;height:100%;background:#fff;border-radius:1px"></span></span></span></div>
+<button sc-camel-on-click="{{ c.closeRoom }}" aria-label="Quay lại" style="position:relative;margin:6px 0 0 10px;width:44px;height:44px;border:0;background:transparent;display:grid;place-items:center;cursor:pointer"><svg width="26" height="26" sc-camel-view-box="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg></button>
+<div style="position:relative;display:flex;gap:16px;align-items:center;padding:14px 16px 0">
+<div style="width:112px;flex:none;aspect-ratio:3/4;border-radius:14px;border:1px solid rgba(255,255,255,.2);background:repeating-linear-gradient(135deg,{{ c.cd.tint }} 0 9px,#fff0 9px 18px),{{ c.cd.soft }};display:flex;align-items:flex-end;padding:8px;box-sizing:border-box;box-shadow:0 10px 24px rgba(0,0,0,.3)"><span style="font:9.5px 'JetBrains Mono',monospace;color:#346B68;background:rgba(255,255,255,.85);padding:2px 5px;border-radius:4px">ảnh khoá học</span></div>
+<div style="min-width:0;display:flex;flex-direction:column;gap:8px">
+<div style="font-size:24px;font-weight:800;letter-spacing:-.02em;line-height:1.15">{{ c.cd.cls }}</div>
+<div style="display:flex;align-items:center;gap:8px;font-size:14.5px;color:#D8E9E8"><svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="#D8E9E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5v14zM20 17v4H6.5"></path></svg><span>{{ c.cd.course }}</span></div>
+<span style="align-self:flex-start;font-size:13px;font-weight:700;padding:5px 12px;border-radius:99px;background:#FF9973;color:#fff">{{ c.cd.status }}</span>
+</div>
+</div>
+</div>
+<div style="position:relative;margin-top:-28px;background:#fff;border-radius:28px 28px 0 0;padding:22px 16px 120px">
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px">
+<sc-for list="{{ c.cd.stats }}" as="st" hint-placeholder-count="4"><div><div style="font-size:17px;font-weight:800;letter-spacing:-.01em;white-space:nowrap">{{ st.v }}</div><div style="font-size:12px;color:#346B68;margin-top:2px">{{ st.l }}</div></div></sc-for>
+</div>
+<p style="margin:16px 0 0;font-size:14.5px;line-height:1.6;color:#000">{{ c.cd.descText }} <button sc-camel-on-click="{{ c.toggleDesc }}" style="border:0;background:transparent;padding:0;color:#FF7F50;font:inherit;font-weight:700;cursor:pointer">{{ c.cd.descBtn }}</button></p>
+<div style="display:flex;align-items:center;gap:12px;margin-top:18px;padding:12px 14px;border-radius:16px;background:#F1F7F6">
+<span style="width:42px;height:42px;border-radius:50%;background:#FFDDAE;color:#1D5B57;display:grid;place-items:center;font-weight:800;font-size:14px;flex:none">{{ c.cd.mentorIni }}</span>
+<span style="flex:1"><span style="display:block;font-size:12px;color:#346B68">Giảng viên</span><span style="display:block;font-size:15px;font-weight:700">{{ c.cd.mentor }}</span></span>
+</div>
+<div style="display:flex;align-items:baseline;justify-content:space-between;margin:24px 0 6px"><h3 style="margin:0;font-size:19px;font-weight:800">Buổi học</h3><span style="font-size:13px;color:#346B68">{{ c.cd.total }} buổi</span></div>
+<sc-for list="{{ c.cd.sessions }}" as="se" hint-placeholder-count="5">
+<div sc-camel-on-click="{{ se.onOpen }}" style="display:flex;align-items:center;gap:12px;padding:12px 8px;border-radius:12px;background:{{ se.bg }};border-bottom:1px solid #EEF3F2;cursor:pointer">
+<span style="width:30px;height:30px;flex:none;border-radius:50%;display:grid;place-items:center;font-size:12.5px;font-weight:800;background:{{ se.numBg }};color:{{ se.numFg }}">{{ se.mark }}</span>
+<span style="flex:1;min-width:0"><span style="display:block;font-size:14.5px;font-weight:{{ se.fw }};line-height:1.35">{{ se.title }}</span><span style="display:block;font-size:12px;color:#346B68;margin-top:2px">Buổi {{ se.no }} · {{ se.date }}</span></span>
+<span style="font-size:12px;font-weight:700;color:{{ se.stFg }}">{{ se.state }}</span><span style="color:#346B68;font-size:16px;font-weight:700">›</span>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="position:absolute;left:16px;right:16px;bottom:24px;z-index:62;display:flex;align-items:center;justify-content:space-between;gap:10px;pointer-events:none">
+<button sc-camel-on-click="{{ c.openPeople }}" aria-label="Mentor và học viên" style="pointer-events:auto;position:relative;flex:none;width:56px;height:56px;border-radius:50%;border:3px solid #fff;background:#FFDDAE;box-shadow:0 8px 24px rgba(18,48,46,.25);display:grid;place-items:center;cursor:pointer;font:800 16px 'Nunito',sans-serif;color:#1D5B57;padding:0">{{ c.cd.mentorIni }}<span style="position:absolute;right:-6px;bottom:-4px;min-width:22px;height:20px;padding:0 5px;box-sizing:border-box;border-radius:99px;background:#338A85;color:#fff;font-size:11px;font-weight:800;display:grid;place-items:center;border:2px solid #fff">{{ c.cd.peopleCount }}</span></button>
+<sc-if value="{{ c.cd.hasMeet }}" hint-placeholder-val="{{ false }}">
+<button sc-camel-on-click="{{ c.openMeet }}" aria-label="Mở Google Meet" style="pointer-events:auto;height:56px;padding:0 20px 0 8px;border-radius:99px;border:0;background:#fff;box-shadow:0 8px 24px rgba(18,48,46,.25);display:flex;align-items:center;gap:10px;cursor:pointer;font:inherit">
+<span style="width:40px;height:40px;border-radius:50%;background:#338A85;display:grid;place-items:center"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h12v10H3zM15 10l6-3v10l-6-3"></path></svg></span>
+<span style="font-size:14.5px;font-weight:800;color:#1D5B57">Vào Google Meet</span>
+</button>
+</sc-if>
+</div>
+<sc-if value="{{ c.sd.open }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;z-index:80;background:#fff;overflow-y:auto">
+<div style="background:{{ c.cd.soft }};padding:54px 16px 44px">
+<div style="display:grid;grid-template-columns:40px 1fr 40px;align-items:center">
+<button sc-camel-on-click="{{ c.sd.close }}" aria-label="Quay lại" style="width:40px;height:40px;border-radius:50%;border:0;background:#fff;color:#1D5B57;font:700 20px 'Nunito',sans-serif;cursor:pointer;display:grid;place-items:center">‹</button>
+<div style="text-align:center;font-size:13px;font-weight:700;color:#1D5B57">{{ c.cd.cls }} · Buổi {{ c.sd.no }}/{{ c.cd.total }}</div><span></span>
+</div>
+<span style="display:inline-block;margin-top:18px;padding:4px 10px;border-radius:99px;background:#fff;font-size:12px;font-weight:800;color:{{ c.sd.stFg }}">{{ c.sd.state }}</span>
+<h2 style="margin:10px 0 0;font-size:24px;font-weight:800;letter-spacing:-.02em;line-height:1.25;text-wrap:pretty">{{ c.sd.title }}</h2>
+<div style="margin-top:4px;font-size:13.5px;color:#346B68">Chương: {{ c.sd.unit }}</div>
+</div>
+<div style="position:relative;margin-top:-24px;background:#fff;border-radius:24px 24px 0 0;padding:20px 16px 120px">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+<sc-for list="{{ c.sd.info }}" as="it" hint-placeholder-count="4"><div style="padding:12px;border-radius:14px;background:#F1F7F6"><div style="font-size:12px;font-weight:700;color:#346B68">{{ it.l }}</div><div style="margin-top:3px;font-size:14.5px;font-weight:700">{{ it.v }}</div></div></sc-for>
+</div>
+<h3 style="margin:22px 0 8px;font-size:17px;font-weight:800">Nội dung buổi học</h3>
+<p style="margin:0;font-size:14.5px;line-height:1.6;text-wrap:pretty">{{ c.sd.desc }}</p>
+<h3 style="margin:22px 0 8px;font-size:17px;font-weight:800">Mục tiêu</h3>
+<div style="display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ c.sd.goals }}" as="g" hint-placeholder-count="3"><div style="display:flex;gap:10px;font-size:14.5px;line-height:1.5"><span style="width:20px;height:20px;flex:none;border-radius:50%;background:#D8E9E8;color:#1D5B57;display:grid;place-items:center;font-size:11px;font-weight:900;margin-top:1px">✓</span>{{ g.t }}</div></sc-for>
+</div>
+</div>
+<button sc-camel-on-click="{{ c.sd.openFiles }}" style="position:sticky;bottom:24px;margin:-96px 16px 24px auto;display:flex;align-items:center;gap:10px;height:54px;padding:0 20px 0 8px;border-radius:99px;border:0;background:#1D5B57;color:#fff;font:inherit;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 8px 24px rgba(18,48,46,.3)"><span style="width:40px;height:40px;border-radius:50%;background:#338A85;display:grid;place-items:center"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6v18h12V7zM14 3v4h4"></path></svg></span>Tài liệu ({{ c.sd.fileCount }})</button>
+</div>
+</sc-if>
+<sc-if value="{{ c.sd.filesOpen }}" hint-placeholder-val="{{ false }}">
+<div sc-camel-on-click="{{ c.sd.closeFiles }}" style="position:absolute;inset:0;z-index:90;background:rgba(18,48,46,.45)"></div>
+<div style="position:absolute;left:0;right:0;bottom:0;z-index:91;max-height:70%;overflow-y:auto;background:#fff;border-radius:24px 24px 0 0;padding:10px 18px 28px;box-shadow:0 -8px 24px rgba(18,48,46,.12)">
+<div style="width:40px;height:5px;border-radius:9px;background:#D8E9E8;margin:0 auto 14px"></div>
+<div style="font-size:18px;font-weight:800;margin-bottom:6px">Tài liệu buổi {{ c.sd.no }}</div>
+<sc-for list="{{ c.sd.files }}" as="f" hint-placeholder-count="3">
+<div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #EEF3F2">
+<span style="width:42px;height:42px;flex:none;border-radius:12px;background:{{ f.bg }};color:{{ f.fg }};display:grid;place-items:center;font-size:11px;font-weight:900">{{ f.ext }}</span>
+<span style="flex:1;min-width:0"><span style="display:block;font-size:14.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ f.name }}</span><span style="display:block;font-size:12px;color:#346B68;margin-top:2px">{{ f.size }}</span></span>
+<button sc-camel-on-click="{{ f.onDl }}" style="height:36px;padding:0 14px;border-radius:99px;border:0;background:{{ f.btnBg }};color:{{ f.btnFg }};font:inherit;font-size:13px;font-weight:800;cursor:pointer">{{ f.btn }}</button>
+</div>
+</sc-for>
+<sc-if value="{{ c.sd.noFiles }}" hint-placeholder-val="{{ false }}"><div style="padding:24px 0;text-align:center;font-size:14px;color:#346B68">Tài liệu sẽ được mentor tải lên sau buổi học.</div></sc-if>
+</div>
+</sc-if>
+<sc-if value="{{ c.peopleOpen }}" hint-placeholder-val="{{ false }}">
+<div sc-camel-on-click="{{ c.closePeople }}" style="position:absolute;inset:0;z-index:70;background:rgba(18,48,46,.45)"></div>
+<div style="position:absolute;left:0;right:0;bottom:0;z-index:71;background:#fff;border-radius:24px 24px 0 0;padding:10px 18px 28px">
+<div style="width:40px;height:5px;border-radius:9px;background:#D8E9E8;margin:0 auto 14px"></div>
+<div style="font-size:12px;font-weight:700;color:#346B68;margin-bottom:8px">Giảng viên</div>
+<div style="display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:14px;background:#F1F7F6">
+<span style="width:44px;height:44px;border-radius:50%;background:#FFDDAE;color:#1D5B57;display:grid;place-items:center;font-weight:800;font-size:15px;flex:none">{{ c.cd.mentorIni }}</span>
+<span style="flex:1"><span style="display:block;font-size:15px;font-weight:700">{{ c.cd.mentor }}</span><span style="display:block;font-size:12.5px;color:#346B68">Mentor lớp {{ c.cd.cls }}</span></span>
+</div>
+<div style="font-size:12px;font-weight:700;color:#346B68;margin:16px 0 4px">Học viên ({{ c.cd.studentCount }})</div>
+<div style="max-height:330px;overflow-y:auto">
+<sc-for list="{{ c.cd.students }}" as="p" hint-placeholder-count="5">
+<div style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid #EEF3F2">
+<span style="width:36px;height:36px;border-radius:50%;background:{{ p.bg }};color:#1D5B57;display:grid;place-items:center;font-weight:800;font-size:12.5px;flex:none">{{ p.ini }}</span>
+<span style="flex:1;font-size:14px;font-weight:600">{{ p.name }}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+</sc-if>
+<sc-if value="{{ c.ordModalOpen }}" hint-placeholder-val="{{ false }}">
+<div sc-camel-on-click="{{ c.closeOrdModal }}" style="position:absolute;inset:0;z-index:80;background:rgba(18,48,46,.5)"></div>
+<sc-if value="{{ c.isCancelModal }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;left:24px;right:24px;top:50%;transform:translateY(-50%);z-index:81;background:#fff;border-radius:22px;padding:22px 20px 18px;text-align:center">
+<div style="width:52px;height:52px;border-radius:50%;background:#FFEEE8;display:grid;place-items:center;margin:0 auto 12px"><svg width="24" height="24" sc-camel-view-box="0 0 24 24" fill="none" stroke="#FF5400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v5M12 16h.01M10.3 3.9L2.4 18a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"></path></svg></div>
+<div style="font-size:18px;font-weight:800">Huỷ đơn hàng?</div>
+<div style="font-size:14px;color:#346B68;line-height:1.5;margin-top:6px">Đơn <b style="color:#000">{{ c.ordModalTitle }}</b> sẽ bị huỷ và không thể khôi phục.</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px">
+<button sc-camel-on-click="{{ c.closeOrdModal }}" style="height:46px;border-radius:99px;border:1px solid #D8E9E8;background:#fff;color:#000;font:inherit;font-size:14px;font-weight:700;cursor:pointer">Giữ lại</button>
+<button sc-camel-on-click="{{ c.confirmCancel }}" style="height:46px;border-radius:99px;border:0;background:#FF5400;color:#fff;font:inherit;font-size:14px;font-weight:700;cursor:pointer">Huỷ đơn</button>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ c.isRateModal }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;left:0;right:0;bottom:0;z-index:81;background:#fff;border-radius:26px 26px 0 0;padding:10px 18px 30px">
+<div style="width:40px;height:5px;border-radius:9px;background:#D8E9E8;margin:0 auto 14px"></div>
+<div style="font-size:19px;font-weight:800">Đánh giá khoá học</div>
+<div style="font-size:13.5px;color:#346B68;margin-top:2px">{{ c.ordModalTitle }}</div>
+<div style="display:flex;justify-content:center;gap:8px;margin:18px 0 6px">
+<sc-for list="{{ c.stars }}" as="sr" hint-placeholder-count="5"><button sc-camel-on-click="{{ sr.onPick }}" aria-label="{{ sr.label }}" style="width:46px;height:46px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;padding:0"><svg width="38" height="38" sc-camel-view-box="0 0 24 24" fill="{{ sr.fill }}" stroke="{{ sr.stroke }}" stroke-width="1.5" stroke-linejoin="round"><path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3 6.4 20.2l1.1-6.2L3 9.6l6.2-.9z"></path></svg></button></sc-for>
+</div>
+<div style="text-align:center;font-size:13.5px;font-weight:700;color:#1D5B57;min-height:20px">{{ c.rateLabel }}</div>
+<textarea value="{{ c.rateNote }}" sc-camel-on-change="{{ c.onRateNote }}" placeholder="Chia sẻ cảm nhận của bạn về khoá học, mentor, nội dung bài học…" style="display:block;width:100%;box-sizing:border-box;height:160px;margin-top:12px;resize:none;border:1px solid #D8E9E8;border-radius:16px;padding:14px;font:inherit;font-size:14.5px;line-height:1.5;color:#000"></textarea>
+<button sc-camel-on-click="{{ c.submitRate }}" style="margin-top:14px;width:100%;height:52px;border-radius:14px;border:0;background:{{ c.rateBtnBg }};color:#fff;font:inherit;font-weight:800;font-size:15px;cursor:pointer">Gửi đánh giá</button>
+</div>
+</sc-if>
+</sc-if>
+<sc-if value="{{ c.toast }}" hint-placeholder-val="{{ false }}"><div data-in="pop" style="position:absolute;left:20px;right:20px;bottom:100px;z-index:90;padding:13px 16px;border-radius:14px;background:#1D5B57;color:#fff;font-size:14px;font-weight:700;box-shadow:0 10px 30px rgba(29,91,87,.3)">{{ c.toast }}</div></sc-if>
+
+
+
+<sc-if value="{{ c.sheetOpen }}" hint-placeholder-val="{{ false }}">
+<div data-in="fade" sc-camel-on-click="{{ c.closeSheet }}" style="position:absolute;inset:0;background:rgba(18,48,46,.45);z-index:50"></div>
+<div data-in="up" style="position:absolute;left:0;right:0;bottom:0;z-index:51;background:#fff;border-radius:28px 28px 0 0;padding:10px 18px 32px;max-height:82%;overflow-y:auto">
+<div style="width:40px;height:5px;border-radius:9px;background:#D8E9E8;margin:0 auto 14px"></div>
+<sc-if value="{{ c.sheetCourse }}" hint-placeholder-val="{{ false }}">
+<div style="aspect-ratio:16/9;border-radius:18px;background:repeating-linear-gradient(135deg,{{ c.sel.tint }} 0 10px,#fff0 10px 20px),{{ c.sel.soft }};margin-bottom:14px"></div>
+<div style="font-size:12px;font-weight:900;letter-spacing:.1em;color:#338A85">{{ c.sel.code }} · {{ c.sel.catName }}</div>
+<h3 style="margin:4px 0 8px;font-size:22px;letter-spacing:-.02em;line-height:1.25;font-weight:900">{{ c.sel.title }}</h3>
+<p style="margin:0 0 14px;font-size:14.5px;line-height:1.6;color:#346B68">{{ c.sel.desc }}</p>
+<div style="background:#FFDDAE;border-radius:16px;padding:12px 14px;font-size:14px;line-height:1.7;margin-bottom:18px"><b>Lớp gần nhất:</b> {{ c.sel.cls }}<br>{{ c.sel.mode }} · {{ c.sel.start }} – {{ c.sel.end }} · còn {{ c.sel.seats }} chỗ<br>Mentor: {{ c.sel.mentor }}</div>
+<div style="display:flex;align-items:center;gap:10px">
+<div style="flex:1;font-weight:900;font-size:22px;color:#1D5B57">{{ c.sel.priceFmt }}</div>
+<button sc-camel-on-click="{{ c.sel.onAdd }}" style="height:50px;padding:0 16px;border-radius:14px;border:1px solid #D8E9E8;background:#fff;color:#1D5B57;font:inherit;font-weight:800;font-size:14px;cursor:pointer">{{ c.sel.addLabel }}</button>
+<button sc-camel-on-click="{{ c.sel.onBuy }}" style="height:50px;padding:0 20px;border-radius:14px;border:0;background:#FF9973;color:#fff;font:inherit;font-weight:900;font-size:15px;cursor:pointer" style-hover="background:#FFA584">Mua ngay</button>
+</div>
+</sc-if>
+<sc-if value="{{ c.sheetFilter }}" hint-placeholder-val="{{ false }}">
+<h3 style="margin:0 0 16px;font-size:22px;letter-spacing:-.02em;font-weight:900">Bộ lọc</h3>
+<div style="font-size:14px;font-weight:800;margin-bottom:10px">Hình thức</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px"><sc-for list="{{ c.modeOpts }}" as="o" hint-placeholder-count="3"><button sc-camel-on-click="{{ o.onPick }}" style="height:40px;padding:0 16px;border-radius:12px;border:0;font:inherit;font-size:14px;font-weight:800;cursor:pointer;background:{{ o.bg }};color:{{ o.fg }};transition:background .2s">{{ o.label }}</button></sc-for></div>
+<div style="font-size:14px;font-weight:800;margin-bottom:10px">Sắp xếp</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px"><sc-for list="{{ c.sortOpts }}" as="o" hint-placeholder-count="3"><button sc-camel-on-click="{{ o.onPick }}" style="height:40px;padding:0 16px;border-radius:12px;border:0;font:inherit;font-size:14px;font-weight:800;cursor:pointer;background:{{ o.bg }};color:{{ o.fg }};transition:background .2s">{{ o.label }}</button></sc-for></div>
+<div style="display:flex;gap:10px"><button sc-camel-on-click="{{ c.resetFilter }}" style="height:52px;padding:0 20px;border-radius:14px;border:1px solid #D8E9E8;background:#fff;color:#1D5B57;font:inherit;font-weight:800;font-size:15px;cursor:pointer">Đặt lại</button><button sc-camel-on-click="{{ c.closeSheet }}" style="flex:1;height:52px;border-radius:14px;border:0;background:#1D5B57;color:#fff;font:inherit;font-weight:900;font-size:15px;cursor:pointer">Xem {{ c.gridCount }} khoá học</button></div>
+</sc-if>
+<sc-if value="{{ c.sheetCart }}" hint-placeholder-val="{{ false }}">
+<h3 style="margin:0 0 10px;font-size:22px;letter-spacing:-.02em;font-weight:900">Giỏ hàng ({{ c.cartCount }})</h3>
+<sc-for list="{{ c.cartItems }}" as="ci" hint-placeholder-count="2">
+<div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #D8E9E8">
+<div style="width:54px;height:54px;border-radius:12px;flex:none;background:repeating-linear-gradient(135deg,{{ ci.tint }} 0 6px,#fff0 6px 12px),{{ ci.soft }}"></div>
+<div style="flex:1;min-width:0"><div style="font-weight:800;font-size:15px">{{ ci.title }}</div><div style="font-weight:800;font-size:14px;color:#1D5B57;margin-top:2px">{{ ci.priceFmt }}</div></div>
+<button sc-camel-on-click="{{ ci.onAdd }}" style="border:0;background:transparent;color:#FF5400;font:inherit;font-size:13px;font-weight:800;cursor:pointer">Xoá</button>
+</div>
+</sc-for>
+<sc-if value="{{ c.cartEmpty }}" hint-placeholder-val="{{ false }}"><div style="padding:28px 0;text-align:center;color:#346B68;font-size:14px;font-weight:600">Giỏ hàng đang trống.</div></sc-if>
+<div style="display:flex;justify-content:space-between;align-items:center;margin:16px 0 14px"><span style="color:#346B68;font-weight:700">Tổng cộng</span><span style="font-weight:900;font-size:22px">{{ c.cartTotal }}</span></div>
+<button sc-camel-on-click="{{ c.checkout }}" style="width:100%;height:52px;border-radius:14px;border:0;background:#FF9973;color:#fff;font:inherit;font-weight:900;font-size:16px;cursor:pointer">Thanh toán</button>
+</sc-if>
+</div>
+</sc-if>
+</div>
+</div>
+</div>
+<p class="dv-next">Thử tiếp: "ếch to hơn / nhỏ hơn" · "tab bar nền tối như ảnh tham chiếu" · "thêm 1 note thứ hai cho phần Về chúng tôi"</p>
+</section>
+<script type="text/x-dc-excerpt">
+  courses = [ /* 4 phần tử đầu dùng cho Home */
+    { id: 1, code: 'WEB101', cat: 'web', catName: 'Lập trình web', title: 'Web cơ bản: HTML, CSS', price: 1500000, old: 1900000, mode: 'ONLINE', start: '13/10', end: '14/11', seats: 5, cls: 'WEB101-A', mentor: 'Trần Quang', h: 182, desc: 'Tự tay dựng trang web đầu tiên, nắm vững HTML, CSS và bố cục responsive.' },
+    { id: 2, code: 'PY101', cat: 'python', catName: 'Python', title: 'Python cho người mới', price: 1800000, mode: 'ONLINE', start: '20/10', end: '28/11', seats: 12, cls: 'PY101-B', mentor: 'Lê Hà', h: 60, desc: 'Biến, vòng lặp, hàm và 5 mini project — nền tảng cho mọi hướng đi.' },
+    { id: 3, code: 'JS201', cat: 'web', catName: 'Lập trình web', title: 'JavaScript thực chiến', price: 2200000, old: 2900000, mode: 'OFFLINE', start: '27/10', end: '12/12', seats: 3, cls: 'JS201-A', mentor: 'Nguyễn Duy', h: 30, desc: 'DOM, async/await và gọi API thật — sẵn sàng học React.' },
+    { id: 4, code: 'ALG201', cat: 'algo', catName: 'Thuật toán', title: 'Cấu trúc dữ liệu & giải thuật', price: 2500000, mode: 'ONLINE', start: '03/11', end: '22/12', seats: 8, cls: 'ALG201-A', mentor: 'Phạm Minh', h: 150, desc: '200 bài toán chọn lọc, giải thích độ phức tạp, thi thử hàng tuần.' },
+  ];
+  notes = [
+    { title: 'Sáng học, tối dùng luôn', intro: 'Mỗi buổi học tại Mindy đều chia làm 2 phần:', items: [{ b: 'Nạp kiến thức', t: '(Input): hiểu rõ kiến thức đó dùng khi nào, dùng như thế nào.' }, { b: 'Ứng dụng kiến thức', t: '(Output): làm bài ngay trên compiler ⇒ mentor kiểm tra ⇒ học viên tự tin áp dụng vào dự án thật.' }], rot: '-1.6deg', tapeR: '52px', tapeRot: '5deg' },
+    { title: 'Lớp nhỏ, mentor kèm sát', intro: 'Mỗi lớp tối đa 20 học viên để không ai bị bỏ lại phía sau:', items: [{ b: 'Mentor theo sát', t: 'chấm bài và góp ý cho từng dòng code.' }, { b: 'Hỏi đáp trong 24 giờ', t: 'mọi thắc mắc đều được trả lời trong vòng một ngày.' }], rot: '1.2deg', tapeR: '140px', tapeRot: '-4deg' },
+    { title: 'Học theo cách của bạn', intro: 'Chọn hình thức phù hợp với lịch của mình:', items: [{ b: 'Online', t: 'học mọi lúc, mọi nơi qua lớp trực tuyến.' }, { b: 'Offline', t: 'gặp mentor và bạn học trực tiếp tại lớp.' }], rot: '-0.8deg', tapeR: '70px', tapeRot: '3deg' }
+  ];
+  slides = [
+    { eyebrow: 'HÀNH TRÌNH CỦA BẠN', title: 'Khởi đầu của riêng bạn.', text: 'Ai cũng có một điểm xuất phát. Bắt đầu từ điều cơ bản và đi theo nhịp học của mình.', cta: 'Cách bắt đầu', bg: '#FFDDAE', photo: true, frog: 'assets/frog-map.png', fx: '14px', fy: '-44px', fw: '104px', ft: 'none' },
+    { eyebrow: 'MENTOR ĐỒNG HÀNH', title: 'Không ai phải học một mình.', text: 'Lớp tối đa 20 học viên, mentor theo sát từng bài tập và trả lời trong 24 giờ.', cta: 'Gặp mentor', bg: '#D8F0FA', photo: false, ph: 'Thả ảnh mentor đang hướng dẫn', slotId: 'slide-photo-mentor', frog: 'assets/frog-laptop.png', fx: 'calc(100% - 150px)', fy: '-50px', fw: '140px', ft: 'none' },
+    { eyebrow: 'THÀNH QUẢ THẬT', title: 'Dự án đầu tiên sau 4 tuần.', text: 'Mỗi khoá học kết thúc bằng một sản phẩm bạn có thể khoe với bạn bè.', cta: 'Xem dự án', bg: '#CAE1DF', photo: false, ph: 'Thả ảnh dự án học viên', slotId: 'slide-photo-project', frog: 'assets/frog-book.png', fx: 'calc(50% - 38px)', fy: '-36px', fw: '76px', ft: 'none' }
+  ];
+    const tabs = ['Khoá học', 'Lịch học', 'Trang chủ', 'Thông báo', 'Tài khoản'].map((label, i) => {
+      const on = s.tab === i;
+      return { label, path: paths[i], center: i === 2, side: i !== 2, dot: i === 3, fg: on ? '#fff' : '#346B68', pill: on ? '#338A85' : 'transparent', circle: on ? '#FF9973' : '#338A85', cLabel: on ? '#FF7F50' : '#346B68', onPick: () => go(i) };
+    });
+  deco(k, c) {
+    const inCart = this.state[k].cart.includes(c.id);
+    return { ...c, inCart, priceFmt: this.fmt(c.price), lowSeats: c.seats <= 5, sale: !!c.old, oldFmt: c.old ? this.fmt(c.old) : '', off: c.old ? Math.round((1 - c.price / c.old) * 100) : 0,
+      tint: `oklch(0.86 0.06 ${c.h})`, soft: `oklch(0.95 0.03 ${c.h})`,
+      addGlyph: inCart ? '✓' : '+', addBg: inCart ? '#1D5B57' : '#338A85',
+      addBgB: inCart ? '#FFDDAE' : '#FF9973', addFgB: inCart ? '#1D5B57' : '#fff',
+      onAdd: e => { e && e.stopPropagation(); this.toggle(k, c.id); },
+      onOpen: () => this.set(k, { sheet: 'course', sel: c.id }) };
+  }
+</script>

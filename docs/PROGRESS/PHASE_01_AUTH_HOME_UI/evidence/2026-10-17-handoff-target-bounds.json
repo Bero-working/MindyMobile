@@ -1,0 +1,37 @@
+{
+  "device": "Pixel_8_2",
+  "densityDpi": 420,
+  "source": "Maestro native hierarchy, 2026-10-17_210136",
+  "targets": {
+    "home-course-select-preview-0": {
+      "boundsPx": [
+        390,
+        1633,
+        506,
+        1749
+      ],
+      "widthDp": 44.19047619047619,
+      "heightDp": 44.19047619047619
+    },
+    "home-tab-home": {
+      "boundsPx": [
+        438,
+        2043,
+        642,
+        2248
+      ],
+      "widthDp": 77.71428571428571,
+      "heightDp": 78.0952380952381
+    },
+    "home-compiler-button": {
+      "boundsPx": [
+        576,
+        2067,
+        992,
+        2182
+      ],
+      "widthDp": 158.47619047619048,
+      "heightDp": 43.80952380952381
+    }
+  }
+}

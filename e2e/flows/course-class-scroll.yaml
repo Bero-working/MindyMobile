@@ -1,0 +1,82 @@
+appId: ${APP_ID || "com.mindymobile"}
+tags:
+  - ci
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible:
+      id: 'welcome-screen'
+    timeout: 90000
+- scrollUntilVisible:
+    element:
+      id: 'phase-one-preview-button'
+    direction: DOWN
+- tapOn:
+    id: 'phase-one-preview-button'
+- tapOn:
+    id: 'preview-courses-button'
+- scrollUntilVisible:
+    element:
+      id: 'courses-open-demo-0'
+    direction: DOWN
+- waitForAnimationToEnd
+- tapOn:
+    id: 'courses-open-demo-0'
+- extendedWaitUntil:
+    visible:
+      id: 'course-sheet'
+    timeout: 10000
+- scrollUntilVisible:
+    element:
+      id: 'course-sheet-pick-demo-0-a'
+    direction: DOWN
+- assertVisible:
+    id: 'course-sheet-class-demo-0-b'
+- assertVisible:
+    id: 'course-sheet-description'
+- takeScreenshot: 'class-list-two-visible'
+- swipe:
+    from:
+      id: 'course-sheet-title'
+    direction: UP
+    duration: 600
+- assertVisible:
+    id: 'course-sheet-buy'
+- takeScreenshot: 'course-modal-fixed-after-swipe'
+- swipe:
+    from:
+      id: 'course-sheet-class-demo-0-b'
+    direction: UP
+    duration: 600
+- assertVisible:
+    id: 'course-sheet-class-demo-0-full'
+- takeScreenshot: 'class-list-third-scrolled'
+- assertVisible:
+    id: 'course-sheet-buy'
+- waitForAnimationToEnd
+- tapOn:
+    id: 'course-sheet-pick-demo-0-b'
+- extendedWaitUntil:
+    visible: '✓ Đã chọn'
+    timeout: 10000
+- assertNotVisible:
+    id: 'courses-cart-badge'
+- assertNotVisible:
+    id: 'course-sheet-toast'
+- tapOn:
+    id: 'course-sheet-add-to-cart'
+- assertVisible:
+    id: 'course-sheet-toast'
+- assertVisible:
+    id: 'course-sheet-buy'
+- takeScreenshot: 'course-modal-top-notice'
+- swipe:
+    from:
+      id: 'app-sheet-handle'
+    direction: DOWN
+    duration: 600
+- assertNotVisible:
+    id: 'course-sheet'
+- assertVisible:
+    id: 'courses-screen'

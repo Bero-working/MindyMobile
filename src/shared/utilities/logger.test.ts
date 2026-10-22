@@ -1,4 +1,4 @@
-import { logger, setErrorReporter } from './logger';
+import { logger, setErrorReporter, type LogValue } from './logger';
 
 afterEach(() => {
   jest.restoreAllMocks();
@@ -56,5 +56,44 @@ it('sends redacted context to the production reporter', () => {
   expect(reporter).toHaveBeenCalledWith('failed', error, {
     password: '[REDACTED]',
     email: '[REDACTED]',
+  });
+});
+
+it('redacts credential fields inside errors before printing or reporting', () => {
+  const print = jest.spyOn(console, 'error').mockImplementation(() => {});
+  const reporter = jest.fn();
+  setErrorReporter(reporter);
+  Object.defineProperty(global, '__DEV__', { value: false, writable: true });
+  const error = Object.assign(new Error('Request failed'), {
+    config: {
+      headers: { Authorization: 'Bearer secret', Cookie: 'session=secret' },
+      data: { password: 'secret', access_token: 'secret' },
+    },
+  });
+  logger.error('failed', error, { nested: [error] });
+  const safeError = expect.objectContaining({
+    message: 'Request failed',
+    config: {
+      headers: { Authorization: '[REDACTED]', Cookie: '[REDACTED]' },
+      data: { password: '[REDACTED]', access_token: '[REDACTED]' },
+    },
+  });
+  expect(print).toHaveBeenCalledWith(expect.any(String), 'failed', safeError, {
+    nested: [safeError],
+  });
+  expect(reporter).toHaveBeenCalledWith('failed', safeError, {
+    nested: [safeError],
+  });
+  expect(error.config.data.password).toBe('secret');
+});
+
+it('handles circular diagnostic context without crashing', () => {
+  const warn = jest.spyOn(console, 'warn').mockImplementation(() => {});
+  const context: { password: string; self?: LogValue } = { password: 'secret' };
+  context.self = context;
+  logger.warn('request', context);
+  expect(warn).toHaveBeenCalledWith(expect.any(String), 'request', {
+    password: '[REDACTED]',
+    self: '[Circular]',
   });
 });

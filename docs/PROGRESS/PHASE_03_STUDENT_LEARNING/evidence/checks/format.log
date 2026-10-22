@@ -1,0 +1,6 @@
+
+> @sohantalukder/react-native-boilerplate@1.0.0 lint:code-format
+> prettier --check "{src,tests,__tests__}/**/*.{js,json,md,ts,tsx,yml,yaml}"
+
+Checking formatting...
+All matched files use Prettier code style!

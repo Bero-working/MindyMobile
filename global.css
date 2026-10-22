@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 :root {
+  /* Phase 2 — ADR-0027 */
+  --ember: 194 65 12;
+  --ribbon: 236 74 60;
+  --ribbon-deep: 200 40 29;
+  --ribbon-fold: 142 26 18;
   /* 1. Màu gốc (brand) */
   --canvas: 255 255 255; /* #FFFFFF */
   --mint: 51 138 133; /* #338A85 */
@@ -30,6 +35,22 @@
   --pastel-red: 213 119 119; /* #D57777 */
   --ink-soft: 46 46 46; /* #2E2E2E */
   --ink-gray: 107 107 107; /* #6B6B6B */
+
+  /* 4. Màu thiết kế Phase 1 (ADR-0020) */
+  --forest-deep: 18 48 46; /* #12302E  thân terminal, gradient ảnh khoá học */
+  --forest-night: 12 36 34; /* #0C2422  thanh terminal, bóng ghi chú */
+  --teal: 31 145 132; /* #1F9184  khung ảnh slide */
+  --aqua: 127 214 201; /* #7FD6C9  dòng test terminal */
+  --cream: 255 241 214; /* #FFF1D6  góc gấp ghi chú */
+  --tape: 120 240 232; /* #78F0E8  băng dính ghi chú */
+  --cover-a: 166 222 212; /* #A6DED4  oklch(0.86 0.06 182) */
+  --cover-a-soft: 218 246 240; /* #DAF6F0  oklch(0.95 0.03 182) */
+  --cover-b: 239 200 170; /* #EFC8AA  oklch(0.86 0.06 60) */
+  --cover-b-soft: 254 234 219; /* #FEEADB  oklch(0.95 0.03 60) */
+  --cover-c: 246 195 186; /* #F6C3BA  oklch(0.86 0.06 30) */
+  --cover-c-soft: 255 232 227; /* #FFE8E3  oklch(0.95 0.03 30) */
+  --cover-d: 182 221 189; /* #B6DDBD  oklch(0.86 0.06 150) */
+  --cover-d-soft: 225 245 228; /* #E1F5E4  oklch(0.95 0.03 150) */
 
   /* 3. Token ngữ nghĩa (ghi giá trị trực tiếp, không trỏ var() lồng nhau) */
   --background: 255 255 255; /* canvas */

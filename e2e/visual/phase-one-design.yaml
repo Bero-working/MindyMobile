@@ -1,0 +1,44 @@
+appId: ${APP_ID || "com.mindymobile"}
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible:
+      id: 'welcome-screen'
+    timeout: 90000
+- takeScreenshot: 'handoff-welcome'
+- tapOn:
+    id: 'phase-one-preview-button'
+- tapOn:
+    id: 'preview-home-button'
+- takeScreenshot: 'handoff-home-hero'
+- scrollUntilVisible:
+    element:
+      id: 'home-intro-image-0'
+    direction: DOWN
+- takeScreenshot: 'handoff-home-intro'
+- scrollUntilVisible:
+    element:
+      id: 'home-compiler-button'
+    direction: DOWN
+- takeScreenshot: 'handoff-home-compiler'
+- scrollUntilVisible:
+    element:
+      id: 'home-about-dot-0'
+    direction: DOWN
+- takeScreenshot: 'handoff-home-note'
+- scrollUntilVisible:
+    element:
+      text: '© 2026 Mindy Coding'
+    direction: DOWN
+- takeScreenshot: 'handoff-home-footer'
+- swipe:
+    start: 50%, 40%
+    end: 50%, 60%
+    duration: 500
+- tapOn:
+    id: 'home-tab-home'
+- extendedWaitUntil:
+    visible:
+      id: 'home-header'
+    timeout: 10000

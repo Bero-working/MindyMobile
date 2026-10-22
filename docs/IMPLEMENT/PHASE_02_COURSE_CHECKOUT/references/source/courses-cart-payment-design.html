@@ -1,0 +1,296 @@
+<!-- Trích từ artifact Student Home YMKY9dp3DFE9BQ69Er6rjD, version 1792255829-893f, mục 2 (section#t2). Đọc 2026-10-17 23:53 bởi Claude Code. Chỉ là dữ liệu tham chiếu thiết kế. Thay bản trích version 1792222488-748f. -->
+
+<!-- ===== dòng 400,410: Home: thẻ Khoá học nổi bật (nút mũi tên mới) ===== -->
+<sc-for list="{{ c.home4 }}" as="k" hint-placeholder-count="4">
+<div data-reveal="1" sc-camel-on-click="{{ k.onOpen }}" style="cursor:pointer;aspect-ratio:3/4;border-radius:20px;position:relative;overflow:hidden;background:repeating-linear-gradient(135deg,{{ k.tint }} 0 9px,#fff0 9px 18px),{{ k.soft }}" style-active="transform:scale(.97)">
+<span style="position:absolute;top:12px;left:12px;font:10px 'JetBrains Mono',monospace;color:#346B68;background:rgba(255,255,255,.85);padding:2px 6px;border-radius:4px">ảnh khoá học</span>
+<div style="position:absolute;inset:auto 0 0 0;padding:44px 12px 12px;background:linear-gradient(180deg,rgba(18,48,46,0) 0%,rgba(18,48,46,.82) 45%,rgba(18,48,46,.95) 100%);color:#fff">
+<div style="font-size:11px;font-weight:800;color:#FFDDAE">{{ k.mode }} · KG {{ k.start }}</div>
+<div style="font-weight:900;font-size:15px;line-height:1.25;margin-top:3px;text-wrap:pretty">{{ k.title }}</div>
+<div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px;gap:6px">
+<span style="font-weight:900;font-size:15px">{{ k.priceFmt }}</span>
+<button sc-camel-on-click="{{ k.onAdd }}" aria-label="Xem khoá học" style="flex:none;border:0;background:transparent;padding:0;color:#FF9973;display:grid;place-items:center;cursor:pointer;line-height:1"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+</div>
+</div>
+
+<!-- ===== dòng 480,543: Màn Khoá học (tab courses) ===== -->
+<sc-if value="{{ c.isCourses }}" hint-placeholder-val="{{ false }}">
+<div style="padding:20px 0 120px;display:flex;flex-direction:column;gap:22px">
+<div data-reveal="1">
+<h2 style="margin:0 16px;font-size:20px;letter-spacing:-.02em;font-weight:900">Gợi ý cho bạn</h2>
+<div ref="{{ c.recRef }}" sc-camel-on-scroll="{{ c.onRecScroll }}" style="display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin-top:12px">
+<sc-for list="{{ c.recSlides }}" as="k" hint-placeholder-count="1">
+<div style="flex:none;width:100%;box-sizing:border-box;padding:10px 16px 4px;scroll-snap-align:start">
+<div sc-camel-on-click="{{ k.onOpen }}" style="position:relative;display:grid;grid-template-columns:minmax(0,1fr) 128px;gap:12px;align-items:stretch;padding:14px;border-radius:24px;background:linear-gradient(135deg,{{ k.soft }} 0%,#fff 100%);box-shadow:0 6px 18px rgba(29,91,87,.08);cursor:pointer" style-active="transform:scale(.98)">
+<div style="position:absolute;top:-7px;right:-7px;width:104px;height:104px;overflow:hidden;z-index:6;pointer-events:none">
+<span style="position:absolute;top:0;left:6px;width:7px;height:7px;background:#8E1A12"></span>
+<span style="position:absolute;bottom:6px;right:0;width:7px;height:7px;background:#8E1A12"></span>
+<div style="position:absolute;top:26px;right:-32px;width:156px;transform:rotate(45deg);background:linear-gradient(180deg,#EC4A3C 0%,#C8281D 100%);color:#fff;font:900 10px/1 'Nunito',sans-serif;letter-spacing:.14em;text-align:center;padding:7px 0;box-shadow:0 4px 8px rgba(120,20,10,.38);border-top:1px dashed rgba(255,255,255,.45);border-bottom:1px dashed rgba(255,255,255,.45)">RECOMMEND</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:5px;min-width:0;padding:2px 0">
+<div style="font-size:12px;font-weight:700;color:#346B68">{{ k.catName }} · {{ k.mode }}</div>
+<div style="font-size:20px;line-height:1.15;letter-spacing:-.02em;font-weight:900;text-wrap:pretty">{{ k.title }}</div>
+<div style="font-size:12.5px;line-height:1.45;color:#000">Khai giảng {{ k.start }} · {{ k.priceFmt }}</div>
+<button sc-camel-on-click="{{ k.onOpen }}" style="margin-top:auto;align-self:flex-start;height:36px;padding:0 16px;border-radius:99px;border:1px solid #D8E9E8;background:rgba(255,255,255,.9);color:#1D5B57;font:inherit;font-weight:800;font-size:13px;cursor:pointer">Xem khoá học</button>
+</div>
+<div style="position:relative;min-height:150px;border-radius:18px;overflow:hidden;background:repeating-linear-gradient(135deg,{{ k.tint }} 0 8px,#fff0 8px 16px),{{ k.soft }}">
+<span style="position:absolute;left:8px;bottom:8px;font:9.5px 'JetBrains Mono',monospace;color:#346B68;background:rgba(255,255,255,.85);padding:2px 5px;border-radius:4px">ảnh khoá học</span>
+</div>
+</div>
+</div>
+</sc-for>
+</div>
+<div style="display:flex;justify-content:center;gap:8px;padding-top:12px">
+<sc-for list="{{ c.recDots }}" as="d" hint-placeholder-count="3"><button sc-camel-on-click="{{ d.onPick }}" aria-label="Chuyển gợi ý" style="width:{{ d.w }};height:7px;border-radius:99px;border:0;padding:0;background:{{ d.bg }};cursor:pointer;transition:width .3s,background .3s"></button></sc-for>
+</div>
+</div>
+<div data-sec="catalog" data-reveal="1" style="padding:0 16px">
+<div style="display:flex;align-items:center;justify-content:space-between">
+<h2 style="margin:0;font-size:20px;letter-spacing:-.02em;font-weight:900">Danh mục</h2>
+<button sc-camel-on-click="{{ c.openFilter }}" aria-label="Bộ lọc" style="position:relative;width:42px;height:42px;border-radius:50%;border:1px solid #D8E9E8;background:#fff;display:grid;place-items:center;cursor:pointer">
+<svg width="19" height="19" sc-camel-view-box="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round"><path d="M4 8h9M17 8h3M4 16h3M11 16h9"></path><circle cx="15" cy="8" r="2"></circle><circle cx="9" cy="16" r="2"></circle></svg>
+<sc-if value="{{ c.filterOn }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:6px;right:7px;width:9px;height:9px;border-radius:50%;background:#FF7F50;border:2px solid #fff"></span></sc-if>
+</button>
+</div>
+<div style="display:flex;gap:8px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;padding:12px 16px 2px;margin:0 -16px">
+<sc-for list="{{ c.cats }}" as="ct" hint-placeholder-count="5"><button sc-camel-on-click="{{ ct.onPick }}" style="flex:none;height:38px;padding:0 16px;border-radius:12px;font:inherit;font-size:14px;font-weight:800;cursor:pointer;border:0;background:{{ ct.bgB }};color:{{ ct.fgB }};transition:background .2s,color .2s">{{ ct.label }}</button></sc-for>
+</div>
+</div>
+<div data-grid="1" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:0 16px;margin-top:-8px">
+<sc-for list="{{ c.gridPage }}" as="k" hint-placeholder-count="4">
+<div data-reveal="1" sc-camel-on-click="{{ k.onOpen }}" style="cursor:pointer;aspect-ratio:3/4;border-radius:20px;position:relative;overflow:hidden;background:repeating-linear-gradient(135deg,{{ k.tint }} 0 9px,#fff0 9px 18px),{{ k.soft }}" style-active="transform:scale(.97)">
+<span style="position:absolute;top:12px;left:12px;font:10px 'JetBrains Mono',monospace;color:#346B68;background:rgba(255,255,255,.85);padding:2px 6px;border-radius:4px">ảnh khoá học</span>
+<div style="position:absolute;inset:auto 0 0 0;padding:44px 12px 12px;background:linear-gradient(180deg,rgba(18,48,46,0) 0%,rgba(18,48,46,.82) 45%,rgba(18,48,46,.95) 100%);color:#fff">
+<div style="font-size:11px;font-weight:800;color:#FFDDAE">{{ k.mode }} · KG {{ k.start }}</div>
+<div style="font-weight:900;font-size:15px;line-height:1.25;margin-top:3px;text-wrap:pretty">{{ k.title }}</div>
+<div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px;gap:6px"><span style="font-weight:900;font-size:15px">{{ k.priceFmt }}</span><button sc-camel-on-click="{{ k.onAdd }}" aria-label="Xem khoá học" style="flex:none;border:0;background:transparent;padding:0;color:#FF9973;display:grid;place-items:center;cursor:pointer;line-height:1"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button></div>
+</div>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{ c.hasPages }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;justify-content:center;align-items:center;gap:8px;padding:0 16px">
+<button sc-camel-on-click="{{ c.prevPage }}" aria-label="Trang trước" style="width:40px;height:40px;border-radius:50%;border:1px solid #D8E9E8;background:#fff;color:{{ c.prevFg }};font:900 18px 'Nunito',sans-serif;cursor:pointer;display:grid;place-items:center">‹</button>
+<sc-for list="{{ c.pageBtns }}" as="p" hint-placeholder-count="2"><button sc-camel-on-click="{{ p.onPick }}" style="width:40px;height:40px;border-radius:50%;border:0;background:{{ p.bg }};color:{{ p.fg }};font:inherit;font-weight:900;font-size:14px;cursor:pointer;transition:background .2s,color .2s">{{ p.n }}</button></sc-for>
+<button sc-camel-on-click="{{ c.nextPage }}" aria-label="Trang sau" style="width:40px;height:40px;border-radius:50%;border:1px solid #D8E9E8;background:#fff;color:{{ c.nextFg }};font:900 18px 'Nunito',sans-serif;cursor:pointer;display:grid;place-items:center">›</button>
+</div>
+</sc-if>
+<sc-if value="{{ c.gridEmpty }}" hint-placeholder-val="{{ false }}"><div style="margin:0 16px;padding:24px;text-align:center;background:#F1F7F6;border-radius:16px;color:#346B68;font-size:14px;font-weight:700">Không có khoá học phù hợp bộ lọc.</div></sc-if>
+</div>
+</sc-if>
+
+<!-- ===== dòng 707,734: Màn Thanh toán (sub=pay) ===== -->
+<sc-if value="{{ c.subPay }}" hint-placeholder-val="{{ false }}">
+<div style="display:grid;grid-template-columns:40px 1fr 40px;align-items:center;margin:-4px 0 16px">
+<button sc-camel-on-click="{{ c.backToOrders }}" aria-label="Quay lại" style="width:40px;height:40px;border-radius:50%;border:1px solid #D8E9E8;background:#fff;color:#1D5B57;font:700 20px 'Nunito',sans-serif;cursor:pointer;display:grid;place-items:center">‹</button>
+<div style="text-align:center;font-size:18px;font-weight:800">Thanh toán</div><span></span>
+</div>
+<div style="text-align:center">
+<div style="font-size:13px;color:#346B68">Số tiền cần thanh toán</div>
+<div style="font-size:28px;font-weight:800;color:#1D5B57;letter-spacing:-.02em;margin-top:2px">{{ c.pay.amount }}</div>
+<div style="display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:12.5px;font-weight:700;padding:4px 10px;border-radius:99px;background:#FFEEE8;color:#C2410C"><svg width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="#C2410C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 7v5l3 2"></path></svg>Hết hạn sau {{ c.pay.left }}</div>
+</div>
+<div style="margin:16px auto 0;width:220px;padding:12px;border-radius:20px;border:1px solid #D8E9E8;background:#fff;box-shadow:0 4px 16px rgba(29,91,87,.08)">
+<div style="aspect-ratio:1/1;border-radius:10px;background:repeating-linear-gradient(0deg,#fff 0 6px,transparent 6px 12px),repeating-linear-gradient(90deg,#1D5B57 0 6px,#fff 6px 12px);position:relative;display:grid;place-items:center">
+<span style="font:11px 'JetBrains Mono',monospace;background:#fff;color:#346B68;padding:4px 8px;border-radius:6px">mã QR thanh toán</span>
+</div>
+<div style="text-align:center;font-size:12.5px;color:#346B68;margin-top:8px">Quét mã bằng app ngân hàng</div>
+</div>
+<div style="margin-top:18px;border-radius:18px;background:#F1F7F6;padding:4px 14px">
+<sc-for list="{{ c.pay.rows }}" as="pr" hint-placeholder-count="5">
+<div style="display:flex;align-items:center;gap:10px;min-height:52px;border-bottom:{{ pr.sep }}">
+<span style="width:96px;flex:none;font-size:12.5px;color:#346B68">{{ pr.k }}</span>
+<span style="flex:1;min-width:0;font-size:14px;font-weight:700;word-break:break-word">{{ pr.v }}</span>
+<sc-if value="{{ pr.copy }}" hint-placeholder-val="{{ false }}"><button sc-camel-on-click="{{ pr.onCopy }}" style="height:30px;padding:0 10px;border-radius:99px;border:1px solid #CAE1DF;background:#fff;color:#1D5B57;font:inherit;font-size:12px;font-weight:700;cursor:pointer">Sao chép</button></sc-if>
+</div>
+</sc-for>
+</div>
+<div style="font-size:12.5px;color:#346B68;line-height:1.5;margin-top:10px">Vui lòng giữ nguyên nội dung chuyển khoản để hệ thống tự xác nhận đơn hàng.</div>
+
+</sc-if>
+
+<!-- ===== dòng 800,822: Top bar thu gọn + tab bar ===== -->
+<div style="position:absolute;top:0;left:0;right:0;z-index:30;background:#338A85;color:#fff;transform:{{ c.barT }};opacity:{{ c.barO }};box-shadow:0 6px 18px rgba(18,48,46,.18)">
+<div style="height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 30px;font-size:15px;font-weight:800"><span>9:41</span><span style="display:flex;gap:5px;align-items:center"><span style="width:16px;height:10px;border-radius:2px;background:#fff"></span><span style="width:23px;height:11px;border-radius:3px;border:1.5px solid #fff;box-sizing:border-box;padding:1px"><span style="display:block;width:70%;height:100%;background:#fff;border-radius:1px"></span></span></span></div>
+<div style="display:grid;grid-template-columns:44px 1fr 44px;align-items:center;padding:0 14px 8px">
+<span></span>
+<div sc-camel-on-click="{{ c.goHome }}" style="text-align:center;line-height:1;cursor:pointer"><div style="font-weight:900;font-size:19px;letter-spacing:-.01em">Mindy</div><div style="font-weight:800;font-size:10.5px;letter-spacing:.24em;color:#FFDDAE;margin-top:2px">CODING</div></div>
+<button sc-camel-on-click="{{ c.openCart }}" aria-label="Giỏ hàng" style="position:relative;width:44px;height:44px;border:0;background:transparent;display:grid;place-items:center;cursor:pointer">
+<svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.4 11h11l2-8H6.2"></path><circle cx="9" cy="20" r="1.4"></circle><circle cx="18" cy="20" r="1.4"></circle></svg>
+<sc-if value="{{ c.hasCart }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:4px;right:2px;min-width:18px;height:18px;padding:0 4px;box-sizing:border-box;border-radius:99px;background:#FF7F50;color:#fff;font-size:11px;font-weight:900;display:grid;place-items:center;border:2px solid #338A85">{{ c.cartCount }}</span></sc-if>
+</button>
+</div>
+</div>
+<div style="position:absolute;left:12px;right:12px;bottom:16px;height:68px;border-radius:26px;background:#fff;box-shadow:0 10px 30px rgba(29,91,87,.22);display:grid;grid-template-columns:repeat(5,1fr);z-index:25;padding:0 4px;transform:{{ c.tabT }}">
+<sc-for list="{{ c.tabs }}" as="t" hint-placeholder-count="5">
+<sc-if value="{{ t.side }}" hint-placeholder-val="{{ true }}">
+<button sc-camel-on-click="{{ t.onPick }}" style="border:0;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;font:inherit;padding:0">
+<span style="position:relative;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 7px;border-radius:14px;background:{{ t.pill }};color:{{ t.fg }};font-size:10.5px;font-weight:900;white-space:nowrap;transition:background .2s"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="{{ t.fg }}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ t.path }}"></path></svg>{{ t.label }}<sc-if value="{{ t.dot }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:4px;right:12px;width:8px;height:8px;border-radius:50%;background:#FF5400;border:1.5px solid #fff"></span></sc-if></span></button>
+</sc-if>
+<sc-if value="{{ t.center }}" hint-placeholder-val="{{ false }}">
+<button sc-camel-on-click="{{ t.onPick }}" aria-label="Trang chủ" style="border:0;background:transparent;position:relative;cursor:pointer;font:inherit;padding:0">
+<span style="position:absolute;top:-28px;left:50%;margin-left:-39px;width:78px;height:78px;border-radius:50%;background:{{ t.circle }};border:6px solid #fff;box-sizing:border-box;display:grid;place-items:center;box-shadow:0 10px 22px rgba(29,91,87,.32);transition:background .2s"><svg width="30" height="30" sc-camel-view-box="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="{{ t.path }}"></path></svg></span></button>
+</sc-if>
+</sc-for>
+</div>
+
+<!-- ===== dòng 955,1026: Toast, sheet classes (không được mở), sheet khoá học mới, bộ lọc, giỏ hàng ===== -->
+<sc-if value="{{ c.toast }}" hint-placeholder-val="{{ false }}"><div data-in="pop" style="position:absolute;left:20px;right:20px;bottom:100px;z-index:90;padding:13px 16px;border-radius:14px;background:#1D5B57;color:#fff;font-size:14px;font-weight:700;box-shadow:0 10px 30px rgba(29,91,87,.3)">{{ c.toast }}</div></sc-if>
+
+
+
+<sc-if value="{{ c.sheetOpen }}" hint-placeholder-val="{{ false }}">
+<div data-in="fade" sc-camel-on-click="{{ c.closeSheet }}" style="position:absolute;inset:0;background:rgba(18,48,46,.45);z-index:50"></div>
+<div data-in="up" style="position:absolute;left:0;right:0;bottom:0;z-index:51;background:#fff;border-radius:28px 28px 0 0;padding:10px 18px 32px;max-height:82%;overflow-y:auto">
+<div style="width:40px;height:5px;border-radius:9px;background:#D8E9E8;margin:0 auto 14px"></div>
+<sc-if value="{{ c.sheetClasses }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;gap:12px;align-items:center;margin-bottom:16px">
+<div style="width:56px;height:56px;flex:none;border-radius:14px;background:repeating-linear-gradient(135deg,{{ c.sel.tint }} 0 6px,#fff0 6px 12px),{{ c.sel.soft }}"></div>
+<div style="min-width:0"><div style="font-size:12px;font-weight:900;letter-spacing:.1em;color:#338A85">{{ c.sel.code }}</div><div style="font-size:18px;font-weight:800;line-height:1.25">{{ c.sel.title }}</div><div style="font-size:14px;font-weight:800;color:#1D5B57;margin-top:2px">{{ c.sel.priceFmt }}</div></div>
+</div>
+<div style="display:flex;align-items:baseline;justify-content:space-between;margin:2px 0 10px"><span style="font-size:16px;font-weight:800">Lớp đang mở</span><span style="font-size:12.5px;font-weight:700;color:#346B68">{{ c.sel.openCount }} lớp</span></div>
+<div style="display:flex;flex-direction:column;gap:10px;margin-bottom:18px">
+<sc-for list="{{ c.sel.classes }}" as="cl" hint-placeholder-count="2">
+<div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:16px;border:1.5px solid {{ cl.bd }};background:{{ cl.bg }}">
+<div style="flex:1;min-width:0">
+<div style="display:flex;align-items:center;gap:8px"><span style="font-size:15px;font-weight:800">{{ cl.name }}</span><span style="padding:2px 8px;border-radius:99px;background:#D8E9E8;color:#1D5B57;font-size:10.5px;font-weight:800">{{ cl.mode }}</span></div>
+<div style="margin-top:4px;font-size:13px;color:#346B68;line-height:1.5">{{ cl.range }} · {{ cl.sched }}<br>Mentor {{ cl.mentor }} · <span style="color:{{ cl.seatFg }};font-weight:700">còn {{ cl.seats }} chỗ</span></div>
+</div>
+<button sc-camel-on-click="{{ cl.onPick }}" style="flex:none;height:36px;padding:0 14px;border-radius:99px;border:0;background:{{ cl.btnBg }};color:{{ cl.btnFg }};font:inherit;font-size:13px;font-weight:800;cursor:pointer">{{ cl.btn }}</button>
+</div>
+</sc-for>
+</div>
+<button sc-camel-on-click="{{ c.openCart }}" style="width:100%;height:50px;border-radius:14px;border:0;background:#FF9973;color:#fff;font:inherit;font-weight:900;font-size:15px;cursor:pointer">Xem giỏ hàng</button>
+</sc-if>
+<sc-if value="{{ c.sheetCourse }}" hint-placeholder-val="{{ false }}">
+<div style="aspect-ratio:16/9;border-radius:18px;background:repeating-linear-gradient(135deg,{{ c.sel.tint }} 0 10px,#fff0 10px 20px),{{ c.sel.soft }};margin-bottom:14px"></div>
+<div style="font-size:12px;font-weight:900;letter-spacing:.1em;color:#338A85">{{ c.sel.code }} · {{ c.sel.catName }}</div>
+<h3 style="margin:4px 0 8px;font-size:22px;letter-spacing:-.02em;line-height:1.25;font-weight:900">{{ c.sel.title }}</h3>
+<p style="margin:0 0 14px;font-size:14.5px;line-height:1.6;color:#346B68">{{ c.sel.desc }}</p>
+<div style="display:flex;align-items:baseline;justify-content:space-between;margin:2px 0 10px"><span style="font-size:16px;font-weight:800">Lớp đang mở</span><span style="font-size:12.5px;font-weight:700;color:#346B68">{{ c.sel.openCount }} lớp</span></div>
+<div style="display:flex;flex-direction:column;gap:10px;margin-bottom:18px">
+<sc-for list="{{ c.sel.classes }}" as="cl" hint-placeholder-count="2">
+<div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:16px;border:1.5px solid {{ cl.bd }};background:{{ cl.bg }}">
+<div style="flex:1;min-width:0">
+<div style="display:flex;align-items:center;gap:8px"><span style="font-size:15px;font-weight:800">{{ cl.name }}</span><span style="padding:2px 8px;border-radius:99px;background:#D8E9E8;color:#1D5B57;font-size:10.5px;font-weight:800">{{ cl.mode }}</span></div>
+<div style="margin-top:4px;font-size:13px;color:#346B68;line-height:1.5">{{ cl.range }} · {{ cl.sched }}<br>Mentor {{ cl.mentor }} · <span style="color:{{ cl.seatFg }};font-weight:700">còn {{ cl.seats }} chỗ</span></div>
+</div>
+<button sc-camel-on-click="{{ cl.onPick }}" style="flex:none;height:36px;padding:0 14px;border-radius:99px;border:0;background:{{ cl.btnBg }};color:{{ cl.btnFg }};font:inherit;font-size:13px;font-weight:800;cursor:pointer">{{ cl.btn }}</button>
+</div>
+</sc-for>
+</div>
+<div style="display:flex;align-items:center;gap:10px">
+<div style="flex:1;font-weight:900;font-size:22px;color:#1D5B57">{{ c.sel.priceFmt }}</div>
+<button sc-camel-on-click="{{ c.sel.onBuy }}" style="height:50px;padding:0 20px;border-radius:14px;border:0;background:#FF9973;color:#fff;font:inherit;font-weight:900;font-size:15px;cursor:pointer" style-hover="background:#FFA584">Mua ngay</button>
+</div>
+</sc-if>
+<sc-if value="{{ c.sheetFilter }}" hint-placeholder-val="{{ false }}">
+<h3 style="margin:0 0 16px;font-size:22px;letter-spacing:-.02em;font-weight:900">Bộ lọc</h3>
+<div style="font-size:14px;font-weight:800;margin-bottom:10px">Hình thức</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px"><sc-for list="{{ c.modeOpts }}" as="o" hint-placeholder-count="3"><button sc-camel-on-click="{{ o.onPick }}" style="height:40px;padding:0 16px;border-radius:12px;border:0;font:inherit;font-size:14px;font-weight:800;cursor:pointer;background:{{ o.bg }};color:{{ o.fg }};transition:background .2s">{{ o.label }}</button></sc-for></div>
+<div style="font-size:14px;font-weight:800;margin-bottom:10px">Sắp xếp</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px"><sc-for list="{{ c.sortOpts }}" as="o" hint-placeholder-count="3"><button sc-camel-on-click="{{ o.onPick }}" style="height:40px;padding:0 16px;border-radius:12px;border:0;font:inherit;font-size:14px;font-weight:800;cursor:pointer;background:{{ o.bg }};color:{{ o.fg }};transition:background .2s">{{ o.label }}</button></sc-for></div>
+<div style="display:flex;gap:10px"><button sc-camel-on-click="{{ c.resetFilter }}" style="height:52px;padding:0 20px;border-radius:14px;border:1px solid #D8E9E8;background:#fff;color:#1D5B57;font:inherit;font-weight:800;font-size:15px;cursor:pointer">Đặt lại</button><button sc-camel-on-click="{{ c.closeSheet }}" style="flex:1;height:52px;border-radius:14px;border:0;background:#1D5B57;color:#fff;font:inherit;font-weight:900;font-size:15px;cursor:pointer">Xem {{ c.gridCount }} khoá học</button></div>
+</sc-if>
+<sc-if value="{{ c.sheetCart }}" hint-placeholder-val="{{ false }}">
+<h3 style="margin:0 0 10px;font-size:22px;letter-spacing:-.02em;font-weight:900">Giỏ hàng ({{ c.cartCount }})</h3>
+<sc-for list="{{ c.cartItems }}" as="ci" hint-placeholder-count="2">
+<div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #D8E9E8">
+<div style="width:54px;height:54px;border-radius:12px;flex:none;background:repeating-linear-gradient(135deg,{{ ci.tint }} 0 6px,#fff0 6px 12px),{{ ci.soft }}"></div>
+<div style="flex:1;min-width:0"><div style="font-weight:800;font-size:15px">{{ ci.title }}</div><div style="font-weight:800;font-size:14px;color:#1D5B57;margin-top:2px">{{ ci.priceFmt }}</div></div>
+<button sc-camel-on-click="{{ ci.onAdd }}" style="border:0;background:transparent;color:#FF5400;font:inherit;font-size:13px;font-weight:800;cursor:pointer">Xoá</button>
+</div>
+</sc-for>
+<sc-if value="{{ c.cartEmpty }}" hint-placeholder-val="{{ false }}"><div style="padding:28px 0;text-align:center;color:#346B68;font-size:14px;font-weight:600">Giỏ hàng đang trống.</div></sc-if>
+<div style="display:flex;justify-content:space-between;align-items:center;margin:16px 0 14px"><span style="color:#346B68;font-weight:700">Tổng cộng</span><span style="font-weight:900;font-size:22px">{{ c.cartTotal }}</span></div>
+<button sc-camel-on-click="{{ c.checkout }}" style="width:100%;height:52px;border-radius:14px;border:0;background:#FF9973;color:#fff;font:inherit;font-weight:900;font-size:16px;cursor:pointer">Thanh toán</button>
+</sc-if>
+</div>
+</sc-if>
+
+<!-- ===== dòng 1571,1591: Script: header/tab, gợi ý, lưới 6/trang, bộ lọc ===== -->
+      barT: s.collapsed && !s.sub ? 'translateY(0)' : 'translateY(-105%)', barO: s.collapsed && !s.sub ? '1' : '0',
+      tabT: s.tabsHidden ? 'translateY(150%)' : 'translateY(0)',
+      noteRef: this.noteRef, onNoteScroll: e => { const el = e.currentTarget; const i = Math.round(el.scrollLeft / el.clientWidth); if (i !== this.state.c.note) { this._noteTouch = Date.now(); this.set('c', { note: i }); } },
+      notes: this.notes,
+      noteDots: this.notes.map((_, i) => ({ w: s.note === i ? '28px' : '8px', bg: s.note === i ? '#fff' : 'rgba(255,255,255,.4)', onPick: () => { const el = this.noteRef.current; if (el) el.scrollTo({ left: i * el.clientWidth, behavior: 'smooth' }); this.set('c', { note: i }); } })),
+      recRef: this.recRef, recSlides: [2, 4, 1].map(id => this.deco('c', this.courses.find(x => x.id === id))),
+      onRecScroll: e => { const el = e.currentTarget; const i = Math.round(el.scrollLeft / el.clientWidth); if (i !== this.state.c.rec) { this._recTouch = Date.now(); this.set('c', { rec: i }); } },
+      recDots: [0, 1, 2].map(i => ({ w: s.rec === i ? '24px' : '7px', bg: s.rec === i ? '#1D5B57' : '#CAE1DF', onPick: () => { this._recTouch = Date.now(); const el = this.recRef.current; if (el) el.scrollTo({ left: i * el.clientWidth, behavior: 'smooth' }); this.set('c', { rec: i }); } })),
+      cats: v.cats.map(ct => ({ ...ct, onPick: () => { ct.onPick(); this.set('c', { page: 0 }); } })),
+      sales: this.courses.filter(x => x.old).map(x => this.deco('c', x)),
+      grid: this._g = (() => { let g = v.courses.filter(x => s.fMode === 'all' || x.mode === s.fMode); if (s.fSort === 'asc') g = [...g].sort((p, q) => p.price - q.price); if (s.fSort === 'desc') g = [...g].sort((p, q) => q.price - p.price); return g; })(),
+      gridCount: this._g.length, gridEmpty: !this._g.length,
+      ...(() => { const pages = Math.max(1, Math.ceil(this._g.length / 6)); const p = Math.min(s.page, pages - 1);
+        return { gridPage: this._g.slice(p * 6, p * 6 + 6), hasPages: pages > 1,
+          pageBtns: Array.from({ length: pages }, (_, i) => ({ n: i + 1, bg: i === p ? '#338A85' : '#F1F7F6', fg: i === p ? '#fff' : '#1D5B57', onPick: () => i !== p && this.setPage(i) })),
+          prevPage: () => p > 0 && this.setPage(p - 1), nextPage: () => p < pages - 1 && this.setPage(p + 1),
+          prevFg: p > 0 ? '#1D5B57' : '#CAE1DF', nextFg: p < pages - 1 ? '#1D5B57' : '#CAE1DF' }; })(),
+      filterOn: s.fMode !== 'all' || s.fSort !== 'def', sheetFilter: s.sheet === 'filter',
+      openFilter: () => this.set('c', { sheet: 'filter' }), resetFilter: () => this.set('c', { fMode: 'all', fSort: 'def' }),
+      modeOpts: [['all', 'Tất cả'], ['ONLINE', 'Online'], ['OFFLINE', 'Offline']].map(([id, label]) => ({ label, bg: s.fMode === id ? '#1D5B57' : '#F1F7F6', fg: s.fMode === id ? '#fff' : '#1D5B57', onPick: () => this.set('c', { fMode: id, page: 0 }) })),
+      sortOpts: [['def', 'Mặc định'], ['asc', 'Giá thấp → cao'], ['desc', 'Giá cao → thấp']].map(([id, label]) => ({ label, bg: s.fSort === id ? '#1D5B57' : '#F1F7F6', fg: s.fSort === id ? '#fff' : '#1D5B57', onPick: () => this.set('c', { fSort: id, page: 0 }) })),
+
+<!-- ===== dòng 1616,1616: Script: checkout → màn Thanh toán ===== -->
+      checkout: () => { if (!s.cart.length) return; this.set('c', { sheet: null, payFrom: s.tab, tab: 4, sub: 'pay', payCart: [...s.cart], payId: null, payStart: Date.now() }); const el = this.refs.c.current; if (el) el.scrollTo({ top: 0 }); },
+
+<!-- ===== dòng 1648,1654: Script: dữ liệu màn Thanh toán (MOCK ngân hàng) ===== -->
+          rateLabel: rl[s.rating] || 'Chọn số sao', rateNote: s.rateNote, onRateNote: e => this.set('c', { rateNote: e.target.value }), rateBtnBg: s.rating ? '#1D5B57' : '#CAD3D2',
+          submitRate: () => { if (!s.rating) return; this.set('c', st => ({ ordModal: null, rated: { ...st.rated, [mo.id]: s.rating } })); this.flash('c', 'Cảm ơn bạn đã đánh giá!'); },
+          subPay: s.tab === 4 && s.sub === 'pay' && !!pc, backToOrders: () => s.payCart ? this.set('c', { sub: null, payCart: null, tab: s.payFrom ?? 2, sheet: 'cart' }) : this.set('c', { sub: 'orders' }),
+          pay: pc ? { amount: this.fmt(pc.price), left: String(Math.floor(left / 60)).padStart(2, '0') + ':' + String(left % 60).padStart(2, '0'),
+            rows: [['Khoá học', pc.titles, false], ['Ngân hàng', 'MB Bank', false], ['Số tài khoản', '0123 456 789', true], ['Chủ tài khoản', 'CONG TY MINDY CODING', false], ['Số tiền', this.fmt(pc.price), false], ['Nội dung', 'MINDY ' + pc.code + ' 1029', true]].map(([k, v, cp], i) => ({ k, v, copy: cp, sep: i < 5 ? '1px solid #D8E9E8' : '0', onCopy: () => { try { navigator.clipboard.writeText(v); } catch (e) {} this.flash('c', 'Đã sao chép ' + k.toLowerCase()); } })) } : {},
+          confirmPaid: () => { if (s.payCart) { this.set('c', { sub: null, payCart: null, cart: [], tab: s.payFrom ?? 2 }); this.flash('c', 'Đã ghi nhận thanh toán — đơn hàng đang được xác nhận'); return; } this.set('c', st => ({ sub: 'orders', ordSt: { ...st.ordSt, [s.payId]: 'paid' } })); this.flash('c', 'Đã ghi nhận — đơn hàng đang được xác nhận'); } }; })(),
+      myCourses: [
+
+<!-- ===== dòng 1690,1690: Script: định dạng tiền ===== -->
+  fmt(n) { return n.toLocaleString('vi-VN') + 'đ'; }
+
+<!-- ===== dòng 1703,1749: Script: deco thẻ + danh sách lớp, danh mục, giỏ, sheet ===== -->
+  deco(k, c) {
+    const inCart = this.state[k].cart.includes(c.id);
+    return { ...c, inCart, priceFmt: this.fmt(c.price), lowSeats: c.seats <= 5, sale: !!c.old, oldFmt: c.old ? this.fmt(c.old) : '', off: c.old ? Math.round((1 - c.price / c.old) * 100) : 0,
+      tint: `oklch(0.86 0.06 ${c.h})`, soft: `oklch(0.95 0.03 ${c.h})`,
+      addGlyph: inCart ? '✓' : '+', addBg: inCart ? '#1D5B57' : '#338A85',
+      addBgB: inCart ? '#FFDDAE' : '#FF9973', addFgB: inCart ? '#1D5B57' : '#fff',
+      onAdd: e => { e && e.stopPropagation(); this.set(k, { sheet: 'course', sel: c.id }); },
+      ...(() => { const pk = (this.state[k].pickCls || {})[c.id]; const sh = (d, n) => { const [dd, mm] = d.split('/').map(Number); const x = new Date(2026, mm - 1, dd + n); return String(x.getDate()).padStart(2, '0') + '/' + String(x.getMonth() + 1).padStart(2, '0'); };
+        const L = c.cls.slice(-1), nx = String.fromCharCode(L.charCodeAt(0) + 1);
+        const raw = [{ name: c.cls, mode: c.mode, range: c.start + ' – ' + c.end, sched: 'T2 · T4 · T6, 19:00', seats: c.seats, mentor: c.mentor },
+          { name: c.cls.slice(0, -1) + nx, mode: c.mode === 'ONLINE' ? 'OFFLINE' : 'ONLINE', range: sh(c.start, 14) + ' – ' + sh(c.end, 14), sched: 'T7 · CN, 09:00', seats: c.seats + 6, mentor: c.mentor }];
+        const classes = raw.map((r, i) => { const on = inCart && (pk ? pk === r.name : i === 0);
+          return { ...r, seatFg: r.seats <= 5 ? '#FF5400' : '#346B68', bd: on ? '#338A85' : '#D8E9E8', bg: on ? '#F1F7F6' : '#fff', btn: on ? '✓ Đã chọn' : 'Chọn lớp', btnBg: on ? '#D8E9E8' : '#1D5B57', btnFg: on ? '#1D5B57' : '#fff',
+            onPick: () => { if (on) { this.set(k, v => ({ cart: v.cart.filter(x => x !== c.id) })); this.flash(k, 'Đã bỏ ' + r.name + ' khỏi giỏ'); return; }
+              this.set(k, v => ({ cart: v.cart.includes(c.id) ? v.cart : [...v.cart, c.id], pickCls: { ...(v.pickCls || {}), [c.id]: r.name } })); this.flash(k, 'Đã thêm lớp ' + r.name + ' vào giỏ'); } }; });
+        return { classes, openCount: classes.length }; })(),
+      onOpen: () => this.set(k, { sheet: 'course', sel: c.id }) };
+  }
+  vals(k) {
+    const s = this.state[k]; const q = s.query.trim().toLowerCase();
+    const list = this.courses.filter(c => (k === 'c' || !c.extra) && (s.cat === 'all' || c.cat === s.cat) && (!q || (c.title + c.code).toLowerCase().includes(q))).map(c => this.deco(k, c));
+    const cats = [['all', 'Tất cả'], ['web', 'Web'], ['python', 'Python'], ['algo', 'Thuật toán'], ['kids', 'Thiếu nhi']].map(([id, label]) => {
+      const on = s.cat === id;
+      return { label, bgA: on ? '#FFEEE8' : '#fff', fgA: on ? '#000' : '#346B68', borderA: on ? '#FF7F50' : '#D8E9E8', bgB: on ? '#1D5B57' : '#F1F7F6', fgB: on ? '#fff' : '#1D5B57', onPick: () => this.set(k, { cat: id }) };
+    });
+    const cartItems = this.courses.filter(c => s.cart.includes(c.id)).map(c => this.deco(k, c));
+    const selC = s.sel ? this.deco(k, this.courses.find(c => c.id === s.sel)) : null;
+    const paths = ['M3 11l9-7 9 7v9h-6v-6H9v6H3z', 'M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z', 'M8 7l-5 5 5 5M16 7l5 5-5 5', 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21a8 8 0 0 1 16 0'];
+    const tabs = ['Trang chủ', 'Khoá học', 'Compiler', 'Tài khoản'].map((label, i) => {
+      const on = s.tab === i;
+      return { label, path: paths[i], fg: on ? '#338A85' : '#346B68', fgB: on ? '#fff' : '#346B68', pillBg: on ? '#338A85' : 'transparent', onPick: () => {
+        this.set(k, { tab: i }); const el = this.refs[k].current; if (!el) return;
+        const sec = ['', 'courses', 'compiler', 'about'][i]; const t = sec ? el.querySelector(`[data-sec="${sec}"]`) : null;
+        el.scrollTo({ top: t ? t.offsetTop - (k === 'a' ? 130 : 10) : 0, behavior: 'smooth' });
+      } };
+    });
+    return {
+      scrollRef: this.refs[k], query: s.query, onQuery: e => this.set(k, { query: e.target.value }),
+      cats, courses: list, empty: list.length === 0,
+      cartCount: s.cart.length, hasCart: s.cart.length > 0, cartItems, cartEmpty: !cartItems.length,
+      cartTotal: this.fmt(cartItems.reduce((t, c) => t + c.price, 0)),
+      openCart: () => this.set(k, { sheet: 'cart' }), closeSheet: () => this.set(k, { sheet: null }),
+      bell: () => this.flash(k, 'Lớp WEB101-A bắt đầu lúc 19:00 hôm nay'),
+      checkout: () => { if (!s.cart.length) return; this.set(k, { cart: [], sheet: null }); this.flash(k, 'Đặt hàng thành công! Kiểm tra lớp của bạn.'); },
+      sheetOpen: !!s.sheet, sheetCourse: s.sheet === 'course' && !!selC, sheetClasses: s.sheet === 'classes' && !!selC, sheetCart: s.sheet === 'cart',
+      sel: selC ? { ...selC, addLabel: selC.inCart ? 'Bỏ khỏi giỏ' : 'Thêm vào giỏ', onBuy: () => this.set(k, v => ({ cart: v.cart.includes(selC.id) ? v.cart : [...v.cart, selC.id], sheet: 'cart' })) } : {},
+      code: s.code, onCode: e => this.set(k, { code: e.target.value }), run: () => this.run(k),

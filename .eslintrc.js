@@ -16,6 +16,7 @@ module.exports = {
 
   /* Ignored Paths */
   ignorePatterns: [
+    '/assets/Student Home Page Design/**',
     'dist',
     'coverage',
     '.eslintrc.js',
