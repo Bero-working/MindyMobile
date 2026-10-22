@@ -1,16 +1,18 @@
 # 4.99 User Acceptance — GitHub Actions
 
-- Owner: @Bero. Trạng thái **Todo**; chưa có xác nhận UAT Phase 4.
+- Owner: @Bero. Trạng thái **In review — chờ UAT**; chưa có xác nhận UAT Phase 4. CI xanh là bằng chứng kiểm tra, không thay xác nhận nghiệm thu của owner.
 - Phạm vi: TypeScript, ESLint/Prettier, Jest, Maestro Android và build Android/iOS Simulator. Không có Expo Doctor hoặc Image Optimization.
 - Đây là nghiệm thu hạ tầng CI; UI approval và API integration không áp dụng vì không có UI/API mới. Thực hiện sau 4.1–4.5 → Dọn dẹp → Kiểm tra, theo ADR-0017.
 
 ## Điều kiện bắt đầu
 
-- [ ] 4.1–4.5 đã triển khai, ADR cho file khoá có Accepted và ARCHITECTURE cập nhật.
-- [ ] Có workflow run trên GitHub cùng revision với các job bắt buộc đạt, không job bắt buộc skipped/continue-on-error.
-- [ ] Có kết quả thử lỗi có kiểm soát, đã hoàn tác; nhánh bàn giao không chứa lỗi cố ý.
-- [ ] PROGRESS có URL run, revision, số test/flow, artifact, runtime/action versions và guide chạy lại.
-- [ ] Mọi giới hạn backend/signing/Simulator/lockfile được nêu rõ, không thay bằng kết quả suy đoán.
+- [x] 4.1–4.5 đã triển khai, ADR cho file khoá có Accepted và ARCHITECTURE cập nhật.
+- [x] Có workflow run trên GitHub cùng revision với các job bắt buộc đạt, không job bắt buộc skipped/continue-on-error.
+- [x] Có kết quả thử lỗi có kiểm soát, đã hoàn tác; nhánh bàn giao không chứa lỗi cố ý.
+- [x] PROGRESS có URL run, revision, số test/flow, artifact, runtime/action versions và guide chạy lại.
+- [x] Mọi giới hạn backend/signing/Simulator/lockfile được nêu rõ, không thay bằng kết quả suy đoán.
+
+Bằng chứng tập trung tại [HANDOFF](../../PROGRESS/PHASE_04_GITHUB_ACTIONS/HANDOFF.md). Run PR tới dev đã kiểm chứng; push dev và workflow_dispatch chưa chạy vì workflow chưa có trên dev/default main. Bộ lọc main/nhánh PR khác dev mới được kiểm tra cấu hình, chưa kiểm chứng sự kiện thực tế. Ghi nhận các giới hạn này khi UAT, kiểm tra tiếp sau khi owner đưa workflow lên nhánh phù hợp; không coi là đã đạt.
 
 ## Owner kiểm tra
 

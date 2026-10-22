@@ -1,0 +1,56 @@
+[
+  {
+    "id": 119567296988,
+    "name": "Unit tests",
+    "status": "completed",
+    "conclusion": "success",
+    "started_at": "2026-10-22T00:31:28Z",
+    "completed_at": "2026-10-22T00:32:51Z",
+    "html_url": "https://github.com/Bero-working/MindyMobile/actions/runs/39700197090/job/119567296988"
+  },
+  {
+    "id": 119567297210,
+    "name": "Type checking",
+    "status": "completed",
+    "conclusion": "success",
+    "started_at": "2026-10-22T00:31:28Z",
+    "completed_at": "2026-10-22T00:32:15Z",
+    "html_url": "https://github.com/Bero-working/MindyMobile/actions/runs/39700197090/job/119567297210"
+  },
+  {
+    "id": 119567297380,
+    "name": "ESLint and formatting",
+    "status": "completed",
+    "conclusion": "success",
+    "started_at": "2026-10-22T00:31:28Z",
+    "completed_at": "2026-10-22T00:32:17Z",
+    "html_url": "https://github.com/Bero-working/MindyMobile/actions/runs/39700197090/job/119567297380"
+  },
+  {
+    "id": 119567764331,
+    "name": "E2E Android",
+    "status": "completed",
+    "conclusion": "success",
+    "started_at": "2026-10-22T00:32:53Z",
+    "completed_at": "2026-10-22T01:15:24Z",
+    "html_url": "https://github.com/Bero-working/MindyMobile/actions/runs/39700197090/job/119567764331"
+  },
+  {
+    "id": 119581609469,
+    "name": "Build Android",
+    "status": "completed",
+    "conclusion": "success",
+    "started_at": "2026-10-22T01:15:26Z",
+    "completed_at": "2026-10-22T01:40:52Z",
+    "html_url": "https://github.com/Bero-working/MindyMobile/actions/runs/39700197090/job/119581609469"
+  },
+  {
+    "id": 119581609482,
+    "name": "Build iOS Simulator",
+    "status": "completed",
+    "conclusion": "success",
+    "started_at": "2026-10-22T01:15:26Z",
+    "completed_at": "2026-10-22T01:26:17Z",
+    "html_url": "https://github.com/Bero-working/MindyMobile/actions/runs/39700197090/job/119581609482"
+  }
+]

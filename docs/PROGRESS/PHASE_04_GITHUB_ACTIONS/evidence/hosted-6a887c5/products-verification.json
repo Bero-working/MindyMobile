@@ -1,0 +1,61 @@
+{
+  "run": "https://github.com/Bero-working/MindyMobile/actions/runs/39700197090",
+  "head": "6a887c588a63278924661c1c8580aa63c7b107ef",
+  "merge_revision": "6ee3eda91cb2853ee3e2cd4bd2d039d1d9c0c95f",
+  "products": {
+    "android": {
+      "revision": {
+        "revision": "6ee3eda91cb2853ee3e2cd4bd2d039d1d9c0c95f",
+        "run": "39700197090",
+        "attempt": "1",
+        "platform": "android",
+        "purpose": "CI debug signing"
+      },
+      "checksum_verified": true,
+      "files": [
+        {
+          "name": "app-release.aab",
+          "bytes": 52175660,
+          "sha256": "3f43cfc9ac575a1b840fec8795dbef507cc86aa8448e8ae3a6fd6133428efac0"
+        },
+        {
+          "name": "app-release.apk",
+          "bytes": 79988038,
+          "sha256": "1ffda7bb41b1fa7ca960c735df1b62c0d9ca8d015cfd76884368e93074946504"
+        }
+      ],
+      "apk_abis": [
+        "arm64-v8a",
+        "armeabi-v7a",
+        "x86",
+        "x86_64"
+      ],
+      "apk_signature": {
+        "verified": true,
+        "tool": "Android SDK build-tools 35.0.0 apksigner",
+        "certificate_dn": "CN=Android Debug, O=Android, C=US",
+        "certificate_sha256": "0c1e470645ab069488ebf4b8538efc82b126df240b74b1bf8c987f1cd5c65410"
+      }
+    },
+    "ios": {
+      "revision": {
+        "revision": "6ee3eda91cb2853ee3e2cd4bd2d039d1d9c0c95f",
+        "run": "39700197090",
+        "attempt": "1",
+        "platform": "ios",
+        "purpose": "unsigned iOS Simulator"
+      },
+      "checksum_verified": true,
+      "files": [
+        {
+          "name": "MindyMobile-Simulator.tar.gz",
+          "bytes": 15062247,
+          "sha256": "370e1ee15ca5eb784b6745ab2bed07c0b174d77458d6b4f05608688e7752bd45"
+        }
+      ],
+      "platform": "iphonesimulator",
+      "sdk": "iphonesimulator18.5",
+      "executable_bytes": 34582904
+    }
+  }
+}

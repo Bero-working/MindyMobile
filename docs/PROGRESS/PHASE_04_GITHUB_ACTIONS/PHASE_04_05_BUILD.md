@@ -35,3 +35,11 @@ Nhật ký triển khai chỉ ghi thêm theo ENTRY.md. Chưa bắt đầu; task 
 - Trạng thái: iOS Simulator đạt; sub-phase 4.5 còn In progress vì Android Release đang kiểm chứng.
 - Bằng chứng: Artifact 12356876663 từ run 39618310147 đã tải, SHA-256 archive khớp SHA256SUMS. Gói chứa Info.plist và executable Mach-O 34582904 byte; CFBundleSupportedPlatforms=[iPhoneSimulator], DTPlatformName=iphonesimulator, SDK iphonesimulator18.5. revision.json ghi PR merge revision ad3d48c0a991d1985682f3497417d59d0ae8ebe5, đúng checkout của sự kiện PR có head 5b3fe3a. Tóm tắt tại evidence/hosted-5b3fe3a/ios-verification.json; không thêm binary/log thô vào repo.
 - Giới hạn: Đây là Release Simulator không ký mã, không chứng minh IPA/archive thiết bị hoặc phát hành store. Pipeline mới 39695570257 tại 4ff221a có cả ba quality job success, đang build debug cho E2E; chưa có kết quả Android Release mới. Push dev/dispatch còn chờ workflow xuất hiện trên nhánh phù hợp; không tự merge hay đổi settings để tạo bằng chứng.
+
+### 2026-10-22 09:14 (+07:00) · @Bero-working (Codex)
+
+- Task: 4.5.1–4.5.3 Tự nghiệm thu native build và bàn giao
+- Trạng thái: Done — sub-phase 4.5; Phase 4 chờ UAT.
+- Run: 39700197090 success. Android Codegen đạt 3m49s (36 task), APK đạt 18m44s, AAB đạt 50s; job tổng 25m26s. iOS Simulator job success 10m51s. Không sửa native/dependency/lockfile để đạt.
+- Kiểm tra sản phẩm đã tải: APK 79988038 byte, AAB 52175660 byte, Simulator archive 15062247 byte; toàn bộ SHA-256 khớp, metadata cùng merge revision 6ee3eda91cb2853ee3e2cd4bd2d039d1d9c0c95f và run. APK có đủ 4 ABI, manifest/dex hợp lệ trong APK/AAB; apksigner xác minh chữ ký CN=Android Debug. Simulator Info.plist đúng iPhoneSimulator/SDK18.5, executable 34582904 byte. Chi tiết tại evidence/hosted-6a887c5/products-verification.json.
+- Bàn giao: HANDOFF.md tập hợp 6 job, 6 artifact, checksum/revision, bằng chứng âm, giới hạn và guide chạy lại. Giữ debug signing/Simulator/preview/Ruby-Pods lockfile là giới hạn đã chốt. Push dev và dispatch vẫn chưa được kiểm chứng; không tự merge hay đổi settings. Owner chỉ báo CI đã hoàn tất, chưa xác nhận UAT Phase 4.

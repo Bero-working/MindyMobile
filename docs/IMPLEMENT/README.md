@@ -16,7 +16,7 @@ Chờ duyệt UI và chờ UAT đều có thể là In review nhưng phải ghi 
 | 1     | [PHASE_01_AUTH_HOME_UI](PHASE_01_AUTH_HOME_UI/README.md) | Ngoại lệ Foundation/navigator theo ADR-0018 Accepted | @Bero | Done | Owner duyệt UAT Phase 1 trong chat ngày 2026-10-17; giới hạn kiểm thử còn ghi trong PROGRESS, Phase 0 giữ trạng thái riêng |
 | 2 | [PHASE_02_COURSE_CHECKOUT](PHASE_02_COURSE_CHECKOUT/README.md) | Phase 1; ADR-0024, ADR-0025, ADR-0027, ADR-0028 Accepted | @Bero | Done | Owner duyệt lại “UAT phase 2 approve” ngày2026-10-18 21:34 (+07:00), sau sửa E2E9/9 PASS; chi tiết tại PROGRESS |
 | 3 | [PHASE_03_STUDENT_LEARNING](PHASE_03_STUDENT_LEARNING/README.md) | Phase 0/1/2 Done; ADR-0030 Accepted | @Bero | Done | Owner xác nhận “Tôi duyệt UAT phase 3” trong chat ngày 2026-10-21 (+07:00); giới hạn kiểm thử và Student roster chờ API giữ trong PROGRESS |
-| 4 | [PHASE_04_GITHUB_ACTIONS](PHASE_04_GITHUB_ACTIONS/README.md) | Phase 0/1/2/3 Done; ADR-0031 Accepted | @Bero | In progress | GitHub Actions: TypeScript, ESLint, Jest, Maestro Android và build Android/iOS; bỏ Expo Doctor và Image Optimization theo yêu cầu owner ngày 2026-10-21 |
+| 4 | [PHASE_04_GITHUB_ACTIONS](PHASE_04_GITHUB_ACTIONS/README.md) | Phase 0/1/2/3 Done; ADR-0031 Accepted | @Bero | In review | CI run 39700197090 đạt đủ 6 job, 13 E2E và sản phẩm APK/AAB/iOS Simulator đã kiểm tra; 4.1–4.5 Done, chờ owner UAT 4.99. Bàn giao tại PROGRESS Phase 4/HANDOFF.md |
 | 5+ | — | Theo từng phase | — | — | Owner sẽ thêm các phase tiếp theo |
 
 ## Bàn giao thiết kế UI

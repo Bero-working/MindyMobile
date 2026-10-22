@@ -8,7 +8,7 @@ Tự động kiểm tra chất lượng và khả năng build MindyMobile trên 
 - Kèm kiểm tra định dạng Prettier hiện có trong job lint, theo Definition of Done của repo; đây không phải sub-phase mới.
 - Theo yêu cầu owner ngày 2026-10-21, luồng thanh toán chưa hoàn thiện được loại khỏi CI bắt buộc: cart-checkout-qr giữ tag payment-pending, bộ tag ci còn 13 flow. Không đánh dấu luồng thanh toán đạt.
 - Không gồm: Expo Doctor, Image Optimization, phát hành lên store, ký bằng khoá production, deploy backend, E2E iOS hoặc tự thay đổi branch protection.
-- Trạng thái: **In progress**. Đã triển khai workflow và helper 4.1–4.5; đang kiểm chứng local/GitHub, chưa UAT.
+- Trạng thái: **In review — chờ owner UAT**. 4.1–4.5 đã tự kiểm tra đạt tại run [39700197090](https://github.com/Bero-working/MindyMobile/actions/runs/39700197090), đủ 6 job success và sản phẩm cùng revision đã kiểm tra. Xem [bàn giao](../../PROGRESS/PHASE_04_GITHUB_ACTIONS/HANDOFF.md); chưa có xác nhận UAT Phase 4.
 
 Đây là phase hạ tầng CI theo yêu cầu trực tiếp của owner, ngoại lệ phạm vi cho quy ước phase màn hình tại docs/README.md B.3; không thay quy ước của các phase sau. Không có UI hoặc tích hợp API nghiệp vụ mới, nên thiết kế UI, owner duyệt UI và bước gắn API không áp dụng. UAT cuối phase vẫn bắt buộc.
 
@@ -65,9 +65,9 @@ Artifact: coverage, báo cáo/log E2E đã loại dữ liệu nhạy cảm, log 
 | 4.1 | [Type checking và khung workflow](PHASE_04_01_TYPE_CHECKING.md) | Phase 0–3 Done | Done |
 | 4.2 | [ESLint và định dạng](PHASE_04_02_LINTING.md) | 4.1; ADR-0031 Accepted trước sửa .eslintrc.js | Done |
 | 4.3 | [Unit test](PHASE_04_03_UNIT_TEST.md) | 4.2 | Done |
-| 4.4 | [E2E Android](PHASE_04_04_E2E.md) | 4.3 | In progress |
-| 4.5 | [Build Android và iOS](PHASE_04_05_BUILD.md) | 4.4 | In progress |
-| 4.99 | [User Acceptance](PHASE_04_99_User_Acceptance.md) | 4.5 → Dọn dẹp → Kiểm tra | Todo |
+| 4.4 | [E2E Android](PHASE_04_04_E2E.md) | 4.3 | Done |
+| 4.5 | [Build Android và iOS](PHASE_04_05_BUILD.md) | 4.4 | Done |
+| 4.99 | [User Acceptance](PHASE_04_99_User_Acceptance.md) | 4.5 → Dọn dẹp → Kiểm tra | In review |
 
 Không thêm npm dependency trong phương án này. File hạ tầng dự kiến sửa duy nhất là .eslintrc.js theo [ADR-0031 Accepted](../../adr/ADR-0031-ci-design-assets-eslint-scope.md); chỉ sửa sau Accepted và cập nhật ARCHITECTURE.md cùng thay đổi. Nếu phát hiện cần sửa Jest setup/config, package.json, native hoặc file khoá khác thì đặc tả ADR riêng trước task đó; không mở khoá chung cho phase.
 
@@ -81,13 +81,13 @@ Không thêm npm dependency trong phương án này. File hạ tầng dự kiế
 
 ## Tiêu chí nghiệm thu chung
 
-- [ ] Đúng 5 nhóm owner yêu cầu; không có Expo Doctor hoặc Image Optimization trong workflow.
-- [ ] Các job báo kết quả riêng, không bỏ qua lỗi; build cuối chỉ chạy khi các kiểm tra bắt buộc đạt.
-- [ ] Clean runner cài npm ci, môi trường và native toolchain thành công; không cần đường dẫn local/secret production.
-- [ ] Phạm vi lint có giải thích và ADR; code app, test và cấu hình vẫn được lint.
-- [ ] Jest kết thúc tự nhiên; không dùng forceExit để che open handles.
-- [ ] Maestro chạy đủ bộ tag ci, ít nhất trên Android Emulator; API thật có trạng thái riêng.
-- [ ] Có APK/AAB và app iOS Simulator từ CI cùng revision; giới hạn signing/backend được ghi rõ.
+- [x] Đúng 5 nhóm owner yêu cầu; không có Expo Doctor hoặc Image Optimization trong workflow.
+- [x] Các job báo kết quả riêng, không bỏ qua lỗi; build cuối chỉ chạy khi các kiểm tra bắt buộc đạt.
+- [x] Clean runner cài npm ci, môi trường và native toolchain thành công; không cần đường dẫn local/secret production.
+- [x] Phạm vi lint có giải thích và ADR; code app, test và cấu hình vẫn được lint.
+- [x] Jest kết thúc tự nhiên; không dùng forceExit để che open handles.
+- [x] Maestro chạy đủ bộ tag ci, ít nhất trên Android Emulator; API thật có trạng thái riêng.
+- [x] Có APK/AAB và app iOS Simulator từ CI cùng revision; giới hạn signing/backend được ghi rõ.
 - [ ] Có bằng chứng thử lỗi, artifact, hướng dẫn chạy lại và owner UAT đạt trước khi chuyển Done.
 
 ## Nguồn kỹ thuật

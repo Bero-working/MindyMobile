@@ -210,3 +210,12 @@
 - Test local: Maestro 2.11.0 trên Pixel_8/API37.2, viewport 1080×2400/density420, font 1.0, animation scales 1.0; app debug đã cài và Metro Node24.16.0. Flow sửa chạy ba lượt độc lập clearState, cả 3/3 PASS (111s, 40s, 42s), giữ tất cả assertions chức năng và thêm điều kiện bảng đã mở. JUnit tại evidence/ci-course-open/local-1.xml đến local-3.xml. Đây là kiểm chứng local flow thay đổi, không thay toàn bộ suite CI/API35 hoặc build Release.
 - Kiểm tra: YAML inventory/executionOrder đúng 13 flow; so sánh assertion trước/sau không mất assertion; actionlint1.7.7/ShellCheck0.10.0 và diff --check PASS. Không retry flow lỗi, không optional/assertion suppression hoặc sửa app/native/dependency. Các ca âm cũ vẫn giữ; flow mới có thêm xác nhận course-sheet trước khi cuộn.
 - Dọn dẹp: Bằng chứng chỉ giữ ảnh/report/tóm tắt, không thêm raw log hoặc binary vào repo. Commit chỉ phạm vi Phase4; giữ các thay đổi Phase3/.gitignore/api-health của owner. Sẽ push PR #2 chạy đủ quality/E2E và hai Release; chưa đủ điều kiện UAT.
+
+### 2026-10-22 09:14 (+07:00) · @Bero-working (Codex)
+
+- Phase: 4 Dọn dẹp → Kiểm tra → Bàn giao UAT 4.99
+- Trạng thái: In review — chờ owner UAT. Các sub-phase 4.1–4.5 Done; 4.99 In review, chưa Done.
+- Xác nhận của owner: “Đã hoàn thành CI” kèm ảnh CI #20 ngày 2026-10-22. API GitHub đối chiếu run 39700197090 thực tế completed/success, đủ 6/6 job; không diễn giải thông báo kết quả CI thành xác nhận UAT.
+- Kiểm tra: TypeScript, ESLint/Prettier success; Jest 63 suites/294 tests PASS, 45.134s, tự thoát; Maestro 13/13 success; Android APK/AAB và iOS Simulator cùng merge revision 6ee3eda91cb2853ee3e2cd4bd2d039d1d9c0c95f, đã tải/kiểm tra SHA-256/cấu trúc/platform/signing. Head kiểm tra 6a887c5; tổng pipeline 1h9m28s. Snapshot/report/checksums/artifact IDs tại evidence/hosted-6a887c5/ và hướng dẫn tập trung tại HANDOFF.md.
+- Dọn dẹp: Chỉ lưu ảnh/report/tóm tắt thuộc Phase4; không commit binary/raw logs, không có probe cố ý sai. Đã dừng emulator/Metro do lượt local tạo. Giữ các thay đổi Phase3/.gitignore/api-health có sẵn của owner ngoài commit. Bản cập nhật bàn giao sau run chỉ gồm tài liệu/bằng chứng; mã app, E2E flow và workflow giữ nguyên so với head đã kiểm tra.
+- Giới hạn: Payment-pending/API thật không được ghi đạt; Android ký debug, iOS chỉ Simulator; Ruby/Pods chưa track lockfile. Push dev/dispatch và sự kiện loại trừ main/PR nhánh khác chưa chạy thực tế, ghi rõ tại HANDOFF/UAT; không tự merge hoặc đổi branch protection/default branch. Chỉ owner nghiệm thu UAT đạt mới chuyển Phase4 Done.

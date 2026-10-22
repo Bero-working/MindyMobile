@@ -2,7 +2,7 @@
 
 ## Mô tả
 
-Tự động chạy Maestro trên Android Emulator với bản debug có preview, lưu bằng chứng khi lỗi. Bước hạ tầng, không thiết kế UI hoặc tích hợp API mới. Trạng thái **In progress** — run 39618310147 đạt 13/13, nhưng run 39695570257 tái hiện thao tác mở course sheet không ổn định; cần kiểm chứng lại sau sửa flow. Sau 4.3; job runtime chờ typecheck, eslint và unit-tests đạt.
+Tự động chạy Maestro trên Android Emulator với bản debug có preview, lưu bằng chứng khi lỗi. Bước hạ tầng, không thiết kế UI hoặc tích hợp API mới. Trạng thái **Done** — AI tự nghiệm thu run 39700197090 tại head 6a887c5: đủ 13/13 flow đạt sau sửa thao tác mở course sheet, không retry hoặc bỏ assertion. Sau 4.3; job runtime chờ typecheck, eslint và unit-tests đạt. UAT cấp phase do owner thực hiện riêng.
 
 ## Task
 

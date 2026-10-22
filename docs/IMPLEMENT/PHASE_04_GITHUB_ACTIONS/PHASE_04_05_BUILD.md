@@ -2,7 +2,7 @@
 
 ## Mô tả
 
-Thêm hai job build riêng cho Android Release APK/AAB và iOS Simulator Release không ký mã. Bước hạ tầng; UI/API mới không áp dụng. Trạng thái **In progress**, sau 4.4. Cả hai job needs typecheck, eslint, unit-tests và e2e-android; không dùng bản debug trong E2E thay kết quả build Release.
+Thêm hai job build riêng cho Android Release APK/AAB và iOS Simulator Release không ký mã. Bước hạ tầng; UI/API mới không áp dụng. Trạng thái **Done** — AI tự nghiệm thu run 39700197090, sản phẩm Android/iOS cùng merge revision đã kiểm tra checksum và cấu trúc. Sau 4.4; UAT cấp phase vẫn riêng. Cả hai job needs typecheck, eslint, unit-tests và e2e-android; không dùng bản debug trong E2E thay kết quả build Release.
 
 ## Task
 
@@ -35,9 +35,9 @@ Thêm hai job build riêng cho Android Release APK/AAB và iOS Simulator Release
 
 ## Tiêu chí nghiệm thu
 
-- [ ] Hai job chỉ chạy sau quality checks và E2E đạt, cùng revision.
-- [ ] APK và AAB Release tồn tại, upload được, signing debug được công khai đúng mục đích CI.
-- [ ] iOS Simulator Release build đạt trên macOS, có .app artifact, không yêu cầu signing production.
-- [ ] Build lỗi/thiếu output không được báo thành công; log và checksum đủ tra cứu.
-- [ ] Không thay native/package/Gemfile/lock policy ngoài phạm vi; lỗi hạ tầng phát sinh có ADR riêng.
-- [ ] Guide vận hành và PROGRESS đủ cho owner thực hiện UAT.
+- [x] Hai job chỉ chạy sau quality checks và E2E đạt, cùng revision.
+- [x] APK và AAB Release tồn tại, upload được, signing debug được công khai đúng mục đích CI.
+- [x] iOS Simulator Release build đạt trên macOS, có .app artifact, không yêu cầu signing production.
+- [x] Build lỗi/thiếu output không được báo thành công; log và checksum đủ tra cứu.
+- [x] Không thay native/package/Gemfile/lock policy ngoài phạm vi; lỗi hạ tầng phát sinh có ADR riêng.
+- [x] Guide vận hành và PROGRESS đủ cho owner thực hiện UAT.
