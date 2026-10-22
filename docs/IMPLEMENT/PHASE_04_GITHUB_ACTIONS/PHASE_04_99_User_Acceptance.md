@@ -1,6 +1,6 @@
 # 4.99 User Acceptance — GitHub Actions
 
-- Owner: @Bero. Trạng thái **In review — chờ UAT**; chưa có xác nhận UAT Phase 4. CI xanh là bằng chứng kiểm tra, không thay xác nhận nghiệm thu của owner.
+- Owner: @Bero. Trạng thái **Done** — owner xác nhận “phase 4 done” trong chat ngày 2026-10-22 (+07:00), sau trao đổi về CI/PR #2 tới dev. Đây là xác nhận UAT của owner; không bổ sung kết quả kiểm thử mới.
 - Phạm vi: TypeScript, ESLint/Prettier, Jest, Maestro Android và build Android/iOS Simulator. Không có Expo Doctor hoặc Image Optimization.
 - Đây là nghiệm thu hạ tầng CI; UI approval và API integration không áp dụng vì không có UI/API mới. Thực hiện sau 4.1–4.5 → Dọn dẹp → Kiểm tra, theo ADR-0017.
 
@@ -34,4 +34,4 @@ Bằng chứng tập trung tại [HANDOFF](../../PROGRESS/PHASE_04_GITHUB_ACTION
 
 Bàn giao tại [PROGRESS cấp phase](../../PROGRESS/PHASE_04_GITHUB_ACTIONS/README.md) và các file cùng tên sub-phase. Khi triển khai, bổ sung URL run/revision, đường dẫn artifact và kết quả đối chiếu thực tế vào nhật ký; không điền trước kết quả đạt.
 
-Kết quả/xác nhận của owner: **Chưa có**. Ghi thêm entry cấp phase sau khi owner thực hiện. Chỉ chuyển Phase 4 và 4.99 sang Done sau xác nhận UAT đạt; việc chốt phạm vi hoặc duyệt ADR không thay UAT.
+Kết quả/xác nhận của owner: **Đạt theo xác nhận tổng thể “phase 4 done” trong chat ngày 2026-10-22 (+07:00)**. Đã ghi thêm entry vào [PROGRESS cấp phase](../../PROGRESS/PHASE_04_GITHUB_ACTIONS/README.md), chuyển Phase 4 và 4.99 sang Done. Owner không cung cấp kết quả riêng cho từng bước hoặc môi trường UAT mới; giữ các giới hạn đã bàn giao, không tự ghi các sự kiện chưa chạy hoặc API/thanh toán thật là đạt. Việc cập nhật hồ sơ không xác nhận PR đã merge và không thực hiện merge.

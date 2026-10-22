@@ -20,7 +20,7 @@ Owner đã duyệt phản hồi mới bằng xác nhận “Được duyệt” 
 - [x] Nguồn Claude Auth/Home2a, bản trích và asset đã được bàn giao; phiên bản ghi trong IMPLEMENT1.1.
 - [x] Phụ thuộc Foundation/navigator/shared UI có ngoại lệ ADR-0018 Accepted; không coi Foundation đã nghiệm thu.
 - [x] Owner đã xác nhận UI trong chat: “UI phase 1 đã được approve”, ngày2026-10-17; xem PROGRESS cấp phase.
-- [ ] Task API của Phase1 đã được đặc tả, tích hợp theo contract và kiểm thử với backend.
+- [x] Task API của Phase1 đã được đặc tả, tích hợp theo contract và kiểm thử với backend.
 - [x] Phụ thuộc Foundation/auth có ngoại lệ ADR-0022 Accepted đúng phạm vi; không đóng Foundation/UAT.
 - [ ] Sau tích hợp đã Dọn dẹp/Kiểm tra đạt; phase và bước1.99 chuyển In review, ghi rõ chờ UAT.
 - [x] Đã chạy UI trên APK debug Android qua Metro; hướng dẫn preview/fixture và kết quả kiểm thử đã có.
@@ -81,3 +81,15 @@ Kết quả thực tế ghi **thêm** vào `PROGRESS/PHASE_01_AUTH_HOME_UI/READM
 Foundation hoặc xác nhận auth/backend nếu chưa có bằng chứng kiểm thử tương ứng.
 
 Bản đối chiếu sau bàn giao D1–D4: xem mục “Bàn giao sau chỉnh thiết kế” ở PROGRESS. Lượt này bổ sung kiểm tra320dp và sửa vùng chạm theo số đo native. Báo cáo review nêu bốn sai khác nhỏ để owner xem khi UAT.
+
+## Đồng bộ checklist (2026-10-22)
+
+Đối chiếu bằng chứng đã ghi, không chạy lại test trong lượt đồng bộ này. Xem [bảng đối chiếu và giới hạn](../../PROGRESS/ACCEPTANCE_SYNC_2026-10-22.md) và [PROGRESS liên quan](../../PROGRESS/PHASE_01_AUTH_HOME_UI/README.md). Trạng thái Done của phase giữ theo UAT owner đã có; checkbox chỉ phản ánh phạm vi kiểm chứng, không tự thay xác nhận owner.
+
+Kiểm tra chất lượng hiện tại có thêm CI Phase 4 run 39700197090: 63 suites/294 tests và 13 flow CI đạt; iOS là build Simulator. Đây là bằng chứng bổ sung ngày 2026-10-22, không thay số liệu/môi trường của các lượt lịch sử và không chứng minh API/thanh toán thật.
+
+- Tiêu chí checkbox thứ 6: **Chưa đủ hồ sơ tại mốc Phase 1: nhật ký 2026-10-20 14:58 ghi rõ không tự tick điều kiện Dọn dẹp/chuyển In review vì thiếu bản ghi đầy đủ. Giữ UAT Done theo owner, không tái dựng mốc lịch sử từ CI mới.**
+
+## Bổ sung dọn dẹp sau UAT (2026-10-22)
+
+Owner yêu cầu thực hiện dọn dẹp Phase 1; AI đã rà mã, bỏ phần dư và chạy kiểm tra mới. Xem [báo cáo dọn dẹp và đối chiếu](../../PROGRESS/PHASE_01_AUTH_HOME_UI/POST_UAT_CLEANUP.md). Đây là bằng chứng tại thời điểm hiện tại, không xác nhận lại UAT hoặc bổ sung mốc chuyển In review trước UAT ngày 2026-10-17; checkbox thứ 6 giữ nguyên vì còn vế lịch sử chưa đủ hồ sơ.

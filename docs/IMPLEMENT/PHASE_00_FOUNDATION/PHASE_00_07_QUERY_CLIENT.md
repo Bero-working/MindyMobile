@@ -21,11 +21,15 @@ mặc định là `ApiError`.
 - Test cần viết trước: mock NetInfo báo mất mạng → `onlineManager.isOnline()` là `false`.
 
 ## Tiêu chí nghiệm thu
-- [ ] Test retry và online/focus xanh.
-- [ ] `error` trong hook query có kiểu `ApiError` khi type-check.
+- [x] Test retry và online/focus xanh.
+- [x] `error` trong hook query có kiểu `ApiError` khi type-check.
 
 ## Xác nhận nghiệm thu cuối Phase 0
 
 - Trạng thái: **Done** theo xác nhận owner trong chat ngày 2026-10-17: “Bước 6 approve và done phase 0, không cần đợi refresh”.
 - Checklist kiểm thử phía trên giữ mức bằng chứng đã ghi; việc đóng theo owner không bổ sung kết quả cho ca chưa chạy.
 - Chi tiết nghiệm thu và giới hạn tại [PROGRESS cấp phase](../../PROGRESS/PHASE_00_FOUNDATION/README.md).
+
+## Đồng bộ checklist (2026-10-22)
+
+Đối chiếu bằng chứng đã ghi, không chạy lại test trong lượt đồng bộ này. Xem [bảng đối chiếu và giới hạn](../../PROGRESS/ACCEPTANCE_SYNC_2026-10-22.md) và [PROGRESS liên quan](../../PROGRESS/PHASE_00_FOUNDATION/PHASE_00_07_QUERY_CLIENT.md). Trạng thái Done của phase giữ theo UAT owner đã có; checkbox chỉ phản ánh phạm vi kiểm chứng, không tự thay xác nhận owner.

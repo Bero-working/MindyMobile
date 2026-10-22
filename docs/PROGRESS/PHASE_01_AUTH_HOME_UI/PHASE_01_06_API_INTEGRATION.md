@@ -43,3 +43,12 @@
 - Test: Không chạy kiểm thử mới. Các kết quả và giới hạn native/backend ở entry 22:12 được giữ nguyên; xác nhận UAT không thay bằng chứng kỹ thuật cho các ca chưa kiểm tra.
 - PR / commit: Chưa tạo.
 - Ghi chú: Không đóng Foundation hoặc thay đổi kết quả UAT Phase 0.
+
+
+### 2026-10-22 09:25 (+07:00) · @Bero-working (Codex)
+
+- Phase: Đồng bộ tiêu chí sau tổng kết test/AI review theo yêu cầu owner.
+- Trạng thái: Done theo UAT owner đã có; giữ các giới hạn kiểm chứng, không ghi nhận UAT mới.
+- Tiêu chí: tick bổ sung 2 mục đủ bằng chứng đã ghi; 0 mục giữ chưa đủ bằng chứng và nêu lý do trong IMPLEMENT/bảng đối chiếu.
+- Test: Chỉ rà hồ sơ, không chạy lại app/Jest/Maestro/backend; không biến kết quả lịch sử hoặc owner approval thành lượt test mới.
+- Đồng bộ: [IMPLEMENT](../../IMPLEMENT/PHASE_01_AUTH_HOME_UI/PHASE_01_06_API_INTEGRATION.md) và [bảng đối chiếu](../ACCEPTANCE_SYNC_2026-10-22.md); nhật ký cũ giữ nguyên.

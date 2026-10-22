@@ -133,9 +133,9 @@ bản bàn giao UAT sau kiểm tra.
 ## Hoàn tất bước API
 
 - [x] Không còn production submit disabled vì thiếu adapter; các tính năng ngoài phạm vi vẫn giải thích đúng.
-- [ ] Register/resend trung lập, Login/refresh/me/logout hoạt động bằng cookie thật, dữ liệu Home đúng hợp đồng.
+- [x] Register/resend trung lập, Login/refresh/me/logout hoạt động bằng cookie thật, dữ liệu Home đúng hợp đồng.
 - [x] Không có UI approval/UAT giả hoặc dùng screenshot fixture làm bằng chứng API.
-- [ ] Owner thực hiện 1.99 sau bàn giao, xác nhận riêng theo ADR-0021.
+- [x] Owner thực hiện 1.99 sau bàn giao, xác nhận riêng theo ADR-0021.
 
 
 
@@ -150,3 +150,9 @@ bản bàn giao UAT sau kiểm tra.
 - Tài khoản do owner cung cấp chỉ dùng đăng nhập/phiên; không lưu credential trong repo/YAML/evidence,
   không gửi thư hoặc tạo user backend để bổ sung bằng chứng. Cần phạm vi email test/điều kiện phiên phù hợp cho các ca còn lại.
 - 1.6 và Phase1 giữ Blocked ở kiểm tra cuối,1.99 Todo. Foundation và owner UAT5–6 giữ độc lập; không tự Done.
+
+## Đồng bộ checklist (2026-10-22)
+
+Đối chiếu bằng chứng đã ghi, không chạy lại test trong lượt đồng bộ này. Xem [bảng đối chiếu và giới hạn](../../PROGRESS/ACCEPTANCE_SYNC_2026-10-22.md) và [PROGRESS liên quan](../../PROGRESS/PHASE_01_AUTH_HOME_UI/PHASE_01_06_API_INTEGRATION.md). Trạng thái Done của phase giữ theo UAT owner đã có; checkbox chỉ phản ánh phạm vi kiểm chứng, không tự thay xác nhận owner.
+
+Register/resend, phiên/refresh và TalkBack có xác nhận bổ sung của owner ngày 2026-10-20; giữ nguồn owner riêng với các test AI đã chạy.

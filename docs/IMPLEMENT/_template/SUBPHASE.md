@@ -44,3 +44,14 @@ Mục không áp dụng ghi rõ lý do; không thay đặc tả bằng mỗi lin
 - [ ] Codex triển khai đúng bố cục, thông số, nội dung, asset, trạng thái và tương tác đã bàn giao (nếu có UI).
 - [ ] Đối chiếu UI chạy thật với ảnh/đặc tả ở trạng thái và kích thước phù hợp; ghi bằng chứng/sai khác vào PROGRESS.
 - [ ] ...
+
+## Kết quả đối chiếu sau review
+
+Cập nhật cùng lượt tổng kết test theo [quy trình đồng bộ](../../README.md#b71-đồng-bộ-sau-mỗi-tổng-kết-test-hoặc-ai-review).
+
+| Tiêu chí | Kết quả | Bằng chứng / môi trường / revision | Phần còn thiếu |
+| --- | --- | --- | --- |
+| ... | Đạt / Đạt một phần / Chưa kiểm tra / Chưa đạt / Owner chấp nhận kèm giới hạn | ... | ... |
+
+Chỉ tick tiêu chí đủ bằng chứng; kết quả unit/MSW/fixture không thay kiểm tra native/backend hoặc UAT.
+Đồng bộ trạng thái trong README phase/roadmap và thêm entry PROGRESS; không sửa nhật ký cũ.

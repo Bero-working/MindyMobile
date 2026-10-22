@@ -255,7 +255,6 @@ it('changes carousel selection by dots and swipes and does not invoke a CTA on s
   render(
     <StudentHome
       {...props}
-      preview
       actions={{ onIntro }}
     />
   );

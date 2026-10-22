@@ -42,3 +42,12 @@ Chỉ ghi thêm kết quả từng task; hiện chưa có entry triển khai.
 - Test: Kế thừa kiểm tra UI đã bàn giao; chỉ cập nhật tài liệu.
 - PR / commit: Chưa tạo.
 - Ghi chú: Không phải xác nhận UAT; API 2.6/UAT 2.99 Todo.
+
+
+### 2026-10-22 09:25 (+07:00) · @Bero-working (Codex)
+
+- Phase: Đồng bộ tiêu chí sau tổng kết test/AI review theo yêu cầu owner.
+- Trạng thái: Done theo UAT owner đã có; giữ các giới hạn kiểm chứng, không ghi nhận UAT mới.
+- Tiêu chí: tick bổ sung 3 mục đủ bằng chứng đã ghi; 0 mục giữ chưa đủ bằng chứng và nêu lý do trong IMPLEMENT/bảng đối chiếu.
+- Test: Chỉ rà hồ sơ, không chạy lại app/Jest/Maestro/backend; không biến kết quả lịch sử hoặc owner approval thành lượt test mới.
+- Đồng bộ: [IMPLEMENT](../../IMPLEMENT/PHASE_02_COURSE_CHECKOUT/PHASE_02_03_CART_SHEET.md) và [bảng đối chiếu](../ACCEPTANCE_SYNC_2026-10-22.md); nhật ký cũ giữ nguyên.

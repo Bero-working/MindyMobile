@@ -108,7 +108,13 @@ Thứ tự theo artifact:
 
 ## Tiêu chí nghiệm thu
 
-- [ ] Khớp artifact/ảnh: header, số tiền 28/800, chip peach, thẻ QR 220, bảng 6 hàng, ghi chú; tab bar ẩn.
+- [x] Khớp artifact/ảnh: header, số tiền 28/800, chip peach, thẻ QR 220, bảng 6 hàng, ghi chú; tab bar ẩn.
 - [ ] QR từ backend thật quét được bằng app ngân hàng (kiểm ở UAT), màu `forest` đủ tương phản.
-- [ ] Mock chuyển khoản chỉ ở một file/một import, gỡ được trong một thay đổi nhỏ; production không hiện mock (Q12).
-- [ ] Không mở trình duyệt PayOS; đồng hồ không rò rỉ interval.
+- [x] Mock chuyển khoản chỉ ở một file/một import, gỡ được trong một thay đổi nhỏ; production không hiện mock (Q12).
+- [x] Không mở trình duyệt PayOS; đồng hồ không rò rỉ interval.
+
+## Đồng bộ checklist (2026-10-22)
+
+Đối chiếu bằng chứng đã ghi, không chạy lại test trong lượt đồng bộ này. Xem [bảng đối chiếu và giới hạn](../../PROGRESS/ACCEPTANCE_SYNC_2026-10-22.md) và [PROGRESS liên quan](../../PROGRESS/PHASE_02_COURSE_CHECKOUT/PHASE_02_04_PAYMENT_QR.md). Trạng thái Done của phase giữ theo UAT owner đã có; checkbox chỉ phản ánh phạm vi kiểm chứng, không tự thay xác nhận owner.
+
+- Tiêu chí checkbox thứ 2: **Chưa kiểm tra: chưa có kết quả quét QR backend bằng app ngân hàng/xác minh sandbox. Owner đã duyệt UAT Phase 2 với giới hạn ghi trong API_REVIEW; thanh toán hiện payment-pending, ngoài CI bắt buộc theo owner.**

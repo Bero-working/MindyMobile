@@ -104,7 +104,7 @@ Token ADR-0027 thêm ở task 2.1.1 (trước khi dùng ở 2.1.2 và 2.4.1); kh
 
 ## Tiêu chí nghiệm thu màn hình
 
-- [ ] Bám thông số artifact mục 2 và ảnh 4; sai khác có lý do trong PROGRESS.
+- [x] Bám thông số artifact mục 2 và ảnh 4; sai khác có lý do trong PROGRESS.
 - [x] UI chạy thật đã đối chiếu với ảnh/đặc tả; PROGRESS có bằng chứng, sai khác và phần chưa kiểm tra.
 - [x] Owner đã xác nhận UI, có bằng chứng trong PROGRESS.
 - [x] API Catalog/Cart/Checkout/PayOS link tích hợp và kiểm thử theo contract; không gọi API PLANNED. Quét app ngân hàng/sandbox chưa xác minh, ghi tại API_REVIEW.
@@ -118,3 +118,9 @@ Token ADR-0027 thêm ở task 2.1.1 (trước khi dùng ở 2.1.2 và 2.4.1); kh
 ## Bàn giao UI 2026-10-18
 
 UI 2.1–2.5 **Done — owner đã xác nhận “UI tôi approve” trong chat 2026-10-18**. Xem [ảnh, hướng dẫn và sai khác](../../PROGRESS/PHASE_02_COURSE_CHECKOUT/UI_REVIEW.md), [kiểm tra cuối và xác nhận UAT](../../PROGRESS/PHASE_02_COURSE_CHECKOUT/README.md). API2.6 đã tích hợp; Phase2 và UAT2.99 Done theo owner duyệt lại lúc21:34 ngày2026-10-18, sau sửa E2E. Giới hạn bằng chứng giữ tại API_REVIEW.
+
+## Đồng bộ checklist (2026-10-22)
+
+Đối chiếu bằng chứng đã ghi, không chạy lại test trong lượt đồng bộ này. Xem [bảng đối chiếu và giới hạn](../../PROGRESS/ACCEPTANCE_SYNC_2026-10-22.md) và [PROGRESS liên quan](../../PROGRESS/PHASE_02_COURSE_CHECKOUT/README.md). Trạng thái Done của phase giữ theo UAT owner đã có; checkbox chỉ phản ánh phạm vi kiểm chứng, không tự thay xác nhận owner.
+
+Kiểm tra chất lượng hiện tại có thêm CI Phase 4 run 39700197090: 63 suites/294 tests và 13 flow CI đạt; iOS là build Simulator. Đây là bằng chứng bổ sung ngày 2026-10-22, không thay số liệu/môi trường của các lượt lịch sử và không chứng minh API/thanh toán thật.

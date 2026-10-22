@@ -20,11 +20,15 @@ Tạo `logger` có che dữ liệu nhạy cảm và reporter cho production, tha
 - Test cần viết trước: test hiện có của Http client vẫn xanh sau khi đổi import.
 
 ## Tiêu chí nghiệm thu
-- [ ] Không còn import `logger` từ `@/ignoreWarnings`.
-- [ ] `logger.ts` là file duy nhất có `eslint-disable no-console`.
+- [x] Không còn import `logger` từ `@/ignoreWarnings`.
+- [x] `logger.ts` là file duy nhất có `eslint-disable no-console`.
 
 ## Xác nhận nghiệm thu cuối Phase 0
 
 - Trạng thái: **Done** theo xác nhận owner trong chat ngày 2026-10-17: “Bước 6 approve và done phase 0, không cần đợi refresh”.
 - Checklist kiểm thử phía trên giữ mức bằng chứng đã ghi; việc đóng theo owner không bổ sung kết quả cho ca chưa chạy.
 - Chi tiết nghiệm thu và giới hạn tại [PROGRESS cấp phase](../../PROGRESS/PHASE_00_FOUNDATION/README.md).
+
+## Đồng bộ checklist (2026-10-22)
+
+Đối chiếu bằng chứng đã ghi, không chạy lại test trong lượt đồng bộ này. Xem [bảng đối chiếu và giới hạn](../../PROGRESS/ACCEPTANCE_SYNC_2026-10-22.md) và [PROGRESS liên quan](../../PROGRESS/PHASE_00_FOUNDATION/PHASE_00_06_LOGGER.md). Trạng thái Done của phase giữ theo UAT owner đã có; checkbox chỉ phản ánh phạm vi kiểm chứng, không tự thay xác nhận owner.

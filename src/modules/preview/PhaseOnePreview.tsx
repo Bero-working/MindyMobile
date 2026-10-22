@@ -306,7 +306,6 @@ function DevelopmentPreview() {
           schedule={region(status === 'empty' ? null : session)}
           timeZone="Asia/Ho_Chi_Minh"
           asOf="2026-10-17T08:00:00Z"
-          preview
           onRefresh={async () => {
             await pause();
             setStatus('success');

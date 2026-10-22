@@ -129,25 +129,20 @@
     "sections": {
       "nextSession": "Your next session",
       "courses": "Featured courses",
-      "intro": "More than one way to begin.",
       "compiler": "Write code on your phone",
       "about": "About us"
     },
     "actions": {
       "join": "Open class",
       "explore": "Explore courses",
-      "select": "Choose a class for {{title}}",
       "course": "View course {{title}}",
       "cart": "Shopping cart",
       "unavailable": "Available in a future version.",
-      "refresh": "Refresh",
       "previewClass": "Preview class"
     },
     "empty": {
       "title": "No courses yet",
-      "description": "Courses will appear here when data is available.",
-      "action": "Explore courses",
-      "schedule": "You have no upcoming sessions."
+      "description": "Courses will appear here when data is available."
     },
     "errorTitle": "Unable to load content",
     "tabs": {
@@ -221,11 +216,9 @@
       "dash": "– "
     },
     "compiler": {
-      "description": "A little space to explore your coding ideas.",
       "action": "Try the compiler",
       "illustration": "Illustration only; no code is executed.",
       "terminal": "mindy — zsh",
-      "sample": "$ mindy run hello\nHello, Mindy!\n3/3 — illustration",
       "benefits": {
         "one": "Run code without installing anything",
         "two": "Automatic checks after each submission",
@@ -243,7 +236,6 @@
     "footer": {
       "tagline": "Learn to code. Open your world.",
       "learn": "Learning",
-      "support": "Support",
       "contact": "hotro@mindycoding.vn · 1900 0000",
       "copyright": "© 2026 Mindy Coding",
       "myClasses": "My classes"

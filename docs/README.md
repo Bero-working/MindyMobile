@@ -184,6 +184,29 @@ nhận UAT thay owner. Owner chưa duyệt thì chưa hoàn tất; UAT chưa đ�
 - Đồng thời cập nhật cột trạng thái trong [IMPLEMENT/README.md](IMPLEMENT/README.md) và trong README của phase. Đây là
   bảng tổng quan nên được phép sửa đè. Lịch sử nằm ở PROGRESS.
 
+### B.7.1 Đồng bộ sau mỗi tổng kết test hoặc AI review
+
+Theo yêu cầu owner ngày 2026-10-22, AI **PHẢI đồng bộ hồ sơ ngay trong cùng lượt tổng kết**, trước khi báo hoàn tất
+task/sub-phase hoặc chuyển sang phần tiếp theo:
+
+1. Đối chiếu từng tiêu chí trong file IMPLEMENT liên quan với bằng chứng thực tế: test/flow/ảnh, revision,
+   môi trường, thời điểm và kết quả owner nếu có. Không dùng tổng số test xanh thay cho kiểm tra từng tiêu chí.
+2. Tick `[x]` chỉ cho tiêu chí đủ bằng chứng trong phạm vi đã ghi. Mục chưa đủ giữ `[ ]` và ghi rõ **Chưa kiểm tra**,
+   **Đạt một phần**, **Chưa đạt** hoặc **Được owner chấp nhận kèm giới hạn**, cùng phần thiếu/lý do.
+   Tiêu chí ghép chưa đạt đủ các vế không được tick toàn mục; ghi riêng các vế đã đạt và còn thiếu.
+3. Ghi nguồn bằng chứng cạnh checklist hoặc liên kết tới bảng đối chiếu; phân biệt unit/MSW/fixture với native/backend,
+   kết quả AI chạy với owner xác nhận, kết quả lịch sử với kiểm tra mới. Giới hạn được chấp nhận không trở thành PASS.
+4. Cập nhật checklist, trạng thái sub-phase, README phase và roadmap nhất quán với mốc UI/API/UAT đang được phép.
+   UAT owner vẫn riêng; phát hiện lỗi mới thì ghi trạng thái mới và lý do thay cho việc kế thừa lần PASS cũ.
+5. Thêm entry PROGRESS nêu tiêu chí đạt/còn thiếu và các file đã đồng bộ; không sửa entry lịch sử.
+   Khi chỉ đồng bộ tài liệu, ghi rõ không chạy lại test; việc rà bằng chứng không tạo ra kết quả kiểm thử mới.
+
+Phase đã được owner duyệt UAT có thể giữ Done với giới hạn đã ghi nhận. Checklist kỹ thuật vẫn phải phản ánh đúng
+phần chưa kiểm tra, thay vì tick toàn bộ theo trạng thái Done. Không đóng task mới khi còn tiêu chí bắt buộc chưa đạt,
+trừ khi owner đã chấp nhận rõ phạm vi/ngoại lệ tương ứng và hồ sơ ghi đủ.
+
+Bản đối chiếu Phase 0–3 sau đồng bộ ngày 2026-10-22: [checklist và giới hạn còn lại](PROGRESS/ACCEPTANCE_SYNC_2026-10-22.md).
+
 ## B.8 Hạ tầng và công nghệ mới
 
 - File trong danh sách [File hạ tầng (bị khoá)](ARCHITECTURE.md#file-hạ-tầng-bị-khoá) ở `ARCHITECTURE.md` **KHÔNG

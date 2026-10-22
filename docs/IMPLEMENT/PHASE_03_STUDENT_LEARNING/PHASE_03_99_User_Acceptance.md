@@ -6,9 +6,9 @@
 
 ## Điều kiện bắt đầu
 
-- [ ] 3.1–3.5 đủ ảnh/bản chạy và owner duyệt UI; navigator có ADR được duyệt.
-- [ ] 3.6 hoàn tất, có bằng chứng API thật và giới hạn; không dữ liệu mẫu trong production.
-- [ ] Jest/lint/format/type-check và Maestro đạt, ghi rõ cảnh báo/môi trường/flow chưa chạy.
+- [x] 3.1–3.5 đủ ảnh/bản chạy và owner duyệt UI; navigator có ADR được duyệt.
+- [x] 3.6 hoàn tất, có bằng chứng API thật và giới hạn; không dữ liệu mẫu trong production.
+- [x] Jest/lint/format/type-check và Maestro đạt, ghi rõ cảnh báo/môi trường/flow chưa chạy.
 
 ## Owner kiểm tra
 
@@ -34,3 +34,11 @@ Bằng chứng UI, MSW và backend/native ở [API_REVIEW](../../PROGRESS/PHASE_
 Owner @Bero xác nhận trực tiếp: **“Tôi duyệt UAT phase 3”**, ngày **2026-10-21 (+07:00)**. UAT 3.99 và Phase 3 chuyển **Done**. Đây là xác nhận UAT toàn phase của owner; không suy diễn rằng từng tình huống trong bảng đã được chạy hoặc có thêm bằng chứng kiểm thử.
 
 Giới hạn được giữ nguyên: Student roster chưa có API, modal học viên hiển thị chờ dữ liệu; chưa kiểm tra iOS/TalkBack thủ công; các trạng thái CASH_PREVIEW/PAYOS/đối soát và lịch có buổi chưa có đủ bằng chứng backend/native thật như API_REVIEW. Lint toàn repo còn lỗi asset JavaScript thiết kế cũ; kiểm tra phần triển khai đã ghi trong PROGRESS. Các ô điều kiện và bảng kiểm tra là checklist tham chiếu, không tự đánh dấu thành kết quả test mới theo xác nhận UAT.
+
+## Đồng bộ checklist (2026-10-22)
+
+Đối chiếu bằng chứng đã ghi, không chạy lại test trong lượt đồng bộ này. Xem [bảng đối chiếu và giới hạn](../../PROGRESS/ACCEPTANCE_SYNC_2026-10-22.md) và [PROGRESS liên quan](../../PROGRESS/PHASE_03_STUDENT_LEARNING/README.md). Trạng thái Done của phase giữ theo UAT owner đã có; checkbox chỉ phản ánh phạm vi kiểm chứng, không tự thay xác nhận owner.
+
+Kiểm tra chất lượng hiện tại có thêm CI Phase 4 run 39700197090: 63 suites/294 tests và 13 flow CI đạt; iOS là build Simulator. Đây là bằng chứng bổ sung ngày 2026-10-22, không thay số liệu/môi trường của các lượt lịch sử và không chứng minh API/thanh toán thật.
+
+Các nhánh FULL/CASH_PREVIEW/NONE, thay đổi quyền và dữ liệu có buổi được ghi theo unit/MSW/fixture khi chưa có dataset backend phù hợp. Có native protected detail bổ sung lúc 18:44 ngày 2026-10-20; Student roster, các dataset còn thiếu và TalkBack/iOS thủ công giữ giới hạn tại API_REVIEW.

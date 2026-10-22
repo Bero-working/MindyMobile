@@ -52,3 +52,9 @@ Snapshot và kiểm tra sản phẩm: [jobs](evidence/hosted-6a887c5/jobs.json),
 - Pull request tới dev đã được kiểm chứng. Push dev/workflow_dispatch chưa chạy vì workflow chưa có trên dev/default main. Bộ lọc push main và PR tới nhánh khác dev đã kiểm tra YAML, chưa thực hiện sự kiện thật. Không tự merge/đổi nhánh mặc định hoặc branch protection để tạo bằng chứng; kiểm tra tiếp khi owner đưa workflow lên nhánh phù hợp.
 - Gemfile.lock/Podfile.lock chưa track theo phạm vi đã chốt; dependency Ruby/Pods chưa tái lập tuyệt đối. Toolchain và cách chạy lại tại [guide CI](../../guides/ci.md).
 - Phần còn lại: owner thực hiện [UAT 4.99](../../IMPLEMENT/PHASE_04_GITHUB_ACTIONS/PHASE_04_99_User_Acceptance.md); kết quả ghi thêm vào [nhật ký cấp phase](README.md). CI xanh không tự chuyển phase sang Done.
+
+## Cập nhật UAT — 2026-10-22 10:21 (+07:00)
+
+Trạng thái hiện tại: **Done**. Owner xác nhận trực tiếp “phase 4 done” trong chat ngày 2026-10-22; Phase 4 và UAT 4.99 đã chuyển Done. Mục trạng thái chờ UAT ở đầu tài liệu là nội dung bàn giao trước xác nhận này. Xem [entry nghiệm thu mới](README.md).
+
+Không chạy kiểm thử mới trong lượt ghi nhận. Giữ nguyên kết quả hosted CI/revision và giới hạn nêu trên; không suy các sự kiện chưa chạy, API/thanh toán thật, signing production hoặc iOS thiết bị thành đạt. Lượt cập nhật này không thực hiện hoặc xác nhận việc merge PR.

@@ -61,3 +61,7 @@ Owner thực hiện UAT cuối cùng; chỉ chuyển phase sang `Done` khi owner
 - [ ] Đủ 4 trạng thái loading / empty / error / success
 - [ ] Maestro flow: `e2e/flows/<screen>-<flow>.yaml`
 - [ ] ...
+
+Sau mỗi tổng kết test/AI review, đồng bộ checklist của sub-phase và phase, bảng trạng thái bên trên, roadmap và
+entry PROGRESS theo [B.7.1](../../README.md#b71-đồng-bộ-sau-mỗi-tổng-kết-test-hoặc-ai-review).
+Mỗi mục chưa đủ bằng chứng phải có lý do/phần còn thiếu và liên kết nguồn; không để checkbox trống không giải thích.

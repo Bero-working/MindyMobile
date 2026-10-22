@@ -42,3 +42,12 @@ Chỉ ghi thêm kết quả từng task; hiện chưa có entry triển khai.
 - Test: Chạy npm run test:e2e không truyền APP_ID (chỉ thêm thư mục lưu bằng chứng): 9/9 Flows Passed trong7m12s. Bao gồm api-health, app-launch, auth-ui-login/register, carousel-autoplay, cart-checkout-qr, course-class-scroll (cả kéo handle đóng), courses-browse, student-home-ui. Raw evidence/e2e-default-app-id; summary.json ghi từng flow. Smoke app-launch với -e APP_ID=com.mindymobile cũng PASS, evidence/e2e-explicit-app-id. Prettier17YAML và git diff --check PASS. Không đổi TypeScript/runtime nên không chạy lại Jest/lint/type-check trong lượt chỉ sửa YAML/docs này.
 - PR / commit: Chưa tạo, chưa commit.
 - Ghi chú: Đính chính entry19:26: Prettier chỉ chuẩn hoá line endings/định dạng, không cần quote biểu thức appId thêm. Mọi kiểm tra trên Android, chưa iOS. API/accessibility/visual ngoài9flow chỉ được cập nhật fallback, chưa chạy lại. Test đạt không thay owner UAT; Phase2/2.99 giữ In review.
+
+
+### 2026-10-22 09:25 (+07:00) · @Bero-working (Codex)
+
+- Phase: Đồng bộ tiêu chí sau tổng kết test/AI review theo yêu cầu owner.
+- Trạng thái: Done theo UAT owner đã có; giữ các giới hạn kiểm chứng, không ghi nhận UAT mới.
+- Tiêu chí: tick bổ sung 3 mục đủ bằng chứng đã ghi; 0 mục giữ chưa đủ bằng chứng và nêu lý do trong IMPLEMENT/bảng đối chiếu.
+- Test: Chỉ rà hồ sơ, không chạy lại app/Jest/Maestro/backend; không biến kết quả lịch sử hoặc owner approval thành lượt test mới.
+- Đồng bộ: [IMPLEMENT](../../IMPLEMENT/PHASE_02_COURSE_CHECKOUT/PHASE_02_05_NAVIGATION.md) và [bảng đối chiếu](../ACCEPTANCE_SYNC_2026-10-22.md); nhật ký cũ giữ nguyên.

@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="Pixel_8" tests="5" failures="3" time="687.429" timestamp="2026-10-22T09:36:22">
+    <testcase id="app-launch" name="app-launch" classname="app-launch" file="e2e\flows\app-launch.yaml" time="70.471" timestamp="2026-10-22T09:36:22" status="ERROR">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+      <failure>Assertion is false: id: app-root is visible</failure>
+    </testcase>
+    <testcase id="auth-ui-login" name="auth-ui-login" classname="auth-ui-login" file="e2e\flows\auth-ui-login.yaml" time="199.878" timestamp="2026-10-22T09:37:33" status="SUCCESS">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+    </testcase>
+    <testcase id="auth-ui-register" name="auth-ui-register" classname="auth-ui-register" file="e2e\flows\auth-ui-register.yaml" time="162.983" timestamp="2026-10-22T09:40:53" status="SUCCESS">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+    </testcase>
+    <testcase id="student-home-ui" name="student-home-ui" classname="student-home-ui" file="e2e\flows\student-home-ui.yaml" time="105.376" timestamp="2026-10-22T09:43:36" status="ERROR">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+      <failure>Assertion is false: id: welcome-screen is visible</failure>
+    </testcase>
+    <testcase id="carousel-autoplay" name="carousel-autoplay" classname="carousel-autoplay" file="e2e\flows\carousel-autoplay.yaml" time="148.608" timestamp="2026-10-22T09:45:21" status="ERROR">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+      <failure>No visible element found: id: home-intro-dot-0</failure>
+    </testcase>
+  </testsuite>
+</testsuites>

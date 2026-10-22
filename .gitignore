@@ -89,3 +89,7 @@ ios/tmp.xcconfig
 
 # Build logs
 build-logs/
+
+# Local Metro and Phase 3 device runner logs
+/phase1-metro.log
+/docs/PROGRESS/PHASE_03_STUDENT_LEARNING/evidence/**/logs/

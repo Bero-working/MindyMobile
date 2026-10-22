@@ -298,10 +298,10 @@ Tiêu chí đối chiếu: chụp từng section trên Pixel 8 (1080×2400, dens
 
 ## Tiêu chí nghiệm thu
 
-- [ ] Đúng bản **2a**: thứ tự section, tối đa 4 course, 3 slide, 3 ghi chú, 5 tab; sai khác có lý do/ảnh trong PROGRESS.
-- [ ] Đủ trạng thái từng vùng dữ liệu; ảnh dự phòng, chữ dài và cỡ chữ lớn hoạt động.
-- [ ] Không hiển thị số liệu fixture như dữ liệu người dùng thật, không gọi API PLANNED.
-- [ ] Test tương tác/state xanh; Maestro dự kiến `e2e/flows/student-home-ui.yaml`.
+- [x] Đúng bản **2a**: thứ tự section, tối đa 4 course, 3 slide, 3 ghi chú, 5 tab; sai khác có lý do/ảnh trong PROGRESS.
+- [x] Đủ trạng thái từng vùng dữ liệu; ảnh dự phòng, chữ dài và cỡ chữ lớn hoạt động.
+- [x] Không hiển thị số liệu fixture như dữ liệu người dùng thật, không gọi API PLANNED.
+- [x] Test tương tác/state xanh; Maestro dự kiến `e2e/flows/student-home-ui.yaml`.
 
 ### Điều chỉnh của owner — 2026-10-18
 
@@ -311,3 +311,7 @@ Tất cả carousel (Home giới thiệu, Home về Mindy, gợi ý khoá học)
 ### Hạ thanh tab theo owner — 2026-10-18
 
 Thanh tab nổi Home và Khoá học dùng bottom=max(safeAreaBottom−12dp,0), hạ thêm 12dp so với vị trí safe area trước đó. Catalog giảm đệm cuối từ 120 xuống 100dp cộng safe area, bảo đảm phân trang vẫn cuộn được lên trên thanh tab.
+
+## Đồng bộ checklist (2026-10-22)
+
+Đối chiếu bằng chứng đã ghi, không chạy lại test trong lượt đồng bộ này. Xem [bảng đối chiếu và giới hạn](../../PROGRESS/ACCEPTANCE_SYNC_2026-10-22.md) và [PROGRESS liên quan](../../PROGRESS/PHASE_01_AUTH_HOME_UI/PHASE_01_04_HOMEPAGE.md). Trạng thái Done của phase giữ theo UAT owner đã có; checkbox chỉ phản ánh phạm vi kiểm chứng, không tự thay xác nhận owner.

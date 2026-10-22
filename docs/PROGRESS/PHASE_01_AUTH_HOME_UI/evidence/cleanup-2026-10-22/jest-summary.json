@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-22",
+  "baseCommit": "67cdc9e",
+  "command": "npm test -- --runInBand --json --outputFile=<TEMP>/mindy-phase1-cleanup-jest.json",
+  "success": true,
+  "suitesPassed": 63,
+  "suitesTotal": 63,
+  "testsPassed": 294,
+  "testsTotal": 294,
+  "testsFailed": 0,
+  "sourceSha256": {
+    "src/modules/home/components/HomeCarousel.tsx": "8d87361560c1a9a0c89ba894c26cca4d0ddc7b9bdc8230183e137cb79817752d",
+    "src/modules/home/home.test.tsx": "09f63ad7f5d9e3a7370a2b9f514be00a802eada4f715ab534edf34a3b6810e44",
+    "src/modules/home/types/home.type.ts": "04bc566d82869e4ea0162b071c8c351614cbf83ba6073dce8fb5f572dfc9b4cf",
+    "src/modules/preview/PhaseOnePreview.tsx": "4f636e9dcd82e4309df48b1eb47d21ec29252df64e359532ffafe46163959e63",
+    "src/modules/preview/PhaseThreePreview.tsx": "36f32759769a387e6ee0641896cae8ea08fe150c57d34fc4d23f864cbf96b876",
+    "src/translations/en-EN.json": "7a280ef47365edb81ff30d9bc3f787be34d1bd0167100ef6f0467312a2d8a9e4",
+    "src/translations/vi-VN.json": "efd9131f6d6b994f461349ee653a86518f665d865e9859aca7c4d724c642a90e"
+  }
+}

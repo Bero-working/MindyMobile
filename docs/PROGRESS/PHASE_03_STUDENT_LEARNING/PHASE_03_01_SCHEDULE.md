@@ -40,3 +40,12 @@
 - Đã làm: ONLINE trên Lịch giữ nhãn Phòng nhưng giá trị trống, không hiện thông báo thiếu phòng; OFFLINE giữ dữ liệu/fallback. Bỏ thanh Lớp của tôi ở trang Khoá học cả production/preview, dọn prop/callback thừa, giữ lối vào Home/Tài khoản. Flow responsive cập nhật không tìm thanh đã bỏ.
 - Kiểm tra: Prettier/type-check/scopedESLint PASS. Thay đổi hiển thị và gỡ điểm vào, không đổi endpoint/quyền dữ liệu.
 - PR / commit: Chưa tạo; UAT chưa xác nhận.
+
+
+### 2026-10-22 09:25 (+07:00) · @Bero-working (Codex)
+
+- Phase: Đồng bộ tiêu chí sau tổng kết test/AI review theo yêu cầu owner.
+- Trạng thái: Done theo UAT owner đã có; giữ các giới hạn kiểm chứng, không ghi nhận UAT mới.
+- Tiêu chí: tick bổ sung 3 mục đủ bằng chứng đã ghi; 0 mục giữ chưa đủ bằng chứng và nêu lý do trong IMPLEMENT/bảng đối chiếu.
+- Test: Chỉ rà hồ sơ, không chạy lại app/Jest/Maestro/backend; không biến kết quả lịch sử hoặc owner approval thành lượt test mới.
+- Đồng bộ: [IMPLEMENT](../../IMPLEMENT/PHASE_03_STUDENT_LEARNING/PHASE_03_01_SCHEDULE.md) và [bảng đối chiếu](../ACCEPTANCE_SYNC_2026-10-22.md); nhật ký cũ giữ nguyên.

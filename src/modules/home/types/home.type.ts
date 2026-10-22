@@ -56,5 +56,4 @@ export type HomeProps = {
   actions?: HomeActions;
   refreshing?: boolean;
   onRefresh?: () => Promise<void>;
-  preview?: boolean;
 };

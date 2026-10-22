@@ -219,3 +219,14 @@
 - Kiểm tra: TypeScript, ESLint/Prettier success; Jest 63 suites/294 tests PASS, 45.134s, tự thoát; Maestro 13/13 success; Android APK/AAB và iOS Simulator cùng merge revision 6ee3eda91cb2853ee3e2cd4bd2d039d1d9c0c95f, đã tải/kiểm tra SHA-256/cấu trúc/platform/signing. Head kiểm tra 6a887c5; tổng pipeline 1h9m28s. Snapshot/report/checksums/artifact IDs tại evidence/hosted-6a887c5/ và hướng dẫn tập trung tại HANDOFF.md.
 - Dọn dẹp: Chỉ lưu ảnh/report/tóm tắt thuộc Phase4; không commit binary/raw logs, không có probe cố ý sai. Đã dừng emulator/Metro do lượt local tạo. Giữ các thay đổi Phase3/.gitignore/api-health có sẵn của owner ngoài commit. Bản cập nhật bàn giao sau run chỉ gồm tài liệu/bằng chứng; mã app, E2E flow và workflow giữ nguyên so với head đã kiểm tra.
 - Giới hạn: Payment-pending/API thật không được ghi đạt; Android ký debug, iOS chỉ Simulator; Ruby/Pods chưa track lockfile. Push dev/dispatch và sự kiện loại trừ main/PR nhánh khác chưa chạy thực tế, ghi rõ tại HANDOFF/UAT; không tự merge hoặc đổi branch protection/default branch. Chỉ owner nghiệm thu UAT đạt mới chuyển Phase4 Done.
+
+### 2026-10-22 10:21 (+07:00) · @Bero
+
+- Phase: 4 Nghiệm thu UAT của owner
+- Trạng thái: Done
+- Đã làm: AI ghi nhận xác nhận trực tiếp “phase 4 done” trong chat, sau trao đổi về CI và PR #2 tới dev; chuyển Phase 4 và 4.99 từ In review sang Done. Các sub-phase 4.1–4.5 giữ Done. Đây là quyết định nghiệm thu tổng thể của owner, không phải AI tự duyệt.
+- Test: Chỉ cập nhật hồ sơ theo xác nhận owner; không chạy lại CI/build/Jest/Maestro, không merge hoặc push. Bằng chứng kiểm tra trước đó giữ theo HANDOFF: run 39700197090, 6/6 job, 63 suites/294 tests, 13/13 flow CI, APK/AAB và iOS Simulator đã kiểm tra tại revision đã ghi.
+- Tiêu chí nghiệm thu: Tiêu chí cuối README Phase 4 về bằng chứng ca âm/artifact/hướng dẫn và UAT owner nay đủ bằng chứng, tick đạt. Owner không nêu kết quả riêng từng bước/môi trường UAT mới. Không suy xác nhận tổng thể thành bằng chứng mới cho push dev/dispatch/sự kiện loại trừ, API thật/thanh toán, release signing, E2E iOS hoặc Ruby/Pods lockfile.
+- Đồng bộ: IMPLEMENT/README.md, IMPLEMENT Phase 4 README và 4.99; thêm cập nhật UAT ở cuối HANDOFF. Nhật ký cũ giữ nguyên. Các lỗi Android local của lượt dọn Phase 1 được giữ riêng trong hồ sơ Phase 1, không ghi đè kết quả hosted CI của Phase 4.
+- PR / commit: PR #2 được nhắc trong cuộc trao đổi; lượt này chưa tạo commit/push/merge và không xác minh trạng thái merge mới.
+- Ghi chú: Handle @Bero do owner cung cấp trước đó trong cùng chat; gh không có trên máy. Giữ toàn bộ giới hạn đã bàn giao; xác nhận Done không tự hoàn tất các ca chưa chạy.
