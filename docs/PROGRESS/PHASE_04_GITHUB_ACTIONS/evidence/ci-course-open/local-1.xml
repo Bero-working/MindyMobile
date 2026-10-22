@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="Pixel_8" tests="1" failures="0" time="110.678" timestamp="2026-10-22T07:27:12">
+    <testcase id="course-class-scroll" name="course-class-scroll" classname="course-class-scroll" file="e2e\flows\course-class-scroll.yaml" time="110.657" timestamp="2026-10-22T07:27:12" status="SUCCESS">
+      <properties>
+        <property name="tags" value="ci"/>
+      </properties>
+    </testcase>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,20 @@
+{
+  "run": "https://github.com/Bero-working/MindyMobile/actions/runs/39618310147",
+  "artifact_id": 12356876663,
+  "revision": {
+    "revision": "ad3d48c0a991d1985682f3497417d59d0ae8ebe5",
+    "run": "39618310147",
+    "attempt": "1",
+    "platform": "ios",
+    "purpose": "unsigned iOS Simulator"
+  },
+  "archive_sha256": "bbf08f589417180f95980c4cdaf33bd577737930da418d39c4489700f20e359f",
+  "checksum_verified": true,
+  "bundle_supported_platforms": [
+    "iPhoneSimulator"
+  ],
+  "platform": "iphonesimulator",
+  "sdk": "iphonesimulator18.5",
+  "executable_bytes": 34582904,
+  "purpose": "unsigned Release iOS Simulator; not device IPA or App Store archive"
+}

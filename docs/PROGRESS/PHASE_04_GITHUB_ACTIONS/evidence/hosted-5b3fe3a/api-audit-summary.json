@@ -1,0 +1,8 @@
+{
+  "requests": 26,
+  "unexpected": 0,
+  "requestsByRoute": {
+    "GET /api/v1/auth/me": 13,
+    "POST /api/v1/auth/refresh": 13
+  }
+}

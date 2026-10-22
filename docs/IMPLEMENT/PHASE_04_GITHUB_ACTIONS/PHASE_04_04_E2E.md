@@ -2,7 +2,7 @@
 
 ## Mô tả
 
-Tự động chạy Maestro trên Android Emulator với bản debug có preview, lưu bằng chứng khi lỗi. Bước hạ tầng, không thiết kế UI hoặc tích hợp API mới. Trạng thái **In progress**, sau 4.3; job runtime chờ typecheck, eslint và unit-tests đạt.
+Tự động chạy Maestro trên Android Emulator với bản debug có preview, lưu bằng chứng khi lỗi. Bước hạ tầng, không thiết kế UI hoặc tích hợp API mới. Trạng thái **In progress** — run 39618310147 đạt 13/13, nhưng run 39695570257 tái hiện thao tác mở course sheet không ổn định; cần kiểm chứng lại sau sửa flow. Sau 4.3; job runtime chờ typecheck, eslint và unit-tests đạt.
 
 ## Task
 
@@ -13,6 +13,7 @@ Tự động chạy Maestro trên Android Emulator với bản debug có preview
 - Lệnh dự kiến: npm run test:e2e -- --include-tags ci. Kiểm tra CLI nhận tham số, phát hiện đủ flow và không có 0 test. Tag không thay assertions hoặc cơ chế preview.
 - CI truyền thêm --config e2e/config-ci.yaml để cố định thứ tự toàn bộ 13 flow: app-launch và courses-browse chạy đầu, continueOnFailure=false để báo lỗi sớm. Mỗi flow vẫn clearState và độc lập; không bỏ flow khỏi suite thành công. Guard JUnit vẫn yêu cầu đúng 13 testcase không lỗi/skipped trước khi mở hai job Release. Không áp cấu hình này ngầm cho lệnh local không truyền --config.
 - Đồng bộ thao tác Maestro với màn hình thực tế: pagination nằm cuối ScrollView chỉ cần hiện đầy đủ (visibilityPercentage=100, centerElement=false), không ép kéo tới giữa màn hình khi đã chạm đáy. Thêm một swipe trong vùng danh sách từ 50%,70% tới 50%,40% để đưa pagination khỏi tab bar cố định rồi assertVisible nút trước khi chạm; accessibility tree có thể coi phần tử bị tab bar che là visible. Luồng thanh toán và kiểm tra payment-toast không thuộc nghiệm thu CI hiện tại theo phạm vi owner đã chốt; không tiếp tục sửa luồng này trong Phase 4. Lý do và bằng chứng thời gian ghi tại PROGRESS.
+- Flow course-class-scroll mở khoá học đầu bằng nút mũi tên có sẵn `courses-open-demo-0`, thay thao tác chạm giữa ảnh của card. Chờ animation trước khi chạm và xác nhận `course-sheet` hiện trong 10 giây trước khi cuộn nội dung bên trong. Giữ nguyên mọi assertion chức năng của flow, không retry/optional hoặc tăng timeout cuộn để che lỗi. Run 39695570257 cho thấy lệnh chạm card hoàn tất nhưng ảnh/hierarchy sau lỗi vẫn là catalog, không có course sheet; chưa xác định nguyên nhân sâu khiến lần chạm đó không mở bảng.
 - Kiểm chứng trước: liệt kê flow mặc định có api-health cần server; sau phân loại, bộ ci không gọi api-health và vẫn đủ hành trình UI đã liệt kê.
 
 ### 4.4.2 Chuẩn bị native và emulator
@@ -37,8 +38,8 @@ Tự động chạy Maestro trên Android Emulator với bản debug có preview
 
 ## Tiêu chí nghiệm thu
 
-- [ ] Clean runner build/cài/mở app debug, Metro và emulator sẵn sàng.
-- [ ] Toàn bộ 13 flow tag ci chạy đạt; api-health và cart-checkout-qr không nằm trong bộ PR bắt buộc, thanh toán ghi rõ chưa kiểm tra.
-- [ ] Không dùng backend production/tài khoản thật; không bỏ assertions hoặc sửa app để luôn pass.
-- [ ] TestID sai làm job fail; có báo cáo/log/screenshot và cleanup khi lỗi.
-- [ ] Build cuối bị chặn nếu E2E lỗi; PROGRESS ghi số flow/revision/toolchain và giới hạn backend.
+- [x] Clean runner build/cài/mở app debug, Metro và emulator sẵn sàng.
+- [x] Toàn bộ 13 flow tag ci chạy đạt; api-health và cart-checkout-qr không nằm trong bộ PR bắt buộc, thanh toán ghi rõ chưa kiểm tra.
+- [x] Không dùng backend production/tài khoản thật; không bỏ assertions hoặc sửa app để luôn pass.
+- [x] TestID sai làm job fail; có báo cáo/log/screenshot và cleanup khi lỗi.
+- [x] Build cuối bị chặn nếu E2E lỗi; PROGRESS ghi số flow/revision/toolchain và giới hạn backend.

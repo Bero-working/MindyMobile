@@ -18,10 +18,15 @@ tags:
     id: 'preview-courses-button'
 - scrollUntilVisible:
     element:
-      id: 'courses-course-demo-0'
+      id: 'courses-open-demo-0'
     direction: DOWN
+- waitForAnimationToEnd
 - tapOn:
-    id: 'courses-course-demo-0'
+    id: 'courses-open-demo-0'
+- extendedWaitUntil:
+    visible:
+      id: 'course-sheet'
+    timeout: 10000
 - scrollUntilVisible:
     element:
       id: 'course-sheet-pick-demo-0-a'

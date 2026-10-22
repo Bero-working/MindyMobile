@@ -61,3 +61,28 @@ Nhật ký triển khai chỉ ghi thêm theo ENTRY.md. Chưa bắt đầu; task 
 - Test: js-yaml/assert kiểm tra đúng 13 flow duy nhất, executionOrder khớp inventory, payment không thuộc ci và triggers dev PASS; actionlint 1.7.7, ShellCheck 0.10.0 và diff --check PASS. Không sửa app/native/dependency. Run c1371b5 trước đã có 13 flow còn lại đạt nhưng cả pipeline vẫn failure; cần run mới để xác nhận suite 13 và mở hai build.
 - Dọn dẹp: Dừng Metro/AVD API35 do Phase 4 tạo; avdmanager xoá Mindy_CI_API35 và Mindy_CI_API35_D, sdkmanager gỡ riêng system image API35 vừa cài. Emulator Pixel_8 của owner vẫn chạy. Giữ thay đổi Phase 3/.gitignore/api-health của owner ngoài commit.
 - Ghi chú: Chưa có kết quả Release/UAT; chuẩn bị push PR #2 để kiểm chứng hosted.
+
+### 2026-10-22 06:47 (+07:00) · @Bero-working (Codex)
+
+- Task: 4.4.1–4.4.3 Tự nghiệm thu E2E hosted
+- Trạng thái: Done — AI tự nghiệm thu sub-phase; không thay UAT Phase 4.
+- Run: https://github.com/Bero-working/MindyMobile/actions/runs/39618310147, PR head 5b3fe3ad06027a1f39ee160f44bf608c663204d8; checkout PR merge revision ad3d48c0a991d1985682f3497417d59d0ae8ebe5. E2E job 119285557001 success trên runner sạch, JUnit 13 testcase thành công, 0 failure/error/skipped, thời gian suite 944.866 giây. Báo cáo và snapshot job tại evidence/hosted-5b3fe3a/; audit 26 request bootstrap, 0 unexpected. Thanh toán payment-pending/API thật giữ ngoài phạm vi.
+- Kiểm chứng âm: Run 39601188597 và evidence/e2e-negative-report.xml xác nhận testID cố ý sai làm job fail, artifact chẩn đoán có và hai Release bị chặn. Probe đã hoàn tác/PR #3 đóng; không đưa mã thử lỗi vào PR #2.
+- Giới hạn: Pipeline 39618310147 còn lỗi Android Release dù iOS Simulator success; Phase 4/4.5 vẫn In progress. Bản sửa Android commit 4ff221a đang kiểm chứng tại run 39695570257.
+
+### 2026-10-22 07:27 (+07:00) · @Bero-working (Codex)
+
+- Task: 4.4.3 Mở lại sau lỗi thao tác course-class-scroll trên hosted
+- Trạng thái: In progress. Entry tự nghiệm thu 4.4 trước vẫn phản ánh run 39618310147 đã đạt, nhưng run tiếp theo cho thấy flow chưa ổn định; không dùng lần pass cũ để bỏ qua lỗi mới.
+- Run: https://github.com/Bero-working/MindyMobile/actions/runs/39695570257 tại 4ff221a. Ba quality job success; E2E đạt 5 flow đầu rồi course-class-scroll fail, suite dừng theo continueOnFailure=false. Hai Release skipped đúng needs; bước Codegen mới chưa được chạy nên chưa thể kết luận sửa Android Release đạt.
+- Chẩn đoán: Log boot có adb offline tạm thời nhưng emulator sau đó boot_completed=1, cài APK/bundle đạt và chạy 5 flow. Lỗi cuối là không thấy course-sheet-pick-demo-0-a. Lệnh chạm courses-course-demo-0 tại (283,1671) báo COMPLETED; ảnh và hierarchy cuối chỉ có catalog, không có course-sheet. Flow đã cuộn catalog trong 20 giây vì chưa kiểm tra bảng mở. Chưa đủ bằng chứng để kết luận nguyên nhân sâu khiến lần chạm không mở bảng; không khẳng định do CPU/GPU hoặc sửa Release.
+- Sửa theo đặc tả cập nhật trước: dùng nút mũi tên courses-open-demo-0 có sẵn, chờ animation và xác nhận course-sheet trong 10 giây trước cuộn lớp. Giữ toàn bộ assertions cũ, không retry/optional, không sửa app/native và không tăng timeout cuộn. Kiểm tra YAML và so sánh assertions PASS; đang chạy local để kiểm chứng, chưa ghi kết quả đạt.
+- Bằng chứng: evidence/ci-course-open/report-before.xml, catalog-instead-of-sheet.png và commands-summary.json từ artifact 12392281119. Giữ sub-phase 4.4/4.5 và Phase 4 In progress, UAT Todo.
+
+### 2026-10-22 07:31 (+07:00) · @Bero-working (Codex)
+
+- Task: 4.4.3 Kiểm chứng sửa thao tác mở bảng khoá học
+- Trạng thái: In progress — local đạt, chờ suite hosted.
+- Test local: Maestro 2.11.0 trên Pixel_8/API37.2, viewport 1080×2400/density420, font 1.0, animation scales 1.0; app debug đã cài và Metro Node24.16.0. Flow sửa chạy ba lượt độc lập clearState, cả 3/3 PASS (111s, 40s, 42s), giữ tất cả assertions chức năng và thêm điều kiện bảng đã mở. JUnit tại evidence/ci-course-open/local-1.xml đến local-3.xml. Đây là kiểm chứng local flow thay đổi, không thay toàn bộ suite CI/API35 hoặc build Release.
+- Kiểm tra: YAML inventory/executionOrder đúng 13 flow; so sánh assertion trước/sau không mất assertion; actionlint1.7.7/ShellCheck0.10.0 và diff --check PASS. Không retry flow lỗi, không optional/assertion suppression hoặc sửa app/native/dependency. Các ca âm cũ vẫn giữ; flow mới có thêm xác nhận course-sheet trước khi cuộn.
+- Dọn dẹp: Bằng chứng chỉ giữ ảnh/report/tóm tắt, không thêm raw log hoặc binary vào repo. Commit chỉ phạm vi Phase4; giữ các thay đổi Phase3/.gitignore/api-health của owner. Sẽ push PR #2 chạy đủ quality/E2E và hai Release; chưa đủ điều kiện UAT.

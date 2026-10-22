@@ -57,6 +57,11 @@ Release dùng APP_ENV=production và DEBUG_MODE=false. Repository variables tu�
 CI chỉ build Release, không tự mở app Release hoặc thực hiện giao dịch trên backend.
 Quyền workflow là `contents: read`, không cần secret production.
 
+Job Android Release chạy `generateCodegenArtifactsFromSchema` trước `assembleRelease` và
+`bundleRelease` để CMake autolinking có JNI của các thư viện trong `node_modules` trên runner sạch.
+Nếu bước này lỗi, đọc `android-codegen.log`; không sao chép thư mục build từ máy phát triển
+hoặc job E2E để thay kết quả của job Release.
+
 ## Chạy lại và đọc lỗi
 
 Mở check của PR để xem bước lỗi. **Re-run failed jobs** chạy lại cùng revision;
