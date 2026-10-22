@@ -62,6 +62,12 @@ Job Android Release chạy `generateCodegenArtifactsFromSchema` trước `assemb
 Nếu bước này lỗi, đọc `android-codegen.log`; không sao chép thư mục build từ máy phát triển
 hoặc job E2E để thay kết quả của job Release.
 
+## Điều kiện merge
+
+Theo [ADR-0032](../adr/ADR-0032-require-successful-ci-before-merge.md), phải chờ đủ `typecheck`, `eslint`, `unit-tests`, `e2e-android`, `build-android`, `build-ios` hoàn tất success trên bản PR mới nhất trước khi merge. Đối chiếu đúng PR/head/base và merge revision nếu có; kiểm tra lại ngay trước thao tác. Pending, thiếu check, failure, cancelled, timeout, neutral hoặc skipped không đạt. Yêu cầu merge/UAT Done, test local, run commit cũ hoặc CI chạy sau merge không thay thế. Nhánh không có branch protection cũng không được bypass. Xem [B.10](../README.md#b10-điều-kiện-bắt-buộc-trước-khi-merge).
+
+Khi CI đang chạy, AI bàn giao URL PR/run, head SHA và trạng thái quan sát được rồi có thể kết thúc lượt. Owner có thể stop AI; không hủy workflow chỉ vì AI dừng. Owner xem CI: thất bại thì gửi bằng chứng (ảnh/link/log) cho AI chẩn đoán/sửa, thành công thì owner tự merge sau khi đủ các điều kiện khác. AI không chờ bắt buộc, không tự merge/bật auto-merge trong quy trình này. Không có phản hồi từ owner không chứng minh CI đạt; sau push bản sửa, bàn giao lượt CI mới.
+
 ## Chạy lại và đọc lỗi
 
 Mở check của PR để xem bước lỗi. **Re-run failed jobs** chạy lại cùng revision;

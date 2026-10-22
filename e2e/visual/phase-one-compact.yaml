@@ -4,8 +4,12 @@ appId: ${APP_ID || "com.mindymobile"}
     clearState: true
 - extendedWaitUntil:
     visible:
-      id: 'welcome-screen'
+      id: 'login-screen'
     timeout: 90000
+- tapOn:
+    id: 'auth-back-button'
+- assertVisible:
+    id: 'welcome-screen'
 - takeScreenshot: 'handoff-compact-welcome'
 - scrollUntilVisible:
     element:

@@ -52,6 +52,52 @@ afterAll(() => {
   queryClient.setDefaultOptions(defaultQueryOptions);
   mockServer.close();
 });
+it.each(['no-session', 'expired-session', 'network', 'server'])(
+  'opens Login after %s at startup without getting stuck on the session error screen',
+  async (failure) => {
+    mockServer.use(
+      http.get(TEST_API_URL + '/auth/me', () => {
+        if (failure === 'network') return HttpResponse.error();
+        const status = failure === 'server' ? 503 : 401;
+        return HttpResponse.json(
+          {
+            statusCode: status,
+            code:
+              failure === 'expired-session'
+                ? 'AUTHENTICATION_REQUIRED'
+                : failure === 'server'
+                  ? 'TEMPORARY'
+                  : 'NO_SESSION',
+            message: 'Session unavailable',
+          },
+          { status }
+        );
+      }),
+      http.post(TEST_API_URL + '/auth/refresh', () =>
+        HttpResponse.json(
+          {
+            statusCode: 401,
+            code: 'INVALID_REFRESH_TOKEN',
+            message: 'Expired',
+          },
+          { status: 401 }
+        )
+      )
+    );
+    render(<App />);
+    await waitFor(() =>
+      expect(screen.getByTestId('login-submit-button')).toBeTruthy()
+    );
+    expect(screen.queryByTestId('home-screen')).toBeNull();
+    expect(screen.queryByTestId('session-error')).toBeNull();
+    expect(useStore.getState().sessionUser).toBeNull();
+    fireEvent.press(screen.getByTestId('auth-back-button'));
+    await waitFor(() =>
+      expect(screen.getByTestId('welcome-login-button')).toBeTruthy()
+    );
+  }
+);
+
 it('does not flash Home during bootstrap and shows an invalid account message for staff', async () => {
   let finish: () => void = () => {};
   const response = new Promise<void>((resolve) => {
@@ -106,9 +152,8 @@ it.each(['ADMIN', 'MENTOR', 'MANAGER'])(
     );
     render(<App />);
     await waitFor(() =>
-      expect(screen.getByTestId('welcome-login-button')).toBeTruthy()
+      expect(screen.getByTestId('login-submit-button')).toBeTruthy()
     );
-    fireEvent.press(screen.getByTestId('welcome-login-button'));
     fireEvent.changeText(screen.getByTestId('login-email-input'), user.email);
     fireEvent.changeText(screen.getByTestId('login-password-input'), 'secret');
     fireEvent.press(screen.getByTestId('login-submit-button'));
@@ -141,6 +186,9 @@ it('logs in through the production form, resets guest history, and returns expir
     http.get(TEST_API_URL + '/courses', () =>
       HttpResponse.json({ items: [], page: 1, pageSize: 4, total: 0 })
     ),
+    http.get(TEST_API_URL + '/me/cart', () =>
+      HttpResponse.json({ items: [], totalAmount: 0 })
+    ),
     http.get(TEST_API_URL + '/me/schedule', ({ request }) => {
       const params = new URL(request.url).searchParams;
       return HttpResponse.json({
@@ -157,9 +205,8 @@ it('logs in through the production form, resets guest history, and returns expir
   );
   render(<App />);
   await waitFor(() =>
-    expect(screen.getByTestId('welcome-login-button')).toBeTruthy()
+    expect(screen.getByTestId('login-submit-button')).toBeTruthy()
   );
-  fireEvent.press(screen.getByTestId('welcome-login-button'));
   await waitFor(() =>
     expect(screen.getByTestId('login-email-input')).toBeTruthy()
   );

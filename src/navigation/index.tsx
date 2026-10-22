@@ -5,8 +5,6 @@ import type { RootStackParamList } from './types';
 import routes from './routes';
 import { screenOptions } from './screenOptions';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useTranslation } from 'react-i18next';
-import { ScreenState } from '@/components/common/ScreenState';
 import { Skeleton } from '@/components/ui/Skeleton';
 import { useAuthSession } from '@/modules/auth/hooks/useAuthSession';
 import { useStore } from '@/state/store';
@@ -29,30 +27,16 @@ const Stack = createStackNavigator<RootStackParamList>();
 
 const Navigation = () => {
   const { navigationTheme, variant } = useTheme();
-  const { t } = useTranslation();
   const session = useAuthSession();
   const user = useStore((state) => state.sessionUser);
   const generation = useStore((state) => state.generation);
-  const hasSessionHistory = useStore((state) => state.hasSessionHistory);
-  if (session.pending || session.error)
+  if (session.pending)
     return (
       <SafeAreaView className="flex-1 justify-center bg-canvas p-6">
-        {session.pending ? (
-          <Skeleton
-            testID="session-loading"
-            className="h-24 rounded-3xl"
-          />
-        ) : (
-          <ScreenState
-            testID="session-error"
-            title={t('auth.brandName')}
-            description={t('auth.session.error')}
-            requestId={session.error?.requestId}
-            onRetry={() => {
-              session.retry();
-            }}
-          />
-        )}
+        <Skeleton
+          testID="session-loading"
+          className="h-24 rounded-3xl"
+        />
       </SafeAreaView>
     );
 
@@ -62,7 +46,7 @@ const Navigation = () => {
         initialRouteName={
           user?.role === 'STUDENT'
             ? routes.studentHome
-            : !user && hasSessionHistory
+            : !user
               ? routes.login
               : routes.welcome
         }

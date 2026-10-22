@@ -230,3 +230,25 @@
 - Đồng bộ: IMPLEMENT/README.md, IMPLEMENT Phase 4 README và 4.99; thêm cập nhật UAT ở cuối HANDOFF. Nhật ký cũ giữ nguyên. Các lỗi Android local của lượt dọn Phase 1 được giữ riêng trong hồ sơ Phase 1, không ghi đè kết quả hosted CI của Phase 4.
 - PR / commit: PR #2 được nhắc trong cuộc trao đổi; lượt này chưa tạo commit/push/merge và không xác minh trạng thái merge mới.
 - Ghi chú: Handle @Bero do owner cung cấp trước đó trong cùng chat; gh không có trên máy. Giữ toàn bộ giới hạn đã bàn giao; xác nhận Done không tự hoàn tất các ca chưa chạy.
+
+### 2026-10-22 12:52 (+07:00) · @Bero
+
+- Phase: 4 Bổ sung quy định CI trước merge
+- Trạng thái: Done — hoàn tất tài liệu theo chỉ đạo trực tiếp của owner; không phải kết quả CI mới.
+- Đã làm: AI ghi nhận yêu cầu “Thêm ADR về merge phải được CI chấp nhận” sau khi owner phản đối việc PR #4 được merge lúc CI còn chạy. Thêm ADR-0032 Accepted theo quyết định trực tiếp này; yêu cầu đủ sáu job của bản PR mới nhất success trước merge, không suy yêu cầu merge/UAT Done thành ngoại lệ, không bypass khi nhánh chưa khóa. Quy định kiểm tra lại head/base, xử lý kết quả thiếu/pending/lỗi và bằng chứng bàn giao merge.
+- Test: Chỉ cập nhật tài liệu; kiểm tra liên kết nội bộ, danh sách sáu job với workflow hiện có và git diff --check. Không chạy lại Jest/Maestro/build/CI, không thay workflow hoặc branch protection và không commit/push/merge trong lượt này.
+- Tiêu chí nghiệm thu: Quy tắc bao phủ CI đúng bản PR, đủ job, trạng thái chưa đạt, commit/base thay đổi, yêu cầu merge không miễn kiểm tra và không dùng quyền admin để bỏ qua. Không sửa lịch sử PR #4 thành đã chờ CI, không suy trạng thái các run hiện tại.
+- Đồng bộ: ADR index, docs/README.md B.10, docs/CONTRIBUTING.md, docs/guides/ci.md và CLAUDE.md cùng dẫn tới ADR-0032. Phase 4/4.99 giữ Done theo owner đã duyệt; entry cũ giữ nguyên.
+- PR / commit: Chưa tạo cho ADR-0032; PR #4 là bối cảnh quyết định.
+- Ghi chú: Handle @Bero do owner cung cấp trong chat. Giữ các thay đổi Auth/navigation/E2E đang có ngoài phạm vi lượt này.
+
+### 2026-10-22 12:56 (+07:00) · @Bero
+
+- Phase: 4 Điều chỉnh ADR-0032 về bàn giao khi CI đang chạy
+- Trạng thái: Done — cập nhật tài liệu theo chỉ đạo owner.
+- Đã làm: Owner yêu cầu có thể stop AI trong lúc CI chạy; CI thất bại thì owner gửi bằng chứng để AI xử lý, CI thành công thì owner tự merge. Sửa ADR-0032 Accepted để AI được bàn giao PR/run/head/trạng thái rồi kết thúc lượt, không bắt buộc chờ/poll, không tự merge hoặc bật auto-merge trong quy trình này. Giữ yêu cầu đủ sáu job của bản mới nhất success trước merge; dừng AI không phải hủy workflow và không có bằng chứng không đồng nghĩa CI đạt.
+- Test: Chỉ sửa tài liệu, rà liên kết và diff; không chạy lại app/tests/CI hoặc thay cài đặt GitHub.
+- Tiêu chí nghiệm thu: Phân định rõ AI bàn giao, owner xem kết quả/gửi bằng chứng lỗi/tự merge khi đạt; sau push bản sửa áp dụng lại quy trình. Không thay điều kiện CI hoặc tự đánh dấu merge thành công.
+- Đồng bộ: ADR-0032, ADR index, docs/README.md B.10, CONTRIBUTING, guide CI và CLAUDE.md; entry cũ giữ nguyên, Phase 4/4.99 giữ Done theo UAT lịch sử.
+- PR / commit: Chưa commit/push/merge cho sửa đổi này.
+- Ghi chú: Handle @Bero do owner cung cấp trong cùng chat; giữ các thay đổi mã nguồn/E2E có sẵn ngoài phạm vi.

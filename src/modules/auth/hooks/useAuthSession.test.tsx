@@ -67,35 +67,31 @@ it('treats me 401 as guest without an endless bootstrap or a fake user', async (
   );
   const view = renderHookWithProviders(() => useAuthSession());
   await waitFor(() => expect(view.result.current.pending).toBe(false));
-  expect(view.result.current.error).toBeNull();
+  expect(useStore.getState().bootstrapStatus).toBe('ready');
   expect(useStore.getState().sessionUser).toBeNull();
   expect(count).toBe(1);
 });
 
-it('keeps network bootstrap failure separate from guest and supports a deliberate retry', async () => {
-  mockServer.use(
-    http.get(TEST_API_URL + '/auth/me', () =>
-      HttpResponse.json(
-        { statusCode: 503, code: 'TEMPORARY', message: 'Try later' },
-        { status: 503 }
-      )
-    )
-  );
-  const view = renderHookWithProviders(() => useAuthSession());
-  await waitFor(() =>
-    expect(view.result.current.error?.code).toBe('TEMPORARY')
-  );
-  expect(useStore.getState().bootstrapStatus).toBe('idle');
-  mockServer.use(
-    http.get(TEST_API_URL + '/auth/me', () => HttpResponse.json(user))
-  );
-  await act(async () => {
-    await view.result.current.retry();
-  });
-  await waitFor(() =>
-    expect(useStore.getState().sessionUser?.id).toBe(user.id)
-  );
-});
+it.each(['network', 'server', 'invalid-response'])(
+  'finishes bootstrap as unauthenticated after a %s failure',
+  async (failure) => {
+    mockServer.use(
+      http.get(TEST_API_URL + '/auth/me', () => {
+        if (failure === 'network') return HttpResponse.error();
+        if (failure === 'invalid-response') return HttpResponse.json({});
+        return HttpResponse.json(
+          { statusCode: 503, code: 'TEMPORARY', message: 'Try later' },
+          { status: 503 }
+        );
+      })
+    );
+    const view = renderHookWithProviders(() => useAuthSession());
+    await waitFor(() => expect(view.result.current.pending).toBe(false));
+    expect(useStore.getState().bootstrapStatus).toBe('ready');
+    expect(useStore.getState().sessionUser).toBeNull();
+    expect(useStore.getState().isAuthenticated).toBe(false);
+  }
+);
 
 it('does not restore a session if login completes after logout', async () => {
   let finish: () => void = () => {};

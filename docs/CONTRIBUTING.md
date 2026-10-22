@@ -114,6 +114,10 @@ npm run test:e2e
 
 ## Definition of Done
 
+Trước khi merge PR, bắt buộc chờ đủ sáu job CI của bản PR mới nhất hoàn tất thành công theo [ADR-0032](adr/ADR-0032-require-successful-ci-before-merge.md) và [quy trình B.10](README.md#b10-điều-kiện-bắt-buộc-trước-khi-merge). Test local, CI commit cũ và xác nhận UAT không thay điều kiện này. Còn pending/chạy/thiếu kết quả hoặc job bắt buộc chưa success thì giữ PR chưa merge; không bypass dù GitHub vẫn cho phép thao tác.
+
+AI có thể bàn giao URL PR/run, head SHA và trạng thái CI rồi kết thúc lượt; owner có thể stop AI trong khi CI trên GitHub tiếp tục chạy. Owner gửi bằng chứng nếu CI thất bại để AI xử lý, hoặc tự merge khi CI thành công và đủ các điều kiện khác. AI không phải chờ CI, không tự merge/bật auto-merge trong quy trình này. Bản sửa được push sau đó phải bàn giao CI mới tương tự.
+
 - [ ] Test viết trước code, tất cả xanh (`npm test`).
 - [ ] Có Maestro flow cho luồng chính (màn hình mới hoặc luồng thay đổi).
 - [ ] `npm run lint:rules`, `npm run lint:code-format`, `npm run lint:type-check` không lỗi.

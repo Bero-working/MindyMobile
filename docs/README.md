@@ -227,3 +227,14 @@ Bản đối chiếu Phase 0–3 sau đồng bộ ngày 2026-10-22: [checklist v
 - Không xác định được GitHub handle.
 - Phát hiện rác ngoài phạm vi phase.
 - Tiêu chí nghiệm thu không rõ hoặc không kiểm tra được.
+
+## B.10 Điều kiện bắt buộc trước khi merge
+
+Theo [ADR-0032](adr/ADR-0032-require-successful-ci-before-merge.md), mọi người và AI **PHẢI chờ CI của bản PR mới nhất đạt trước khi merge**, kể cả PR chỉ sửa docs/dọn dẹp và nhánh không có branch protection.
+
+- Đúng PR, head SHA và nhánh đích; đủ sáu job `typecheck`, `eslint`, `unit-tests`, `e2e-android`, `build-android`, `build-ios` hoàn tất với `success`. Đối chiếu merge revision với head/base khi workflow kiểm tra bản ghép của PR.
+- Còn chạy/chờ, thiếu hoặc không đọc được kết quả, lỗi, hủy, timeout, neutral hay skipped ở job bắt buộc: **không merge**. Không lấy CI commit cũ, test local hoặc push CI sau merge thay thế.
+- Push commit mới/đổi base phải kiểm tra lại bản mới; đọc lại head/base và CI ngay trước merge, ràng buộc head SHA đã xác minh khi công cụ hỗ trợ.
+- Yêu cầu “merge”, phase Done hoặc duyệt UAT không miễn CI. AI được bàn giao rồi kết thúc lượt khi CI đang chạy; owner có thể stop AI, CI trên GitHub vẫn tiếp tục. Không cần AI chờ hoặc liên tục theo dõi.
+- Owner xem kết quả: nếu thất bại thì gửi bằng chứng cho AI chẩn đoán/sửa; nếu thành công và đủ review/UAT thì **owner tự merge**. AI giữ PR chưa merge, không tự merge/bật auto-merge trong quy trình này dù yêu cầu trước đó có nhắc merge. Không dùng quyền admin/bypass, push thẳng, tắt check hoặc nới rule để vượt điều kiện CI.
+- Bàn giao phải có PR/run, head SHA và trạng thái thực tế, ghi rõ phần đang chờ và owner sẽ xử lý kết quả. Chưa quan sát được run thì ghi rõ; không báo CI đạt hoặc đã merge trước bằng chứng. Sau sửa và push bản mới, bàn giao CI lại theo cùng quy trình.
