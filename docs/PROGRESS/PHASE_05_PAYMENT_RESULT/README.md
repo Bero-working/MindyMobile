@@ -98,3 +98,13 @@ Nhật ký chỉ ghi thêm. Đặc tả: [IMPLEMENT Phase 5](../../IMPLEMENT/PHA
 - Đồng bộ: IMPLEMENT5.1/README/roadmap giữ Done; báo cáo POST_UAT_CLEANUP.md và manifest cleanup-source-sha256.txt (25 file) ghi bản sau dọn dẹp, không ghi đè evidence lịch sử.
 - PR / commit: HEAD76f7b4200785539b62830e61f02799d74aa2968b + working tree; chưa commit/push/PR/CI/merge.
 - Ghi chú: cảnh báo lint có sẵn ở ClassDetailScreen.test.tsx:183 ngoài Phase5 giữ nguyên.
+
+### 2026-10-22 18:13 (+07:00) · @Bero-working (Codex)
+
+- Phase: Sửa CI student-account trên PR #5 theo báo lỗi owner.
+- Trạng thái: Phase giữ Done theo UAT cũ; bản sửa chờ CI mới.
+- Đã làm: Account dùng AppSheet nội dung cố định cho ngôn ngữ/logout, profile vẫn cuộn; flow chờ backdrop đóng, kiểm tra hủy/mở lại/logout và cuộn tới nút preview trên màn hẹp.
+- Test: Account 1 suite/3 test PASS; eslint/format/type-check PASS; Maestro account PASS ở1080×2400/font1.0 và840×1866(~320dp)/font1.3. Lượt compact đầu dừng ở nút preview ngoài viewport, đã bổ sung cuộn rồi chạy lại PASS. Không chạy lại toàn bộ suite/flow hoặc backend/iOS.
+- Tiêu chí: run39764126307/head644419d lỗi E2E account, hai build skipped; local trước sửa không tái hiện ổn định. Native local có thay đổi startup đăng nhập có sẵn ngoài commit; chưa dùng PASS local kết luận source CI đạt.
+- Đồng bộ: đặc tả3.2, API_REVIEW Phase3/5, POST_UAT_CLEANUP và báo cáo CI_ACCOUNT_FIX.md; giữ UAT/checkbox/roadmap Done cùng giới hạn cũ, không xác nhận UAT mới.
+- PR / commit: PR #5, chuẩn bị push bản sửa; chờ đủ sáu job CI head mới nhất success, owner tự merge.

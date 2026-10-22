@@ -211,3 +211,13 @@ Nhật ký chỉ ghi thêm; trạng thái hiện tại tại IMPLEMENT/README v�
 - Đã làm: Đối chiếu từng checklist với bằng chứng đã có, tick phần đủ căn cứ và ghi rõ phần chưa kiểm tra/đạt một phần; giữ giới hạn được owner chấp nhận. Các file đồng bộ: PHASE_03_01_SCHEDULE.md, PHASE_03_02_ACCOUNT.md, PHASE_03_03_MY_CLASSES.md, PHASE_03_04_CLASS_DETAIL.md, PHASE_03_05_NAVIGATION.md, PHASE_03_99_User_Acceptance.md, README.md.
 - Test: Chỉ rà tài liệu/liên kết/diff. Kết quả CI Phase 4 là nguồn bổ sung có ngày/revision riêng, không thay kết quả các lượt cũ. Không chạy lại native/backend và không sửa mã nguồn.
 - Đồng bộ: [Bảng đối chiếu](../ACCEPTANCE_SYNC_2026-10-22.md); trạng thái roadmap/README giữ theo owner đã duyệt. Quy trình B.7.1 và template được cập nhật để tự đồng bộ trong cùng lượt review về sau. Nhật ký cũ giữ nguyên.
+
+### 2026-10-22 18:13 (+07:00) · @Bero-working (Codex)
+
+- Phase: Sửa CI student-account trên PR #5 theo báo lỗi owner.
+- Trạng thái: Phase giữ Done theo UAT cũ; bản sửa chờ CI mới.
+- Đã làm: Account dùng AppSheet nội dung cố định cho ngôn ngữ/logout, profile vẫn cuộn; flow chờ backdrop đóng, kiểm tra hủy/mở lại/logout và cuộn tới nút preview trên màn hẹp.
+- Test: Account 1 suite/3 test PASS; eslint/format/type-check PASS; Maestro account PASS ở1080×2400/font1.0 và840×1866(~320dp)/font1.3. Lượt compact đầu dừng ở nút preview ngoài viewport, đã bổ sung cuộn rồi chạy lại PASS. Không chạy lại toàn bộ suite/flow hoặc backend/iOS.
+- Tiêu chí: run39764126307/head644419d lỗi E2E account, hai build skipped; local trước sửa không tái hiện ổn định. Native local có thay đổi startup đăng nhập có sẵn ngoài commit; chưa dùng PASS local kết luận source CI đạt.
+- Đồng bộ: đặc tả3.2, API_REVIEW Phase3/5, POST_UAT_CLEANUP và báo cáo CI_ACCOUNT_FIX.md; giữ UAT/checkbox/roadmap Done cùng giới hạn cũ, không xác nhận UAT mới.
+- PR / commit: PR #5, chuẩn bị push bản sửa; chờ đủ sáu job CI head mới nhất success, owner tự merge.

@@ -286,6 +286,7 @@ export function AccountScreen({
       </LearningState>
       {sheet && (
         <AppSheet
+          scrollable={sheet === 'profile'}
           locked={pending}
           onClose={() => setSheet(null)}
         >

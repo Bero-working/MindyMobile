@@ -8,6 +8,10 @@ tags:
     visible:
       id: 'welcome-screen'
     timeout: 90000
+- scrollUntilVisible:
+    element:
+      id: 'phase-one-preview-button'
+    direction: DOWN
 - tapOn:
     id: 'phase-one-preview-button'
 - tapOn:
@@ -24,6 +28,10 @@ tags:
 - takeScreenshot: 'phase3-profile'
 - tapOn:
     id: 'account-sheet-close'
+- extendedWaitUntil:
+    notVisible:
+      id: 'app-sheet-backdrop'
+    timeout: 10000
 - scrollUntilVisible:
     element:
       id: 'account-language'
@@ -32,14 +40,34 @@ tags:
     id: 'account-language'
 - tapOn:
     id: 'account-language-en-EN'
+- extendedWaitUntil:
+    notVisible:
+      id: 'app-sheet-backdrop'
+    timeout: 10000
 - tapOn:
     id: 'account-language'
 - tapOn:
     id: 'account-language-vi-VN'
+- extendedWaitUntil:
+    notVisible:
+      id: 'app-sheet-backdrop'
+    timeout: 10000
 - scrollUntilVisible:
     element:
       id: 'account-logout'
     direction: DOWN
+- tapOn:
+    id: 'account-logout'
+- assertVisible:
+    id: 'account-logout-confirm'
+- tapOn:
+    id: 'account-sheet-close'
+- extendedWaitUntil:
+    notVisible:
+      id: 'app-sheet-backdrop'
+    timeout: 10000
+- assertVisible:
+    id: 'account-screen'
 - tapOn:
     id: 'account-logout'
 - assertVisible:

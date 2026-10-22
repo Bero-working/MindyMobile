@@ -1,5 +1,7 @@
 # Bàn giao API Phase3 — 2026-10-20
 
+Cập nhật 2026-10-22: [bản sửa hộp xác nhận account sau CI PR #5](../PHASE_05_PAYMENT_RESULT/CI_ACCOUNT_FIX.md), gồm kết quả local và giới hạn. Không chạy lại API/logout backend thật; bàn giao API bên dưới giữ là bằng chứng lịch sử.
+
 Owner đã duyệt ADR-0030 và cho phép gắn API, kèm yêu cầu Lịch chỉ xem. Owner @Bero đã xác nhận “Tôi duyệt UAT phase 3” trong chat ngày 2026-10-21 (+07:00); Phase 3 Done.
 
 ## Phần đã nối

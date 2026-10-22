@@ -1,5 +1,7 @@
 # Dọn dẹp Phase 5 sau UAT
 
+Cập nhật sau báo cáo: [sửa lỗi CI account của PR #5](CI_ACCOUNT_FIX.md). Kết quả bên dưới thuộc lượt dọn dẹp trước; không thay kết quả CI mới.
+
 Ngày 2026-10-22 (+07:00), theo yêu cầu owner @Bero. Phase giữ **Done** theo xác nhận UAT trước đó. Revision: HEAD `76f7b4200785539b62830e61f02799d74aa2968b` cộng working tree; chưa commit.
 
 ## Thay đổi

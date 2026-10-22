@@ -1,5 +1,7 @@
 # Bàn giao API Phase 5
 
+Kiểm tra mới nhất: [sửa lỗi CI student-account trên PR #5](CI_ACCOUNT_FIX.md). Run head `644419d` thất bại E2E; local bản sửa chỉ kiểm tra account, chưa xác nhận CI mới hoặc chạy lại API thanh toán. Các kết quả bàn giao bên dưới là bằng chứng trước bản sửa.
+
 ## Kết quả
 
 Owner xác nhận trong chat ngày 2026-10-22: “UI đã duyệt, bây giờ nối API đi”. AI Codex đã nối dữ liệu backend vào ticket đã duyệt, giữ đúng PAID (SUCCESS), CANCELLED (FAIL), EXPIRED. Không thêm ticket khác, route, dependency hoặc sửa hạ tầng khoá. Nhật ký @Bero theo handle owner đã xác nhận.
