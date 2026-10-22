@@ -2,7 +2,7 @@
 
 ## Bước và nguồn
 
-UI, Done (owner duyệt UAT ngày 2026-10-21). Base `section#t2` → `c.roomOpen`, `detailVals`, `cd`, `sd`; khảo sát2026-10-20, [nguồn và sai khác](references/DESIGN_SOURCE.md). Đã triển khai fixture/callback ở bước UI; chưa nối protected API.
+UI, Done (owner duyệt UAT ngày 2026-10-21). Base `section#t2` → `c.roomOpen`, `detailVals`, `cd`, `sd`; khảo sát2026-10-20, [nguồn và sai khác](references/DESIGN_SOURCE.md). Đã nối protected API tại 3.6; fixture/callback chỉ dùng trong development preview/test.
 
 ## Đặc tả UI
 
@@ -65,6 +65,12 @@ UI, Done (owner duyệt UAT ngày 2026-10-21). Base `section#t2` → `c.roomOpen
 
 ## Nghiệm thu
 
-- [ ] Luồng list/schedule/Home mở đúng lớp và buổi, Back giữ ngữ cảnh.
-- [ ] Preview không có URL học; denial loại ngay dữ liệu nhạy cảm.
-- [ ] Đối chiếu native FULL/preview/empty/error/320dp và ghi sai khác.
+- [x] Luồng list/schedule/Home mở đúng lớp và buổi, Back giữ ngữ cảnh.
+- [x] Preview không có URL học; denial loại ngay dữ liệu nhạy cảm.
+- [x] Đối chiếu native FULL/preview/empty/error/320dp và ghi sai khác.
+
+## Đồng bộ checklist (2026-10-22)
+
+Đối chiếu bằng chứng đã ghi, không chạy lại test trong lượt đồng bộ này. Xem [bảng đối chiếu và giới hạn](../../PROGRESS/ACCEPTANCE_SYNC_2026-10-22.md) và [PROGRESS liên quan](../../PROGRESS/PHASE_03_STUDENT_LEARNING/PHASE_03_04_CLASS_DETAIL.md). Trạng thái Done của phase giữ theo UAT owner đã có; checkbox chỉ phản ánh phạm vi kiểm chứng, không tự thay xác nhận owner.
+
+Các nhánh FULL/CASH_PREVIEW/NONE, thay đổi quyền và dữ liệu có buổi được ghi theo unit/MSW/fixture khi chưa có dataset backend phù hợp. Có native protected detail bổ sung lúc 18:44 ngày 2026-10-20; Student roster, các dataset còn thiếu và TalkBack/iOS thủ công giữ giới hạn tại API_REVIEW.

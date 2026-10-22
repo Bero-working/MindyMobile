@@ -6,8 +6,8 @@ Hoàn thiện hành trình Student sau khi mua khoá học: tìm lớp đã đă
 
 Owner yêu cầu gom các màn này vào Phase 3 trong chat ngày 2026-10-20; đây là phạm vi riêng của yêu cầu, tương tự Phase 1–2, không thay quy ước chung mỗi phase một màn hình. **Owner đã cho phép gắn API và duyệt ADR-0030 ngày2026-10-20. Đã nối API/route và kiểm tra Android/backend giới hạn dataset; Lịch học chỉ xem, không chuyển trang từ buổi. Owner @Bero đã duyệt UAT trong chat ngày 2026-10-21 (+07:00); Phase 3 Done. Giới hạn kiểm thử và danh sách học viên chờ API Student được giữ trong PROGRESS.** Xem [bàn giao UI](../../PROGRESS/PHASE_03_STUDENT_LEARNING/UI_REVIEW.md).
 
-- Có: lịch tuần; Tài khoản và thông tin cá nhân chỉ đọc; Lớp của tôi nhóm theo khoá; chi tiết lớp theo FULL/CASH_PREVIEW; danh sách chương/buổi và thông tin buổi; điều hướng từ Home, Khoá học và Tài khoản.
-- Có sau duyệt UI: API My Classes, detail/preview, schedule; tái sử dụng auth/me, logout và màn QR Phase 2 để tiếp tục đơn PAYOS còn hợp lệ.
+- Có: lịch tuần; Tài khoản và thông tin cá nhân chỉ đọc; Lớp của tôi nhóm theo khoá; chi tiết lớp theo FULL/CASH_PREVIEW; danh sách chương/buổi và thông tin buổi; điều hướng tới Lớp của tôi từ Home và Tài khoản; trang Khoá học giữ tab Lịch/Tài khoản.
+- Đã tích hợp sau duyệt UI: API My Classes, detail/preview, schedule; tái sử dụng auth/me, logout và màn QR Phase 2 để tiếp tục đơn PAYOS còn hợp lệ.
 - Chưa gồm: sửa hồ sơ/avatar/mật khẩu; đơn hàng tổng quát; thông báo/push; chứng chỉ; điểm danh Student; tiến độ học; đánh giá; compiler/phòng học nhúng; video/ghi chú; tải tài liệu; tạo giao dịch CASH; theo dõi PAID hoặc kết quả thanh toán. Các phần này trong HTML không tự trở thành phạm vi triển khai.
 
 ## Luồng course và điểm vào
@@ -15,7 +15,6 @@ Owner yêu cầu gom các màn này vào Phase 3 trong chat ngày 2026-10-20; đ
 ```mermaid
 flowchart TD
   H[Home: Lớp của tôi] --> M[Lớp của tôi: nhóm theo khoá học]
-  C[Khoá học: Lớp của tôi] --> M
   A[Tài khoản: Lớp của tôi] --> M
   M --> F{Quyền từ server}
   F -->|FULL| D[Chi tiết lớp]
@@ -65,10 +64,20 @@ Thực hiện tuần tự 3.1 → 3.5 → owner duyệt UI → 3.6 → Dọn d�
 
 ## Tiêu chí chung
 
-- [ ] Đối chiếu UI với base cộng thay đổi đã đặc tả, ở 320dp và màn thông thường; lưu ảnh và sai khác.
-- [ ] Loading/empty/error/success, refetch giữ dữ liệu; lỗi retry đúng vùng, có requestId khi có.
+- [x] Đối chiếu UI với base cộng thay đổi đã đặc tả, ở 320dp và màn thông thường; lưu ảnh và sai khác.
+- [x] Loading/empty/error/success, refetch giữ dữ liệu; lỗi retry đúng vùng, có requestId khi có.
 - [ ] i18n Việt/Anh; target tối thiểu 44×44dp; chữ lớn 1.3× không mất hành động; Reduce Motion và nhãn đọc màn hình.
-- [ ] FULL/CASH_PREVIEW/NONE và thay đổi quyền được kiểm tra; không lộ link học trong preview hoặc dữ liệu user cũ.
-- [ ] Lịch lấy đủ trang, đúng range/offset/timeZone; phản hồi tuần cũ không ghi đè tuần mới.
-- [ ] Owner duyệt UI, API thật có bằng chứng, owner UAT xác nhận riêng.
-- [ ] Jest/lint/format/type-check và Maestro phù hợp đạt; ghi riêng giới hạn iOS, ngân hàng và native chưa kiểm tra.
+- [x] FULL/CASH_PREVIEW/NONE và thay đổi quyền được kiểm tra; không lộ link học trong preview hoặc dữ liệu user cũ.
+- [x] Lịch lấy đủ trang, đúng range/offset/timeZone; phản hồi tuần cũ không ghi đè tuần mới.
+- [x] Owner duyệt UI, API thật có bằng chứng, owner UAT xác nhận riêng.
+- [x] Jest/lint/format/type-check và Maestro phù hợp đạt; ghi riêng giới hạn iOS, ngân hàng và native chưa kiểm tra.
+
+## Đồng bộ checklist (2026-10-22)
+
+Đối chiếu bằng chứng đã ghi, không chạy lại test trong lượt đồng bộ này. Xem [bảng đối chiếu và giới hạn](../../PROGRESS/ACCEPTANCE_SYNC_2026-10-22.md) và [PROGRESS liên quan](../../PROGRESS/PHASE_03_STUDENT_LEARNING/README.md). Trạng thái Done của phase giữ theo UAT owner đã có; checkbox chỉ phản ánh phạm vi kiểm chứng, không tự thay xác nhận owner.
+
+Kiểm tra chất lượng hiện tại có thêm CI Phase 4 run 39700197090: 63 suites/294 tests và 13 flow CI đạt; iOS là build Simulator. Đây là bằng chứng bổ sung ngày 2026-10-22, không thay số liệu/môi trường của các lượt lịch sử và không chứng minh API/thanh toán thật.
+
+Các nhánh FULL/CASH_PREVIEW/NONE, thay đổi quyền và dữ liệu có buổi được ghi theo unit/MSW/fixture khi chưa có dataset backend phù hợp. Có native protected detail bổ sung lúc 18:44 ngày 2026-10-20; Student roster, các dataset còn thiếu và TalkBack/iOS thủ công giữ giới hạn tại API_REVIEW.
+
+- Tiêu chí checkbox thứ 3: **Đạt một phần: có native 320dp/font130%/animator0 và nhãn accessibility; chưa đủ bằng chứng kiểm tra toàn bộ target 44x44 và TalkBack thủ công Phase 3. Không suy từ test chức năng thành kiểm tra đọc màn hình đầy đủ.**

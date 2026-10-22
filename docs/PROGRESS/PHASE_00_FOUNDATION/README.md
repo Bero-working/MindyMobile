@@ -168,3 +168,12 @@ Nhật ký cấp phase của [Phase 0](../../IMPLEMENT/PHASE_00_FOUNDATION/READM
 - Test: Không chạy thêm test hoặc mutation backend trong lượt ghi nhận. Test tự động bước 5 đã đạt 28/28 (3 suite), có cảnh báo React act(...). Đã xác nhận emulator-5554 đang ở Home production với phiên Student; gọi auth/me qua phiên hiện có trả 200. Access cookie hết hạn lúc 22:55:28 (+07:00); owner yêu cầu dừng chờ trước mốc đó. Chưa chạy ca native refresh sau hết hạn/thu hồi hoặc Android Back sau refresh lỗi, chưa gọi mutation Origin thật. Không ghi các ca này thành PASS.
 - PR / commit: Chưa tạo.
 - Ghi chú: Dừng phần native theo chỉ đạo; chưa thu hồi phiên, thay cookie, đổi đồng hồ hoặc TTL. Hai flow native chuẩn bị và kiểm tra cú pháp đã được gỡ vì không thực hiện. Giữ bằng chứng 28 test và giới hạn kỹ thuật, các điểm tồn đọng bước 9 vẫn được ghi rõ trong UAT. Không sửa entry lịch sử. UAT Phase 1 đã Done trước đó giữ nguyên.
+
+
+### 2026-10-22 09:25 (+07:00) · @Bero-working (Codex)
+
+- Phase: Đồng bộ hồ sơ nghiệm thu theo yêu cầu owner sau tổng kết test.
+- Trạng thái: Done theo xác nhận UAT lịch sử; không phát sinh xác nhận UAT hoặc kết quả kiểm thử mới.
+- Đã làm: Đối chiếu từng checklist với bằng chứng đã có, tick phần đủ căn cứ và ghi rõ phần chưa kiểm tra/đạt một phần; giữ giới hạn được owner chấp nhận. Các file đồng bộ: PHASE_00_05_IDEMPOTENCY_KEY.md, PHASE_00_06_LOGGER.md, PHASE_00_07_QUERY_CLIENT.md, PHASE_00_08_ESLINT.md, PHASE_00_09_TEST_INFRA.md, PHASE_00_10_E2E.md.
+- Test: Chỉ rà tài liệu/liên kết/diff. Kết quả CI Phase 4 là nguồn bổ sung có ngày/revision riêng, không thay kết quả các lượt cũ. Không chạy lại native/backend và không sửa mã nguồn.
+- Đồng bộ: [Bảng đối chiếu](../ACCEPTANCE_SYNC_2026-10-22.md); trạng thái roadmap/README giữ theo owner đã duyệt. Quy trình B.7.1 và template được cập nhật để tự đồng bộ trong cùng lượt review về sau. Nhật ký cũ giữ nguyên.

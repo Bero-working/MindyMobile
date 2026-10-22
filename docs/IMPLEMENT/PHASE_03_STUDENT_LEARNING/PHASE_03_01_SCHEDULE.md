@@ -6,7 +6,7 @@ Owner duyệt ADR-0030 và cho phép gắn API Phase3 trong chat. Lịch học c
 
 ## Bước và nguồn
 
-UI, trạng thái Done (owner duyệt UAT ngày 2026-10-21). Base `section#t2` → `c.isSchedule`, `weekDays`, `dayGroups`, khảo sát 2026-10-20 và ảnh owner trong lượt triển khai; [nguồn/điều chỉnh](references/DESIGN_SOURCE.md). Đã có UI fixture/callback và snapshot trước/sau; API chỉ là mapping chuẩn bị cho3.6.
+UI, trạng thái Done (owner duyệt UAT ngày 2026-10-21). Base `section#t2` → `c.isSchedule`, `weekDays`, `dayGroups`, khảo sát 2026-10-20 và ảnh owner trong lượt triển khai; [nguồn/điều chỉnh](references/DESIGN_SOURCE.md). Đã có UI fixture/callback và snapshot trước/sau; API production đã tích hợp tại 3.6; fixture chỉ dùng trong development preview/test.
 
 ## Đặc tả UI
 
@@ -46,6 +46,12 @@ GET `/me/schedule` theo [§14.4](../../API_CONTRACT/my-classes.md). Tuần `[00:
 
 ## Nghiệm thu
 
-- [ ] Lịch đọc được ở320dp/font1.3×, không che buổi cuối bởi tabs.
-- [ ] Chọn tuần/ngày và callback đúng; không có quyền hoặc tiến độ suy diễn.
-- [ ] Đối chiếu native, lưu ảnh normal/empty/error/chữ lớn vào PROGRESS.
+- [x] Lịch đọc được ở320dp/font1.3×, không che buổi cuối bởi tabs.
+- [x] Chọn tuần/ngày và callback đúng; không có quyền hoặc tiến độ suy diễn.
+- [x] Đối chiếu native, lưu ảnh normal/empty/error/chữ lớn vào PROGRESS.
+
+## Đồng bộ checklist (2026-10-22)
+
+Đối chiếu bằng chứng đã ghi, không chạy lại test trong lượt đồng bộ này. Xem [bảng đối chiếu và giới hạn](../../PROGRESS/ACCEPTANCE_SYNC_2026-10-22.md) và [PROGRESS liên quan](../../PROGRESS/PHASE_03_STUDENT_LEARNING/PHASE_03_01_SCHEDULE.md). Trạng thái Done của phase giữ theo UAT owner đã có; checkbox chỉ phản ánh phạm vi kiểm chứng, không tự thay xác nhận owner.
+
+Các nhánh FULL/CASH_PREVIEW/NONE, thay đổi quyền và dữ liệu có buổi được ghi theo unit/MSW/fixture khi chưa có dataset backend phù hợp. Có native protected detail bổ sung lúc 18:44 ngày 2026-10-20; Student roster, các dataset còn thiếu và TalkBack/iOS thủ công giữ giới hạn tại API_REVIEW.

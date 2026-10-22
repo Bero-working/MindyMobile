@@ -103,7 +103,7 @@ khoá học: ảnh, mã · danh mục, tiêu đề, mô tả, danh sách **Lớp
 
 - [ ] Khớp nguồn `1792255829-893f` và ảnh 4: ảnh 16:9, eyebrow, tiêu đề, mô tả, “Lớp đang mở · n lớp”, thẻ lớp viền 1.5,
       badge hình thức, lịch, mentor, số chỗ, “Chọn lớp” / “✓ Đã chọn”, giá + “Mua ngay”.
-- [ ] Chọn/bỏ/đổi lớp và Mua ngay đúng hành vi nguồn; không optimistic; lỗi theo `code`.
+- [x] Chọn/bỏ/đổi lớp và Mua ngay đúng hành vi nguồn; không optimistic; lỗi theo `code`.
 
 
 ### Điều chỉnh trực tiếp từ owner — 2026-10-18
@@ -159,3 +159,9 @@ Owner báo nhãn Đã chọn rộng hơn Chọn lớp làm tiêu đề bị ép 
 ### Kéo thanh nắm xuống để đóng — 2026-10-18
 
 Theo owner, modal cố định vẫn phải kéo xuống từ thanh nắm để đóng. Tách quyền kéo handle/đóng khỏi scrollable: bật khi không locked, giữ content panning và outer scroll tắt cho course detail. Khi mutation pending, handle/đóng vẫn khoá. Không bật cuộn toàn modal; danh sách lớp giữ cuộn riêng.
+
+## Đồng bộ checklist (2026-10-22)
+
+Đối chiếu bằng chứng đã ghi, không chạy lại test trong lượt đồng bộ này. Xem [bảng đối chiếu và giới hạn](../../PROGRESS/ACCEPTANCE_SYNC_2026-10-22.md) và [PROGRESS liên quan](../../PROGRESS/PHASE_02_COURSE_CHECKOUT/PHASE_02_02_CLASS_PICKER.md). Trạng thái Done của phase giữ theo UAT owner đã có; checkbox chỉ phản ánh phạm vi kiểm chứng, không tự thay xác nhận owner.
+
+- Tiêu chí checkbox thứ 1: **Đạt một phần: UI/ảnh và owner approval đã có; nhật ký đổi bố cục nhãn chọn lớp chưa hoàn tất so sánh geometry hai trạng thái và chưa kiểm tra lại iOS/chữ lớn ở lượt đó. Không ghi toàn bộ thông số/biến thể đã đối chiếu đầy đủ.**

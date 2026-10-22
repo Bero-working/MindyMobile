@@ -92,6 +92,10 @@ Dùng cho Giỏ hàng, sheet khoá học (2.2) và Bộ lọc (2.1). `@gorhom/bo
 
 ## Tiêu chí nghiệm thu
 
-- [ ] Khớp artifact/ảnh: nền phủ tối 45%, bo 28, grabber, tiêu đề, hàng 54×54 + “Xoá” cam, tổng 22/900, CTA bo 14.
-- [ ] Bổ sung contract (lớp, đổi giá, không mua được) được owner xác nhận ở mốc duyệt UI.
-- [ ] Không optimistic, không gửi giá, lỗi theo `code`; không tự retry checkout.
+- [x] Khớp artifact/ảnh: nền phủ tối 45%, bo 28, grabber, tiêu đề, hàng 54×54 + “Xoá” cam, tổng 22/900, CTA bo 14.
+- [x] Bổ sung contract (lớp, đổi giá, không mua được) được owner xác nhận ở mốc duyệt UI.
+- [x] Không optimistic, không gửi giá, lỗi theo `code`; không tự retry checkout.
+
+## Đồng bộ checklist (2026-10-22)
+
+Đối chiếu bằng chứng đã ghi, không chạy lại test trong lượt đồng bộ này. Xem [bảng đối chiếu và giới hạn](../../PROGRESS/ACCEPTANCE_SYNC_2026-10-22.md) và [PROGRESS liên quan](../../PROGRESS/PHASE_02_COURSE_CHECKOUT/PHASE_02_03_CART_SHEET.md). Trạng thái Done của phase giữ theo UAT owner đã có; checkbox chỉ phản ánh phạm vi kiểm chứng, không tự thay xác nhận owner.

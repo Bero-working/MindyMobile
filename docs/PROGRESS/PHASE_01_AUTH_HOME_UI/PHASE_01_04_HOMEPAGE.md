@@ -115,3 +115,12 @@ Chỉ ghi thêm kết quả từng task; hiện chưa có entry triển khai.
 - Test: Tổng Jest 168/168, 39 suite PASS; ESLint, Prettier và TypeScript PASS trên file thay đổi. Android course-class-scroll PASS cả noti/chọn lớp/vuốt ngoài đứng yên và cuộn nội bộ. courses-browse rerun PASS bộ lọc, phân trang, mở modal, Back, giỏ rỗng. Ảnh evidence/course-modal-top-notice.png và evidence/courses-lowered-tabs.png.
 - PR / commit: Chưa tạo, chưa commit.
 - Ghi chú: Lần browse đầu thất bại do Maestro coi nút phân trang dưới lớp phủ tab là visible; sửa flow centerElement=true để cuộn vào vùng nhìn thấy trước khi bấm, rerun PASS. Raw lỗi giữ tại evidence/tabs-top-notice; final tại evidence/lowered-tabs-final. iOS/chữ lớn chưa kiểm tra lại. UI vẫn chờ owner xác nhận; API 2.6 và UAT 2.99 Todo.
+
+
+### 2026-10-22 09:25 (+07:00) · @Bero-working (Codex)
+
+- Phase: Đồng bộ tiêu chí sau tổng kết test/AI review theo yêu cầu owner.
+- Trạng thái: Done theo UAT owner đã có; giữ các giới hạn kiểm chứng, không ghi nhận UAT mới.
+- Tiêu chí: tick bổ sung 4 mục đủ bằng chứng đã ghi; 0 mục giữ chưa đủ bằng chứng và nêu lý do trong IMPLEMENT/bảng đối chiếu.
+- Test: Chỉ rà hồ sơ, không chạy lại app/Jest/Maestro/backend; không biến kết quả lịch sử hoặc owner approval thành lượt test mới.
+- Đồng bộ: [IMPLEMENT](../../IMPLEMENT/PHASE_01_AUTH_HOME_UI/PHASE_01_04_HOMEPAGE.md) và [bảng đối chiếu](../ACCEPTANCE_SYNC_2026-10-22.md); nhật ký cũ giữ nguyên.

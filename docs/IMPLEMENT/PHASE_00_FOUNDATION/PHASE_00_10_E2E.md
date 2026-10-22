@@ -19,7 +19,7 @@ Cài Maestro CLI, tạo thư mục flow và script `test:e2e` để mọi phase 
   chạy trước khi thêm `testID`, phải fail.
 
 ## Tiêu chí nghiệm thu
-- [ ] `npm run test:e2e` chạy flow mẫu xanh trên Android Emulator.
+- [x] `npm run test:e2e` chạy flow mẫu xanh trên Android Emulator.
 - [ ] Owner chốt cách truyền `APP_ID` cho script (Android và iOS).
 
 ## Xác nhận nghiệm thu cuối Phase 0
@@ -27,3 +27,9 @@ Cài Maestro CLI, tạo thư mục flow và script `test:e2e` để mọi phase 
 - Trạng thái: **Done** theo xác nhận owner trong chat ngày 2026-10-17: “Bước 6 approve và done phase 0, không cần đợi refresh”.
 - Checklist kiểm thử phía trên giữ mức bằng chứng đã ghi; việc đóng theo owner không bổ sung kết quả cho ca chưa chạy.
 - Chi tiết nghiệm thu và giới hạn tại [PROGRESS cấp phase](../../PROGRESS/PHASE_00_FOUNDATION/README.md).
+
+## Đồng bộ checklist (2026-10-22)
+
+Đối chiếu bằng chứng đã ghi, không chạy lại test trong lượt đồng bộ này. Xem [bảng đối chiếu và giới hạn](../../PROGRESS/ACCEPTANCE_SYNC_2026-10-22.md) và [PROGRESS liên quan](../../PROGRESS/PHASE_00_FOUNDATION/PHASE_00_10_E2E.md). Trạng thái Done của phase giữ theo UAT owner đã có; checkbox chỉ phản ánh phạm vi kiểm chứng, không tự thay xác nhận owner.
+
+- Tiêu chí checkbox thứ 2: **Đạt một phần: Android APP_ID=com.mindymobile và override đã kiểm chứng/owner duyệt bước 8; chưa có bằng chứng chốt riêng bundle ID và E2E iOS. Không suy từ build Simulator thành E2E iOS.**

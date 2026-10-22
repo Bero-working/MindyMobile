@@ -45,11 +45,15 @@ Sửa `src/navigation/index.tsx` theo [ADR-0024](../../adr/ADR-0024-phase-02-nav
 
 ## Tiêu chí nghiệm thu
 
-- [ ] Không có route chưa đăng ký hay nút chết; release không có fixture/preview.
-- [ ] ARCHITECTURE cập nhật cùng thay đổi navigator theo ADR-0024.
-- [ ] Ảnh đối chiếu và kết quả Maestro trong PROGRESS; phase chuyển In review “chờ owner xác nhận UI”.
+- [x] Không có route chưa đăng ký hay nút chết; release không có fixture/preview.
+- [x] ARCHITECTURE cập nhật cùng thay đổi navigator theo ADR-0024.
+- [x] Ảnh đối chiếu và kết quả Maestro trong PROGRESS; phase chuyển In review “chờ owner xác nhận UI”.
 
 
 ## Chạy E2E không cần APP_ID thủ công — 2026-10-18
 
 Owner chạy npm run test:e2e không truyền -e nên cả9flow nhận appId undefined và không mở được app. Mọi flow E2E dùng biểu thức mặc định APP_ID || "com.mindymobile", vẫn ưu tiên -e APP_ID khi truyền. Giữ package script/hạ tầng hiện có; không thêm thư viện. Cập nhật CONTRIBUTING và kiểm tra đúng lệnh npm run test:e2e không -e trên Android. Phase/UAT giữ In review dù test đạt, chờ owner duyệt lại.
+
+## Đồng bộ checklist (2026-10-22)
+
+Đối chiếu bằng chứng đã ghi, không chạy lại test trong lượt đồng bộ này. Xem [bảng đối chiếu và giới hạn](../../PROGRESS/ACCEPTANCE_SYNC_2026-10-22.md) và [PROGRESS liên quan](../../PROGRESS/PHASE_02_COURSE_CHECKOUT/PHASE_02_05_NAVIGATION.md). Trạng thái Done của phase giữ theo UAT owner đã có; checkbox chỉ phản ánh phạm vi kiểm chứng, không tự thay xác nhận owner.

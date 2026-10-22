@@ -128,7 +128,11 @@ adapter có kiểu; test dùng callback giả, không ghi authenticated user và
 
 ## Tiêu chí nghiệm thu
 
-- [ ] Welcome/Login khớp nguồn Claude đã xác nhận và hoạt động khi bàn phím mở/chữ lớn.
-- [ ] Có idle (form trống), validation, pending, error và success; không ép empty illustration vào form trống.
-- [ ] Không lưu/log password, cookie hoặc token; không tự đăng nhập giả khi bấm CTA.
-- [ ] Test form/callback xanh; Maestro dự kiến `e2e/flows/auth-ui-login.yaml`.
+- [x] Welcome/Login khớp nguồn Claude đã xác nhận và hoạt động khi bàn phím mở/chữ lớn.
+- [x] Có idle (form trống), validation, pending, error và success; không ép empty illustration vào form trống.
+- [x] Không lưu/log password, cookie hoặc token; không tự đăng nhập giả khi bấm CTA.
+- [x] Test form/callback xanh; Maestro dự kiến `e2e/flows/auth-ui-login.yaml`.
+
+## Đồng bộ checklist (2026-10-22)
+
+Đối chiếu bằng chứng đã ghi, không chạy lại test trong lượt đồng bộ này. Xem [bảng đối chiếu và giới hạn](../../PROGRESS/ACCEPTANCE_SYNC_2026-10-22.md) và [PROGRESS liên quan](../../PROGRESS/PHASE_01_AUTH_HOME_UI/PHASE_01_02_LOGIN.md). Trạng thái Done của phase giữ theo UAT owner đã có; checkbox chỉ phản ánh phạm vi kiểm chứng, không tự thay xác nhận owner.

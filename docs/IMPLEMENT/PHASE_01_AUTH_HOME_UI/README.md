@@ -112,14 +112,26 @@ Chỉ owner xác nhận UAT đạt mới chuyển phase `Done`.
 
 ## Tiêu chí nghiệm thu chung
 
-- [ ] UI bàn giao được đối chiếu với Auth và **Student Home 2a**, dùng nguồn/ảnh đã khảo sát trong references.
-- [ ] UI native bám bố cục, mascot, typography, khoảng cách, bo góc và thứ bậc CTA từ Claude; thích nghi safe area/bàn phím.
-- [ ] Light mode, Nunito, NativeWind/token hiện có; text qua i18n vi-VN/en-EN, không trộn component UI rn-kit/nativecn.
-- [ ] Form có idle/validation/pending/error/success; vùng dữ liệu Home có loading/empty/error/success.
+- [x] UI bàn giao được đối chiếu với Auth và **Student Home 2a**, dùng nguồn/ảnh đã khảo sát trong references.
+- [x] UI native bám bố cục, mascot, typography, khoảng cách, bo góc và thứ bậc CTA từ Claude; thích nghi safe area/bàn phím.
+- [x] Light mode, Nunito, NativeWind/token hiện có; text qua i18n vi-VN/en-EN, không trộn component UI rn-kit/nativecn.
+- [x] Form có idle/validation/pending/error/success; vùng dữ liệu Home có loading/empty/error/success.
 - [ ] Chạm tối thiểu 44×44, label đọc màn hình, chữ hệ thống lớn, Reduce Motion; không che nút bởi bàn phím.
-- [ ] Không tự tạo API, session, role hoặc số liệu học tập; dữ liệu mẫu chỉ dùng trong test/preview.
-- [ ] Mọi CTA hoạt động có chủ đích, không dẫn tới route chưa tồn tại; Student Home không làm đích mặc định cho staff.
+- [x] Không tự tạo API, session, role hoặc số liệu học tập; dữ liệu mẫu chỉ dùng trong test/preview.
+- [x] Mọi CTA hoạt động có chủ đích, không dẫn tới route chưa tồn tại; Student Home không làm đích mặc định cho staff.
 - [ ] Lint, format, type-check, Jest và Maestro Android qua; iOS ghi rõ nếu chưa có môi trường.
-- [ ] PROGRESS có bằng chứng AI và giới hạn; owner thực hiện UAT theo file 1.99.
+- [x] PROGRESS có bằng chứng AI và giới hạn; owner thực hiện UAT theo file 1.99.
 
+## Đồng bộ checklist (2026-10-22)
 
+Đối chiếu bằng chứng đã ghi, không chạy lại test trong lượt đồng bộ này. Xem [bảng đối chiếu và giới hạn](../../PROGRESS/ACCEPTANCE_SYNC_2026-10-22.md) và [PROGRESS liên quan](../../PROGRESS/PHASE_01_AUTH_HOME_UI/README.md). Trạng thái Done của phase giữ theo UAT owner đã có; checkbox chỉ phản ánh phạm vi kiểm chứng, không tự thay xác nhận owner.
+
+Kiểm tra chất lượng hiện tại có thêm CI Phase 4 run 39700197090: 63 suites/294 tests và 13 flow CI đạt; iOS là build Simulator. Đây là bằng chứng bổ sung ngày 2026-10-22, không thay số liệu/môi trường của các lượt lịch sử và không chứng minh API/thanh toán thật.
+
+- Tiêu chí checkbox thứ 5: **Đạt một phần: có đo target, chữ lớn/animator=0 và owner xác nhận TalkBack; Reduce Motion native sau thay đổi autoplay chưa được kiểm tra lại theo nhật ký. Giữ phần chưa kiểm tra, không tick toàn tiêu chí ghép.**
+
+## Dọn dẹp sau UAT (2026-10-22)
+
+Theo yêu cầu owner, đã bỏ thuộc tính preview không dùng của Home và 8 key Home cũ trong mỗi ngôn ngữ. Phạm vi, kết quả kiểm tra mới và đối chiếu tiêu chí tại [báo cáo dọn dẹp](../../PROGRESS/PHASE_01_AUTH_HOME_UI/POST_UAT_CLEANUP.md). Phase 1 và các sub-phase giữ Done theo UAT owner đã ghi; báo cáo mới bổ sung bằng chứng sau UAT. Tiêu chí accessibility ghép vẫn chưa đủ bằng chứng để tick toàn mục.
+
+Tiêu chí chất lượng mã/native ở lần hiện tại **Đạt một phần**: lint/format/type-check và 294/294 Jest đạt; Android chưa đạt toàn bộ flow, gồm app-launch dừng ở splash quá thời gian. Bỏ tick tiêu chí ghép để phản ánh lượt kiểm tra mới; các kết quả lịch sử ở PROGRESS vẫn giữ nguyên. Đây chưa phải kết luận lỗi chức năng mới do lượt dọn mã.

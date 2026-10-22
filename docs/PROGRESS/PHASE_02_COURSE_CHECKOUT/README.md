@@ -287,3 +287,12 @@ Nhật ký cấp phase: đổi trạng thái, Dọn dẹp, Kiểm tra, xác nh�
 - Test: Chỉ cập nhật tài liệu, không chạy lại test. Kế thừa E2E mặc định9/9 PASS7m12s, smoke APP_ID thủ công PASS, kiểm tra API/QR thật và hồi quy ADR-0028 đã ghi. Không suy ra bằng chứng mới cho iOS/quét ngân hàng/sandbox từ xác nhận UAT chung.
 - PR / commit: Chưa tạo, chưa commit.
 - Ghi chú: Phase2 hoàn tất theo owner, không phải AI tự duyệt. Giữ giới hạn bằng chứng tại API_REVIEW. Không bắt đầu phase mới khi chưa có yêu cầu.
+
+
+### 2026-10-22 09:25 (+07:00) · @Bero-working (Codex)
+
+- Phase: Đồng bộ hồ sơ nghiệm thu theo yêu cầu owner sau tổng kết test.
+- Trạng thái: Done theo xác nhận UAT lịch sử; không phát sinh xác nhận UAT hoặc kết quả kiểm thử mới.
+- Đã làm: Đối chiếu từng checklist với bằng chứng đã có, tick phần đủ căn cứ và ghi rõ phần chưa kiểm tra/đạt một phần; giữ giới hạn được owner chấp nhận. Các file đồng bộ: PHASE_02_01_COURSE_CATALOG.md, PHASE_02_02_CLASS_PICKER.md, PHASE_02_03_CART_SHEET.md, PHASE_02_04_PAYMENT_QR.md, PHASE_02_05_NAVIGATION.md, PHASE_02_06_API_INTEGRATION.md, README.md.
+- Test: Chỉ rà tài liệu/liên kết/diff. Kết quả CI Phase 4 là nguồn bổ sung có ngày/revision riêng, không thay kết quả các lượt cũ. Không chạy lại native/backend và không sửa mã nguồn.
+- Đồng bộ: [Bảng đối chiếu](../ACCEPTANCE_SYNC_2026-10-22.md); trạng thái roadmap/README giữ theo owner đã duyệt. Quy trình B.7.1 và template được cập nhật để tự đồng bộ trong cùng lượt review về sau. Nhật ký cũ giữ nguyên.

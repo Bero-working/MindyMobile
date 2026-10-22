@@ -45,6 +45,12 @@ single-flight của Foundation; không nhân đôi cơ chế refresh trong màn 
 
 ## Tiêu chí nghiệm thu
 
-- [ ] Ba màn và Welcome/Check email có luồng preview kiểm tra được, không có production auth bypass.
-- [ ] Không claim backend/auth end-to-end từ test UI; kết quả UAT tách rõ giới hạn này.
-- [ ] Kiểm thử/ảnh đối chiếu đầy đủ, không có nút chết hoặc route chưa đăng ký.
+- [x] Ba màn và Welcome/Check email có luồng preview kiểm tra được, không có production auth bypass.
+- [x] Không claim backend/auth end-to-end từ test UI; kết quả UAT tách rõ giới hạn này.
+- [x] Kiểm thử/ảnh đối chiếu đầy đủ, không có nút chết hoặc route chưa đăng ký.
+
+## Đồng bộ checklist (2026-10-22)
+
+Đối chiếu bằng chứng đã ghi, không chạy lại test trong lượt đồng bộ này. Xem [bảng đối chiếu và giới hạn](../../PROGRESS/ACCEPTANCE_SYNC_2026-10-22.md) và [PROGRESS liên quan](../../PROGRESS/PHASE_01_AUTH_HOME_UI/PHASE_01_05_NAVIGATION.md). Trạng thái Done của phase giữ theo UAT owner đã có; checkbox chỉ phản ánh phạm vi kiểm chứng, không tự thay xác nhận owner.
+
+Lượt dọn dẹp sau UAT ngày 2026-10-22 có kiểm tra mới, ghi riêng tại [báo cáo dọn dẹp](../../PROGRESS/PHASE_01_AUTH_HOME_UI/POST_UAT_CLEANUP.md). Đã bỏ prop Home.preview không còn được component sử dụng; cơ chế preview development và guard release giữ nguyên, được kiểm tra lại bằng Jest.

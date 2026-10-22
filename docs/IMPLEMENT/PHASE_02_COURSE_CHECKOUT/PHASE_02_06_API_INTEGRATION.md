@@ -126,3 +126,9 @@ Owner đã duyệt ADR-0028. HTTP giữ mã lỗi khi optional details trả obj
 ## Trạng thái sau owner UAT — 2026-10-18
 
 **Done** theo owner xác nhận “UAT phase 2 được approve” ngày2026-10-18. Mô tả In review ở mục bàn giao trước là lịch sử; giới hạn bằng chứng vẫn giữ tại API_REVIEW. Xem nhật ký cấp phase.
+
+## Đồng bộ checklist (2026-10-22)
+
+Đối chiếu bằng chứng đã ghi, không chạy lại test trong lượt đồng bộ này. Xem [bảng đối chiếu và giới hạn](../../PROGRESS/ACCEPTANCE_SYNC_2026-10-22.md) và [PROGRESS liên quan](../../PROGRESS/PHASE_02_COURSE_CHECKOUT/PHASE_02_06_API_INTEGRATION.md). Trạng thái Done của phase giữ theo UAT owner đã có; checkbox chỉ phản ánh phạm vi kiểm chứng, không tự thay xác nhận owner.
+
+- Tiêu chí checkbox thứ 3: **Chưa kiểm tra: QR backend đã tạo/hiển thị, nhưng chưa có bằng chứng quét bằng app ngân hàng. Giữ giới hạn thanh toán theo API_REVIEW; không dùng CI preview hoặc UAT tổng thể để tick ca này.**

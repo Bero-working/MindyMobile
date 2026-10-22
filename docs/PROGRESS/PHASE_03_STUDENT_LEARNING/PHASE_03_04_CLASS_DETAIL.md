@@ -118,3 +118,12 @@
 - Test: Red thiếu opener → Green; ClassDetailScreen và production integration2suites15tests PASS gồm open/close/pending/denial. Type-check/Prettier/scopedESLint PASS. Native final tại class-participants-final/2026-10-20_184336 PASS open/pending/Back/return detail, đã xem modal không nút Đóng. Không bấm link Meet hoặc tạo giao dịch thật.
 - Dữ liệu native hiện tại: đã mở được detail JS-101-ON1 với mentor Trần Quốc Bảo từ môi trường thật; giới hạn FULL ở entry cũ là dữ liệu trước khi account được cập nhật. Vẫn chưa có Student roster endpoint; học viên chờ backend theo xác nhận owner.
 - PR / commit: Chưa tạo; UAT chưa xác nhận.
+
+
+### 2026-10-22 09:25 (+07:00) · @Bero-working (Codex)
+
+- Phase: Đồng bộ tiêu chí sau tổng kết test/AI review theo yêu cầu owner.
+- Trạng thái: Done theo UAT owner đã có; giữ các giới hạn kiểm chứng, không ghi nhận UAT mới.
+- Tiêu chí: tick bổ sung 3 mục đủ bằng chứng đã ghi; 0 mục giữ chưa đủ bằng chứng và nêu lý do trong IMPLEMENT/bảng đối chiếu.
+- Test: Chỉ rà hồ sơ, không chạy lại app/Jest/Maestro/backend; không biến kết quả lịch sử hoặc owner approval thành lượt test mới.
+- Đồng bộ: [IMPLEMENT](../../IMPLEMENT/PHASE_03_STUDENT_LEARNING/PHASE_03_04_CLASS_DETAIL.md) và [bảng đối chiếu](../ACCEPTANCE_SYNC_2026-10-22.md); nhật ký cũ giữ nguyên.

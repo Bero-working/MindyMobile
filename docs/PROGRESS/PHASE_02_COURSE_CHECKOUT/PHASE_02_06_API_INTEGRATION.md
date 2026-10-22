@@ -91,3 +91,12 @@ Chỉ ghi thêm kết quả từng task; hiện chưa có entry triển khai.
 - Test: Kết quả GET sau xác thực mới tại evidence/api-remove-summary.json; native xoá/mở lại giỏ đã PASS.
 - PR / commit: Chưa tạo.
 - Ghi chú: Giữ nguyên giới hạn ngân hàng/sandbox và UAT chưa được owner xác nhận.
+
+
+### 2026-10-22 09:25 (+07:00) · @Bero-working (Codex)
+
+- Phase: Đồng bộ tiêu chí sau tổng kết test/AI review theo yêu cầu owner.
+- Trạng thái: Done theo UAT owner đã có; giữ các giới hạn kiểm chứng, không ghi nhận UAT mới.
+- Tiêu chí: tick bổ sung 0 mục đủ bằng chứng đã ghi; 1 mục giữ chưa đủ bằng chứng và nêu lý do trong IMPLEMENT/bảng đối chiếu.
+- Test: Chỉ rà hồ sơ, không chạy lại app/Jest/Maestro/backend; không biến kết quả lịch sử hoặc owner approval thành lượt test mới.
+- Đồng bộ: [IMPLEMENT](../../IMPLEMENT/PHASE_02_COURSE_CHECKOUT/PHASE_02_06_API_INTEGRATION.md) và [bảng đối chiếu](../ACCEPTANCE_SYNC_2026-10-22.md); nhật ký cũ giữ nguyên.

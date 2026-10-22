@@ -163,3 +163,12 @@ Chỉ ghi thêm kết quả từng task; hiện chưa có entry triển khai.
 - Test: Android trên modal production đang mở: kéo từ app-sheet-handle xuống → course-sheet biến mất → courses-screen hiện PASS; evidence/sheet-handle-dismiss. Không xoá phiên/giỏ hoặc gọi checkout. Jest11/11 PASS, ESLint/TypeScript/Prettier PASS.
 - PR / commit: Chưa tạo, chưa commit.
 - Ghi chú: ADR-0028 về parser lỗi add giỏ vẫn Proposed, chưa được owner duyệt; lượt này không sửa HTTP. Chưa iOS. Phase chờ owner UAT.
+
+
+### 2026-10-22 09:25 (+07:00) · @Bero-working (Codex)
+
+- Phase: Đồng bộ tiêu chí sau tổng kết test/AI review theo yêu cầu owner.
+- Trạng thái: Done theo UAT owner đã có; giữ các giới hạn kiểm chứng, không ghi nhận UAT mới.
+- Tiêu chí: tick bổ sung 1 mục đủ bằng chứng đã ghi; 1 mục giữ chưa đủ bằng chứng và nêu lý do trong IMPLEMENT/bảng đối chiếu.
+- Test: Chỉ rà hồ sơ, không chạy lại app/Jest/Maestro/backend; không biến kết quả lịch sử hoặc owner approval thành lượt test mới.
+- Đồng bộ: [IMPLEMENT](../../IMPLEMENT/PHASE_02_COURSE_CHECKOUT/PHASE_02_02_CLASS_PICKER.md) và [bảng đối chiếu](../ACCEPTANCE_SYNC_2026-10-22.md); nhật ký cũ giữ nguyên.

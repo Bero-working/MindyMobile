@@ -32,3 +32,12 @@
 - Đã làm: Không render nút lịch sử ở view current, giữ spacer44dp để tiêu đề giữa. Nếu màn đang ở history từ lượt trước thì giữ nút book về current; không đổi service/quyền dữ liệu. Flow folder/backend cập nhật không tìm nút đã bỏ; ảnh/history flow cũ là bằng chứng trước điều chỉnh này.
 - Kiểm tra: MyClassesScreen4tests PASS; Prettier/type-check/scopedESLint PASS.
 - PR / commit: Chưa tạo; UAT chưa xác nhận.
+
+
+### 2026-10-22 09:25 (+07:00) · @Bero-working (Codex)
+
+- Phase: Đồng bộ tiêu chí sau tổng kết test/AI review theo yêu cầu owner.
+- Trạng thái: Done theo UAT owner đã có; giữ các giới hạn kiểm chứng, không ghi nhận UAT mới.
+- Tiêu chí: tick bổ sung 3 mục đủ bằng chứng đã ghi; 0 mục giữ chưa đủ bằng chứng và nêu lý do trong IMPLEMENT/bảng đối chiếu.
+- Test: Chỉ rà hồ sơ, không chạy lại app/Jest/Maestro/backend; không biến kết quả lịch sử hoặc owner approval thành lượt test mới.
+- Đồng bộ: [IMPLEMENT](../../IMPLEMENT/PHASE_03_STUDENT_LEARNING/PHASE_03_03_MY_CLASSES.md) và [bảng đối chiếu](../ACCEPTANCE_SYNC_2026-10-22.md); nhật ký cũ giữ nguyên.

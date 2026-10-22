@@ -196,3 +196,18 @@ Nhật ký chỉ ghi thêm; trạng thái hiện tại tại IMPLEMENT/README v�
 - Giới hạn giữ nguyên: Student roster chờ API theo lựa chọn owner; chưa iOS/TalkBack thủ công; CASH_PREVIEW/PAYOS/đối soát và lịch có buổi chưa đủ bằng chứng backend/native thật. Protected detail JS-101-ON1 đã mở được theo entry 18:44–18:45 ngày 2026-10-20. Lint tổng repo còn lỗi asset JavaScript thiết kế cũ. UAT approval không chuyển các tình huống chưa kiểm tra thành PASS.
 - Kiểm tra: Thay đổi tài liệu; kiểm tra diff và tính nhất quán trạng thái, không chạy lại app/tests.
 - PR / commit: Chưa tạo.
+### 2026-10-21 (+07:00) · @Bero (Codex thực hiện)
+- Phase: Dọn dẹp và kiểm tra sau UAT, theo yêu cầu owner; trạng thái Done giữ nguyên.
+- Đã làm: Bỏ 75 raw log khỏi staging và thêm ignore hẹp, giữ tệp local; đồng bộ tài liệu API/điểm vào My Classes với bản đã nghiệm thu. Không thay đổi mã nguồn hoặc dependency.
+- Kiểm tra: Scoped ESLint 0 lỗi/1 warning test URL; lint toàn repo 626 lỗi/44 warnings tại asset thiết kế cũ. Maestro Android mở app/root PASS, không clearState. Liên kết tài liệu Phase 3 không thiếu tệp; diff-check PASS. Kế thừa Jest 63 suites/294 tests, type-check và format PASS của lượt trước trên cùng mã nguồn 55a7e12; không tuyên bố chạy lại những kiểm tra này.
+- Bàn giao: [Báo cáo sau UAT](POST_UAT_CHECK.md). Student roster/backend dataset/iOS/TalkBack và lint asset giữ giới hạn đã ghi; không suy ra có kiểm thử chức năng/backend mới.
+- PR / commit: Lượt dọn dẹp chưa commit; commit triển khai/UAT trước đó là 55a7e12.
+
+
+### 2026-10-22 09:25 (+07:00) · @Bero-working (Codex)
+
+- Phase: Đồng bộ hồ sơ nghiệm thu theo yêu cầu owner sau tổng kết test.
+- Trạng thái: Done theo xác nhận UAT lịch sử; không phát sinh xác nhận UAT hoặc kết quả kiểm thử mới.
+- Đã làm: Đối chiếu từng checklist với bằng chứng đã có, tick phần đủ căn cứ và ghi rõ phần chưa kiểm tra/đạt một phần; giữ giới hạn được owner chấp nhận. Các file đồng bộ: PHASE_03_01_SCHEDULE.md, PHASE_03_02_ACCOUNT.md, PHASE_03_03_MY_CLASSES.md, PHASE_03_04_CLASS_DETAIL.md, PHASE_03_05_NAVIGATION.md, PHASE_03_99_User_Acceptance.md, README.md.
+- Test: Chỉ rà tài liệu/liên kết/diff. Kết quả CI Phase 4 là nguồn bổ sung có ngày/revision riêng, không thay kết quả các lượt cũ. Không chạy lại native/backend và không sửa mã nguồn.
+- Đồng bộ: [Bảng đối chiếu](../ACCEPTANCE_SYNC_2026-10-22.md); trạng thái roadmap/README giữ theo owner đã duyệt. Quy trình B.7.1 và template được cập nhật để tự đồng bộ trong cùng lượt review về sau. Nhật ký cũ giữ nguyên.

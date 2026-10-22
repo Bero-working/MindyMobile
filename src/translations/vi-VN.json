@@ -129,25 +129,20 @@
     "sections": {
       "nextSession": "Buổi học tiếp theo",
       "courses": "Khoá học nổi bật",
-      "intro": "Có nhiều cách để bắt đầu.",
       "compiler": "Viết code ngay trên điện thoại",
       "about": "Về chúng tôi"
     },
     "actions": {
       "join": "Vào lớp",
       "explore": "Khám phá khoá học",
-      "select": "Chọn lớp cho {{title}}",
       "course": "Xem khoá học {{title}}",
       "cart": "Giỏ hàng",
       "unavailable": "Tính năng sẽ có trong phiên bản sau.",
-      "refresh": "Làm mới",
       "previewClass": "Xem trước lớp"
     },
     "empty": {
       "title": "Chưa có khoá học",
-      "description": "Các khoá học sẽ xuất hiện ở đây khi có dữ liệu.",
-      "action": "Khám phá khoá học",
-      "schedule": "Bạn chưa có buổi học sắp tới."
+      "description": "Các khoá học sẽ xuất hiện ở đây khi có dữ liệu."
     },
     "errorTitle": "Chưa thể tải nội dung",
     "tabs": {
@@ -221,11 +216,9 @@
       "dash": "– "
     },
     "compiler": {
-      "description": "Một không gian nhỏ để khám phá ý tưởng lập trình.",
       "action": "Thử compiler",
       "illustration": "Kết quả minh hoạ, không chạy mã thật.",
       "terminal": "mindy — zsh",
-      "sample": "$ mindy run hello\nHello, Mindy!\n3/3 — minh hoạ",
       "benefits": {
         "one": "Chạy code ngay, không cần cài đặt",
         "two": "Chấm bài tự động sau mỗi lần nộp",
@@ -243,7 +236,6 @@
     "footer": {
       "tagline": "Học lập trình. Mở thế giới của bạn.",
       "learn": "Học tập",
-      "support": "Hỗ trợ",
       "contact": "hotro@mindycoding.vn · 1900 0000",
       "copyright": "© 2026 Mindy Coding",
       "myClasses": "Lớp của tôi"

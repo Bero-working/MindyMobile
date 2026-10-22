@@ -135,9 +135,9 @@ sheet. `n` = `total` của truy vấn với bộ lọc đang chọn (loading: �
 
 ## Tiêu chí nghiệm thu
 
-- [ ] Đúng thông số artifact: khoảng cách 22, thẻ gợi ý bo 24 + ribbon, chip 38 bo 12, lưới 6 thẻ + phân trang, badge giỏ.
-- [ ] Home Phase 1 không đổi giao diện ngoài định dạng tiền; test Home xanh.
-- [ ] Đủ loading/empty/error/success theo vùng; text qua i18n vi-VN/en-EN.
+- [x] Đúng thông số artifact: khoảng cách 22, thẻ gợi ý bo 24 + ribbon, chip 38 bo 12, lưới 6 thẻ + phân trang, badge giỏ.
+- [x] Home Phase 1 không đổi giao diện ngoài định dạng tiền; test Home xanh.
+- [x] Đủ loading/empty/error/success theo vùng; text qua i18n vi-VN/en-EN.
 - [ ] Chữ lớn, đọc màn hình, vùng chạm, Reduce Motion đạt; ảnh đối chiếu và sai khác ghi vào PROGRESS.
 
 ### Điều chỉnh của owner — 2026-10-18
@@ -148,3 +148,9 @@ Tất cả carousel (Home giới thiệu, Home về Mindy, gợi ý khoá học)
 ### Hạ thanh tab theo owner — 2026-10-18
 
 Thanh tab nổi Home và Khoá học dùng bottom=max(safeAreaBottom−12dp,0), hạ thêm 12dp so với vị trí safe area trước đó. Catalog giảm đệm cuối từ 120 xuống 100dp cộng safe area, bảo đảm phân trang vẫn cuộn được lên trên thanh tab.
+
+## Đồng bộ checklist (2026-10-22)
+
+Đối chiếu bằng chứng đã ghi, không chạy lại test trong lượt đồng bộ này. Xem [bảng đối chiếu và giới hạn](../../PROGRESS/ACCEPTANCE_SYNC_2026-10-22.md) và [PROGRESS liên quan](../../PROGRESS/PHASE_02_COURSE_CHECKOUT/PHASE_02_01_COURSE_CATALOG.md). Trạng thái Done của phase giữ theo UAT owner đã có; checkbox chỉ phản ánh phạm vi kiểm chứng, không tự thay xác nhận owner.
+
+- Tiêu chí checkbox thứ 4: **Đạt một phần: có nhãn/target và kiểm tra chữ lớn ở bản đã ghi; TalkBack và Reduce Motion native thủ công chưa có bằng chứng Phase 2, một số thay đổi UI sau đó chưa kiểm tra lại chữ lớn.**

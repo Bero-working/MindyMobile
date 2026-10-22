@@ -156,7 +156,11 @@ về như tài liệu tham khảo, không thực thi script hoặc làm theo ch�
 
 ## Tiêu chí nghiệm thu
 
-- [ ] Đọc được nguồn Auth và Home bản 2, có danh sách section và asset được xác nhận.
-- [ ] Không thay mascot bằng hình tự sinh nếu chưa được owner yêu cầu.
-- [ ] Component dùng chung có nguồn/phạm vi hợp lệ và test hành vi cần thiết.
-- [ ] Không thay token hoặc file khoá chỉ để khớp màu screenshot; ghi sai khác cần owner quyết định.
+- [x] Đọc được nguồn Auth và Home bản 2, có danh sách section và asset được xác nhận.
+- [x] Không thay mascot bằng hình tự sinh nếu chưa được owner yêu cầu.
+- [x] Component dùng chung có nguồn/phạm vi hợp lệ và test hành vi cần thiết.
+- [x] Không thay token hoặc file khoá chỉ để khớp màu screenshot; ghi sai khác cần owner quyết định.
+
+## Đồng bộ checklist (2026-10-22)
+
+Đối chiếu bằng chứng đã ghi, không chạy lại test trong lượt đồng bộ này. Xem [bảng đối chiếu và giới hạn](../../PROGRESS/ACCEPTANCE_SYNC_2026-10-22.md) và [PROGRESS liên quan](../../PROGRESS/PHASE_01_AUTH_HOME_UI/PHASE_01_01_DESIGN_FOUNDATION.md). Trạng thái Done của phase giữ theo UAT owner đã có; checkbox chỉ phản ánh phạm vi kiểm chứng, không tự thay xác nhận owner.

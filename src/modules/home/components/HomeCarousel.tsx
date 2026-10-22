@@ -69,7 +69,6 @@ export function HomeCarousel({
 }: {
   kind: 'intro' | 'about';
   onAction?: ((index: number) => void) | undefined;
-  preview?: boolean;
 }) {
   const { t } = useTranslation();
   const [width, setWidth] = useState(0);

@@ -99,7 +99,11 @@ session**; resend nhận cùng loại phản hồi. UI nhận callback có kiể
 
 ## Tiêu chí nghiệm thu
 
-- [ ] Autofill đúng, có hiện/ẩn password, next focus và cuộn tới field lỗi; chữ lớn không che CTA.
-- [ ] Có form trống/validation/pending/error/check-email, resend có phản hồi riêng.
-- [ ] Không yêu cầu chọn role, không tự đăng nhập sau đăng ký và không triển khai deep link xác thực.
-- [ ] Test biên/payload/callback xanh; Maestro dự kiến `e2e/flows/auth-ui-register.yaml`.
+- [x] Autofill đúng, có hiện/ẩn password, next focus và cuộn tới field lỗi; chữ lớn không che CTA.
+- [x] Có form trống/validation/pending/error/check-email, resend có phản hồi riêng.
+- [x] Không yêu cầu chọn role, không tự đăng nhập sau đăng ký và không triển khai deep link xác thực.
+- [x] Test biên/payload/callback xanh; Maestro dự kiến `e2e/flows/auth-ui-register.yaml`.
+
+## Đồng bộ checklist (2026-10-22)
+
+Đối chiếu bằng chứng đã ghi, không chạy lại test trong lượt đồng bộ này. Xem [bảng đối chiếu và giới hạn](../../PROGRESS/ACCEPTANCE_SYNC_2026-10-22.md) và [PROGRESS liên quan](../../PROGRESS/PHASE_01_AUTH_HOME_UI/PHASE_01_03_REGISTER.md). Trạng thái Done của phase giữ theo UAT owner đã có; checkbox chỉ phản ánh phạm vi kiểm chứng, không tự thay xác nhận owner.

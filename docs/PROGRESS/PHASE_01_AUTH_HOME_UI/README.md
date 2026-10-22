@@ -149,3 +149,32 @@ kiểm thử hoặc UAT. Khi bàn giao cần ghi rõ nguồn Claude Auth, Studen
 - Test: Chỉ ghi nhận approval, không chạy kiểm thử mới. Kết quả 12 test, lint/format/TypeScript ở entry 15:01 được giữ nguyên; không suy ra môi trường hoặc ca test mới từ xác nhận duyệt.
 - PR / commit: Chưa tạo.
 - Ghi chú: Approval áp dụng cho phản hồi Login vừa bàn giao; không thay kết quả kiểm tra hoặc bản ghi lịch sử khác.
+
+
+### 2026-10-22 09:25 (+07:00) · @Bero-working (Codex)
+
+- Phase: Đồng bộ hồ sơ nghiệm thu theo yêu cầu owner sau tổng kết test.
+- Trạng thái: Done theo xác nhận UAT lịch sử; không phát sinh xác nhận UAT hoặc kết quả kiểm thử mới.
+- Đã làm: Đối chiếu từng checklist với bằng chứng đã có, tick phần đủ căn cứ và ghi rõ phần chưa kiểm tra/đạt một phần; giữ giới hạn được owner chấp nhận. Các file đồng bộ: PHASE_01_01_DESIGN_FOUNDATION.md, PHASE_01_02_LOGIN.md, PHASE_01_03_REGISTER.md, PHASE_01_04_HOMEPAGE.md, PHASE_01_05_NAVIGATION.md, PHASE_01_06_API_INTEGRATION.md, PHASE_01_99_User_Acceptance.md, README.md.
+- Test: Chỉ rà tài liệu/liên kết/diff. Kết quả CI Phase 4 là nguồn bổ sung có ngày/revision riêng, không thay kết quả các lượt cũ. Không chạy lại native/backend và không sửa mã nguồn.
+- Đồng bộ: [Bảng đối chiếu](../ACCEPTANCE_SYNC_2026-10-22.md); trạng thái roadmap/README giữ theo owner đã duyệt. Quy trình B.7.1 và template được cập nhật để tự đồng bộ trong cùng lượt review về sau. Nhật ký cũ giữ nguyên.
+
+### 2026-10-22 09:42 (+07:00) · @Bero
+- Phase: 1 Dọn dẹp sau UAT
+- Trạng thái: Done
+- Đã làm: AI rà phạm vi main...HEAD, thu hẹp vào Auth/Home; bỏ HomeProps.preview/HomeCarousel.preview không sử dụng, đối số dư tại preview/test và 8 key Home cũ trong mỗi ngôn ngữ. Đồng bộ duy nhất nơi truyền homeProps.preview trong PhaseThreePreview để giữ type-check. Giữ thay đổi có sẵn của người dùng, hạ tầng, asset nguồn và nhật ký lịch sử. Chi tiết tại [báo cáo dọn dẹp](POST_UAT_CLEANUP.md).
+- Test: Baseline toàn repo 63 suites/294 tests PASS; sau dọn mã, Home/điều hướng preview/i18n 3 suites/24 tests PASS. ESLint 0 lỗi/1 warning có sẵn ngoài Phase 1; Prettier/type-check PASS. Maestro Android đang chạy; chưa tổng kết bước Kiểm tra.
+- Tiêu chí nghiệm thu: Dọn mã trong phạm vi đạt; bản dịch chỉ xoá đúng 8 key mỗi file, không đổi key còn lại; guard release/preview được Jest kiểm tra lại. Giữ giới hạn Reduce Motion native và điều kiện In review lịch sử trước UAT chưa đủ hồ sơ.
+- Đồng bộ: IMPLEMENT Phase 1 README, 1.5, 1.99 và roadmap giữ Done theo xác nhận owner trước đó; bổ sung báo cáo hiện tại, không tự tick các vế chưa kiểm tra hoặc nghiệm thu lại thay owner.
+- PR / commit: Chưa tạo; nền 67cdc9e và working tree hiện tại.
+- Ghi chú: Handle @Bero do owner cung cấp trực tiếp trong chat vì máy không có gh. Cảnh báo act/MSW của các test đã có được ghi trong báo cáo; không tắt cảnh báo để làm sạch output. Bằng chứng Android được bổ sung sau khi lượt chạy kết thúc.
+
+### 2026-10-22 09:58 (+07:00) · @Bero
+- Phase: 1 Kiểm tra bổ sung sau dọn dẹp
+- Trạng thái: In review — bước kiểm tra mới chưa đạt đầy đủ; Phase 1 và UAT lịch sử giữ Done.
+- Đã làm: AI hoàn tất kiểm tra trên bản sau dọn mã và ghi [báo cáo](POST_UAT_CLEANUP.md), lưu JUnit/Jest summary kèm SHA-256 mã nguồn và ảnh tại evidence/cleanup-2026-10-22. Không sửa code runtime, test flow hay timeout sau khi có lỗi Android.
+- Test: Lint toàn repo 0 lỗi/1 warning có sẵn; Prettier/type-check PASS. Jest toàn repo sau dọn mã 63 suites/294 tests PASS, tự thoát, không forceExit. Android Pixel_8/API37/Maestro2.11.0: lượt đầu 2/5 PASS (Login/Register); chạy lại đúng 3 ca chưa đạt, 0/3 PASS. app-launch còn splash khi hết thời gian; Home đã qua các trạng thái/retry/course sheet nhưng không cuộn tới dot-2; carousel lần chạy lại dừng trước preview ở bước chờ Welcome. Giữ kết quả thất bại, không coi ảnh từng bước là toàn flow PASS.
+- Tiêu chí nghiệm thu: Dọn mã đạt; chất lượng tổng hợp đạt một phần do E2E Android chưa xanh đầy đủ. Chưa kiểm tra iOS/release hoặc Reduce Motion native; không gửi email, đăng nhập thật hay thanh toán. Chưa đủ bằng chứng quy lỗi Android cho thay đổi dọn mã; cần xác minh môi trường khởi động/phiên và thao tác cuộn trước khi đóng bước Kiểm tra bổ sung.
+- Đồng bộ: README IMPLEMENT Phase 1 bỏ tick tiêu chí chất lượng ghép, còn 7/9; 1.5/1.99 và roadmap dẫn tới báo cáo hiện tại, trạng thái UAT giữ theo owner. ACCEPTANCE_SYNC có phần bổ sung sau dọn dẹp, không sửa số liệu lịch sử. Điều kiện Dọn dẹp/chuyển In review trước UAT 2026-10-17 và accessibility ghép vẫn chưa đủ hồ sơ để tick.
+- PR / commit: Chưa tạo; nền 67cdc9e và working tree hiện tại.
+- Ghi chú: Handle do owner cung cấp trong chat. Raw log chỉ lưu TEMP, không commit. Tiến trình Metro/emulator do AI mở cho lượt này được dừng sau kiểm tra. Các thay đổi có sẵn của người dùng và entry lịch sử giữ nguyên.
