@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import {
   useNavigation,
   useRoute,
+  useIsFocused,
   type RouteProp,
 } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -15,6 +16,7 @@ import type { NavigationProp, RootStackParamList } from '@/navigation/types';
 import { PaymentScreen } from './PaymentScreen';
 import { usePaymentController } from './hooks/usePaymentController';
 import { usePaymentQuery } from './hooks/usePaymentQuery';
+import { paymentResultHome } from './resultNavigation';
 
 const ORDER_ERRORS = ['ORDER_NOT_FOUND', 'ORDER_ACCESS_DENIED'];
 export function PaymentRoute() {
@@ -40,9 +42,11 @@ function StudentPayment() {
   const { t } = useTranslation();
   const navigation = useNavigation<NavigationProp>();
   const route = useRoute<RouteProp<RootStackParamList, routes.payment>>();
+  const focused = useIsFocused();
   const data = usePaymentQuery(
     route.params?.orderId ?? '',
-    route.params?.origin === 'learning'
+    route.params?.origin === 'learning',
+    focused
   );
   const controller = usePaymentController();
   const leave = () =>
@@ -94,8 +98,13 @@ function StudentPayment() {
       order={data.order}
       payment={data.payment}
       errorCode={data.errorCode}
+      result={focused ? data.result : undefined}
+      retrying={data.retrying}
+      canRetry={data.canRetry}
       onRetry={data.onRetry}
       onLeave={leave}
+      onHome={() => paymentResultHome(navigation)}
+      onCourses={() => navigation.navigate(routes.courses)}
     />
   );
 }

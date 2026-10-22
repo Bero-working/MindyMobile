@@ -9,6 +9,7 @@ import { LoginScreen } from '../auth/LoginScreen';
 import { RegisterScreen } from '../auth/RegisterScreen';
 import { PhaseTwoPreview } from './PhaseTwoPreview';
 import { PhaseThreePreview } from './PhaseThreePreview';
+import { PhaseFivePreview } from './PhaseFivePreview';
 import type { HomeProps } from '../home/types/home.type';
 import { ApiError } from '@/shared/utilities/apiError';
 import routes from '@/navigation/routes';
@@ -41,7 +42,8 @@ type Mode =
   | 'courses'
   | 'schedule'
   | 'account'
-  | 'classes';
+  | 'classes'
+  | 'paymentResult';
 type DataState = 'success' | 'loading' | 'empty' | 'error';
 const pause = () => new Promise<void>((resolve) => setTimeout(resolve, 400));
 
@@ -62,6 +64,7 @@ function DevelopmentPreview() {
           mode === 'menu' ||
           mode === 'schedule' ||
           mode === 'account' ||
+          mode === 'paymentResult' ||
           mode === 'classes'
         )
           return false;
@@ -148,6 +151,14 @@ function DevelopmentPreview() {
         onExit={() => setMode('menu')}
       />
     );
+  if (mode === 'paymentResult')
+    return (
+      <PhaseFivePreview
+        onHome={() => setMode('home')}
+        onCourses={() => setMode('courses')}
+        onExit={() => setMode('menu')}
+      />
+    );
   return (
     <View
       testID="phase-one-preview"
@@ -227,6 +238,11 @@ function DevelopmentPreview() {
       )}
       {mode === 'menu' ? (
         <ScrollView contentContainerClassName="gap-[16px] p-[24px]">
+          <Button
+            testID="preview-payment-result-button"
+            label={t('payment.result.preview')}
+            onPress={() => setMode('paymentResult')}
+          />
           {(['schedule', 'account', 'classes'] as const).map((next) => (
             <Button
               key={next}

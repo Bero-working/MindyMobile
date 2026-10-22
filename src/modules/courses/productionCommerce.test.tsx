@@ -24,6 +24,7 @@ import { CoursesRoute } from './CoursesRoute';
 import { PaymentRoute } from '@/modules/payment/PaymentRoute';
 const mockNavigate = jest.fn();
 jest.mock('@react-navigation/native', () => ({
+  useIsFocused: () => true,
   useNavigation: () => ({ navigate: mockNavigate, replace: mockNavigate }),
   useRoute: () => ({
     params: { orderId: '22222222-2222-4222-8222-000000000500' },
@@ -316,7 +317,9 @@ it('renders the real order QR route, and never creates a link for a closed order
   );
   renderWithProviders(<PaymentRoute />);
   await waitFor(() =>
-    expect(screen.getByTestId('payment-qr-expired')).toBeTruthy()
+    expect(screen.getByTestId('payment-result-title').props.children).toBe(
+      'Đơn thanh toán đã hết hạn'
+    )
   );
   expect(posts).toBe(1);
 });

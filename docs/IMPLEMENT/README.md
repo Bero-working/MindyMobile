@@ -17,7 +17,8 @@ Chờ duyệt UI và chờ UAT đều có thể là In review nhưng phải ghi 
 | 2 | [PHASE_02_COURSE_CHECKOUT](PHASE_02_COURSE_CHECKOUT/README.md) | Phase 1; ADR-0024, ADR-0025, ADR-0027, ADR-0028 Accepted | @Bero | Done | Owner duyệt lại “UAT phase 2 approve” ngày2026-10-18 21:34 (+07:00), sau sửa E2E9/9 PASS; chi tiết tại PROGRESS |
 | 3 | [PHASE_03_STUDENT_LEARNING](PHASE_03_STUDENT_LEARNING/README.md) | Phase 0/1/2 Done; ADR-0030 Accepted | @Bero | Done | Owner xác nhận “Tôi duyệt UAT phase 3” trong chat ngày 2026-10-21 (+07:00); giới hạn kiểm thử và Student roster chờ API giữ trong PROGRESS |
 | 4 | [PHASE_04_GITHUB_ACTIONS](PHASE_04_GITHUB_ACTIONS/README.md) | Phase 0/1/2/3 Done; ADR-0031 Accepted | @Bero | Done | Owner xác nhận “phase 4 done” trong chat ngày 2026-10-22; 4.1–4.5 và UAT 4.99 Done. Bằng chứng CI run 39700197090 và các giới hạn giữ tại PROGRESS Phase 4/HANDOFF.md |
-| 5+ | — | Theo từng phase | — | — | Owner sẽ thêm các phase tiếp theo |
+| 5 | [PHASE_05_PAYMENT_RESULT](PHASE_05_PAYMENT_RESULT/README.md) | Phase 0–4 Done; owner cung cấp ảnh ticket | @Bero | Done | Owner xác nhận UAT Done ngày2026-10-22; API ba ticket và dọn dẹp sau UAT hoàn tất. Kiểm tra mới/giới hạn bằng chứng tại PROGRESS |
+| 6+ | — | Theo từng phase | — | — | Owner sẽ thêm các phase tiếp theo |
 
 ## Bàn giao thiết kế UI
 

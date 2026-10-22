@@ -393,9 +393,35 @@
       "PAYMENT_AMOUNT_INVALID": "Không tạo được mã thanh toán.",
       "ORDER_NOT_FOUND": "Không tìm thấy đơn hàng.",
       "ORDER_ACCESS_DENIED": "Bạn không có quyền xem đơn hàng.",
-      "generic": "Không tải được thông tin thanh toán."
+      "generic": "Không tải được thông tin thanh toán.",
+      "PAYMENT_REQUIRES_REVIEW": "Giao dịch đang được đối soát. Vui lòng không thanh toán lại.",
+      "PAYMENT_CONFIRMATION_TIMEOUT": "Chưa nhận được xác nhận thanh toán. Nếu đã chuyển khoản, vui lòng không thanh toán lại; hãy thử kiểm tra trạng thái đơn."
     },
-    "minute": "Mã QR còn hiệu lực 1 phút."
+    "minute": "Mã QR còn hiệu lực 1 phút.",
+    "result": {
+      "PAID": {
+        "title": "Thanh toán thành công",
+        "description": "Đơn hàng đã được xác nhận. Cảm ơn bạn đã đồng hành cùng Mindy!"
+      },
+      "CANCELLED": {
+        "title": "Thanh toán không thành công",
+        "description": "Đơn hàng đã được huỷ. Bạn có thể chọn lớp và tạo đơn mới."
+      },
+      "EXPIRED": {
+        "title": "Đơn thanh toán đã hết hạn",
+        "description": "Đơn hàng đã hết hạn giữ chỗ. Bạn có thể chọn lớp và tạo đơn mới."
+      },
+      "actions": {
+        "home": "Về trang chủ",
+        "retry": "Thử lại"
+      },
+      "retryHint": "Giữ chỗ đã kết thúc. Giá và số chỗ sẽ được cập nhật khi bạn chọn lại lớp.",
+      "orderLabel": "Mã đơn hàng",
+      "totalLabel": "Tổng thanh toán",
+      "preview": "Kết quả thanh toán (dữ liệu mẫu)",
+      "previewDescription": "Bản xem trước dùng dữ liệu mẫu, không xác nhận thanh toán thật.",
+      "previewExit": "Về menu xem trước"
+    }
   },
   "learning": {
     "back": "Quay lại",
@@ -424,7 +450,10 @@
     "month": "Tháng {{month}}, {{year}}",
     "goToday": "Chạm để về tuần hiện tại và chọn hôm nay",
     "classCode": "Mã lớp",
-    "delivery": { "ONLINE": "Online", "OFFLINE": "Offline" },
+    "delivery": {
+      "ONLINE": "Online",
+      "OFFLINE": "Offline"
+    },
     "room": "Phòng: {{room}}",
     "mentor": "Giảng viên: {{name}}",
     "timeSeparator": "–",

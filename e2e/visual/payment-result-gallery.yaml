@@ -1,0 +1,93 @@
+appId: ${APP_ID || "com.mindymobile"}
+tags:
+  - payment-result-preview
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible:
+      id: 'login-screen'
+    timeout: 90000
+- tapOn:
+    id: 'auth-back-button'
+- scrollUntilVisible:
+    element:
+      id: 'phase-one-preview-button'
+    direction: DOWN
+- tapOn:
+    id: 'phase-one-preview-button'
+- scrollUntilVisible:
+    element:
+      id: 'preview-payment-result-button'
+    direction: UP
+- tapOn:
+    id: 'preview-payment-result-button'
+- tapOn:
+    id: 'preview-result-PAID'
+- assertVisible:
+    id: 'payment-result-title'
+- takeScreenshot: 'phase5-PAID-top'
+- scrollUntilVisible:
+    element:
+      id: 'payment-result-home'
+    direction: DOWN
+- assertVisible:
+    id: 'payment-result-home'
+- takeScreenshot: 'phase5-PAID-actions'
+- back
+- waitForAnimationToEnd:
+    timeout: 1500
+- tapOn:
+    id: 'preview-tools-toggle'
+- tapOn:
+    id: 'preview-menu-button'
+- scrollUntilVisible:
+    element:
+      id: 'preview-payment-result-button'
+    direction: UP
+- tapOn:
+    id: 'preview-payment-result-button'
+- tapOn:
+    id: 'preview-result-CANCELLED'
+- assertVisible:
+    id: 'payment-result-title'
+- takeScreenshot: 'phase5-CANCELLED-top'
+- scrollUntilVisible:
+    element:
+      id: 'payment-result-retry'
+    direction: DOWN
+- assertVisible:
+    id: 'payment-result-retry'
+- takeScreenshot: 'phase5-CANCELLED-actions'
+- back
+- waitForAnimationToEnd:
+    timeout: 1500
+- tapOn:
+    id: 'preview-tools-toggle'
+- tapOn:
+    id: 'preview-menu-button'
+- scrollUntilVisible:
+    element:
+      id: 'preview-payment-result-button'
+    direction: UP
+- tapOn:
+    id: 'preview-payment-result-button'
+- tapOn:
+    id: 'preview-result-EXPIRED'
+- assertVisible:
+    id: 'payment-result-title'
+- takeScreenshot: 'phase5-EXPIRED-top'
+- scrollUntilVisible:
+    element:
+      id: 'payment-result-retry'
+    direction: DOWN
+- assertVisible:
+    id: 'payment-result-retry'
+- takeScreenshot: 'phase5-EXPIRED-actions'
+- back
+- waitForAnimationToEnd:
+    timeout: 1500
+- tapOn:
+    id: 'preview-tools-toggle'
+- tapOn:
+    id: 'preview-menu-button'
