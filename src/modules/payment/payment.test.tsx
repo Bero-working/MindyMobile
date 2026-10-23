@@ -85,6 +85,30 @@ it('confirms before leaving a live order', () => {
   alert.mockRestore();
 });
 
+it('isolates QR behind a result and sends success to Home', () => {
+  const home = jest.fn();
+  const leave = jest.fn();
+  render(
+    <PaymentScreen
+      {...props}
+      result={{ state: 'PAID', orderCode: order.orderCode }}
+      onHome={home}
+      onLeave={leave}
+    />
+  );
+  expect(
+    screen.getByTestId('payment-background', { includeHiddenElements: true })
+      .props.importantForAccessibility
+  ).toBe('no-hide-descendants');
+  expect(
+    screen.getByTestId('payment-background', { includeHiddenElements: true })
+      .props.pointerEvents
+  ).toBe('none');
+  fireEvent.press(screen.getByTestId('payment-result-home'));
+  expect(home).toHaveBeenCalledTimes(1);
+  expect(leave).not.toHaveBeenCalled();
+});
+
 it('copies only the supplied bank details and hides copy actions after expiry', () => {
   const copy = jest.fn();
   const bankInfo = {

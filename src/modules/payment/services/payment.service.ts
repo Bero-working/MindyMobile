@@ -19,12 +19,21 @@ const parse = <S extends z.ZodTypeAny>(
 };
 export type OrderPayment = z.infer<typeof orderPaymentSchema>;
 export const paymentService = {
-  async order(orderId: string, signal?: AbortSignal): Promise<OrderPayment> {
+  async order(
+    orderId: string,
+    signal?: AbortSignal,
+    timeout?: number
+  ): Promise<OrderPayment> {
     const response = await apiInstances.service.get<OrderPayment>(
       `me/orders/${orderId}`,
-      signal ? { signal } : {}
+      {
+        ...(signal ? { signal } : {}),
+        ...(timeout === undefined ? {} : { timeout }),
+      }
     );
-    return parse(orderPaymentSchema, response);
+    const order = parse(orderPaymentSchema, response);
+    if (order.id !== orderId) throw invalidPaymentResponse();
+    return order;
   },
   // Creates or reuses the PayOS link; safe to call repeatedly.
   async createPayos(
@@ -57,7 +66,12 @@ export const paymentService = {
 };
 const BACKOFF_MS = [2000, 4000, 8000];
 const WAIT_LIMIT_MS = 30_000;
-export class PaymentCancelled extends Error {}
+export class PaymentCancelled extends Error {
+  constructor() {
+    super('Payment request cancelled');
+    this.name = 'PaymentCancelled';
+  }
+}
 // CREATING means PayOS is still preparing the link: retry with backoff, then give up with qrCode null.
 export async function waitForPayosLink(
   orderId: string,

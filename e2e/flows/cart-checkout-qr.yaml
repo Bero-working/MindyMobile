@@ -7,8 +7,12 @@ tags:
     clearState: true
 - extendedWaitUntil:
     visible:
-      id: 'welcome-screen'
+      id: 'login-screen'
     timeout: 90000
+- tapOn:
+    id: 'auth-back-button'
+- assertVisible:
+    id: 'welcome-screen'
 - scrollUntilVisible:
     element:
       id: 'phase-one-preview-button'

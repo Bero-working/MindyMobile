@@ -54,6 +54,17 @@ it('reads the order with its nullable payment', async () => {
   });
 });
 
+it('rejects an order response belonging to a different order id', async () => {
+  mockServer.use(
+    http.get(TEST_API_URL + '/me/orders/:id', () =>
+      HttpResponse.json({ ...order(2, [id(10)]), payment: null })
+    )
+  );
+  await expect(paymentService.order(id(1))).rejects.toMatchObject({
+    code: 'INVALID_PAYMENT_RESPONSE',
+  });
+});
+
 it('retries a CREATING link with 2s then 4s backoff until the QR is ready', async () => {
   const replies = [
     payment('CREATING'),

@@ -32,7 +32,11 @@ export function LoginRoute() {
   return (
     <LoginScreen
       onLogin={login}
-      onBack={() => navigation.goBack()}
+      onBack={() =>
+        navigation.canGoBack()
+          ? navigation.goBack()
+          : navigation.navigate(routes.welcome)
+      }
       onRegister={() => navigation.navigate(routes.register)}
     />
   );

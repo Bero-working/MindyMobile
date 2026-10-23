@@ -1,0 +1,53 @@
+# Real backend flow. Start manually on PAYMENT with a Student test session/order.
+# Have the backend test operator prepare the requested terminal outcome without moving real money.
+# RESULT_STATUS must be PAID, CANCELLED or EXPIRED; use the Vietnamese app locale.
+# This flow has not been run without a suitable backend test dataset.
+appId: ${APP_ID || "com.mindymobile"}
+tags:
+  - backend
+---
+- assertTrue: ${RESULT_STATUS == "PAID" || RESULT_STATUS == "CANCELLED" || RESULT_STATUS == "EXPIRED"}
+- extendedWaitUntil:
+    visible:
+      id: 'payment-result-ticket'
+    timeout: 150000
+- runFlow:
+    when:
+      true: ${RESULT_STATUS == "PAID"}
+    commands:
+      - assertVisible: 'Thanh toán thành công'
+      - tapOn:
+          id: 'payment-result-home'
+      - assertVisible:
+          id: 'home-screen'
+      - back
+      - assertNotVisible:
+          id: 'payment-result-ticket'
+      - assertNotVisible:
+          id: 'payment-qr'
+- runFlow:
+    when:
+      true: ${RESULT_STATUS == "CANCELLED"}
+    commands:
+      - assertVisible: 'Thanh toán không thành công'
+      - scrollUntilVisible:
+          element:
+            id: 'payment-result-retry'
+          direction: DOWN
+      - tapOn:
+          id: 'payment-result-retry'
+      - assertVisible:
+          id: 'courses-screen'
+- runFlow:
+    when:
+      true: ${RESULT_STATUS == "EXPIRED"}
+    commands:
+      - assertVisible: 'Đơn thanh toán đã hết hạn'
+      - scrollUntilVisible:
+          element:
+            id: 'payment-result-retry'
+          direction: DOWN
+      - tapOn:
+          id: 'payment-result-retry'
+      - assertVisible:
+          id: 'courses-screen'

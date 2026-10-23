@@ -393,9 +393,35 @@
       "PAYMENT_AMOUNT_INVALID": "Unable to create a payment QR code.",
       "ORDER_NOT_FOUND": "Order not found.",
       "ORDER_ACCESS_DENIED": "You cannot access this order.",
-      "generic": "Unable to load payment information."
+      "generic": "Unable to load payment information.",
+      "PAYMENT_REQUIRES_REVIEW": "This transaction is under review. Please do not pay again.",
+      "PAYMENT_CONFIRMATION_TIMEOUT": "Payment has not been confirmed. If you have transferred funds, do not pay again; check the order status."
     },
-    "minute": "Your QR code expires in one minute."
+    "minute": "Your QR code expires in one minute.",
+    "result": {
+      "PAID": {
+        "title": "Payment successful",
+        "description": "Your order has been confirmed. Thank you for learning with Mindy!"
+      },
+      "CANCELLED": {
+        "title": "Payment unsuccessful",
+        "description": "The order was cancelled. You can select a class and place a new order."
+      },
+      "EXPIRED": {
+        "title": "Payment order expired",
+        "description": "The seat reservation has expired. You can select a class and place a new order."
+      },
+      "actions": {
+        "home": "Go to Home",
+        "retry": "Try again"
+      },
+      "retryHint": "Your reservation has ended. Prices and availability will be updated when you select a class again.",
+      "orderLabel": "Order reference",
+      "totalLabel": "Total payment",
+      "preview": "Payment results (sample data)",
+      "previewDescription": "This preview uses sample data and does not confirm a real payment.",
+      "previewExit": "Back to preview menu"
+    }
   },
   "learning": {
     "back": "Back",
@@ -424,7 +450,10 @@
     "month": "{{month}}, {{year}}",
     "goToday": "Tap to return to this week and select today",
     "classCode": "Class code",
-    "delivery": { "ONLINE": "Online", "OFFLINE": "Offline" },
+    "delivery": {
+      "ONLINE": "Online",
+      "OFFLINE": "Offline"
+    },
     "room": "Room: {{room}}",
     "mentor": "Mentor: {{name}}",
     "timeSeparator": "–",

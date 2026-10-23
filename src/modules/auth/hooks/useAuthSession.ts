@@ -23,8 +23,9 @@ export function useAuthSession() {
     if (status !== 'idle') return;
     if (query.isSuccess)
       useStore.getState().acceptSession(query.data, generation);
-    else if (query.isError && query.error.status === 401)
-      useStore.getState().acceptSession(null, generation);
+    // An unverified session must not block access to the public login form.
+    // Native HttpOnly cookies remain available for the next authentication request.
+    else if (query.isError) useStore.getState().acceptSession(null, generation);
   }, [
     generation,
     status,
@@ -37,12 +38,7 @@ export function useAuthSession() {
     if (status === 'ready' && !user) client.clear();
   }, [client, status, user]);
   return {
-    pending: status === 'idle' && !query.isError,
-    error:
-      status === 'idle' && query.isError && query.error.status !== 401
-        ? query.error
-        : null,
-    retry: query.refetch,
+    pending: status === 'idle',
   };
 }
 

@@ -40,6 +40,11 @@ UI, Done (owner duyệt UAT ngày 2026-10-21). Base `section#t2` → `showProfil
 
 ## Nghiệm thu
 
+### Sửa lỗi CI PR #5 — 2026-10-22
+
+- Sheet profile tiếp tục cuộn; sheet ngôn ngữ và xác nhận đăng xuất dùng chế độ nội dung cố định của AppSheet hiện có để đo chiều cao qua layout, tránh phụ thuộc khởi tạo ScrollView cho nội dung ngắn.
+- Flow account chờ backdrop biến mất sau đóng profile/đổi ngôn ngữ, kiểm tra hủy đăng xuất rồi mở lại và xác nhận. Không bỏ assertion xác nhận đăng xuất hoặc thêm retry che lỗi.
+
 - [x] Menu, profile và ngôn ngữ dùng được; không giả chức năng chưa có API.
 - [x] Đăng xuất có phản hồi rõ; đủ loading/error/nullable/phiên không còn hợp lệ.
 - [x] Ảnh và kiểm tra chữ lớn/320dp/native ghi trong PROGRESS.
