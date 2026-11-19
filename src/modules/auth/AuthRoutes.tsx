@@ -85,7 +85,6 @@ function StaffSession() {
         <ScreenState
           title={t('auth.session.logout')}
           description={t('errors.generic')}
-          requestId={logoutError.requestId}
         />
       )}
       <Button

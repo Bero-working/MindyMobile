@@ -201,7 +201,6 @@ export function LearningState<T>({
           title={t('home.errorTitle')}
           description={t('errors.generic')}
           onRetry={region.onRetry}
-          requestId={region.error?.requestId}
           retryTestID={`${prefix}-retry`}
         />
       </View>
@@ -213,7 +212,6 @@ export function LearningState<T>({
           title={t('learning.stale')}
           description={t('errors.generic')}
           onRetry={region.onRetry}
-          requestId={region.error?.requestId}
           retryTestID={`${prefix}-retry`}
         />
       )}

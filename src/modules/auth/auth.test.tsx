@@ -188,7 +188,7 @@ describe('Login', () => {
       expect(screen.getByTestId('login-form-error')).toBeTruthy()
     );
     expect(screen.getByText(i18n.t('errors.INVALID_CREDENTIALS'))).toBeTruthy();
-    expect(screen.getByText(/req-1/)).toBeTruthy();
+    expect(screen.queryByText(/req-1/)).toBeNull();
     expect(screen.getByTestId('login-password-input').props.value).toBe(
       ' secret '
     );

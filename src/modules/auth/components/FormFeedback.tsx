@@ -22,14 +22,6 @@ export function FormFeedback({
       >
         {t(failure.key)}
       </Text>
-      {failure.requestId && (
-        <Text
-          selectable
-          className="font-nunito text-[12px] text-forest"
-        >
-          {t('common.requestId', { id: failure.requestId })}
-        </Text>
-      )}
     </View>
   );
 }

@@ -140,7 +140,7 @@ it('keeps history visible when only the summary fails and exposes its retry', ()
     />
   );
   expect(screen.getByText('Session 1')).toBeTruthy();
-  expect(screen.getByText(/summary-req/)).toBeTruthy();
+  expect(screen.queryByText(/summary-req/)).toBeNull();
   fireEvent.press(screen.getByTestId('attendance-summary-retry'));
   expect(retry).toHaveBeenCalledTimes(1);
 });

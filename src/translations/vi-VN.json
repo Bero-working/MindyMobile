@@ -221,7 +221,6 @@
     "showPassword": "Hiện mật khẩu",
     "hidePassword": "Ẩn mật khẩu",
     "back": "Quay lại",
-    "requestId": "Mã hỗ trợ: {{id}}",
     "close": "Đóng"
   },
   "errors": {

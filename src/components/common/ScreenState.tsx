@@ -6,14 +6,12 @@ export function ScreenState({
   title,
   description,
   onRetry,
-  requestId,
   testID,
   retryTestID,
 }: {
   title: string;
   description: string;
   onRetry?: (() => void) | undefined;
-  requestId?: string | undefined;
   testID?: string | undefined;
   retryTestID?: string | undefined;
 }) {
@@ -39,14 +37,6 @@ export function ScreenState({
       >
         {description}
       </Text>
-      {requestId && (
-        <Text
-          selectable
-          className="font-nunito text-xs text-muted-foreground"
-        >
-          {t('common.requestId', { id: requestId })}
-        </Text>
-      )}
       {onRetry && (
         <Button
           testID={retryTestID}

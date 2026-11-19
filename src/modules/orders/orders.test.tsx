@@ -6,7 +6,7 @@ import {
   screen,
   waitFor,
 } from '@testing-library/react-native';
-import '@/config/i18n.config';
+import i18n from '@/config/i18n.config';
 import { ApiError } from '@/shared/utilities/apiError';
 import { OrdersScreen } from './OrdersScreen';
 import { OrderDetailScreen } from './OrderDetailScreen';
@@ -228,7 +228,12 @@ it('retains cancellation errors and request IDs, allowing a retry', async () => 
   detail(order, cancel);
   fireEvent.press(screen.getByTestId('order-cancel'));
   fireEvent.press(screen.getByTestId('order-cancel-confirm'));
-  await waitFor(() => expect(screen.getByText(/cancel-req/)).toBeTruthy());
+  await waitFor(() =>
+    expect(
+      screen.getByText(i18n.t('orders.errors.ORDER_NOT_CANCELLABLE'))
+    ).toBeTruthy()
+  );
+  expect(screen.queryByText(/cancel-req/)).toBeNull();
   expect(screen.getByTestId('order-cancel-confirm')).not.toBeDisabled();
   cancel.mockResolvedValueOnce(undefined);
   await act(async () => {
@@ -300,7 +305,7 @@ it('shows loading, empty, error and retry states', () => {
       }}
     />
   );
-  expect(screen.getByText(/list-req/)).toBeTruthy();
+  expect(screen.queryByText(/list-req/)).toBeNull();
   fireEvent.press(screen.getByTestId('orders-retry'));
   expect(retry).toHaveBeenCalledTimes(1);
 });

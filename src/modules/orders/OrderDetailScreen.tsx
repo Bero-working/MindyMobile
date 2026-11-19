@@ -52,10 +52,7 @@ export function OrderDetailScreen({
   );
   const [confirm, setConfirm] = useState(false);
   const [pending, setPending] = useState(false);
-  const [error, setError] = useState<{
-    code: string;
-    requestId?: string;
-  } | null>(null);
+  const [error, setError] = useState<{ code: string } | null>(null);
   const busy = useRef(false);
   const cancellable =
     region.status === 'success' &&
@@ -77,11 +74,7 @@ export function OrderDetailScreen({
       await onCancel(order.id);
       setConfirm(false);
     } catch (e) {
-      setError(
-        e instanceof ApiError
-          ? { code: e.code, ...(e.requestId ? { requestId: e.requestId } : {}) }
-          : { code: 'generic' }
-      );
+      setError(e instanceof ApiError ? { code: e.code } : { code: 'generic' });
     } finally {
       busy.current = false;
       setPending(false);
@@ -104,7 +97,6 @@ export function OrderDetailScreen({
             cancelErrorKeys[region.error?.code ?? ''] ?? 'errors.generic'
           )}
           onRetry={region.onRetry}
-          requestId={region.error?.requestId}
           retryTestID="order-detail-retry"
         />
       ) : (
@@ -260,14 +252,6 @@ export function OrderDetailScreen({
                 <Text className="font-nunito text-[14px] text-headsup">
                   {t(cancelErrorKeys[error.code] ?? 'orders.cancelError')}
                 </Text>
-                {error.requestId && (
-                  <Text
-                    selectable
-                    className="font-nunito text-[12px] text-muted"
-                  >
-                    {t('common.requestId', { id: error.requestId })}
-                  </Text>
-                )}
                 {region.onRetry && (
                   <Button
                     label={t('orders.refresh')}

@@ -5,7 +5,7 @@ import {
   screen,
   waitFor,
 } from '@testing-library/react-native';
-import '@/config/i18n.config';
+import i18n from '@/config/i18n.config';
 import { AccountScreen } from './AccountScreen';
 import { ApiError } from '@/shared/utilities/apiError';
 jest.mock('@/components/common/AppSheet', () => ({
@@ -116,7 +116,10 @@ it('retains logout errors with a retry action', async () => {
   );
   fireEvent.press(screen.getByTestId('account-logout'));
   fireEvent.press(screen.getByTestId('account-logout-confirm'));
-  await waitFor(() => expect(screen.getByText(/logout-request/)).toBeTruthy());
+  await waitFor(() =>
+    expect(screen.getByText(i18n.t('errors.generic'))).toBeTruthy()
+  );
+  expect(screen.queryByText(/logout-request/)).toBeNull();
   expect(screen.getByTestId('account-logout-confirm')).not.toBeDisabled();
   logout.mockResolvedValueOnce(undefined);
   fireEvent.press(screen.getByTestId('account-logout-confirm'));

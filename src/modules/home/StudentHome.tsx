@@ -205,7 +205,6 @@ export function StudentHome(props: HomeProps) {
                 title={t('home.errorTitle')}
                 description={regionError(props.schedule.error?.code)}
                 onRetry={props.schedule.onRetry}
-                requestId={props.schedule.error?.requestId}
                 retryTestID="home-schedule-retry-button"
               />
             )}
@@ -276,7 +275,6 @@ export function StudentHome(props: HomeProps) {
               title={t('home.errorTitle')}
               description={regionError(props.courses.error?.code)}
               onRetry={props.courses.onRetry}
-              requestId={props.courses.error?.requestId}
               retryTestID="home-retry-button"
             />
           )}

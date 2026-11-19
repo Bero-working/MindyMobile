@@ -8,7 +8,6 @@ import { Icon, type IconName } from '@/components/common/Icon';
 import { PressableScale } from '@/components/common/PressableScale';
 import { Button } from '@/components/ui/Button';
 import { useI18n } from '@/shared/hooks/language/useI18n';
-import { ApiError } from '@/shared/utilities/apiError';
 import { colors } from '@/theme/colors';
 import {
   LearningLayout,
@@ -128,12 +127,8 @@ export function AccountScreen({
     try {
       await onLogout();
       setSheet(null);
-    } catch (e) {
-      setError(
-        e instanceof ApiError && e.requestId
-          ? t('common.requestId', { id: e.requestId })
-          : t('errors.generic')
-      );
+    } catch {
+      setError(t('errors.generic'));
     } finally {
       busy.current = false;
       setPending(false);

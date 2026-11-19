@@ -211,7 +211,7 @@ it('keeps successful regions while another region fails and retries only that re
     />
   );
   expect(screen.getByTestId('home-course-course-1')).toBeTruthy();
-  expect(screen.getByText(/schedule-ref/)).toBeTruthy();
+  expect(screen.queryByText(/schedule-ref/)).toBeNull();
   fireEvent.press(screen.getByTestId('home-schedule-retry-button'));
   expect(retry).toHaveBeenCalledTimes(1);
 });

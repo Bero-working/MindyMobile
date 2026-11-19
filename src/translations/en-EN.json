@@ -221,7 +221,6 @@
     "showPassword": "Show password",
     "hidePassword": "Hide password",
     "back": "Back",
-    "requestId": "Support reference: {{id}}",
     "close": "Close"
   },
   "errors": {
