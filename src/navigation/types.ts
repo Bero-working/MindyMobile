@@ -9,19 +9,31 @@ export type RootScreenProps<
 > = StackScreenProps<RootStackParamList, S>;
 
 export type RootStackParamList = {
-  [routes.splash]: undefined;
-  [routes.example]: undefined;
   [routes.welcome]: undefined;
   [routes.login]: undefined;
   [routes.register]: undefined;
   [routes.studentHome]: undefined;
-  [routes.phaseOnePreview]: undefined;
   [routes.courses]: undefined;
   [routes.payment]: { orderId: string; origin?: 'learning' };
   [routes.studentSchedule]: undefined;
   [routes.studentAccount]: undefined;
   [routes.myClasses]: { origin: 'home' | 'courses' | 'account' };
-  [routes.studentClassDetail]: { classId: string; sessionId?: string };
+  [routes.studentClassDetail]: {
+    classId: string;
+    sessionId?: string | undefined;
+  };
+  [routes.studentOrders]: undefined;
+  [routes.studentAttendance]: undefined;
+  [routes.studentMessages]: undefined;
+  [routes.studentChat]: { conversationId: string; title: string };
+  [routes.studentAssignment]: { assignmentId: string };
+  [routes.studentMaterials]: {
+    classId: string;
+    unitId: string;
+    unitTitle: string;
+  };
+  [routes.studentMaterial]: { classId: string; materialId: string };
+  [routes.studentOrderDetail]: { orderId: string };
 };
 
 export type NavigationProp = StackNavigationProp<RootStackParamList>;

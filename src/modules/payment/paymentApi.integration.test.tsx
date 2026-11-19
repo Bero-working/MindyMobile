@@ -128,14 +128,21 @@ it('polls a live QR into success without a second link request', async () => {
   );
   expect(writes).toBe(1);
 });
-it('keeps review inline without a ticket, QR or payment retry', async () => {
+it('checks a review again without creating another payment and shows the confirmed result', async () => {
+  let paid = false;
+  let writes = 0;
   mockServer.use(
     http.get(base + '/me/orders/:id', () =>
       HttpResponse.json({
         ...apiOrder(),
-        payment: apiPayment('REQUIRES_REVIEW'),
+        status: paid ? 'PAID' : 'PENDING',
+        payment: apiPayment(paid ? 'SUCCEEDED' : 'REQUIRES_REVIEW'),
       })
-    )
+    ),
+    http.post(base + '/me/orders/:id/payments/payos', () => {
+      writes++;
+      return HttpResponse.json(apiPayment('PENDING'), { status: 201 });
+    })
   );
   renderWithProviders(<PaymentRoute />);
   await waitFor(() =>
@@ -148,6 +155,22 @@ it('keeps review inline without a ticket, QR or payment retry', async () => {
   expect(screen.queryByTestId('payment-result-ticket')).toBeNull();
   expect(screen.queryByTestId('payment-qr')).toBeNull();
   expect(screen.queryByTestId('payment-retry')).toBeNull();
+  expect(screen.queryByTestId('payment-copy-account')).toBeNull();
+  expect(screen.queryByTestId('payment-note')).toBeNull();
+  await waitFor(() =>
+    expect(screen.getByTestId('payment-check-status')).not.toBeDisabled()
+  );
+  fireEvent.press(screen.getByTestId('payment-check-status'));
+  await waitFor(() =>
+    expect(screen.getByTestId('payment-check-status')).not.toBeDisabled()
+  );
+  expect(writes).toBe(0);
+  paid = true;
+  fireEvent.press(screen.getByTestId('payment-check-status'));
+  await waitFor(() =>
+    expect(screen.getByTestId('payment-result-ticket')).toBeTruthy()
+  );
+  expect(writes).toBe(0);
 });
 
 it('removes the native ticket layer when navigation blurs a mounted payment screen', async () => {

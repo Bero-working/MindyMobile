@@ -22,7 +22,7 @@ function options() {
     onAdd: jest.fn(async (_id: string) => {}),
     onRemove: jest.fn(async (_id: string) => {}),
     onRefresh: jest.fn(async () => {}),
-    onOpenCart: jest.fn(),
+    onCheckout: jest.fn(async () => {}),
   };
 }
 it('selects only one draft class without changing the cart, and ignores full classes', () => {
@@ -68,7 +68,7 @@ it('adds the selected replacement before removing the previous class and prevent
   });
   expect(props.onRemove).toHaveBeenCalledTimes(1);
   expect(props.onRemove).toHaveBeenCalledWith('a');
-  expect(props.onOpenCart).not.toHaveBeenCalled();
+  expect(props.onCheckout).not.toHaveBeenCalled();
 });
 it('keeps the previous class if its replacement cannot be added', async () => {
   const props = options();
@@ -86,7 +86,7 @@ it('keeps the previous class if its replacement cannot be added', async () => {
     await result.current.buy();
   });
   expect(props.onRemove).not.toHaveBeenCalled();
-  expect(props.onOpenCart).not.toHaveBeenCalled();
+  expect(props.onCheckout).not.toHaveBeenCalled();
   expect(result.current.error).toBe('Lớp đã hết chỗ.');
 });
 it('explains an existing enrollment or seat hold without opening the cart', async () => {
@@ -108,11 +108,11 @@ it('explains an existing enrollment or seat hold without opening the cart', asyn
   );
   expect(result.current.toast).toBeNull();
   expect(props.onRemove).not.toHaveBeenCalled();
-  expect(props.onOpenCart).not.toHaveBeenCalled();
+  expect(props.onCheckout).not.toHaveBeenCalled();
   expect(props.onRefresh).toHaveBeenCalledTimes(1);
 });
 
-it('buy adds the draft class then opens the cart', async () => {
+it('buy adds the draft class then awaits checkout', async () => {
   const props = options();
   const { result } = renderHook(() => useCourseSelection(props));
   act(() => result.current.pick('b'));
@@ -120,7 +120,7 @@ it('buy adds the draft class then opens the cart', async () => {
     await result.current.buy();
   });
   expect(props.onAdd).toHaveBeenCalledWith('b');
-  expect(props.onOpenCart).toHaveBeenCalledTimes(1);
+  expect(props.onCheckout).toHaveBeenCalledTimes(1);
 });
 it('does not duplicate a class already in the cart and does not remove it when unpicked', async () => {
   const props = options();
@@ -131,7 +131,7 @@ it('does not duplicate a class already in the cart and does not remove it when u
     await result.current.buy();
   });
   expect(props.onAdd).not.toHaveBeenCalled();
-  expect(props.onOpenCart).toHaveBeenCalledTimes(1);
+  expect(props.onCheckout).toHaveBeenCalledTimes(1);
   act(() => result.current.unpick('a'));
   expect(props.onRemove).not.toHaveBeenCalled();
 });
@@ -149,7 +149,7 @@ it('requires an available selected class before either cart action', async () =>
     await result.current.buy();
   });
   expect(props.onAdd).not.toHaveBeenCalled();
-  expect(props.onOpenCart).not.toHaveBeenCalled();
+  expect(props.onCheckout).not.toHaveBeenCalled();
 });
 it('clears abandoned selections and notices when reopening a course', () => {
   const props = options();

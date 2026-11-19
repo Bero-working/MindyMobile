@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
+import { deferComponent } from '@/components/common/deferComponent';
 import { useNavigation } from '@react-navigation/native';
 import routes from '@/navigation/routes';
 import type { NavigationProp } from '@/navigation/types';
-import { CartSheet } from '@/modules/cart/components/CartSheet';
+
 import { useCartController } from '@/modules/cart/hooks/useCartController';
 import {
   useCartActions,
@@ -10,7 +12,17 @@ import {
 import { useCourseDetailQuery } from '../hooks/useCourseDetailQuery';
 import { useCourseSelection } from '../hooks/useCourseSelection';
 import type { Course } from '../types/courses.type';
-import { CourseSheet } from './CourseSheet';
+
+const CartSheet = deferComponent(
+  () =>
+    (
+      require('@/modules/cart/components/CartSheet') as typeof import('@/modules/cart/components/CartSheet')
+    ).CartSheet
+);
+
+const CourseSheet = deferComponent(
+  () => (require('./CourseSheet') as typeof import('./CourseSheet')).CourseSheet
+);
 
 type Props = {
   sheet: 'course' | 'cart' | null;
@@ -19,19 +31,13 @@ type Props = {
   onClose: () => void;
 };
 // Production adapters for the shared course and cart sheets (Home and Courses).
-export function ShoppingSheets({
-  sheet,
-  courseId,
-  onOpenCart,
-  onClose,
-}: Props) {
+export function ShoppingSheets({ sheet, courseId, onClose }: Props) {
   if (sheet === 'cart') return <ProductionCartSheet onClose={onClose} />;
   if (sheet === 'course' && courseId)
     return (
       <ProductionCourseSheet
         key={courseId}
         courseId={courseId}
-        onOpenCart={onOpenCart}
         onClose={onClose}
       />
     );
@@ -49,9 +55,13 @@ const placeholder = (id: string): Course => ({
 });
 function ProductionCourseSheet({
   courseId,
-  onOpenCart,
   onClose,
-}: Omit<Props, 'sheet'>) {
+}: Pick<Props, 'courseId' | 'onClose'>) {
+  const navigation = useNavigation<NavigationProp>();
+  const checkout = useCartController((orderId) => {
+    onClose();
+    navigation.navigate(routes.payment, { orderId });
+  });
   const detail = useCourseDetailQuery(courseId);
   const cart = useCartQuery();
   const actions = useCartActions();
@@ -64,7 +74,10 @@ function ProductionCourseSheet({
     onRefresh: async () => {
       await actions.refresh();
     },
-    onOpenCart,
+    onCheckout: async () => {
+      const latest = await actions.refresh();
+      await checkout.onCheckout(latest.items);
+    },
   });
   return (
     <CourseSheet
@@ -74,8 +87,12 @@ function ProductionCourseSheet({
       onRetry={detail.onRetry}
       selectedClassId={selection.selectedClassId}
       pendingClassId={selection.pendingClassId}
-      buying={selection.buying}
-      error={selection.error}
+      buying={selection.buying || checkout.checkingOut}
+      error={selection.error ?? checkout.checkoutError}
+      checkoutUnknown={checkout.checkoutUnknown}
+      onVerify={() => {
+        checkout.onVerify().catch(() => {});
+      }}
       toast={selection.toast}
       onPick={selection.pick}
       onUnpick={selection.unpick}
@@ -83,6 +100,7 @@ function ProductionCourseSheet({
         selection.addToCart().catch(() => {});
       }}
       onBuy={() => {
+        if (checkout.checkoutUnknown) return;
         selection.buy().catch(() => {});
       }}
       onClose={onClose}

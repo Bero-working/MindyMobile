@@ -46,8 +46,6 @@ appId: ${APP_ID || "com.mindymobile"}
     visible:
       id: 'payment-qr'
     timeout: 60000
-- assertNotVisible:
-    id: 'preview-tools-toggle'
 - takeScreenshot: 'api-payos-qr'
 - back
 - assertVisible: 'Rời trang thanh toán?'

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
+import { deferComponent } from '@/components/common/deferComponent';
 import { useEffect, useMemo, useRef } from 'react';
 import {
   AccessibilityInfo,
@@ -11,7 +13,7 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import QRCode from 'react-native-qrcode-svg';
+
 import { PressableScale } from '@/components/common/PressableScale';
 import { Icon } from '@/components/common/Icon';
 import { Button } from '@/components/ui/Button';
@@ -20,13 +22,27 @@ import { ScreenState } from '@/components/common/ScreenState';
 import { colors } from '@/theme/colors';
 import { formatVnd } from '@/shared/utilities/formatVnd';
 import { useCountdown } from './hooks/useCountdown';
-import { PaymentResultTicket } from './components/PaymentResultTicket';
+
 import type { PaymentResult } from './resultModel';
 import type {
   BankTransferInfo,
   Payment,
   PaymentOrder,
 } from './types/payment.type';
+
+const PaymentResultTicket = deferComponent(
+  () =>
+    (
+      require('./components/PaymentResultTicket') as typeof import('./components/PaymentResultTicket')
+    ).PaymentResultTicket
+);
+
+const QRCode = deferComponent(
+  () =>
+    (
+      require('react-native-qrcode-svg') as typeof import('react-native-qrcode-svg')
+    ).default
+);
 
 export type PaymentScreenProps = {
   order: PaymentOrder;
@@ -37,6 +53,7 @@ export type PaymentScreenProps = {
   onRetry: () => void;
   retrying?: boolean;
   canRetry?: boolean;
+  onCheckStatus?: (() => void) | undefined;
   result?: PaymentResult | undefined;
   onHome?: (() => void) | undefined;
   onCourses?: (() => void) | undefined;
@@ -57,6 +74,7 @@ export function PaymentScreen({
   onCourses,
   retrying = false,
   canRetry = true,
+  onCheckStatus,
 }: PaymentScreenProps) {
   const { t } = useTranslation();
   const insets = useSafeAreaInsets();
@@ -116,25 +134,27 @@ export function PaymentScreen({
       AccessibilityInfo.announceForAccessibility(t('payment.expired'));
     }
   }, [countdown.seconds, expired, result]);
+  const review = errorCode === 'PAYMENT_REQUIRES_REVIEW';
   const creating = !expired && (!payment || payment.status === 'CREATING');
+  const transferInfo = review ? null : bankInfo;
   const rows: { key: string; value: string; copy?: boolean }[] = [
     {
       key: 'courses',
       value: order.details.map((d) => d.courseTitle).join(', '),
     },
-    ...(bankInfo
+    ...(transferInfo
       ? [
-          { key: 'bank', value: bankInfo.bankName },
-          { key: 'account', value: bankInfo.accountNumber, copy: true },
-          { key: 'owner', value: bankInfo.accountName },
+          { key: 'bank', value: transferInfo.bankName },
+          { key: 'account', value: transferInfo.accountNumber, copy: true },
+          { key: 'owner', value: transferInfo.accountName },
         ]
       : []),
     { key: 'amount', value: formatVnd(payment?.amount ?? order.totalAmount) },
-    ...(bankInfo
+    ...(transferInfo
       ? [
           {
             key: 'note',
-            value: bankInfo.transferNote(order.orderCode),
+            value: transferInfo.transferNote(order.orderCode),
             copy: true,
           },
         ]
@@ -307,6 +327,17 @@ export function PaymentScreen({
               )}
             </View>
           )}
+          {review && onCheckStatus && (
+            <View className="mt-[16px]">
+              <Button
+                testID="payment-check-status"
+                variant="outline"
+                label={t('payment.checkStatus')}
+                loading={retrying}
+                onPress={onCheckStatus}
+              />
+            </View>
+          )}
           {(expired ||
             errorCode === 'ORDER_NOT_FOUND' ||
             errorCode === 'ORDER_ACCESS_DENIED') && (
@@ -373,12 +404,14 @@ export function PaymentScreen({
               </View>
             ))}
           </View>
-          <Text
-            testID="payment-note"
-            className="mt-[10px] font-nunito text-[12.5px] leading-[18.75px] text-muted"
-          >
-            {t('payment.note')}
-          </Text>
+          {!review && (
+            <Text
+              testID="payment-note"
+              className="mt-[10px] font-nunito text-[12.5px] leading-[18.75px] text-muted"
+            >
+              {t('payment.note')}
+            </Text>
+          )}
         </ScrollView>
         {toast && !result && (
           <View

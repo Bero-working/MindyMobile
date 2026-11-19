@@ -21,6 +21,34 @@ const user = {
   lastLoginAt: null,
   createdAt: '2026-01-01T00:00:00Z',
 };
+it('opens orders when an orders action is available', () => {
+  const open = jest.fn();
+  render(
+    <AccountScreen
+      profile={{ status: 'success', data: user }}
+      onLogout={jest.fn()}
+      onTab={jest.fn()}
+      onMyClasses={jest.fn()}
+      onOrders={open}
+    />
+  );
+  fireEvent.press(screen.getByTestId('account-orders'));
+  expect(open).toHaveBeenCalledTimes(1);
+});
+it('opens attendance history when its action is available', () => {
+  const open = jest.fn();
+  render(
+    <AccountScreen
+      profile={{ status: 'success', data: user }}
+      onLogout={jest.fn()}
+      onTab={jest.fn()}
+      onMyClasses={jest.fn()}
+      onAttendance={open}
+    />
+  );
+  fireEvent.press(screen.getByTestId('account-attendance'));
+  expect(open).toHaveBeenCalledTimes(1);
+});
 it('shows read-only profile and confirms logout before calling it', async () => {
   const logout = jest.fn().mockResolvedValue(undefined);
   render(

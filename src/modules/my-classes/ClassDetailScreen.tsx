@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
+import { deferComponent } from '@/components/common/deferComponent';
 import { useEffect, useRef, useState } from 'react';
 import { Text, View, useWindowDimensions } from 'react-native';
 import { useTranslation } from 'react-i18next';
@@ -16,12 +18,24 @@ import {
 } from '../schedule/calendar';
 import type { DataRegion } from '../home/types/home.type';
 import type { ClassDetail, ClassSession } from './types';
-import { SessionDetailScreen } from './SessionDetailScreen';
+
 import { MeetingButton } from './components/MeetingButton';
 import { sessionDisplayStatus } from './sessionDisplayStatus';
 import { nextLearningSession } from './nextLearningSession';
 import { useSessionTime } from './hooks/useSessionTime';
-import { ClassParticipantsSheet } from './components/ClassParticipantsSheet';
+
+const WhiteboardScreen = deferComponent(
+  () =>
+    (
+      require('../whiteboard/WhiteboardScreen') as typeof import('../whiteboard/WhiteboardScreen')
+    ).WhiteboardScreen
+);
+
+const SessionDetailScreen = deferComponent(
+  () =>
+    (require('./SessionDetailScreen') as typeof import('./SessionDetailScreen'))
+      .SessionDetailScreen
+);
 
 function meetingLink(
   detail: ClassDetail,
@@ -73,6 +87,9 @@ export function ClassDetailScreen({
   onBack,
   onJoin,
   onSessionChange,
+  onSessionClose,
+  onMaterials,
+  active: screenFocused = true,
 }: {
   detail: DataRegion<ClassDetail>;
   sessionId?: string | undefined;
@@ -83,6 +100,9 @@ export function ClassDetailScreen({
   onBack: () => void;
   onJoin: (url: string) => Promise<void>;
   onSessionChange?: (active: boolean) => void;
+  onSessionClose?: (() => void) | undefined;
+  onMaterials?: ((unitId: string, unitTitle: string) => void) | undefined;
+  active?: boolean;
 }) {
   const { t, i18n } = useTranslation();
   const { width, fontScale } = useWindowDimensions();
@@ -92,13 +112,13 @@ export function ClassDetailScreen({
   const [descriptionOpen, setDescriptionOpen] = useState(false);
   const [joining, setJoining] = useState(false);
   const [joinError, setJoinError] = useState(false);
-  const [participantsOpen, setParticipantsOpen] = useState(false);
+  const [whiteboardOpen, setWhiteboardOpen] = useState(false);
   const busy = useRef(false);
   useEffect(() => {
     setSelected(sessionId ?? null);
     setJoinError(false);
     setDescriptionOpen(false);
-    setParticipantsOpen(false);
+    setWhiteboardOpen(false);
   }, [data?.id, data?.accessMode, sessionId]);
   const denied =
     detail.status === 'error' &&
@@ -119,6 +139,8 @@ export function ClassDetailScreen({
     return () => onSessionChange?.(false);
   }, [onSessionChange, sessionOpen]);
   const verified = !!data && !denied && detail.status === 'success';
+  const canOpenMaterials =
+    verified && data?.accessMode === 'FULL' && data.classStatus !== 'CANCELLED';
   const url = data && session && verified ? meetingLink(data, session) : null;
   const preferred =
     session ??
@@ -151,7 +173,7 @@ export function ClassDetailScreen({
     return `${t('classDetail.sessionNumber', { number: item.sessionNumber })} · ${t(`schedule.days.${(weekday + 6) % 7}`)} ${displayDay(day).slice(0, 5)} · ${displayTime(item.startsAt, timeZone)} – ${displayTime(item.endsAt, timeZone)}`;
   };
   const footer =
-    data && verified ? (
+    data && verified && footerUrl ? (
       <View
         pointerEvents="box-none"
         className="gap-[6px] px-[16px] py-[10px]"
@@ -166,23 +188,8 @@ export function ClassDetailScreen({
         )}
         <View
           pointerEvents="box-none"
-          className="flex-row items-center justify-between gap-[12px]"
+          className="flex-row items-center justify-end gap-[12px]"
         >
-          <View className="shrink-0">
-            <PressableScale
-              testID="class-detail-participants"
-              accessibilityRole="button"
-              accessibilityLabel={t('classDetail.participants.open')}
-              onPress={() => setParticipantsOpen(true)}
-              className="min-h-[54px] min-w-[54px] items-center justify-center rounded-full border border-line bg-canvas p-[8px] shadow-lg shadow-forest/20"
-            >
-              <View className="h-[36px] w-[36px] items-center justify-center overflow-hidden rounded-full bg-sunshine">
-                <Text className="font-nunito-extrabold text-[16px] text-mint">
-                  {initials(mentorName)}
-                </Text>
-              </View>
-            </PressableScale>
-          </View>
           {footerUrl && (
             <MeetingButton
               testID="class-detail-join"
@@ -196,8 +203,28 @@ export function ClassDetailScreen({
       </View>
     ) : null;
   if (session && data && verified) {
+    const canOpenWhiteboard =
+      data.accessMode === 'FULL' &&
+      !['CANCELLED', 'DRAFT'].includes(data.classStatus) &&
+      session.status !== 'CANCELLED';
+    if (whiteboardOpen && canOpenWhiteboard)
+      return (
+        <WhiteboardScreen
+          key={session.id}
+          sessionId={session.id}
+          onClose={() => setWhiteboardOpen(false)}
+        />
+      );
     return (
       <SessionDetailScreen
+        key={session.id}
+        focused={screenFocused}
+        assignmentsClassId={canOpenWhiteboard ? data.id : undefined}
+        onMaterials={
+          canOpenMaterials && selectedUnit && onMaterials
+            ? () => onMaterials(selectedUnit.id, selectedUnit.title)
+            : undefined
+        }
         session={session}
         classCode={data.code}
         totalSessions={sessions.length}
@@ -207,6 +234,9 @@ export function ClassDetailScreen({
         timeZone={timeZone}
         joining={joining}
         joinError={joinError}
+        onWhiteboard={
+          canOpenWhiteboard ? () => setWhiteboardOpen(true) : undefined
+        }
         onJoin={
           url && session.status !== 'COMPLETED'
             ? () => {
@@ -216,7 +246,9 @@ export function ClassDetailScreen({
         }
         onClose={() => {
           setSelected(null);
+          setWhiteboardOpen(false);
           setJoinError(false);
+          onSessionClose?.();
         }}
       />
     );
@@ -253,13 +285,6 @@ export function ClassDetailScreen({
         ) : undefined
       }
     >
-      {participantsOpen && data && verified && (
-        <ClassParticipantsSheet
-          mentorName={data.mentor?.displayName ?? null}
-          classCode={data.code}
-          onClose={() => setParticipantsOpen(false)}
-        />
-      )}
       {denied ? (
         <View className="p-[16px]">
           <ScreenState
@@ -275,6 +300,7 @@ export function ClassDetailScreen({
         <LearningState
           region={detail}
           prefix="class-detail"
+          inset
           empty={!data}
         >
           {data && (

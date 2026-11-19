@@ -4,6 +4,7 @@ import { ApiError } from '@/shared/utilities/apiError';
 import { paymentService } from '@/modules/payment/services/payment.service';
 import { cartService } from '../services/cart.service';
 import { useCartActions, useCartQuery } from './useCartQuery';
+import type { Cart } from '../types/cart.type';
 
 const codeOf = (error: Error) =>
   error instanceof ApiError ? error.code : 'generic';
@@ -76,9 +77,9 @@ export function useCartController(onOrder: (orderId: string) => void) {
           setRemoving(null);
         }
       }),
-    onCheckout: () =>
+    onCheckout: (checkoutItems?: Cart['items']) =>
       guard(async () => {
-        const items = cart.data?.items ?? [];
+        const items = checkoutItems ?? cart.data?.items ?? [];
         if (!items.length || unknown) return;
         pendingClassIds.current = items.map((item) => item.classId);
         setCheckingOut(true);

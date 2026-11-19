@@ -7,11 +7,9 @@ export function WelcomeScreen({
   onLogin,
   onRegister,
   mascot,
-  previewAction,
 }: AuthScreenProps & {
   onLogin: () => void;
   onRegister: () => void;
-  previewAction?: (() => void) | undefined;
 }) {
   const { t } = useTranslation();
   return (
@@ -44,15 +42,6 @@ export function WelcomeScreen({
           onPress={onLogin}
           className="mt-[12px]"
         />
-        {__DEV__ && previewAction && (
-          <Button
-            testID="phase-one-preview-button"
-            variant="ghost"
-            label={t('preview.open')}
-            onPress={previewAction}
-            className="mt-[24px]"
-          />
-        )}
       </AuthShell>
     </View>
   );

@@ -9,24 +9,6 @@ import {
 import '@/config/i18n.config';
 import { ClassDetailScreen } from './ClassDetailScreen';
 import type { ClassDetail } from './types';
-jest.mock('@/components/common/AppSheet', () => ({
-  AppSheet: ({
-    children,
-    onClose,
-  }: {
-    children: import('react').ReactNode;
-    onClose: () => void;
-  }) => {
-    const React = jest.requireActual<typeof import('react')>('react');
-    const { View } =
-      jest.requireActual<typeof import('react-native')>('react-native');
-    return React.createElement(
-      View,
-      { testID: 'test-participants-modal', onTouchEnd: onClose },
-      children
-    );
-  },
-}));
 const base = {
   id: 'a',
   code: 'A',
@@ -54,38 +36,128 @@ const full: ClassDetail = {
     { id: 'u', title: 'Unit', sessions: [{ ...session, meetingUrl: null }] },
   ],
 };
-it('opens the teacher sheet with a pending student list and clears it on denial', () => {
+it('opens the selected session unit materials for verified FULL access', () => {
+  const materials = jest.fn();
+  render(
+    <ClassDetailScreen
+      detail={{ status: 'success', data: full }}
+      sessionId="s"
+      timeZone="Asia/Ho_Chi_Minh"
+      onBack={jest.fn()}
+      onJoin={jest.fn()}
+      onMaterials={materials}
+    />
+  );
+  fireEvent.press(screen.getByTestId('class-session-materials'));
+  expect(materials).toHaveBeenCalledWith('u', 'Unit');
+});
+
+it('keeps materials out of the class session list', () => {
+  render(
+    <ClassDetailScreen
+      timeZone="Asia/Ho_Chi_Minh"
+      onBack={jest.fn()}
+      onJoin={jest.fn()}
+      onMaterials={jest.fn()}
+      detail={{
+        status: 'success',
+        data: {
+          ...full,
+          units: [
+            {
+              id: 'u',
+              title: 'Unit',
+              sessions: [{ ...session, meetingUrl: null }],
+            },
+          ],
+        },
+      }}
+    />
+  );
+  expect(screen.queryByTestId('class-unit-materials-u')).toBeNull();
+});
+
+it('has no class-wide materials button', () => {
+  render(
+    <ClassDetailScreen
+      timeZone="Asia/Ho_Chi_Minh"
+      onBack={jest.fn()}
+      onJoin={jest.fn()}
+      onMaterials={jest.fn()}
+      detail={{ status: 'success', data: full }}
+    />
+  );
+  expect(screen.queryByTestId('class-detail-materials')).toBeNull();
+});
+
+it('offers the whiteboard only for a verified FULL, non-cancelled session', () => {
   const props = {
-    detail: {
-      status: 'success' as const,
-      data: { ...full, mentor: { displayName: 'Trần Quang' } },
-    },
+    sessionId: session.id,
     timeZone: 'Asia/Ho_Chi_Minh',
     onBack: jest.fn(),
     onJoin: jest.fn(),
   };
-  const view = render(<ClassDetailScreen {...props} />);
-  fireEvent.press(screen.getByTestId('class-detail-participants'));
-  expect(screen.getByTestId('class-participants-sheet')).toBeTruthy();
-  expect(screen.getByTestId('class-participants-mentor').props.children).toBe(
-    'Trần Quang'
+  const view = render(
+    <ClassDetailScreen
+      {...props}
+      detail={{ status: 'success', data: full }}
+    />
   );
-  expect(screen.getByTestId('class-participants-pending')).toBeTruthy();
-  expect(screen.queryByTestId('class-participants-close')).toBeNull();
-  fireEvent(screen.getByTestId('test-participants-modal'), 'touchEnd');
-  expect(screen.queryByTestId('class-participants-sheet')).toBeNull();
-  fireEvent.press(screen.getByTestId('class-detail-participants'));
+  expect(screen.getByTestId('class-session-whiteboard')).toBeTruthy();
+  expect(screen.getByTestId('class-session-tab-assignments')).toBeTruthy();
   view.rerender(
     <ClassDetailScreen
       {...props}
       detail={{
-        status: 'error',
-        data: null,
-        error: { code: 'CLASS_ACCESS_DENIED' },
+        status: 'success',
+        data: {
+          ...base,
+          accessMode: 'CASH_PREVIEW',
+          expiresAt: null,
+          units: [{ id: 'u', title: 'Unit', sessions: [session] }],
+        },
       }}
     />
   );
+  expect(screen.queryByTestId('class-session-whiteboard')).toBeNull();
+  expect(screen.queryByTestId('class-session-tab-assignments')).toBeNull();
+  view.rerender(
+    <ClassDetailScreen
+      {...props}
+      detail={{
+        status: 'success',
+        data: {
+          ...full,
+          units: [
+            {
+              id: 'u',
+              title: 'Unit',
+              sessions: [{ ...session, status: 'CANCELLED', meetingUrl: null }],
+            },
+          ],
+        },
+      }}
+    />
+  );
+  expect(screen.queryByTestId('class-session-whiteboard')).toBeNull();
+  expect(screen.queryByTestId('class-session-tab-assignments')).toBeNull();
+});
+it('keeps mentor information without the floating participants button', () => {
+  render(
+    <ClassDetailScreen
+      detail={{
+        status: 'success',
+        data: { ...full, mentor: { displayName: 'Trần Quang' } },
+      }}
+      timeZone="Asia/Ho_Chi_Minh"
+      onBack={jest.fn()}
+      onJoin={jest.fn()}
+    />
+  );
+  expect(screen.getByText('Trần Quang')).toBeTruthy();
+  expect(screen.queryByTestId('class-detail-participants')).toBeNull();
   expect(screen.queryByTestId('class-participants-sheet')).toBeNull();
+  expect(screen.getByTestId('class-detail-join')).toBeTruthy();
 });
 it('highlights only the next session and advances the highlight when it ends', () => {
   jest.useFakeTimers();
@@ -355,4 +427,21 @@ it('does not invite joining a completed session or enable unavailable materials'
   expect(screen.getByTestId('class-session-screen')).toBeTruthy();
   expect(screen.queryByTestId('class-session-join')).toBeNull();
   expect(screen.getByTestId('class-session-materials')).toBeDisabled();
+});
+
+it('reports when the deep-linked session is closed so it is not reopened', async () => {
+  const onSessionClose = jest.fn();
+  render(
+    <ClassDetailScreen
+      detail={{ status: 'success', data: full }}
+      sessionId="s"
+      timeZone="Asia/Ho_Chi_Minh"
+      onBack={jest.fn()}
+      onJoin={jest.fn()}
+      onSessionClose={onSessionClose}
+    />
+  );
+  fireEvent.press(await screen.findByTestId('class-session-close'));
+  expect(onSessionClose).toHaveBeenCalledTimes(1);
+  expect(screen.queryByTestId('class-session-close')).toBeNull();
 });

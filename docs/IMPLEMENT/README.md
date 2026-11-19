@@ -1,5 +1,8 @@
 # Roadmap triển khai
 
+Tài liệu kỹ thuật dùng chung: [Lazy loading UI](LAZY_LOADING.md) — ranh giới tải
+màn hình/component, hướng dẫn bổ sung UI mới và kết quả kiểm tra ngày 2026-11-06.
+
 Bảng tổng quan các phase: phụ thuộc, người phụ trách, trạng thái. Đọc trước khi bắt đầu hoặc nhận một phase. Quy
 trình làm phase, trạng thái hợp lệ và cách ghi tiến độ: [docs/README.md](../README.md#quy-trình-làm-việc). Lịch sử chi
 tiết nằm trong [PROGRESS/](../PROGRESS/); bảng này được sửa đè khi trạng thái đổi.

@@ -4,6 +4,14 @@ Mô tả kiến trúc của app: tech stack, cây thư mục, cấu trúc featur
 khoá. Đọc trước khi tạo module mới, thêm thư viện hoặc động vào cấu hình. Lý do của từng lựa chọn nằm trong
 [adr/](adr/README.md).
 
+## Dọn UI demo (2026-11-19)
+
+Theo yêu cầu owner, đã gỡ module `preview`, module `example`, splash mẫu cũ và các route/export tương ứng.
+Ứng dụng dùng `SessionSplash` trong lúc khôi phục phiên; điều hướng chính vẫn phân nhánh theo phiên học viên.
+Dữ liệu mẫu chỉ phục vụ test nằm trong `tests/fixtures/`; bản dịch và Maestro flow dành riêng cho demo đã gỡ.
+Các mục triển khai theo ngày ở dưới mô tả lịch sử; tham chiếu preview/Example trong các mục cũ không còn là
+hành vi hiện tại. Kịch bản E2E hiện tại được mô tả trong [e2e/README.md](../e2e/README.md).
+
 ## Tech stack
 
 Cột "Trạng thái" theo `package.json` hiện tại. Thêm thư viện mới phải theo
@@ -157,6 +165,13 @@ CI nằm tại `.github/workflows/ci.yml`; xem [hướng dẫn CI](guides/ci.md)
 
 Owner duyệt trong chat ngày2026-10-20 và cho phép gắn API Phase3. Được sửa `src/navigation/index.tsx` để đăng ký STUDENT_SCHEDULE, STUDENT_ACCOUNT, MY_CLASSES, STUDENT_CLASS_DETAIL trong nhánh STUDENT; kèm routes/types/module exports/test. Params chỉ ID/ngữ cảnh, không DTO/meetingUrl; không đổi Stack/providers/auth guard/screenOptions/HTTP/bootstrap/dependency. Lịch học chỉ xem, điểm vào session từ Home hoặc detail lớp.
 
+
+### Ngoại lệ màn chờ khởi động — owner duyệt trong chat (2026-11-06)
+
+Owner (@Bero) chọn "Cho phép sửa" trong chat ngày 2026-11-06, không kèm ADR. Chỉ được sửa `src/navigation/index.tsx`
+để thay khối loading khi `session.pending` (SafeAreaView + Skeleton) bằng `<SessionSplash />`
+(`src/components/common/SessionSplash.tsx`: nền `mint`, mascot `mindy-mascot-laptop.png`, chữ Mindy CODING, vòng xoay),
+giữ testID `session-loading`. Không đổi Stack, provider, auth guard, screenOptions, bootstrap hoặc dependency.
 
 ### Ngoại lệ xử lý lỗi API — ADR-0028 Accepted (2026-10-18)
 

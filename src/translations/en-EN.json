@@ -1,52 +1,218 @@
 {
-  "boilerplate": {
-    "common_appName": {
-      "full": "React Native Boilerplate",
-      "initials": "RNB"
+  "chat": {
+    "title": "Messages",
+    "connected": "Connected",
+    "reconnecting": "Reconnecting",
+    "searchPlaceholder": "Search conversations",
+    "chooseMentor": "Message a mentor",
+    "messageTo": "Message {{name}}",
+    "unread": "{{count}} unread messages",
+    "you": "You",
+    "noMessages": "Start a conversation",
+    "loading": "Loading messages",
+    "error": "Could not load messages. Please try again.",
+    "denied": "You no longer have access to this conversation.",
+    "empty": "No conversations yet. Your class groups and mentors will appear here when available.",
+    "noResults": "No matching conversations in the loaded list.",
+    "loadMore": "Load more",
+    "firstMessage": "Start a conversation with your mentor.",
+    "placeholder": "Write a message…",
+    "send": "Send message",
+    "sending": "Sending…",
+    "sendFailed": "Not confirmed · Tap to retry",
+    "readOnly": "You currently have read-only access to this conversation.",
+    "typing": "Typing…",
+    "deleted": "This message was deleted",
+    "edited": "Edited",
+    "replyTo": "Replying to {{name}}",
+    "newMessages": "Unread messages",
+    "syncError": "Could not sync new messages. Tap to retry.",
+    "openFile": "Open attachment",
+    "fileError": "Could not open the file. Tap to try again.",
+    "attach": {
+      "open": "Open attachments",
+      "close": "Close attachments",
+      "image": "Photo",
+      "imageHint": "PNG, JPG, WebP · up to 5 MB",
+      "pdf": "PDF file",
+      "pdfHint": "PDF · up to 10 MB",
+      "invalid": "Choose a nonempty JPG, PNG or WebP up to 5 MB, or a PDF up to 10 MB.",
+      "pickError": "Could not read the file. Please select it again.",
+      "uploadError": "Could not upload the file. Retry or select another file.",
+      "statusError": "Could not check the file. Please retry.",
+      "sendError": "Message not confirmed. Retry the same message to avoid duplicates.",
+      "rejected": "The file was rejected. Remove it and select another file.",
+      "preview": "Selected image",
+      "uploading": "Processing…",
+      "ready": "Ready to send",
+      "processing": "Checking file…",
+      "remove": "Remove",
+      "sendRejected": "Could not send the file. Check chat access or choose another file.",
+      "check": "Check file"
+    }
+  },
+  "whiteboard": {
+    "title": "Whiteboard",
+    "open": "Open whiteboard",
+    "loading": "Loading board",
+    "loadError": "Could not load the board. Please try again.",
+    "denied": "You no longer have access to this session's board.",
+    "disabled": "Whiteboards are not enabled on the server.",
+    "notCreated": "The mentor has not created a board yet. It will appear when ready.",
+    "notConfigured": "The whiteboard connection is not configured.",
+    "follow": "Follow mentor",
+    "following": "Following mentor · Stop",
+    "presenter": "Viewing {{name}}'s screen area. Pan or zoom to explore.",
+    "presenterPaused": "The mentor paused sharing, keeping {{name}}'s last view.",
+    "waitingPresenter": "The mentor isn't sharing a view yet, showing the whole board.",
+    "freeView": "Exploring freely. Select Follow mentor to return.",
+    "zoomIn": "Zoom in",
+    "zoomOut": "Zoom out",
+    "unsavedTitle": "Unconfirmed drawing",
+    "unsaved": "Leaving now may lose unconfirmed changes. Stay and reconnect to save them.",
+    "stay": "Stay",
+    "leave": "Leave board",
+    "status": {
+      "connecting": "Connecting",
+      "ready": "Synced",
+      "saving": "Saving",
+      "offline": "Offline",
+      "revoked": "Access revoked"
     },
-    "common_error": "Oops! Something went wrong.",
-    "screen_example": {
-      "hello_user": "Hi, my name is {{name}}",
-      "title": "Welcome on The $t(boilerplate.common_appName.full)",
-      "description": "Do you want to discover some features? Just click on one of the three buttons at the bottom of the screen. The first allows you to call a REST API. The second lets you change the theme color. And the third allows you to change the language.",
-      "explore_features": "Explore Features",
-      "features": {
-        "api_integration": {
-          "title": "API Integration",
-          "description": "Check the connection to the Mindy server",
-          "button": "Try API Integration"
-        },
-        "theme_toggle": {
-          "title": "Theme Toggle",
-          "description": "Use the default light appearance",
-          "button": "Use light theme"
-        },
-        "language_switch": {
-          "title": "Language Switch",
-          "description": "Toggle between available languages",
-          "button": "Try Language Switch"
-        }
-      },
-      "api_messages": {
-        "success_title": "Success!",
-        "success_message": "API connected successfully. The Mindy server is running.",
-        "success_button": "OK",
-        "error_title": "Error",
-        "error_message": "Cannot connect to the API ({{code}}, HTTP {{status}}). Please try again.",
-        "error_button": "OK"
-      },
-      "stats": {
-        "title": "Boilerplate Stats",
-        "components": "Components",
-        "utilities": "Utilities",
-        "languages": "Languages",
-        "possibilities": "Possibilities"
-      }
+    "notice": {
+      "epoch": "The mentor restored or reset the board. Unconfirmed changes from the previous version were discarded.",
+      "rejected": "The change was rejected. Reloading the saved board.",
+      "connection": "Could not sync the board. Reconnect to continue."
     },
-    "error_boundary": {
-      "title": "Oops! Something went wrong.",
-      "description": "We are sorry for the inconvenience. Please try again later.",
-      "cta": "Reload the screen"
+    "tools": {
+      "hand": "Pan",
+      "pen": "Pen",
+      "rectangle": "Rectangle",
+      "ellipse": "Ellipse",
+      "eraser": "Erase"
+    },
+    "fit": "Fit content"
+  },
+  "attendance": {
+    "title": "Attendance history",
+    "chooseClass": "Choose a class to view attendance for each session, including past classes.",
+    "noClasses": "No classes yet",
+    "noClassesDescription": "Your registered classes will appear here.",
+    "explore": "Explore courses",
+    "viewHistory": "View attendance",
+    "openClass": "View attendance for {{name}}",
+    "mentor": "Instructor: {{name}}",
+    "substitute": "Substitute instructor: {{name}}",
+    "enrollment": {
+      "PENDING_PAYMENT": "Awaiting payment",
+      "ACTIVE": "Active",
+      "COMPLETED": "Completed",
+      "CANCELLED": "Registration cancelled"
+    },
+    "rate": "Attendance rate",
+    "rateValue": "{{value}}%",
+    "noRate": "No rate yet",
+    "rateExplanation": "Based on {{count}} sessions with finalized results, including credited makeup attendance.",
+    "counts": {
+      "present": "Present",
+      "absent": "Absent",
+      "unmarked": "Unmarked",
+      "makeupPending": "Makeup pending",
+      "excluded": "Excluded from rate"
+    },
+    "period": {
+      "30": "Past 30 days",
+      "90": "Past 90 days",
+      "ALL": "All time"
+    },
+    "sessions": "Session attendance",
+    "noHistory": "No attendance history",
+    "noHistoryDescription": "There are no sessions in this period. You can select a different period.",
+    "timeRange": "{{from}} – {{to}}",
+    "makeupSession": "Makeup session",
+    "credit": "Credited result: {{status}}",
+    "excludedNote": "This session is not currently included in your attendance rate.",
+    "status": {
+      "PRESENT": "Present",
+      "ABSENT": "Absent",
+      "UNMARKED": "Unmarked",
+      "CANCELLED": "Session cancelled",
+      "ELIGIBLE": "Unmarked",
+      "NOT_STARTED": "Not started",
+      "NOT_ELIGIBLE": "Not eligible for attendance credit",
+      "PAYMENT_PENDING": "Awaiting payment",
+      "LEGACY_NO_DATA": "No attendance data",
+      "MAKEUP_PENDING": "Makeup result pending",
+      "MAKEUP_CREDITED": "Makeup credited"
+    },
+    "applicability": {
+      "MAKEUP_PENDING": "Waiting for the makeup session result.",
+      "MAKEUP_CREDITED": "Attendance credit comes from the makeup session."
+    },
+    "loadMore": "Load more",
+    "loadMoreError": "Could not load more data. Please try again."
+  },
+  "orders": {
+    "title": "My orders",
+    "description": "Track your course purchases and order status.",
+    "searchPlaceholder": "Search orders",
+    "searchEmpty": "No orders found.",
+    "filterLabel": "Filter by status",
+    "moreCourses": "+{{n}} more",
+    "continuePayment": "Continue payment",
+    "payOrder": "Continue payment for order {{code}}",
+    "detailTitle": "Order details",
+    "orderCode": "Order number",
+    "total": "Total payment",
+    "viewDetail": "View details",
+    "openOrder": "View order {{code}}",
+    "createdAt": "Order date",
+    "paidAt": "Payment date",
+    "expiresAt": "Seat hold deadline",
+    "paymentType": "Payment method",
+    "items": "Courses in this order",
+    "quantityPrice": "{{quantity}} × {{price}}",
+    "loadMore": "Load more orders",
+    "loadMoreError": "Could not load more orders. Please try again.",
+    "explore": "Explore courses",
+    "clearFilter": "Show all orders",
+    "refresh": "Refresh order",
+    "review": "Your payment is under review. Please wait for confirmation.",
+    "deadlinePassed": "The seat hold deadline has passed. Refresh to update the order status.",
+    "cancelledNote": "This order has been cancelled and its seat holds have been released.",
+    "cancel": "Cancel order",
+    "cancelTitle": "Cancel this order?",
+    "cancelMessage": "Order {{code}} will be cancelled and its reserved seats released. You can order again if the class still has seats available.",
+    "confirmCancel": "Confirm cancellation",
+    "keep": "Keep order",
+    "cancelError": "Could not cancel this order. Check your connection and try again.",
+    "status": {
+      "ALL": "All",
+      "PENDING": "Awaiting payment",
+      "PAID": "Paid",
+      "EXPIRED": "Expired",
+      "CANCELLED": "Cancelled"
+    },
+    "methods": {
+      "PAYOS": "Bank transfer via payOS",
+      "CASH": "Cash"
+    },
+    "state": {
+      "empty": "No orders yet",
+      "description": "Your course purchases will appear here.",
+      "filtered": "No orders match this status."
+    },
+    "errors": {
+      "ORDER_NOT_CANCELLABLE": "The order status has changed or its seat hold has expired. Please refresh the order.",
+      "ORDER_ACCESS_DENIED": "You do not have access to this order.",
+      "ORDER_NOT_FOUND": "Order not found. Please refresh the list.",
+      "NETWORK_ERROR": "You are offline. Reconnect before cancelling the order."
+    }
+  },
+  "orderDetail": {
+    "state": {
+      "empty": "Order not found",
+      "description": "Go back to the list and select another order."
     }
   },
   "common": {
@@ -149,7 +315,7 @@
       "courses": "Courses",
       "schedule": "Schedule",
       "home": "Home",
-      "notifications": "Notifications",
+      "messages": "Messages",
       "account": "Account"
     },
     "carousel": {
@@ -252,34 +418,6 @@
       "subtitle": "CODING"
     }
   },
-  "preview": {
-    "open": "Preview UI (development)",
-    "title": "UI preview",
-    "description": "Illustrative data; no session is created and no API is called.",
-    "auth": "Try Auth forms",
-    "home": "Student Home 2a",
-    "foundation": "Check Foundation",
-    "success": "Success",
-    "loading": "Loading",
-    "empty": "Empty",
-    "error": "Error",
-    "failure": "Simulate an error",
-    "signedIn": "Sign-in callback checked ({{role}}). No session created.",
-    "fixtureName": "Minh Anh",
-    "status": "State: {{status}}",
-    "nextSession": "Session 3 · HTML & CSS",
-    "className": "Web basics · WEB101-A",
-    "course0": "Web basics: HTML, CSS",
-    "course1": "Python for beginners",
-    "course2": "Practical JavaScript",
-    "course3": "Data structures & algorithms",
-    "action": "Action received: {{name}}",
-    "reset": "Choose another screen",
-    "tools": "Preview tools",
-    "closeTools": "Close preview tools",
-    "toolsShort": "UI",
-    "courses": "Courses · Cart · QR"
-  },
   "courses": {
     "recommend": {
       "title": "Recommended for you",
@@ -328,7 +466,7 @@
     "added": "Added {{name}} to cart",
     "removed": "Removed {{name}} from cart",
     "unpickHint": "Tap to deselect class",
-    "buyHint": "Add a class and open your cart",
+    "buyHint": "Create an order and go to payment",
     "addToCart": "Add selected class to cart"
   },
   "cart": {
@@ -359,6 +497,7 @@
     }
   },
   "payment": {
+    "checkStatus": "Check payment status",
     "title": "Payment",
     "amountLabel": "Amount to pay",
     "expiresIn": "Expires in {{time}}",
@@ -417,10 +556,7 @@
       },
       "retryHint": "Your reservation has ended. Prices and availability will be updated when you select a class again.",
       "orderLabel": "Order reference",
-      "totalLabel": "Total payment",
-      "preview": "Payment results (sample data)",
-      "previewDescription": "This preview uses sample data and does not confirm a real payment.",
-      "previewExit": "Back to preview menu"
+      "totalLabel": "Total payment"
     }
   },
   "learning": {
@@ -604,24 +740,193 @@
       "description": "Please return to your class list."
     }
   },
-  "learningPreview": {
-    "nextCourse": "Advanced web development",
-    "title": "Phase 3 preview",
-    "schedule": "Schedule",
-    "account": "Account",
-    "classes": "My classes",
-    "success": "Data",
-    "loading": "Loading",
-    "empty": "Empty",
-    "error": "Error",
-    "course": "Web application development",
-    "class": "Evening Web class",
-    "unit": "Programming foundations",
-    "session": "Introduction to web applications",
-    "mentor": "Sample mentor",
-    "name": "Mindy student",
-    "exit": "Back to preview menu",
-    "openTools": "States",
-    "logoutError": "Simulate logout failure"
+  "assignments": {
+    "title": "Assignments",
+    "tabs": {
+      "content": "Content",
+      "assignments": "Assignments"
+    },
+    "loading": "Loading assignments…",
+    "error": "Could not load assignments",
+    "errorDescription": "Check your connection and try again. Reopen the class if your access has changed.",
+    "empty": "No assignments yet",
+    "emptyDescription": "Assignments will appear here when your mentor publishes them for this session.",
+    "count": "{{count}} assignments",
+    "tab": {
+      "CODE": "Code",
+      "QUIZ": "Quiz",
+      "ZIP": "ZIP upload"
+    },
+    "tabEmpty": "No {{type}} assignments in this session",
+    "tabEmptyMore": "Tap Load more assignments to fetch the rest.",
+    "type": {
+      "QUIZ": "Quiz",
+      "ZIP": "ZIP submission",
+      "CODE": "Coding"
+    },
+    "purpose": {
+      "TEST": "Test",
+      "HOMEWORK": "Homework"
+    },
+    "dueAt": "Due: {{date}}",
+    "noDeadline": "No deadline",
+    "score": "Maximum score: {{score}}",
+    "minutes": "{{count}} minutes",
+    "instructions": "View instructions",
+    "hideInstructions": "Hide instructions",
+    "noInstructions": "No description provided yet.",
+    "attempts": "Maximum attempts: {{count}}",
+    "doAssignment": "Do assignment",
+    "loadMore": "Load more assignments",
+    "moreError": "Could not load more assignments. Please try again."
+  },
+  "assignmentWork": {
+    "loadError": "Could not load your work. Please try again.",
+    "actionError": "The action has not completed. Retry to continue.",
+    "notFound": "Assignment not found.",
+    "leaveTitle": "Leave your work?",
+    "leaveDescription": "Changes have not been saved or an action is still running. Leaving may discard unsaved changes.",
+    "stay": "Keep working",
+    "leave": "Leave",
+    "cancel": "Cancel",
+    "quizIntro": "Start or resume your quiz. Time limit: {{count}} minutes (if set). The clock keeps running when you leave the app.",
+    "startResume": "Start / resume",
+    "submit": "Submit",
+    "confirmSubmit": "Submit your work?",
+    "confirmQuiz": "You answered {{count}}/{{total}} questions. Answers cannot be edited after submission.",
+    "answered": "Answered {{count}}/{{total}} questions",
+    "saving": "Processing…",
+    "unsaved": "Unsaved changes",
+    "saved": "Saved",
+    "resultScore": "Score: {{score}} / {{max}}",
+    "question": "Question {{number}}",
+    "correct": "Correct",
+    "correctAnswer": "Correct answer: {{option}}",
+    "expired": "Time is up. Saved answers are being graded.",
+    "quizStatus": {
+      "IN_PROGRESS": "In progress",
+      "FINALIZING": "Grading",
+      "GRADED": "Quiz result",
+      "VOIDED": "Attempt voided"
+    },
+    "problem": "Problem",
+    "sample": "Example {{number}}",
+    "expected": "Expected: {{value}}",
+    "actual": "Actual: {{value}}",
+    "attemptsRemaining": "{{count}} submissions remaining",
+    "bestScore": "Best score: {{score}} / {{max}}",
+    "deadlinePassed": "The submission deadline has passed.",
+    "sourceCode": "Source code",
+    "save": "Save work",
+    "run": "Run samples",
+    "runResult": "Sample results",
+    "confirmCode": "Your code will be graded and consume a submission attempt. You can submit again if attempts remain.",
+    "codeStatus": {
+      "QUEUED": "Queued",
+      "RUNNING": "Grading",
+      "GRADED": "Graded",
+      "FAILED": "Grading failed",
+      "VOIDED": "Submission voided"
+    },
+    "history": "Submission history",
+    "codeHistory": "Attempt {{number}} · {{status}} · {{score}}/{{max}}",
+    "testsPassed": "Passed {{count}}/{{total}} tests",
+    "startZip": "Create / resume submission",
+    "zipHint": "Choose one .zip file up to 20 MB. Uploading a file does not submit your assignment.",
+    "zipUnavailable": "ZIP submissions are currently unavailable. You can still view your results below.",
+    "pickZip": "Choose ZIP file",
+    "replaceZip": "Replace ZIP file",
+    "invalidZip": "Choose a nonempty .zip file up to 20 MB.",
+    "pickError": "Could not read the file. Please select it again.",
+    "processingFile": "Uploading and checking your file…",
+    "fileFailed": "The file is invalid or could not be processed. Choose another file.",
+    "zipStatus": {
+      "DRAFT": "Draft",
+      "SUBMITTED": "Submitted",
+      "VOIDED": "Voided"
+    },
+    "confirmZip": "The file cannot be replaced for this attempt after submission. Check your file before confirming.",
+    "submitted": "Submitted successfully.",
+    "submissionNumber": "Submission {{number}}",
+    "waitingGrade": "Waiting for your instructor to release the grade.",
+    "refreshResults": "Refresh results",
+    "downloadError": "Could not open the attachment. Please try again.",
+    "errors": {
+      "ASSIGNMENT_DEADLINE_PASSED": "The submission deadline has passed.",
+      "ASSIGNMENT_ATTEMPTS_EXHAUSTED": "No submission attempts remain.",
+      "ASSIGNMENT_REVISION_CONFLICT": "The assignment has changed. Reopen it to continue.",
+      "SUBMISSION_VERSION_CONFLICT": "Your work changed on another device. Reload before continuing.",
+      "QUIZ_ALREADY_STARTED": "This quiz already has an attempt. Reload to view your result.",
+      "APP_ORIGIN_REQUIRED": "Assignment submission connection is not configured.",
+      "INVALID_ASSIGNMENT_RESPONSE": "Invalid assignment data. Please try again.",
+      "ASSIGNMENT_VERSION_CONFLICT": "The assignment changed. Reopen it to continue.",
+      "ATTEMPT_LIMIT_REACHED": "No submission attempts remain.",
+      "CODE_ATTEMPTS_EXHAUSTED": "No submission attempts remain.",
+      "CODE_DRAFT_VERSION_CONFLICT": "The draft changed on another device. Reload to sync before saving.",
+      "CODE_SUBMISSION_IN_FLIGHT": "Your previous submission is still being graded.",
+      "CODE_RUN_RATE_LIMITED": "Too many runs. Wait before trying again.",
+      "CODE_RUNNER_BUSY": "The grading system is busy. Please try again later.",
+      "CODE_RUNNER_UNAVAILABLE": "The grading system is temporarily unavailable.",
+      "CODE_SOURCE_TOO_LARGE": "Your source code exceeds the size limit.",
+      "ASSIGNMENT_CLOSED": "This assignment is closed.",
+      "ASSIGNMENT_ZIP_DISABLED": "ZIP submissions are currently unavailable.",
+      "ASSIGNMENT_UPLOAD_EXPIRED": "The upload expired. Choose and upload the file again.",
+      "INVALID_ASSIGNMENT_FILE": "Invalid file. Choose another ZIP file."
+    },
+    "constraints": "Constraints",
+    "input": "Input:   {{value}}",
+    "output": "Output:  {{value}}",
+    "consoleEmpty": "Tap Run to test your code against the samples.",
+    "lines": "{{count}} lines",
+    "judgeResult": "Grading result",
+    "attemptTag": "#{{number}}",
+    "scoreShort": "{{score}}/{{max}}",
+    "factScore": "Max score",
+    "factAttempts": "Attempts",
+    "factDue": "Due",
+    "factNoDue": "No deadline",
+    "outputTitle": "Run output",
+    "running": "Running code…",
+    "passedSummary": "{{passed}}/{{total}} passed",
+    "casePassed": "✓ Passed",
+    "caseFailed": "✗ Failed",
+    "compile": "Compile",
+    "expectedLabel": "Expected",
+    "actualLabel": "Actual",
+    "stdout": "stdout › {{value}}",
+    "stderr": "stderr › {{value}}",
+    "saveNow": "Save now",
+    "judgingHint": "Your previous submission is being graded, please wait.",
+    "runClosed": "The deadline has passed, so sample runs are closed.",
+    "markRight": "correct answer",
+    "markWrong": "your pick, wrong"
+  },
+  "materials": {
+    "authRequired": "Sign in with a student account to view materials.",
+    "title": "Materials",
+    "unitTitle": "Materials · {{title}}",
+    "read": "View material",
+    "openA11y": "Open {{type}}: {{title}}",
+    "count": "Materials: {{count}}",
+    "attachmentCount": "Attachments: {{count}}",
+    "loadMore": "Load more",
+    "openFile": "Open / download {{name}}",
+    "attachments": "Attachments",
+    "empty": "No materials available yet",
+    "emptyDescription": "Materials appear when the unit is unlocked and your teacher releases them.",
+    "error": "Unable to open material",
+    "errorDescription": "Please try again or return to your class.",
+    "type": { "ARTICLE": "Article", "FILE": "Document", "VIDEO": "Video" },
+    "errors": {
+      "MATERIAL_ACCESS_DENIED": "You cannot currently view materials for this class. Please check your enrollment.",
+      "CLASS_UNIT_NOT_FOUND": "Unit not found. Please return to your class to refresh it.",
+      "CLASS_NOT_FOUND": "Class not found or access is no longer available.",
+      "MATERIAL_NOT_FOUND": "This material is not available. The materials list is being refreshed.",
+      "FILE_NOT_READY": "This file is being processed. Please try again later.",
+      "FILE_STORAGE_DISABLED": "Files cannot be opened right now. You can still read the material information.",
+      "FILE_STORAGE_UNAVAILABLE": "File storage is temporarily unavailable. Please try again.",
+      "MATERIAL_REVISION_CHANGED": "This material has changed. Please reload before continuing.",
+      "APP_ORIGIN_REQUIRED": "The app is not configured to open this file. Please contact support."
+    }
   }
 }
