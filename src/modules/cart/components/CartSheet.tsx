@@ -9,7 +9,7 @@ import { ScreenState } from '@/components/common/ScreenState';
 import { Button } from '@/components/ui/Button';
 import { Skeleton } from '@/components/ui/Skeleton';
 import { formatVnd, formatDateOnly } from '@/shared/utilities/formatVnd';
-import type { Cart } from '../types/cart.type';
+import type { Cart, CheckoutPaymentType } from '../types/cart.type';
 
 export type CartSheetProps = {
   cart: Cart;
@@ -18,6 +18,8 @@ export type CartSheetProps = {
   checkingOut?: boolean;
   checkoutError?: string | null | undefined;
   checkoutUnknown?: boolean;
+  paymentType?: CheckoutPaymentType;
+  onPaymentTypeChange?: (value: CheckoutPaymentType) => void;
   onRemove: (classId: string) => void;
   onCheckout: () => void;
   onVerify?: (() => void) | undefined;
@@ -31,6 +33,8 @@ export function CartSheet({
   checkingOut = false,
   checkoutError,
   checkoutUnknown = false,
+  paymentType = 'PAYOS',
+  onPaymentTypeChange,
   onRemove,
   onCheckout,
   onVerify,
@@ -179,6 +183,47 @@ export function CartSheet({
             {formatVnd(cart.totalAmount)}
           </Text>
         </View>
+        {status === 'success' && cart.items.length > 0 && (
+          <View className="mb-[16px] gap-[8px]">
+            <Text className="font-nunito-extrabold text-[16px] text-forest">
+              {t('cart.paymentMethod')}
+            </Text>
+            {(['PAYOS', 'CASH'] as const).map((method) => (
+              <PressableScale
+                key={method}
+                testID={'cart-payment-' + method}
+                accessibilityRole="radio"
+                accessibilityLabel={t('cart.methods.' + method)}
+                accessibilityState={{
+                  checked: paymentType === method,
+                  disabled: pending || checkoutUnknown,
+                }}
+                disabled={pending || checkoutUnknown}
+                onPress={() => onPaymentTypeChange?.(method)}
+                className={
+                  paymentType === method
+                    ? 'min-h-[52px] flex-row items-center gap-[10px] rounded-[14px] border-2 border-forest bg-soft px-[14px] py-[12px]'
+                    : 'min-h-[52px] flex-row items-center gap-[10px] rounded-[14px] border-2 border-line px-[14px] py-[12px]'
+                }
+              >
+                <View className="h-[20px] w-[20px] items-center justify-center rounded-full border-2 border-forest">
+                  {paymentType === method && (
+                    <View className="h-[10px] w-[10px] rounded-full bg-forest" />
+                  )}
+                </View>
+                <Text className="flex-1 font-nunito-bold text-[14px] text-forest">
+                  {t('cart.methods.' + method)}
+                </Text>
+              </PressableScale>
+            ))}
+            <Text
+              accessibilityLiveRegion="polite"
+              className="font-nunito text-[13px] leading-[19px] text-muted"
+            >
+              {t(paymentType === 'CASH' ? 'cart.cashHint' : 'cart.qrHint')}
+            </Text>
+          </View>
+        )}
         {(unavailable || checkoutError) && (
           <Text
             testID="cart-checkout-error"
@@ -204,7 +249,13 @@ export function CartSheet({
         )}
         <Button
           testID="cart-checkout"
-          label={t(checkingOut ? 'cart.checkoutPending' : 'cart.checkout')}
+          label={t(
+            checkingOut
+              ? 'cart.checkoutPending'
+              : paymentType === 'CASH'
+                ? 'cart.checkoutCash'
+                : 'cart.checkout'
+          )}
           variant="solid"
           loading={checkingOut}
           disabled={checkoutDisabled}

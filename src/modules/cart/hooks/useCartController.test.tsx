@@ -44,9 +44,12 @@ afterEach(() => mockServer.resetHandlers());
 afterAll(() => mockServer.close());
 async function setup() {
   const navigate = jest.fn();
-  const view = renderHookWithProviders(() => useCartController(navigate));
+  const cashNavigate = jest.fn();
+  const view = renderHookWithProviders(() =>
+    useCartController(navigate, cashNavigate)
+  );
   await waitFor(() => expect(view.result.current.status).toBe('success'));
-  return { ...view, navigate };
+  return { ...view, navigate, cashNavigate };
 }
 it('checks out once, refetches the emptied cart and opens the returned order', async () => {
   const { result, navigate } = await setup();
@@ -173,4 +176,66 @@ it('does not navigate if the checkout completes after leaving the sheet', async 
     await done;
   });
   expect(navigate).not.toHaveBeenCalled();
+});
+
+it('places a cash checkout split across mentors and opens orders instead of QR', async () => {
+  items = [apiCartItem(10), apiCartItem(11)];
+  mockServer.use(
+    http.post(base + '/me/cart/checkout', async ({ request }) => {
+      checkoutCalls++;
+      expect(await request.json()).toEqual({ paymentType: 'CASH' });
+      items = [];
+      return HttpResponse.json(
+        {
+          orders: [
+            { ...apiOrder([id(10)]), paymentType: 'CASH' },
+            { ...apiOrder([id(11)]), id: id(501), paymentType: 'CASH' },
+          ],
+        },
+        { status: 201 }
+      );
+    })
+  );
+  const { result, navigate, cashNavigate } = await setup();
+  act(() => result.current.onPaymentTypeChange('CASH'));
+  await act(async () => {
+    await result.current.onCheckout();
+  });
+  expect(checkoutCalls).toBe(1);
+  expect(navigate).not.toHaveBeenCalled();
+  expect(cashNavigate).toHaveBeenCalledTimes(1);
+  expect(result.current.cart.items).toEqual([]);
+});
+
+it('keeps the cash method locked after a lost response and recovers all mentor orders', async () => {
+  items = [apiCartItem(10), apiCartItem(11)];
+  mockServer.use(
+    http.post(base + '/me/cart/checkout', () => {
+      checkoutCalls++;
+      return HttpResponse.error();
+    }),
+    http.get(base + '/me/orders', () =>
+      HttpResponse.json(
+        apiPage([
+          { ...apiOrder([id(10)]), paymentType: 'CASH' },
+          { ...apiOrder([id(11)]), id: id(501), paymentType: 'CASH' },
+        ])
+      )
+    )
+  );
+  const { result, navigate, cashNavigate } = await setup();
+  act(() => result.current.onPaymentTypeChange('CASH'));
+  await act(async () => {
+    await result.current.onCheckout();
+  });
+  expect(result.current.checkoutUnknown).toBe(true);
+  act(() => result.current.onPaymentTypeChange('PAYOS'));
+  expect(result.current.paymentType).toBe('CASH');
+  await act(async () => {
+    await result.current.onCheckout();
+    await result.current.onVerify();
+  });
+  expect(checkoutCalls).toBe(1);
+  expect(navigate).not.toHaveBeenCalled();
+  expect(cashNavigate).toHaveBeenCalledTimes(1);
 });

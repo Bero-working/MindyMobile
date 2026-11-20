@@ -3,21 +3,27 @@ import { useTranslation } from 'react-i18next';
 import { ApiError } from '@/shared/utilities/apiError';
 import { paymentService } from '@/modules/payment/services/payment.service';
 import { cartService } from '../services/cart.service';
+import { invalidCartResponse } from '../schemas/cart.schema';
 import { useCartActions, useCartQuery } from './useCartQuery';
-import type { Cart } from '../types/cart.type';
+import type { Cart, CheckoutPaymentType } from '../types/cart.type';
 
 const codeOf = (error: Error) =>
   error instanceof ApiError ? error.code : 'generic';
 // A lost or failed-on-server checkout response may still have created the order.
 const isUnknownOutcome = (error: Error) =>
   !(error instanceof ApiError) || error.status === 0 || error.status >= 500;
-export function useCartController(onOrder: (orderId: string) => void) {
+export function useCartController(
+  onOrder: (orderId: string) => void,
+  onCashOrders: () => void
+) {
   const { t, i18n } = useTranslation();
   const cart = useCartQuery();
   const actions = useCartActions();
   const busy = useRef(false);
   const mounted = useRef(true);
   const pendingClassIds = useRef<string[]>([]);
+  const pendingPaymentType = useRef<CheckoutPaymentType>('PAYOS');
+  const [paymentType, setPaymentType] = useState<CheckoutPaymentType>('PAYOS');
   const [removingId, setRemoving] = useState<string | null>(null);
   const [checkingOut, setCheckingOut] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -47,7 +53,10 @@ export function useCartController(onOrder: (orderId: string) => void) {
     if (!mounted.current) return;
     setUnknown(false);
     await actions.afterCheckout().catch(() => {});
-    if (mounted.current) onOrder(orderId);
+    if (mounted.current) {
+      if (pendingPaymentType.current === 'CASH') onCashOrders();
+      else onOrder(orderId);
+    }
   };
   return {
     cart: cart.data ?? { items: [], totalAmount: 0 },
@@ -60,6 +69,10 @@ export function useCartController(onOrder: (orderId: string) => void) {
     checkingOut,
     checkoutError: error,
     checkoutUnknown: unknown,
+    paymentType,
+    onPaymentTypeChange: (value: CheckoutPaymentType) => {
+      if (!busy.current && !unknown) setPaymentType(value);
+    },
     onRetry: () => {
       cart.refetch().catch(() => {});
     },
@@ -82,11 +95,14 @@ export function useCartController(onOrder: (orderId: string) => void) {
         const items = checkoutItems ?? cart.data?.items ?? [];
         if (!items.length || unknown) return;
         pendingClassIds.current = items.map((item) => item.classId);
+        pendingPaymentType.current = paymentType;
         setCheckingOut(true);
         setError(null);
         try {
           // Never retried automatically: a retry could create a second order.
-          const order = await cartService.checkout();
+          const orders = await cartService.checkout(paymentType);
+          const order = orders[0];
+          if (!order) throw invalidCartResponse();
           await finish(order.id);
         } catch (cause) {
           if (cause instanceof Error && isUnknownOutcome(cause))
@@ -106,9 +122,16 @@ export function useCartController(onOrder: (orderId: string) => void) {
         setCheckingOut(true);
         setError(null);
         try {
-          const order = await paymentService.findPendingPayosOrder(
-            pendingClassIds.current
-          );
+          const order =
+            pendingPaymentType.current === 'CASH'
+              ? (
+                  await paymentService.findPendingCashOrders(
+                    pendingClassIds.current
+                  )
+                )[0]
+              : await paymentService.findPendingPayosOrder(
+                  pendingClassIds.current
+                );
           if (order) {
             await finish(order.id);
             return;

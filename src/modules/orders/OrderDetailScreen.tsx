@@ -162,6 +162,18 @@ export function OrderDetailScreen({
               >
                 {t('orders.items')}
               </Text>
+              {order.paymentType === 'CASH' &&
+                order.status === 'PENDING' &&
+                !countdown.expired && (
+                  <Text
+                    testID="order-cash-instructions"
+                    className="font-nunito-bold text-[14px] leading-[21px] text-forest"
+                  >
+                    {t('orders.cashInstructions', {
+                      time: date(order.expiresAt),
+                    })}
+                  </Text>
+                )}
               {order.details.map((detail) => (
                 <View
                   key={detail.id}

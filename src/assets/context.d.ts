@@ -57,6 +57,10 @@ declare let process: NodeJS.Process;
 declare const __DEV__: boolean;
 
 declare module '*.png';
+declare module '*.jpg' {
+  const source: import('react-native').ImageSourcePropType;
+  export default source;
+}
 
 declare module '*.svg' {
   import type React from 'react';

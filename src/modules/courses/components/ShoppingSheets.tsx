@@ -31,13 +31,19 @@ type Props = {
   onClose: () => void;
 };
 // Production adapters for the shared course and cart sheets (Home and Courses).
-export function ShoppingSheets({ sheet, courseId, onClose }: Props) {
+export function ShoppingSheets({
+  sheet,
+  courseId,
+  onOpenCart,
+  onClose,
+}: Props) {
   if (sheet === 'cart') return <ProductionCartSheet onClose={onClose} />;
   if (sheet === 'course' && courseId)
     return (
       <ProductionCourseSheet
         key={courseId}
         courseId={courseId}
+        onOpenCart={onOpenCart}
         onClose={onClose}
       />
     );
@@ -55,13 +61,9 @@ const placeholder = (id: string): Course => ({
 });
 function ProductionCourseSheet({
   courseId,
+  onOpenCart,
   onClose,
-}: Pick<Props, 'courseId' | 'onClose'>) {
-  const navigation = useNavigation<NavigationProp>();
-  const checkout = useCartController((orderId) => {
-    onClose();
-    navigation.navigate(routes.payment, { orderId });
-  });
+}: Pick<Props, 'courseId' | 'onOpenCart' | 'onClose'>) {
   const detail = useCourseDetailQuery(courseId);
   const cart = useCartQuery();
   const actions = useCartActions();
@@ -75,8 +77,7 @@ function ProductionCourseSheet({
       await actions.refresh();
     },
     onCheckout: async () => {
-      const latest = await actions.refresh();
-      await checkout.onCheckout(latest.items);
+      onOpenCart();
     },
   });
   return (
@@ -87,12 +88,8 @@ function ProductionCourseSheet({
       onRetry={detail.onRetry}
       selectedClassId={selection.selectedClassId}
       pendingClassId={selection.pendingClassId}
-      buying={selection.buying || checkout.checkingOut}
-      error={selection.error ?? checkout.checkoutError}
-      checkoutUnknown={checkout.checkoutUnknown}
-      onVerify={() => {
-        checkout.onVerify().catch(() => {});
-      }}
+      buying={selection.buying}
+      error={selection.error}
       toast={selection.toast}
       onPick={selection.pick}
       onUnpick={selection.unpick}
@@ -100,7 +97,6 @@ function ProductionCourseSheet({
         selection.addToCart().catch(() => {});
       }}
       onBuy={() => {
-        if (checkout.checkoutUnknown) return;
         selection.buy().catch(() => {});
       }}
       onClose={onClose}
@@ -109,10 +105,16 @@ function ProductionCourseSheet({
 }
 function ProductionCartSheet({ onClose }: { onClose: () => void }) {
   const navigation = useNavigation<NavigationProp>();
-  const controller = useCartController((orderId) => {
-    onClose();
-    navigation.navigate(routes.payment, { orderId });
-  });
+  const controller = useCartController(
+    (orderId) => {
+      onClose();
+      navigation.navigate(routes.payment, { orderId });
+    },
+    () => {
+      onClose();
+      navigation.navigate(routes.studentOrders);
+    }
+  );
   return (
     <CartSheet
       {...controller}

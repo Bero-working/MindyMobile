@@ -1,4 +1,5 @@
 import type { DeliveryMode } from '@/modules/courses/types/courses.type';
+export type CheckoutPaymentType = 'PAYOS' | 'CASH';
 export type CartItem = {
   classId: string;
   classCode: string;

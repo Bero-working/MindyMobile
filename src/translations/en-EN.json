@@ -153,6 +153,7 @@
     "loadMoreError": "Could not load more data. Please try again."
   },
   "orders": {
+    "cashInstructions": "Pay your mentor in cash before {{time}}. Your order is awaiting the mentor’s payment confirmation.",
     "title": "My orders",
     "description": "Track your course purchases and order status.",
     "searchPlaceholder": "Search orders",
@@ -469,6 +470,11 @@
     "addToCart": "Add selected class to cart"
   },
   "cart": {
+    "paymentMethod": "Payment method",
+    "methods": { "PAYOS": "Scan QR code", "CASH": "Cash" },
+    "qrHint": "Scan the code with your banking app to pay for your order.",
+    "cashHint": "Pay your mentor before the deadline on each order. Your cart may be split into separate orders by mentor.",
+    "checkoutCash": "Place cash order",
     "title": "Cart ({{count}})",
     "empty": "Your cart is empty.",
     "total": "Total",

@@ -87,12 +87,14 @@ it('shows the course title once when its cover is unavailable', () => {
   expect(screen.getAllByText(course.title)).toHaveLength(1);
 });
 
-it('reserves the design image area when introduction artwork is unavailable', () => {
+it('renders bundled introduction photos with accessible descriptions', () => {
   render(<StudentHome {...props} />);
-  expect(
-    screen.getByTestId('home-intro-image-0', { includeHiddenElements: true })
-      .props.importantForAccessibility
-  ).toBe('no-hide-descendants');
+  for (const [index, slot] of ['start', 'mentor', 'project'].entries()) {
+    expect(screen.getByTestId(`home-intro-image-${index}-image`)).toHaveProp(
+      'accessibilityLabel',
+      i18n.t(`home.intro.slides.${slot}.imageAlt`)
+    );
+  }
 });
 
 it('shows approved course promises outside preview and no invented image icons', () => {

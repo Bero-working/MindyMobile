@@ -6,7 +6,7 @@ import {
   checkoutSchema,
   invalidCartResponse,
 } from '../schemas/cart.schema';
-import type { Cart } from '../types/cart.type';
+import type { Cart, CheckoutPaymentType } from '../types/cart.type';
 
 const parse = <S extends z.ZodTypeAny>(
   schema: S,
@@ -35,13 +35,16 @@ export const cartService = {
   async remove(classId: string): Promise<void> {
     await apiInstances.service.delete<void>(`me/cart/items/${classId}`);
   },
-  async checkout(): Promise<OrderDto> {
+  async checkout(
+    paymentType: CheckoutPaymentType = 'PAYOS'
+  ): Promise<OrderDto[]> {
     const response = await apiInstances.service.post<
       { orders: OrderDto[] },
-      { paymentType: 'PAYOS' }
-    >('me/cart/checkout', { paymentType: 'PAYOS' });
-    const [order] = parse(checkoutSchema, response).orders;
-    if (!order) throw invalidCartResponse();
-    return order;
+      { paymentType: CheckoutPaymentType }
+    >('me/cart/checkout', { paymentType });
+    const { orders } = parse(checkoutSchema, response);
+    if (orders.some((order) => order.paymentType !== paymentType))
+      throw invalidCartResponse();
+    return orders;
   },
 };

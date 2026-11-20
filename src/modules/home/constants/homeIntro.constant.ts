@@ -1,11 +1,14 @@
 import type { ImageSourcePropType } from 'react-native';
+import start from '@/assets/images/home/start.jpg';
+import mentor from '@/assets/images/home/mentor.jpg';
+import project from '@/assets/images/home/project.jpg';
 
-// Replace a slot with require('@/assets/images/home/...') or { uri } when artwork is supplied.
+// Bundled web photos; source credits are in assets/images/home/CREDITS.md.
 export const HOME_INTRO_IMAGES: Record<
   'start' | 'mentor' | 'project',
   ImageSourcePropType | undefined
 > = {
-  start: undefined,
-  mentor: undefined,
-  project: undefined,
+  start,
+  mentor,
+  project,
 };

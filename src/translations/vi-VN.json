@@ -153,6 +153,7 @@
     "loadMoreError": "Chưa tải được dữ liệu tiếp theo. Vui lòng thử lại."
   },
   "orders": {
+    "cashInstructions": "Thanh toán tiền mặt cho mentor trước {{time}}. Đơn đang chờ mentor xác nhận đã thu tiền.",
     "title": "Đơn hàng của tôi",
     "description": "Theo dõi lịch sử mua khóa học và trạng thái đơn hàng của bạn.",
     "searchPlaceholder": "Tìm đơn hàng",
@@ -469,6 +470,11 @@
     "addToCart": "Thêm lớp đã chọn vào giỏ hàng"
   },
   "cart": {
+    "paymentMethod": "Hình thức thanh toán",
+    "methods": { "PAYOS": "Quét mã QR", "CASH": "Tiền mặt" },
+    "qrHint": "Quét mã bằng ứng dụng ngân hàng để thanh toán đơn hàng.",
+    "cashHint": "Thanh toán cho mentor trước hạn ghi trên đơn. Giỏ hàng có thể được tách thành nhiều đơn theo mentor.",
+    "checkoutCash": "Đặt mua bằng tiền mặt",
     "title": "Giỏ hàng ({{count}})",
     "empty": "Giỏ hàng đang trống.",
     "total": "Tổng cộng",

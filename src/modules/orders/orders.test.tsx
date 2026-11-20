@@ -51,6 +51,19 @@ function detail(
   );
 }
 
+it('shows the mentor cash-payment instructions and server deadline on pending cash orders', () => {
+  const view = detail({ ...order, paymentType: 'CASH' });
+  expect(screen.getByTestId('order-cash-instructions')).toHaveTextContent(
+    /mentor/
+  );
+  expect(screen.getByTestId('order-cash-instructions')).toHaveTextContent(
+    /2099/
+  );
+  view.unmount();
+  detail({ ...order, paymentType: 'CASH', status: 'PAID' });
+  expect(screen.queryByTestId('order-cash-instructions')).toBeNull();
+});
+
 it('renders the course image and falls back when loading fails', () => {
   render(
     <OrdersScreen
