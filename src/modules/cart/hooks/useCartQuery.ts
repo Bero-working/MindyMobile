@@ -48,6 +48,9 @@ export function useCartActions() {
         client.invalidateQueries({
           queryKey: ['home', ...scopeKey(scope), 'schedule'],
         }),
+        client.invalidateQueries({
+          queryKey: ['purchases', ...scopeKey(scope)],
+        }),
       ]);
     },
   };

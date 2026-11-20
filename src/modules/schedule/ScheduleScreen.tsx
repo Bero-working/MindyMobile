@@ -214,6 +214,7 @@ export function ScheduleScreen(props: ScheduleProps) {
       <LearningState
         region={props.sessions}
         prefix="schedule"
+        inset
         empty={!items.length}
       >
         {groups

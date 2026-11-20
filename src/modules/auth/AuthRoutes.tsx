@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
+import { deferComponent } from '@/components/common/deferComponent';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
@@ -5,12 +7,32 @@ import routes from '@/navigation/routes';
 import type { NavigationProp } from '@/navigation/types';
 import { ScreenState } from '@/components/common/ScreenState';
 import { Button } from '@/components/ui/Button';
-import { WelcomeScreen } from './WelcomeScreen';
-import { LoginScreen } from './LoginScreen';
-import { RegisterScreen } from './RegisterScreen';
+
 import { useAuthActions } from './hooks/useAuthSession';
 import { useStore } from '@/state/store';
-import { ProductionStudentHome } from '@/modules/home/ProductionStudentHome';
+
+const WelcomeScreen = deferComponent(
+  () =>
+    (require('./WelcomeScreen') as typeof import('./WelcomeScreen'))
+      .WelcomeScreen
+);
+
+const LoginScreen = deferComponent(
+  () => (require('./LoginScreen') as typeof import('./LoginScreen')).LoginScreen
+);
+
+const RegisterScreen = deferComponent(
+  () =>
+    (require('./RegisterScreen') as typeof import('./RegisterScreen'))
+      .RegisterScreen
+);
+
+const ProductionStudentHome = deferComponent(
+  () =>
+    (
+      require('@/modules/home/ProductionStudentHome') as typeof import('@/modules/home/ProductionStudentHome')
+    ).ProductionStudentHome
+);
 
 export function WelcomeRoute() {
   const navigation = useNavigation<NavigationProp>();
@@ -20,9 +42,6 @@ export function WelcomeRoute() {
     <WelcomeScreen
       onLogin={() => navigation.navigate(routes.login)}
       onRegister={() => navigation.navigate(routes.register)}
-      previewAction={
-        __DEV__ ? () => navigation.navigate(routes.phaseOnePreview) : undefined
-      }
     />
   );
 }
@@ -66,7 +85,6 @@ function StaffSession() {
         <ScreenState
           title={t('auth.session.logout')}
           description={t('errors.generic')}
-          requestId={logoutError.requestId}
         />
       )}
       <Button

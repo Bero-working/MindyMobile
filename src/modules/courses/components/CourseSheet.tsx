@@ -28,6 +28,8 @@ export type CourseSheetProps = {
   onAddToCart: () => void;
   pendingClassId?: string | null | undefined;
   buying?: boolean;
+  checkoutUnknown?: boolean;
+  onVerify?: () => void;
   status?: 'loading' | 'error' | 'success';
   error?: string | null | undefined;
   toast?: string | null | undefined;
@@ -44,6 +46,8 @@ export function CourseSheet({
   onAddToCart,
   pendingClassId,
   buying = false,
+  checkoutUnknown = false,
+  onVerify,
   status = 'success',
   error,
   toast,
@@ -78,9 +82,11 @@ export function CourseSheet({
     [scrollClasses, firstHeight, secondHeight, thirdHeight]
   );
   const pending = !!pendingClassId || buying;
-  const canSubmit = classes.some(
-    (item) => item.id === selectedClassId && item.availableSeats > 0
-  );
+  const canSubmit =
+    !checkoutUnknown &&
+    classes.some(
+      (item) => item.id === selectedClassId && item.availableSeats > 0
+    );
   return (
     <AppSheet
       onClose={onClose}
@@ -394,6 +400,19 @@ export function CourseSheet({
                 >
                   {error}
                 </Text>
+              )}
+              {checkoutUnknown && (
+                <View>
+                  <Text accessibilityLiveRegion="polite">
+                    {t('cart.checkoutUnknown')}
+                  </Text>
+                  <Button
+                    testID="course-sheet-checkout-verify"
+                    label={t('cart.checkoutVerify')}
+                    onPress={onVerify}
+                    disabled={pending}
+                  />
+                </View>
               )}
               <View className="flex-row items-center gap-[10px]">
                 <Text

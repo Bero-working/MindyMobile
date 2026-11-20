@@ -1,5 +1,5 @@
 import '../../../tests/mocks/nativeUi';
-import { act, fireEvent, render, screen } from '@testing-library/react-native';
+import { fireEvent, render, screen } from '@testing-library/react-native';
 import i18n from '@/config/i18n.config';
 import { CoursesScreen } from './CoursesScreen';
 import type { CatalogProps, Course } from './types/courses.type';
@@ -32,29 +32,22 @@ beforeEach(async () => {
   jest.clearAllMocks();
   await i18n.changeLanguage('vi-VN');
 });
-it('advances recommended courses every three seconds', () => {
-  jest.useFakeTimers();
-  const view = render(
+it('lists up to three recommended courses without a carousel', () => {
+  render(
     <CoursesScreen
       {...props}
       recommendations={{
         status: 'success',
-        data: [course, { ...course, id: 'c2' }, { ...course, id: 'c3' }],
+        data: [1, 2, 3, 4].map((n) => ({ ...course, id: 'c' + n })),
       }}
     />
   );
-  act(() => jest.advanceTimersByTime(3000));
-  expect(
-    screen.getByTestId('courses-recommend-dot-1').props.accessibilityState
-      .selected
-  ).toBe(true);
-  act(() => jest.advanceTimersByTime(3000));
-  expect(
-    screen.getByTestId('courses-recommend-dot-2').props.accessibilityState
-      .selected
-  ).toBe(true);
-  view.unmount();
-  jest.useRealTimers();
+  expect(screen.getByTestId('courses-recommend-c3')).toBeTruthy();
+  expect(screen.queryByTestId('courses-recommend-c4')).toBeNull();
+  expect(screen.queryByTestId('courses-recommend-dot-0')).toBeNull();
+  const rail = screen.getByTestId('courses-recommend-scroll');
+  expect(rail.props.horizontal).toBe(true);
+  expect(rail.props.snapToInterval).toBeGreaterThan(0);
 });
 it('hides empty badge, caps it at 9+ and opens recommendations', () => {
   const view = render(<CoursesScreen {...props} />);

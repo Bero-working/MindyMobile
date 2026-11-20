@@ -5,14 +5,14 @@ jest.mock('@react-native-clipboard/clipboard', () => ({
   __esModule: true,
   default: { setString: jest.fn() },
 }));
-it('never assigns sample bank information in production', () => {
+it('never assigns sample bank information to live payments in any environment', () => {
   const previous = env.APP_ENV;
   env.APP_ENV = 'production';
   const view = renderHook(() => usePaymentController());
   expect(view.result.current.bankInfo).toBeNull();
   env.APP_ENV = 'development';
   view.rerender({});
-  expect(view.result.current.bankInfo).not.toBeNull();
+  expect(view.result.current.bankInfo).toBeNull();
   view.unmount();
   env.APP_ENV = previous;
 });

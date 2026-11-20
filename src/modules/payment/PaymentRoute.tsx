@@ -102,6 +102,7 @@ function StudentPayment() {
       retrying={data.retrying}
       canRetry={data.canRetry}
       onRetry={data.onRetry}
+      onCheckStatus={data.onRetry}
       onLeave={leave}
       onHome={() => paymentResultHome(navigation)}
       onCourses={() => navigation.navigate(routes.courses)}

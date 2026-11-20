@@ -155,6 +155,49 @@ it('finds the pending PAYOS order holding exactly the checked-out classes', asyn
   ).resolves.toBeNull();
 });
 
+it('recovers cash orders across pages and ignores unrelated QR and cash orders', async () => {
+  const pages: number[] = [];
+  mockServer.use(
+    http.get(TEST_API_URL + '/me/orders', ({ request }) => {
+      const page = Number(new URL(request.url).searchParams.get('page'));
+      pages.push(page);
+      return HttpResponse.json({
+        items:
+          page === 1
+            ? [
+                order(1, [id(10)], { paymentType: 'CASH' }),
+                order(2, [id(10), id(11)]),
+                order(3, [id(12)], { paymentType: 'CASH' }),
+              ]
+            : [order(4, [id(11)], { paymentType: 'CASH' })],
+        page,
+        pageSize: 3,
+        total: 4,
+      });
+    })
+  );
+  await expect(
+    paymentService.findPendingCashOrders([id(10), id(11)])
+  ).resolves.toMatchObject([{ id: id(1) }, { id: id(4) }]);
+  expect(pages).toEqual([1, 2]);
+});
+
+it('rejects partial cash recovery so an unknown checkout cannot be submitted again', async () => {
+  mockServer.use(
+    http.get(TEST_API_URL + '/me/orders', () =>
+      HttpResponse.json({
+        items: [order(1, [id(10)], { paymentType: 'CASH' })],
+        page: 1,
+        pageSize: 20,
+        total: 1,
+      })
+    )
+  );
+  await expect(
+    paymentService.findPendingCashOrders([id(10), id(11)])
+  ).rejects.toMatchObject({ code: 'INVALID_PAYMENT_RESPONSE' });
+});
+
 it('includes slow HTTP responses in the 30-second creation budget', async () => {
   let clock = Date.now(),
     calls = 0;

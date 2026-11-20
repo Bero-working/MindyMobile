@@ -152,9 +152,44 @@ it('keeps selection local and changes the live cart badge only after the POST re
   );
   expect(screen.getByTestId('course-sheet')).toBeTruthy();
 });
-it('buys a replacement with POST before DELETE and preserves only one class per course', async () => {
+it('opens payment selection after buying a replacement without checking out yet', async () => {
   items = [apiCartItem(10)];
   const open = jest.fn();
+  const close = jest.fn();
+  renderWithProviders(
+    <ShoppingSheets
+      sheet="course"
+      courseId={id(1)}
+      onOpenCart={open}
+      onClose={close}
+    />
+  );
+  await waitFor(() =>
+    expect(screen.getByTestId('course-sheet-pick-' + id(11))).toBeTruthy()
+  );
+  fireEvent.press(screen.getByTestId('course-sheet-pick-' + id(11)));
+  fireEvent.press(screen.getByTestId('course-sheet-buy'));
+  await waitFor(() => expect(open).toHaveBeenCalledTimes(1));
+  expect(mockNavigate).not.toHaveBeenCalled();
+  expect(close).not.toHaveBeenCalled();
+  expect(writes).toEqual(['POST ' + id(11), 'DELETE ' + id(10)]);
+  expect(items.map((item) => item.classId)).toEqual([id(11)]);
+});
+it('locks repeat buy taps while adding the class before opening payment selection', async () => {
+  const gate = deferred();
+  let calls = 0;
+  const open = jest.fn();
+  mockServer.use(
+    http.post(base + '/me/cart/items', async () => {
+      calls++;
+      await gate.promise;
+      items = [apiCartItem(10)];
+      return HttpResponse.json(
+        { items, totalAmount: 1500000 },
+        { status: 201 }
+      );
+    })
+  );
   renderWithProviders(
     <ShoppingSheets
       sheet="course"
@@ -164,14 +199,18 @@ it('buys a replacement with POST before DELETE and preserves only one class per 
     />
   );
   await waitFor(() =>
-    expect(screen.getByTestId('course-sheet-pick-' + id(11))).toBeTruthy()
+    expect(screen.getByTestId('course-sheet-pick-' + id(10))).toBeTruthy()
   );
-  fireEvent.press(screen.getByTestId('course-sheet-pick-' + id(11)));
-  expect(writes).toEqual([]);
+  fireEvent.press(screen.getByTestId('course-sheet-pick-' + id(10)));
   fireEvent.press(screen.getByTestId('course-sheet-buy'));
+  await waitFor(() => expect(calls).toBe(1));
+  expect(screen.getByTestId('course-sheet-buy')).toBeDisabled();
+  fireEvent.press(screen.getByTestId('course-sheet-buy'));
+  expect(open).not.toHaveBeenCalled();
+  gate.resolve();
   await waitFor(() => expect(open).toHaveBeenCalledTimes(1));
-  expect(writes).toEqual(['POST ' + id(11), 'DELETE ' + id(10)]);
-  expect(items.map((item) => item.classId)).toEqual([id(11)]);
+  expect(calls).toBe(1);
+  expect(mockNavigate).not.toHaveBeenCalled();
 });
 it('preserves the previous class and shows CLASS_FULL when adding its replacement fails', async () => {
   items = [apiCartItem(10)];
@@ -202,41 +241,43 @@ it('preserves the previous class and shows CLASS_FULL when adding its replacemen
   expect(items[0]?.classId).toBe(id(10));
   expect(open).not.toHaveBeenCalled();
 });
-it('routes an unknown checkout through verification without a second checkout', async () => {
-  items = [apiCartItem(10)];
-  let calls = 0;
-  const close = jest.fn();
-  mockServer.use(
-    http.post(base + '/me/cart/checkout', () => {
-      calls++;
-      return HttpResponse.error();
-    }),
-    http.get(base + '/me/orders', () =>
-      HttpResponse.json(apiPage([apiOrder()]))
-    )
-  );
-  renderWithProviders(
-    <ShoppingSheets
-      sheet="cart"
-      courseId=""
-      onOpenCart={jest.fn()}
-      onClose={close}
-    />
-  );
-  await waitFor(() =>
-    expect(screen.getByTestId('cart-item-' + id(10))).toBeTruthy()
-  );
-  fireEvent.press(screen.getByTestId('cart-checkout'));
-  await waitFor(() =>
-    expect(screen.getByTestId('cart-checkout-verify')).toBeTruthy()
-  );
-  fireEvent.press(screen.getByTestId('cart-checkout-verify'));
-  await waitFor(() =>
-    expect(mockNavigate).toHaveBeenCalledWith('PAYMENT', { orderId: id(500) })
-  );
-  expect(calls).toBe(1);
-  expect(close).toHaveBeenCalled();
-});
+it.each(['cart'] as const)(
+  'verifies an unknown %s checkout without creating a second order',
+  async (sheet) => {
+    items = [apiCartItem(10)];
+    let calls = 0;
+    const close = jest.fn();
+    mockServer.use(
+      http.post(base + '/me/cart/checkout', () => {
+        calls++;
+        return HttpResponse.error();
+      }),
+      http.get(base + '/me/orders', () =>
+        HttpResponse.json(apiPage([apiOrder()]))
+      )
+    );
+    renderWithProviders(
+      <ShoppingSheets
+        sheet={sheet}
+        courseId={id(1)}
+        onOpenCart={jest.fn()}
+        onClose={close}
+      />
+    );
+    const submit = 'cart-checkout';
+    const verify = 'cart-checkout-verify';
+    await waitFor(() => expect(screen.getByTestId(submit)).toBeEnabled());
+    fireEvent.press(screen.getByTestId(submit));
+    await waitFor(() => expect(screen.getByTestId(verify)).toBeTruthy());
+    expect(screen.getByTestId(submit)).toBeDisabled();
+    fireEvent.press(screen.getByTestId(verify));
+    await waitFor(() =>
+      expect(mockNavigate).toHaveBeenCalledWith('PAYMENT', { orderId: id(500) })
+    );
+    expect(calls).toBe(1);
+    expect(close).toHaveBeenCalled();
+  }
+);
 it('shows the enrollment or seat-hold reason from a structured backend error', async () => {
   const openCart = jest.fn();
   mockServer.use(
@@ -323,3 +364,51 @@ it('renders the real order QR route, and never creates a link for a closed order
   );
   expect(posts).toBe(1);
 });
+
+it.each(['PAYOS', 'CASH'] as const)(
+  'checks out with the selected %s method and opens the correct destination',
+  async (method) => {
+    items = [apiCartItem(10)];
+    let checkoutCalls = 0;
+    mockServer.use(
+      http.post(base + '/me/cart/checkout', async ({ request }) => {
+        checkoutCalls++;
+        expect(await request.json()).toEqual({ paymentType: method });
+        items = [];
+        return HttpResponse.json(
+          { orders: [{ ...apiOrder(), paymentType: method }] },
+          { status: 201 }
+        );
+      })
+    );
+    const close = jest.fn();
+    renderWithProviders(
+      <ShoppingSheets
+        sheet="cart"
+        courseId={id(1)}
+        onOpenCart={jest.fn()}
+        onClose={close}
+      />
+    );
+    await waitFor(() =>
+      expect(screen.getByTestId('cart-payment-' + method)).toBeTruthy()
+    );
+    expect(
+      screen.getByTestId('cart-payment-PAYOS').props.accessibilityState.checked
+    ).toBe(true);
+    fireEvent.press(screen.getByTestId('cart-payment-' + method));
+    expect(
+      screen.getByTestId('cart-payment-' + method).props.accessibilityState
+        .checked
+    ).toBe(true);
+    fireEvent.press(screen.getByTestId('cart-checkout'));
+    await waitFor(() => expect(close).toHaveBeenCalledTimes(1));
+    expect(checkoutCalls).toBe(1);
+    if (method === 'CASH')
+      expect(mockNavigate).toHaveBeenCalledWith('STUDENT_ORDERS');
+    else
+      expect(mockNavigate).toHaveBeenCalledWith('PAYMENT', {
+        orderId: id(500),
+      });
+  }
+);

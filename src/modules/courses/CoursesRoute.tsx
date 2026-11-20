@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
+import { deferComponent } from '@/components/common/deferComponent';
 import { useState } from 'react';
-import { navigateLearningTab } from '../my-classes/LearningRoutes';
+import { navigateLearningTab } from '@/navigation/navigateLearningTab';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
@@ -8,11 +10,24 @@ import routes from '@/navigation/routes';
 import type { NavigationProp } from '@/navigation/types';
 import { ScreenState } from '@/components/common/ScreenState';
 import { CoursesScreen } from './CoursesScreen';
-import { ShoppingSheets } from './components/ShoppingSheets';
-import { FilterSheet } from './components/FilterSheet';
+
 import { useCatalogQuery } from './hooks/useCatalogQuery';
 import { useCartQuery } from '@/modules/cart/hooks/useCartQuery';
 import type { DeliveryMode } from './types/courses.type';
+
+const ShoppingSheets = deferComponent(
+  () =>
+    (
+      require('./components/ShoppingSheets') as typeof import('./components/ShoppingSheets')
+    ).ShoppingSheets
+);
+
+const FilterSheet = deferComponent(
+  () =>
+    (
+      require('./components/FilterSheet') as typeof import('./components/FilterSheet')
+    ).FilterSheet
+);
 export function CoursesRoute() {
   const user = useStore((s) => s.sessionUser);
   const { t } = useTranslation();
@@ -89,12 +104,14 @@ function StudentCourses() {
           onClose={() => setSheet(null)}
         />
       )}
-      <ShoppingSheets
-        sheet={sheet === 'course' || sheet === 'cart' ? sheet : null}
-        courseId={courseId}
-        onOpenCart={() => setSheet('cart')}
-        onClose={() => setSheet(null)}
-      />
+      {(sheet === 'course' || sheet === 'cart') && (
+        <ShoppingSheets
+          sheet={sheet}
+          courseId={courseId}
+          onOpenCart={() => setSheet('cart')}
+          onClose={() => setSheet(null)}
+        />
+      )}
     </>
   );
 }

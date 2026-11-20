@@ -1,6 +1,9 @@
-import { useEffect } from 'react';
+/* eslint-disable @typescript-eslint/no-require-imports */
+import { useEffect, useState } from 'react';
+import { deferComponent } from '@/components/common/deferComponent';
 import {
   BackHandler,
+  Pressable,
   ScrollView,
   StatusBar,
   Text,
@@ -12,6 +15,7 @@ import { useTranslation } from 'react-i18next';
 import { PressableScale } from '@/components/common/PressableScale';
 import { Icon } from '@/components/common/Icon';
 import { MeetingButton } from './components/MeetingButton';
+import { MaterialsButton } from './components/MaterialsButton';
 import { colors } from '@/theme/colors';
 import {
   displayDay,
@@ -21,6 +25,13 @@ import {
 } from '../schedule/calendar';
 import type { ClassSession } from './types';
 import { sessionDisplayStatus } from './sessionDisplayStatus';
+
+const SessionAssignments = deferComponent(
+  () =>
+    (
+      require('../assignments/SessionAssignments') as typeof import('../assignments/SessionAssignments')
+    ).SessionAssignments
+);
 
 export function SessionDetailScreen({
   session,
@@ -34,6 +45,10 @@ export function SessionDetailScreen({
   onJoin,
   joining,
   joinError,
+  onWhiteboard,
+  onMaterials,
+  assignmentsClassId,
+  focused = true,
 }: {
   session: ClassSession;
   classCode: string;
@@ -46,11 +61,20 @@ export function SessionDetailScreen({
   onJoin?: (() => void) | undefined;
   joining: boolean;
   joinError: boolean;
+  onWhiteboard?: (() => void) | undefined;
+  onMaterials?: (() => void) | undefined;
+  assignmentsClassId?: string | undefined;
+  focused?: boolean;
 }) {
   const { t, i18n } = useTranslation();
+  const [tab, setTab] = useState<'content' | 'assignments'>('content');
+  useEffect(() => {
+    setTab('content');
+  }, [session.id, assignmentsClassId]);
   const { width, fontScale } = useWindowDimensions();
   const compact = width <= 360 || fontScale >= 1.3;
   useEffect(() => {
+    if (!focused) return;
     const subscription = BackHandler.addEventListener(
       'hardwareBackPress',
       () => {
@@ -59,7 +83,7 @@ export function SessionDetailScreen({
       }
     );
     return () => subscription.remove();
-  }, [onClose]);
+  }, [onClose, focused]);
   const day = localDay(session.startsAt, timeZone);
   const dayIndex = (new Date(`${day}T12:00:00Z`).getUTCDay() + 6) % 7;
   const facts = [
@@ -97,7 +121,13 @@ export function SessionDetailScreen({
         accessibilityViewIsModal
         className="flex-1 bg-cover-a-soft"
       >
-        <View className="gap-[12px] px-[16px] pb-[24px] pt-[12px]">
+        <View
+          className={
+            assignmentsClassId
+              ? 'gap-[12px] px-[16px] pt-[12px]'
+              : 'gap-[12px] px-[16px] pb-[24px] pt-[12px]'
+          }
+        >
           <View className="mb-[4px] flex-row items-center gap-[8px]">
             <PressableScale
               testID="class-session-close"
@@ -118,7 +148,23 @@ export function SessionDetailScreen({
                 total: totalSessions,
               })}
             </Text>
-            <View className="w-[44px]" />
+            {onWhiteboard ? (
+              <PressableScale
+                testID="class-session-whiteboard"
+                accessibilityRole="button"
+                accessibilityLabel={t('whiteboard.open')}
+                onPress={onWhiteboard}
+                className="h-[44px] w-[44px] items-center justify-center rounded-full bg-canvas"
+              >
+                <Icon
+                  name="board"
+                  size={compact ? 18 : 20}
+                  color={colors.forest}
+                />
+              </PressableScale>
+            ) : (
+              <View className="w-[44px]" />
+            )}
           </View>
           <View className="items-start">
             <View className="rounded-full bg-canvas px-[10px] py-[5px]">
@@ -142,64 +188,115 @@ export function SessionDetailScreen({
           <Text className="font-nunito text-[13px] text-muted">
             {t('classDetail.session.unit', { title: unitTitle })}
           </Text>
+          {assignmentsClassId && (
+            <View
+              accessibilityRole="tablist"
+              className="flex-row items-end gap-[4px] pt-[8px]"
+            >
+              {(['content', 'assignments'] as const).map((value) => (
+                <Pressable
+                  key={value}
+                  testID={`class-session-tab-${value}`}
+                  accessibilityRole="tab"
+                  accessibilityState={{ selected: tab === value }}
+                  hitSlop={{ top: 4, bottom: 4 }}
+                  onPress={() => setTab(value)}
+                  className={
+                    tab === value
+                      ? 'h-[48px] justify-center rounded-t-[18px] bg-canvas px-[22px]'
+                      : 'h-[40px] justify-center rounded-t-[18px] bg-canvas/50 px-[22px]'
+                  }
+                >
+                  <Text
+                    maxFontSizeMultiplier={1.3}
+                    className={
+                      tab === value
+                        ? 'font-nunito-extrabold text-[14px] text-black'
+                        : 'font-nunito-bold text-[14px] text-forest'
+                    }
+                  >
+                    {t(`assignments.tabs.${value}`)}
+                  </Text>
+                </Pressable>
+              ))}
+            </View>
+          )}
         </View>
-        <View className="flex-1 rounded-t-[28px] bg-canvas pt-[20px]">
+        <View
+          className={
+            assignmentsClassId
+              ? 'flex-1 rounded-tr-[28px] bg-canvas pt-[20px]'
+              : 'flex-1 rounded-t-[28px] bg-canvas pt-[20px]'
+          }
+        >
           <ScrollView
+            key={tab}
             showsVerticalScrollIndicator={false}
             contentContainerClassName="gap-[20px] px-[16px] pb-[24px]"
           >
-            <View className="-mx-[5px] flex-row flex-wrap">
-              {facts.map((fact) => (
-                <View
-                  key={fact.label}
-                  className="w-1/2 px-[5px] pb-[10px]"
-                >
-                  <View className="min-h-[64px] gap-[5px] rounded-[14px] bg-soft p-[12px]">
-                    <Text className="font-nunito-semibold text-[11.5px] text-muted">
-                      {fact.label}
-                    </Text>
-                    <Text className="font-nunito-bold text-[14px] leading-[20px] text-black">
-                      {fact.value}
-                    </Text>
-                  </View>
+            {tab === 'assignments' && assignmentsClassId ? (
+              <SessionAssignments
+                key={`${assignmentsClassId}:${session.id}`}
+                classId={assignmentsClassId}
+                sessionId={session.id}
+                timeZone={timeZone}
+              />
+            ) : (
+              <>
+                <View className="-mx-[5px] flex-row flex-wrap">
+                  {facts.map((fact) => (
+                    <View
+                      key={fact.label}
+                      className="w-1/2 px-[5px] pb-[10px]"
+                    >
+                      <View className="min-h-[64px] gap-[5px] rounded-[14px] bg-soft p-[12px]">
+                        <Text className="font-nunito-semibold text-[11.5px] text-muted">
+                          {fact.label}
+                        </Text>
+                        <Text className="font-nunito-bold text-[14px] leading-[20px] text-black">
+                          {fact.value}
+                        </Text>
+                      </View>
+                    </View>
+                  ))}
                 </View>
-              ))}
-            </View>
-            {localDay(session.endsAt, timeZone) !== day && (
-              <Text className="font-nunito text-[13px] text-muted">
-                {displayInstant(session.endsAt, timeZone, i18n.language)}
-              </Text>
+                {localDay(session.endsAt, timeZone) !== day && (
+                  <Text className="font-nunito text-[13px] text-muted">
+                    {displayInstant(session.endsAt, timeZone, i18n.language)}
+                  </Text>
+                )}
+                {joinError && (
+                  <Text
+                    accessibilityRole="alert"
+                    className="font-nunito text-[14px] text-headsup"
+                  >
+                    {t('classDetail.linkError')}
+                  </Text>
+                )}
+                <View className="gap-[10px]">
+                  <Text
+                    accessibilityRole="header"
+                    className="font-nunito-extrabold text-[17px] text-black"
+                  >
+                    {t('classDetail.session.content')}
+                  </Text>
+                  <Text className="font-nunito text-[14px] leading-[24px] text-muted">
+                    {t('classDetail.session.noContent')}
+                  </Text>
+                </View>
+                <View className="gap-[10px]">
+                  <Text
+                    accessibilityRole="header"
+                    className="font-nunito-extrabold text-[17px] text-black"
+                  >
+                    {t('classDetail.session.objectives')}
+                  </Text>
+                  <Text className="font-nunito text-[14px] leading-[24px] text-muted">
+                    {t('classDetail.session.noObjectives')}
+                  </Text>
+                </View>
+              </>
             )}
-            {joinError && (
-              <Text
-                accessibilityRole="alert"
-                className="font-nunito text-[14px] text-headsup"
-              >
-                {t('classDetail.linkError')}
-              </Text>
-            )}
-            <View className="gap-[10px]">
-              <Text
-                accessibilityRole="header"
-                className="font-nunito-extrabold text-[17px] text-black"
-              >
-                {t('classDetail.session.content')}
-              </Text>
-              <Text className="font-nunito text-[14px] leading-[24px] text-muted">
-                {t('classDetail.session.noContent')}
-              </Text>
-            </View>
-            <View className="gap-[10px]">
-              <Text
-                accessibilityRole="header"
-                className="font-nunito-extrabold text-[17px] text-black"
-              >
-                {t('classDetail.session.objectives')}
-              </Text>
-              <Text className="font-nunito text-[14px] leading-[24px] text-muted">
-                {t('classDetail.session.noObjectives')}
-              </Text>
-            </View>
           </ScrollView>
           <SafeAreaView
             edges={['bottom']}
@@ -207,33 +304,11 @@ export function SessionDetailScreen({
           >
             <View className="flex-row items-center justify-between gap-[8px]">
               <View className="shrink">
-                <PressableScale
+                <MaterialsButton
                   testID="class-session-materials"
-                  accessibilityRole="button"
-                  accessibilityLabel={t('classDetail.session.materials')}
-                  accessibilityHint={t('account.unavailable')}
-                  accessibilityState={{ disabled: true }}
-                  disabled
-                  className={`min-h-[54px] flex-row items-center rounded-full bg-forest py-[8px] opacity-60 shadow-lg shadow-forest/25 ${compact ? 'gap-[6px] px-[8px]' : 'gap-[10px] px-[16px]'}`}
-                >
-                  <View
-                    className={`items-center justify-center rounded-full bg-mint ${compact ? 'h-[28px] w-[28px]' : 'h-[36px] w-[36px]'}`}
-                  >
-                    <Icon
-                      name="document"
-                      light
-                      size={compact ? 17 : 18}
-                    />
-                  </View>
-                  <Text
-                    numberOfLines={1}
-                    adjustsFontSizeToFit
-                    minimumFontScale={0.85}
-                    className={`shrink font-nunito-extrabold text-canvas ${compact ? 'text-[13px]' : 'text-[14px]'}`}
-                  >
-                    {t('classDetail.session.materials')}
-                  </Text>
-                </PressableScale>
+                  compact={compact}
+                  onPress={onMaterials}
+                />
               </View>
               {onJoin && (
                 <MeetingButton

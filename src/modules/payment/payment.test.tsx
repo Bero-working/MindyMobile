@@ -44,6 +44,29 @@ it('renders a QR and only real information when bankInfo is null', () => {
   expect(screen.queryByTestId('payment-info-row-bank')).toBeNull();
   expect(screen.queryByTestId('payment-copy-account')).toBeNull();
 });
+it('hides transfer instructions and QR while under review, with a separate status check', () => {
+  const check = jest.fn();
+  render(
+    <PaymentScreen
+      {...props}
+      errorCode="PAYMENT_REQUIRES_REVIEW"
+      canRetry={false}
+      onCheckStatus={check}
+      bankInfo={{
+        bankName: 'sample',
+        accountNumber: 'sample',
+        accountName: 'sample',
+        transferNote: () => 'sample',
+      }}
+    />
+  );
+  expect(screen.queryByTestId('payment-qr')).toBeNull();
+  expect(screen.queryByTestId('payment-info-row-bank')).toBeNull();
+  expect(screen.queryByTestId('payment-copy-account')).toBeNull();
+  expect(screen.queryByTestId('payment-note')).toBeNull();
+  fireEvent.press(screen.getByTestId('payment-check-status'));
+  expect(check).toHaveBeenCalledTimes(1);
+});
 it('shows missing and creating states without a QR', () => {
   const view = render(
     <PaymentScreen

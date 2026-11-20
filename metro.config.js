@@ -15,6 +15,20 @@ const { assetExts, sourceExts } = defaultConfig.resolver;
  */
 const config = {
   resolver: {
+    resolveRequest(context, moduleName, platform) {
+      // lib0/Yjs only needs crypto.getRandomValues, installed in index.js.
+      // Its default native entry requires an unrelated full WebCrypto package.
+      if (moduleName === 'lib0/webcrypto') {
+        return {
+          type: 'sourceFile',
+          filePath: path.join(
+            path.dirname(require.resolve('lib0/package.json')),
+            'dist/webcrypto.cjs'
+          ),
+        };
+      }
+      return context.resolveRequest(context, moduleName, platform);
+    },
     assetExts: assetExts.filter((extension) => extension !== 'svg'),
     sourceExts: [...sourceExts, 'svg'],
     // Fix for duplicate dependency resolution
@@ -30,6 +44,12 @@ const config = {
   transformer: {
     babelTransformerPath: require.resolve('react-native-svg-transformer'),
     unstable_allowRequireContext: true,
+    getTransformOptions: async () => ({
+      transform: {
+        experimentalImportSupport: false,
+        inlineRequires: true,
+      },
+    }),
   },
   // Ensure proper watching of node_modules
   watchFolders: [path.resolve(__dirname, 'node_modules')],

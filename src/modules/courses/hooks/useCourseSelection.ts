@@ -9,7 +9,7 @@ type Options = {
   onAdd: (id: string) => Promise<void>;
   onRemove: (id: string) => Promise<void>;
   onRefresh: () => Promise<void>;
-  onOpenCart: () => void;
+  onCheckout: () => Promise<void>;
 };
 export function useCourseSelection(options: Options) {
   const { t, i18n } = useTranslation();
@@ -72,8 +72,8 @@ export function useCourseSelection(options: Options) {
         await options.onRemove(old.classId);
       await options.onRefresh();
       const name = options.classes.find((c) => c.id === id)?.name ?? '';
-      setToast(t('courseSheet.added', { name }));
-      if (open) options.onOpenCart();
+      if (open) await options.onCheckout();
+      else setToast(t('courseSheet.added', { name }));
     } catch (cause) {
       const code = cause instanceof ApiError ? cause.code : 'generic';
       if (

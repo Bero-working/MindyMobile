@@ -2,7 +2,7 @@ import '../../../tests/mocks/nativeUi';
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import '@/config/i18n.config';
 import { MyClassesScreen, type MyClassesProps } from './MyClassesScreen';
-import { learningFixtures } from '../preview/learningFixtures';
+import { learningFixtures } from '../../../tests/fixtures/learningUi';
 const fixtures = learningFixtures('2026-10-20');
 const props: MyClassesProps = {
   enrollments: { status: 'success', data: fixtures.current },

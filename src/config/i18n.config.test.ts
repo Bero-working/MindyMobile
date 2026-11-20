@@ -14,9 +14,7 @@ it('defaults to Vietnamese with matching translation keys', () => {
         : paths(item, `${prefix}${key}.`)
     );
   expect(paths(vi).sort()).toEqual(paths(en).sort());
-  expect(i18n.t('boilerplate.common_error')).toBe(
-    'Đã xảy ra lỗi. Vui lòng thử lại.'
-  );
+  expect(i18n.t('errors.generic')).toBe('Đã xảy ra lỗi. Vui lòng thử lại.');
 });
 
 it('supports only Vietnamese and English', () => {

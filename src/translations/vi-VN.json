@@ -1,52 +1,219 @@
 {
-  "boilerplate": {
-    "common_appName": {
-      "full": "Mindy Center",
-      "initials": "Mindy"
+  "chat": {
+    "title": "Tin nhắn",
+    "connected": "Đã kết nối",
+    "reconnecting": "Đang kết nối lại",
+    "searchPlaceholder": "Tìm cuộc trò chuyện",
+    "chooseMentor": "Nhắn tin cho mentor",
+    "messageTo": "Nhắn tin cho {{name}}",
+    "unread": "{{count}} tin chưa đọc",
+    "you": "Bạn",
+    "noMessages": "Bắt đầu cuộc trò chuyện",
+    "loading": "Đang tải tin nhắn",
+    "error": "Chưa tải được tin nhắn. Vui lòng thử lại.",
+    "denied": "Bạn không còn quyền xem cuộc trò chuyện này.",
+    "empty": "Chưa có cuộc trò chuyện. Nhóm lớp và mentor của bạn sẽ xuất hiện tại đây khi sẵn sàng.",
+    "noResults": "Không tìm thấy cuộc trò chuyện trong danh sách đã tải.",
+    "loadMore": "Xem thêm",
+    "firstMessage": "Hãy bắt đầu cuộc trò chuyện với mentor của bạn.",
+    "placeholder": "Nhập tin nhắn…",
+    "send": "Gửi tin nhắn",
+    "sending": "Đang gửi…",
+    "sendFailed": "Chưa xác nhận được · Nhấn để thử lại",
+    "readOnly": "Bạn hiện chỉ có thể đọc tin nhắn trong cuộc trò chuyện này.",
+    "typing": "Đang nhập tin nhắn…",
+    "deleted": "Tin nhắn đã bị xóa",
+    "edited": "Đã chỉnh sửa",
+    "replyTo": "Trả lời {{name}}",
+    "newMessages": "Tin nhắn chưa đọc",
+    "syncError": "Chưa đồng bộ được tin nhắn mới. Nhấn để thử lại.",
+    "openFile": "Mở tệp đính kèm",
+    "fileError": "Chưa mở được tệp. Nhấn để thử lại.",
+    "attach": {
+      "open": "Mở đính kèm",
+      "close": "Đóng đính kèm",
+      "image": "Ảnh",
+      "imageHint": "PNG, JPG, WebP · tối đa 5 MB",
+      "pdf": "Tệp PDF",
+      "pdfHint": "PDF · tối đa 10 MB",
+      "invalid": "Chọn ảnh JPG, PNG, WebP tối đa 5 MB hoặc PDF tối đa 10 MB. Tệp phải có dung lượng lớn hơn 0.",
+      "pickError": "Không đọc được tệp. Vui lòng chọn lại.",
+      "uploadError": "Chưa tải được tệp lên. Vui lòng thử lại hoặc chọn tệp khác.",
+      "statusError": "Chưa kiểm tra được tệp. Vui lòng thử lại.",
+      "sendError": "Chưa xác nhận được tin nhắn. Nhấn thử lại để kiểm tra cùng tin nhắn, tránh gửi trùng.",
+      "rejected": "Tệp không được chấp nhận. Vui lòng bỏ tệp và chọn tệp khác.",
+      "preview": "Ảnh đã chọn",
+      "uploading": "Đang xử lý…",
+      "ready": "Sẵn sàng gửi",
+      "processing": "Đang kiểm tra tệp…",
+      "remove": "Bỏ tệp",
+      "sendRejected": "Không gửi được tệp. Vui lòng kiểm tra quyền chat hoặc chọn tệp khác.",
+      "check": "Kiểm tra tệp"
+    }
+  },
+  "whiteboard": {
+    "title": "Bảng tương tác",
+    "open": "Mở bảng tương tác",
+    "loading": "Đang tải bảng",
+    "loadError": "Chưa tải được bảng. Vui lòng thử lại.",
+    "denied": "Bạn không còn quyền truy cập bảng của buổi học này.",
+    "disabled": "Bảng tương tác chưa được bật trên máy chủ.",
+    "notCreated": "Mentor chưa tạo bảng cho buổi học. Bảng sẽ tự xuất hiện khi sẵn sàng.",
+    "notConfigured": "Ứng dụng chưa được cấu hình kết nối bảng tương tác.",
+    "follow": "Theo mentor",
+    "following": "Đang theo mentor · Tắt",
+    "presenter": "Vùng nhìn của {{name}}. Kéo hoặc zoom để tự xem bảng.",
+    "presenterPaused": "Mentor tạm ngưng chia sẻ, đang giữ vùng nhìn cuối của {{name}}.",
+    "waitingPresenter": "Mentor chưa chia sẻ vùng nhìn, đang hiển thị toàn bộ bảng.",
+    "freeView": "Đang tự xem bảng. Bấm Theo mentor để quay lại.",
+    "zoomIn": "Phóng to",
+    "zoomOut": "Thu nhỏ",
+    "unsavedTitle": "Nét vẽ chưa được xác nhận",
+    "unsaved": "Rời bảng lúc này có thể mất nét vẽ chưa được lưu. Bạn có thể ở lại và kết nối lại để lưu.",
+    "stay": "Ở lại",
+    "leave": "Rời bảng",
+    "status": {
+      "connecting": "Đang kết nối",
+      "ready": "Đã đồng bộ",
+      "saving": "Đang lưu",
+      "offline": "Mất kết nối",
+      "revoked": "Đã ngắt quyền"
     },
-    "common_error": "Đã xảy ra lỗi. Vui lòng thử lại.",
-    "screen_example": {
-      "hello_user": "Xin chào, tôi là {{name}}",
-      "title": "Chào mừng đến với $t(boilerplate.common_appName.full)",
-      "description": "Khám phá các chức năng mẫu bên dưới: gọi API, thay đổi giao diện và chuyển ngôn ngữ.",
-      "explore_features": "Khám phá chức năng",
-      "features": {
-        "api_integration": {
-          "title": "Kết nối API",
-          "description": "Kiểm tra kết nối đến máy chủ Mindy",
-          "button": "Thử kết nối API"
-        },
-        "theme_toggle": {
-          "title": "Giao diện",
-          "description": "Sử dụng giao diện sáng mặc định",
-          "button": "Dùng giao diện sáng"
-        },
-        "language_switch": {
-          "title": "Ngôn ngữ",
-          "description": "Chuyển đổi giữa tiếng Việt và tiếng Anh",
-          "button": "Đổi ngôn ngữ"
-        }
-      },
-      "api_messages": {
-        "success_title": "Thành công!",
-        "success_message": "Kết nối API thành công. Máy chủ Mindy đang hoạt động.",
-        "success_button": "Đồng ý",
-        "error_title": "Lỗi",
-        "error_message": "Không thể kết nối API ({{code}}, HTTP {{status}}). Vui lòng thử lại.",
-        "error_button": "Đồng ý"
-      },
-      "stats": {
-        "title": "Thông tin ứng dụng mẫu",
-        "components": "Thành phần",
-        "utilities": "Tiện ích",
-        "languages": "Ngôn ngữ",
-        "possibilities": "Khả năng"
-      }
+    "notice": {
+      "epoch": "Mentor đã khôi phục hoặc xóa bảng. Nét vẽ chưa lưu của phiên cũ đã được bỏ.",
+      "rejected": "Thao tác chưa được chấp nhận. Bảng đang tải lại nội dung đã lưu.",
+      "connection": "Chưa đồng bộ được bảng. Kết nối lại để tiếp tục."
     },
-    "error_boundary": {
-      "title": "Đã xảy ra lỗi.",
-      "description": "Vui lòng thử lại sau.",
-      "cta": "Tải lại màn hình"
+    "tools": {
+      "hand": "Di chuyển",
+      "pen": "Bút",
+      "rectangle": "Chữ nhật",
+      "ellipse": "Hình tròn",
+      "eraser": "Xóa"
+    },
+    "fit": "Vừa nội dung"
+  },
+  "attendance": {
+    "title": "Lịch sử điểm danh",
+    "chooseClass": "Chọn lớp để xem điểm danh từng buổi, bao gồm cả lớp đã kết thúc.",
+    "noClasses": "Chưa có lớp học",
+    "noClassesDescription": "Các lớp bạn đã đăng ký sẽ xuất hiện tại đây.",
+    "explore": "Khám phá khóa học",
+    "viewHistory": "Xem điểm danh",
+    "openClass": "Xem điểm danh lớp {{name}}",
+    "mentor": "Giảng viên: {{name}}",
+    "substitute": "Giảng viên dạy thay: {{name}}",
+    "enrollment": {
+      "PENDING_PAYMENT": "Chờ thanh toán",
+      "ACTIVE": "Đang học",
+      "COMPLETED": "Đã hoàn thành",
+      "CANCELLED": "Đã hủy đăng ký"
+    },
+    "rate": "Tỷ lệ chuyên cần",
+    "rateValue": "{{value}}%",
+    "noRate": "Chưa có tỷ lệ",
+    "rateExplanation": "Tỷ lệ tính trên {{count}} buổi có kết quả đã chốt; bao gồm kết quả học bù được ghi nhận.",
+    "counts": {
+      "present": "Có mặt",
+      "absent": "Vắng",
+      "unmarked": "Chưa điểm danh",
+      "makeupPending": "Chờ học bù",
+      "excluded": "Không tính tỷ lệ"
+    },
+    "period": {
+      "30": "30 ngày qua",
+      "90": "90 ngày qua",
+      "ALL": "Tất cả"
+    },
+    "sessions": "Điểm danh từng buổi",
+    "noHistory": "Chưa có lịch sử điểm danh",
+    "noHistoryDescription": "Chưa có buổi học trong khoảng thời gian này. Bạn có thể chọn khoảng thời gian khác.",
+    "timeRange": "{{from}} – {{to}}",
+    "makeupSession": "Buổi học bù",
+    "credit": "Kết quả được tính: {{status}}",
+    "excludedNote": "Buổi này chưa được tính vào tỷ lệ chuyên cần.",
+    "status": {
+      "PRESENT": "Có mặt",
+      "ABSENT": "Vắng",
+      "UNMARKED": "Chưa điểm danh",
+      "CANCELLED": "Buổi học đã hủy",
+      "ELIGIBLE": "Chưa điểm danh",
+      "NOT_STARTED": "Chưa bắt đầu",
+      "NOT_ELIGIBLE": "Không thuộc diện tính điểm danh",
+      "PAYMENT_PENDING": "Chờ thanh toán",
+      "LEGACY_NO_DATA": "Chưa có dữ liệu điểm danh",
+      "MAKEUP_PENDING": "Chờ kết quả học bù",
+      "MAKEUP_CREDITED": "Đã ghi nhận học bù"
+    },
+    "applicability": {
+      "MAKEUP_PENDING": "Đang chờ kết quả từ buổi học bù.",
+      "MAKEUP_CREDITED": "Kết quả chuyên cần được lấy từ buổi học bù."
+    },
+    "loadMore": "Xem thêm",
+    "loadMoreError": "Chưa tải được dữ liệu tiếp theo. Vui lòng thử lại."
+  },
+  "orders": {
+    "cashInstructions": "Thanh toán tiền mặt cho mentor trước {{time}}. Đơn đang chờ mentor xác nhận đã thu tiền.",
+    "title": "Đơn hàng của tôi",
+    "description": "Theo dõi lịch sử mua khóa học và trạng thái đơn hàng của bạn.",
+    "searchPlaceholder": "Tìm đơn hàng",
+    "searchEmpty": "Không tìm thấy đơn hàng.",
+    "filterLabel": "Lọc trạng thái",
+    "moreCourses": "+{{n}} khóa học khác",
+    "continuePayment": "Tiếp tục thanh toán",
+    "payOrder": "Tiếp tục thanh toán đơn {{code}}",
+    "detailTitle": "Chi tiết đơn hàng",
+    "orderCode": "Mã đơn hàng",
+    "total": "Tổng thanh toán",
+    "viewDetail": "Xem chi tiết",
+    "openOrder": "Xem đơn hàng {{code}}",
+    "createdAt": "Ngày đặt hàng",
+    "paidAt": "Ngày thanh toán",
+    "expiresAt": "Hạn giữ chỗ",
+    "paymentType": "Phương thức thanh toán",
+    "items": "Khóa học trong đơn",
+    "quantityPrice": "{{quantity}} × {{price}}",
+    "loadMore": "Xem thêm đơn hàng",
+    "loadMoreError": "Chưa tải được các đơn tiếp theo. Vui lòng thử lại.",
+    "explore": "Khám phá khóa học",
+    "clearFilter": "Xem tất cả đơn hàng",
+    "refresh": "Làm mới đơn hàng",
+    "review": "Thanh toán đang được đối soát. Vui lòng chờ kết quả xác nhận.",
+    "deadlinePassed": "Đã hết thời gian giữ chỗ. Hãy làm mới để cập nhật trạng thái đơn.",
+    "cancelledNote": "Đơn hàng đã được hủy và chỗ giữ đã được giải phóng.",
+    "cancel": "Hủy đơn hàng",
+    "cancelTitle": "Hủy đơn hàng này?",
+    "cancelMessage": "Đơn {{code}} sẽ được hủy và chỗ đang giữ sẽ được giải phóng. Bạn có thể đặt lại khóa học nếu lớp còn chỗ.",
+    "confirmCancel": "Xác nhận hủy đơn",
+    "keep": "Giữ đơn hàng",
+    "cancelError": "Chưa thể hủy đơn. Vui lòng kiểm tra kết nối và thử lại.",
+    "status": {
+      "ALL": "Tất cả",
+      "PENDING": "Chờ thanh toán",
+      "PAID": "Đã thanh toán",
+      "EXPIRED": "Hết hạn",
+      "CANCELLED": "Đã hủy"
+    },
+    "methods": {
+      "PAYOS": "Chuyển khoản qua payOS",
+      "CASH": "Tiền mặt"
+    },
+    "state": {
+      "empty": "Chưa có đơn hàng",
+      "description": "Các khóa học bạn đặt mua sẽ xuất hiện tại đây.",
+      "filtered": "Không có đơn hàng thuộc trạng thái đã chọn."
+    },
+    "errors": {
+      "ORDER_NOT_CANCELLABLE": "Trạng thái đơn đã thay đổi hoặc đã hết hạn giữ chỗ. Hãy làm mới đơn hàng.",
+      "ORDER_ACCESS_DENIED": "Bạn không có quyền thao tác với đơn hàng này.",
+      "ORDER_NOT_FOUND": "Không tìm thấy đơn hàng. Hãy làm mới danh sách.",
+      "NETWORK_ERROR": "Không có kết nối mạng. Vui lòng kết nối lại rồi thử hủy đơn."
+    }
+  },
+  "orderDetail": {
+    "state": {
+      "empty": "Không tìm thấy đơn hàng",
+      "description": "Quay lại danh sách và chọn một đơn hàng khác."
     }
   },
   "common": {
@@ -55,7 +222,6 @@
     "showPassword": "Hiện mật khẩu",
     "hidePassword": "Ẩn mật khẩu",
     "back": "Quay lại",
-    "requestId": "Mã hỗ trợ: {{id}}",
     "close": "Đóng"
   },
   "errors": {
@@ -149,7 +315,7 @@
       "courses": "Khoá học",
       "schedule": "Lịch học",
       "home": "Trang chủ",
-      "notifications": "Thông báo",
+      "messages": "Tin nhắn",
       "account": "Tài khoản"
     },
     "carousel": {
@@ -252,34 +418,6 @@
       "subtitle": "CODING"
     }
   },
-  "preview": {
-    "open": "Xem thử UI (development)",
-    "title": "Xem thử giao diện",
-    "description": "Dữ liệu minh hoạ; không tạo phiên đăng nhập hay gọi API.",
-    "auth": "Thử form Auth",
-    "home": "Student Home 2a",
-    "foundation": "Kiểm tra Foundation",
-    "success": "Thành công",
-    "loading": "Đang tải",
-    "empty": "Trống",
-    "error": "Lỗi",
-    "failure": "Mô phỏng lỗi",
-    "signedIn": "Đã kiểm tra callback đăng nhập ({{role}}). Không tạo phiên.",
-    "fixtureName": "Minh Anh",
-    "status": "Trạng thái: {{status}}",
-    "nextSession": "Buổi 3 · HTML & CSS",
-    "className": "Web cơ bản · WEB101-A",
-    "course0": "Web cơ bản: HTML, CSS",
-    "course1": "Python cho người mới",
-    "course2": "JavaScript thực chiến",
-    "course3": "Cấu trúc dữ liệu & giải thuật",
-    "action": "Đã nhận thao tác: {{name}}",
-    "reset": "Chọn lại màn hình",
-    "tools": "Công cụ xem thử",
-    "closeTools": "Thu gọn công cụ",
-    "toolsShort": "UI",
-    "courses": "Khoá học · Giỏ · QR"
-  },
   "courses": {
     "recommend": {
       "title": "Gợi ý cho bạn",
@@ -328,10 +466,15 @@
     "added": "Đã thêm lớp {{name}} vào giỏ",
     "removed": "Đã bỏ {{name}} khỏi giỏ",
     "unpickHint": "Bấm để bỏ chọn lớp",
-    "buyHint": "Thêm lớp vào giỏ và mở giỏ hàng",
+    "buyHint": "Tạo đơn và chuyển đến trang thanh toán",
     "addToCart": "Thêm lớp đã chọn vào giỏ hàng"
   },
   "cart": {
+    "paymentMethod": "Hình thức thanh toán",
+    "methods": { "PAYOS": "Quét mã QR", "CASH": "Tiền mặt" },
+    "qrHint": "Quét mã bằng ứng dụng ngân hàng để thanh toán đơn hàng.",
+    "cashHint": "Thanh toán cho mentor trước hạn ghi trên đơn. Giỏ hàng có thể được tách thành nhiều đơn theo mentor.",
+    "checkoutCash": "Đặt mua bằng tiền mặt",
     "title": "Giỏ hàng ({{count}})",
     "empty": "Giỏ hàng đang trống.",
     "total": "Tổng cộng",
@@ -359,6 +502,7 @@
     }
   },
   "payment": {
+    "checkStatus": "Kiểm tra lại trạng thái",
     "title": "Thanh toán",
     "amountLabel": "Số tiền cần thanh toán",
     "expiresIn": "Hết hạn sau {{time}}",
@@ -417,10 +561,7 @@
       },
       "retryHint": "Giữ chỗ đã kết thúc. Giá và số chỗ sẽ được cập nhật khi bạn chọn lại lớp.",
       "orderLabel": "Mã đơn hàng",
-      "totalLabel": "Tổng thanh toán",
-      "preview": "Kết quả thanh toán (dữ liệu mẫu)",
-      "previewDescription": "Bản xem trước dùng dữ liệu mẫu, không xác nhận thanh toán thật.",
-      "previewExit": "Về menu xem trước"
+      "totalLabel": "Tổng thanh toán"
     }
   },
   "learning": {
@@ -604,24 +745,193 @@
       "description": "Vui lòng quay lại danh sách lớp."
     }
   },
-  "learningPreview": {
-    "nextCourse": "Lập trình web nâng cao",
-    "title": "Xem thử Phase 3",
-    "schedule": "Lịch học",
-    "account": "Tài khoản",
-    "classes": "Lớp của tôi",
-    "success": "Có dữ liệu",
-    "loading": "Đang tải",
-    "empty": "Trống",
-    "error": "Lỗi",
-    "course": "Lập trình ứng dụng web",
-    "class": "Lớp Web buổi tối",
-    "unit": "Nền tảng lập trình",
-    "session": "Làm quen với ứng dụng web",
-    "mentor": "Giảng viên mẫu",
-    "name": "Học viên Mindy",
-    "exit": "Về menu xem thử",
-    "openTools": "Trạng thái",
-    "logoutError": "Mô phỏng lỗi đăng xuất"
+  "assignments": {
+    "title": "Bài tập",
+    "tabs": {
+      "content": "Nội dung",
+      "assignments": "Bài tập"
+    },
+    "loading": "Đang tải bài tập…",
+    "error": "Chưa tải được bài tập",
+    "errorDescription": "Vui lòng kiểm tra kết nối và thử lại. Nếu quyền truy cập thay đổi, hãy mở lại lớp học.",
+    "empty": "Chưa có bài tập",
+    "emptyDescription": "Bài tập sẽ xuất hiện tại đây khi giảng viên giao bài cho buổi học này.",
+    "count": "{{count}} bài tập",
+    "tab": {
+      "CODE": "Code",
+      "QUIZ": "Quiz",
+      "ZIP": "Nộp ZIP"
+    },
+    "tabEmpty": "Chưa có bài {{type}} trong buổi này",
+    "tabEmptyMore": "Bấm Xem thêm bài tập để tải các bài còn lại.",
+    "type": {
+      "QUIZ": "Trắc nghiệm",
+      "ZIP": "Nộp tệp ZIP",
+      "CODE": "Lập trình"
+    },
+    "purpose": {
+      "TEST": "Kiểm tra",
+      "HOMEWORK": "Bài về nhà"
+    },
+    "dueAt": "Hạn nộp: {{date}}",
+    "noDeadline": "Không giới hạn hạn nộp",
+    "score": "Điểm tối đa: {{score}}",
+    "minutes": "{{count}} phút",
+    "instructions": "Xem đề bài",
+    "hideInstructions": "Thu gọn đề bài",
+    "noInstructions": "Giảng viên chưa cung cấp mô tả.",
+    "attempts": "Số lượt tối đa: {{count}}",
+    "doAssignment": "Làm bài tập",
+    "loadMore": "Xem thêm bài tập",
+    "moreError": "Chưa tải được các bài tiếp theo. Vui lòng thử lại."
+  },
+  "assignmentWork": {
+    "loadError": "Chưa tải được bài làm. Vui lòng thử lại.",
+    "actionError": "Thao tác chưa hoàn tất. Hãy thử lại để tiếp tục bài làm.",
+    "notFound": "Không tìm thấy bài tập.",
+    "leaveTitle": "Rời bài làm?",
+    "leaveDescription": "Có nội dung chưa lưu hoặc thao tác đang xử lý. Rời màn hình có thể làm mất nội dung chưa lưu.",
+    "stay": "Tiếp tục làm bài",
+    "leave": "Rời màn hình",
+    "cancel": "Hủy",
+    "quizIntro": "Bấm bắt đầu để làm bài hoặc tiếp tục bài đang làm. Thời gian làm bài: {{count}} phút (nếu có). Đồng hồ tiếp tục chạy khi bạn rời ứng dụng.",
+    "startResume": "Bắt đầu / tiếp tục",
+    "submit": "Nộp bài",
+    "confirmSubmit": "Xác nhận nộp bài?",
+    "confirmQuiz": "Bạn đã trả lời {{count}}/{{total}} câu. Sau khi nộp, bạn không thể sửa đáp án.",
+    "answered": "Đã trả lời {{count}}/{{total}} câu",
+    "saving": "Đang xử lý…",
+    "unsaved": "Có thay đổi chưa lưu",
+    "saved": "Đã lưu",
+    "resultScore": "Điểm: {{score}} / {{max}}",
+    "question": "Câu {{number}}",
+    "correct": "Chính xác",
+    "correctAnswer": "Đáp án đúng: {{option}}",
+    "expired": "Đã hết giờ. Hệ thống đang chấm các đáp án đã lưu.",
+    "quizStatus": {
+      "IN_PROGRESS": "Đang làm bài",
+      "FINALIZING": "Đang chấm bài",
+      "GRADED": "Kết quả bài làm",
+      "VOIDED": "Bài làm đã bị hủy"
+    },
+    "problem": "Đề bài",
+    "sample": "Ví dụ {{number}}",
+    "expected": "Kết quả mong đợi: {{value}}",
+    "actual": "Kết quả thực tế: {{value}}",
+    "attemptsRemaining": "Còn {{count}} lượt nộp",
+    "bestScore": "Điểm cao nhất: {{score}} / {{max}}",
+    "deadlinePassed": "Đã hết hạn nộp bài.",
+    "sourceCode": "Mã nguồn bài làm",
+    "save": "Lưu bài",
+    "run": "Chạy thử",
+    "runResult": "Kết quả chạy thử",
+    "confirmCode": "Bài sẽ được gửi để chấm điểm và sử dụng một lượt nộp. Bạn vẫn có thể nộp lại nếu còn lượt.",
+    "codeStatus": {
+      "QUEUED": "Đang chờ chấm",
+      "RUNNING": "Đang chấm bài",
+      "GRADED": "Đã chấm điểm",
+      "FAILED": "Chấm bài thất bại",
+      "VOIDED": "Bài nộp đã bị hủy"
+    },
+    "history": "Lịch sử nộp bài",
+    "codeHistory": "Lượt {{number}} · {{status}} · {{score}}/{{max}}",
+    "testsPassed": "Đạt {{count}}/{{total}} bộ kiểm thử",
+    "startZip": "Tạo / tiếp tục bài nộp",
+    "zipHint": "Chọn một tệp .zip có dung lượng tối đa 20 MB. Tải tệp lên chưa phải là nộp bài.",
+    "zipUnavailable": "Hiện chưa nhận bài ZIP. Bạn vẫn có thể xem kết quả bên dưới.",
+    "pickZip": "Chọn tệp ZIP",
+    "replaceZip": "Đổi tệp ZIP",
+    "invalidZip": "Vui lòng chọn tệp .zip không rỗng, tối đa 20 MB.",
+    "pickError": "Không đọc được tệp. Vui lòng chọn lại.",
+    "processingFile": "Đang tải lên và kiểm tra tệp…",
+    "fileFailed": "Tệp không hợp lệ hoặc không xử lý được. Vui lòng chọn tệp khác.",
+    "zipStatus": {
+      "DRAFT": "Bài nộp nháp",
+      "SUBMITTED": "Đã nộp bài",
+      "VOIDED": "Bài nộp đã bị hủy"
+    },
+    "confirmZip": "Sau khi nộp, bạn không thể thay tệp cho lượt này. Hãy kiểm tra tệp trước khi xác nhận.",
+    "submitted": "Đã nộp bài thành công.",
+    "submissionNumber": "Lượt nộp {{number}}",
+    "waitingGrade": "Đang chờ giảng viên trả điểm.",
+    "refreshResults": "Cập nhật kết quả",
+    "downloadError": "Chưa mở được tài liệu. Vui lòng thử lại.",
+    "errors": {
+      "ASSIGNMENT_DEADLINE_PASSED": "Đã hết hạn nộp bài.",
+      "ASSIGNMENT_ATTEMPTS_EXHAUSTED": "Bạn đã sử dụng hết lượt nộp.",
+      "ASSIGNMENT_REVISION_CONFLICT": "Đề bài đã thay đổi. Hãy mở lại bài tập.",
+      "SUBMISSION_VERSION_CONFLICT": "Bài làm đã thay đổi trên thiết bị khác. Hãy tải lại trước khi tiếp tục.",
+      "QUIZ_ALREADY_STARTED": "Bài này đã có bài làm. Hãy tải lại để xem kết quả.",
+      "APP_ORIGIN_REQUIRED": "Chưa cấu hình kết nối nộp bài.",
+      "INVALID_ASSIGNMENT_RESPONSE": "Dữ liệu bài làm không hợp lệ. Vui lòng thử lại.",
+      "ASSIGNMENT_VERSION_CONFLICT": "Đề bài đã thay đổi. Hãy mở lại bài tập.",
+      "ATTEMPT_LIMIT_REACHED": "Bạn đã sử dụng hết lượt nộp.",
+      "CODE_ATTEMPTS_EXHAUSTED": "Bạn đã sử dụng hết lượt nộp.",
+      "CODE_DRAFT_VERSION_CONFLICT": "Bản nháp đã thay đổi trên thiết bị khác. Tải lại để đồng bộ trước khi lưu.",
+      "CODE_SUBMISSION_IN_FLIGHT": "Bài trước đang được chấm. Vui lòng chờ kết quả.",
+      "CODE_RUN_RATE_LIMITED": "Bạn đã chạy thử quá nhiều lần. Vui lòng chờ rồi thử lại.",
+      "CODE_RUNNER_BUSY": "Hệ thống chấm đang bận. Vui lòng thử lại sau.",
+      "CODE_RUNNER_UNAVAILABLE": "Hệ thống chấm tạm thời chưa hoạt động. Vui lòng thử lại sau.",
+      "CODE_SOURCE_TOO_LARGE": "Mã nguồn vượt quá dung lượng cho phép.",
+      "ASSIGNMENT_CLOSED": "Bài tập đã đóng.",
+      "ASSIGNMENT_ZIP_DISABLED": "Hiện chưa nhận bài ZIP.",
+      "ASSIGNMENT_UPLOAD_EXPIRED": "Phiên tải tệp đã hết hạn. Vui lòng chọn và tải tệp lại.",
+      "INVALID_ASSIGNMENT_FILE": "Tệp không hợp lệ. Vui lòng chọn tệp ZIP khác."
+    },
+    "constraints": "Ràng buộc",
+    "input": "Đầu vào:  {{value}}",
+    "output": "Đầu ra:   {{value}}",
+    "consoleEmpty": "Bấm Chạy thử để chạy code với các ví dụ trong đề.",
+    "lines": "{{count}} dòng",
+    "judgeResult": "Kết quả chấm",
+    "attemptTag": "#{{number}}",
+    "scoreShort": "{{score}}/{{max}}",
+    "factScore": "Điểm tối đa",
+    "factAttempts": "Số lượt nộp",
+    "factDue": "Hạn nộp",
+    "factNoDue": "Không giới hạn",
+    "outputTitle": "Kết quả chạy",
+    "running": "Đang chạy code…",
+    "passedSummary": "{{passed}}/{{total}} đạt",
+    "casePassed": "✓ Đạt",
+    "caseFailed": "✗ Sai",
+    "compile": "Biên dịch",
+    "expectedLabel": "Mong đợi",
+    "actualLabel": "Thực tế",
+    "stdout": "stdout › {{value}}",
+    "stderr": "stderr › {{value}}",
+    "saveNow": "Lưu ngay",
+    "judgingHint": "Đang chấm lượt nộp trước, vui lòng chờ.",
+    "runClosed": "Đã hết hạn nộp bài nên không thể chạy thử.",
+    "markRight": "đáp án đúng",
+    "markWrong": "bạn chọn, sai"
+  },
+  "materials": {
+    "authRequired": "Đăng nhập với tài khoản học viên để xem tài liệu.",
+    "title": "Tài liệu",
+    "unitTitle": "Tài liệu · {{title}}",
+    "read": "Xem tài liệu",
+    "openA11y": "Mở {{type}}: {{title}}",
+    "count": "{{count}} tài liệu",
+    "attachmentCount": "{{count}} tệp đính kèm",
+    "loadMore": "Xem thêm",
+    "openFile": "Mở / tải {{name}}",
+    "attachments": "Tệp đính kèm",
+    "empty": "Chưa có tài liệu khả dụng",
+    "emptyDescription": "Tài liệu sẽ xuất hiện khi chương được mở và giáo viên phát hành tài liệu.",
+    "error": "Chưa mở được tài liệu",
+    "errorDescription": "Vui lòng thử lại hoặc quay về lớp học.",
+    "type": { "ARTICLE": "Bài đọc", "FILE": "Tệp tài liệu", "VIDEO": "Video" },
+    "errors": {
+      "MATERIAL_ACCESS_DENIED": "Bạn hiện không có quyền xem tài liệu của lớp này. Vui lòng kiểm tra lại lớp học.",
+      "CLASS_UNIT_NOT_FOUND": "Không tìm thấy chương. Vui lòng quay về lớp học để cập nhật.",
+      "CLASS_NOT_FOUND": "Không tìm thấy lớp học hoặc bạn không còn quyền truy cập.",
+      "MATERIAL_NOT_FOUND": "Tài liệu chưa khả dụng. Danh sách tài liệu đang được cập nhật.",
+      "FILE_NOT_READY": "Tệp đang được xử lý. Vui lòng thử lại sau.",
+      "FILE_STORAGE_DISABLED": "Chức năng mở tệp hiện chưa khả dụng. Bạn vẫn có thể đọc thông tin tài liệu.",
+      "FILE_STORAGE_UNAVAILABLE": "Kho tệp tạm thời không phản hồi. Vui lòng thử lại.",
+      "MATERIAL_REVISION_CHANGED": "Tài liệu vừa được cập nhật. Vui lòng tải lại trước khi tiếp tục.",
+      "APP_ORIGIN_REQUIRED": "Ứng dụng chưa được cấu hình để mở tệp này. Vui lòng liên hệ hỗ trợ."
+    }
   }
 }

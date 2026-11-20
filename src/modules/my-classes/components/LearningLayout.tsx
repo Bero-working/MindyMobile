@@ -12,8 +12,8 @@ import {
 } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { BrandBar } from '@/components/common/BrandBar';
+import { SubPageHeader } from '@/components/common/SubPageHeader';
 import { AppTabBar } from '@/components/common/AppTabBar';
-import { Button } from '@/components/ui/Button';
 import { Skeleton } from '@/components/ui/Skeleton';
 import { ScreenState } from '@/components/common/ScreenState';
 import type { DataRegion, HomeTab } from '../../home/types/home.type';
@@ -55,7 +55,6 @@ export function LearningLayout({
   footer?: ReactNode;
   floatingFooter?: boolean;
 }) {
-  const { t } = useTranslation();
   const insets = useSafeAreaInsets();
   const statusTint = useMemo(() => ({ height: insets.top }), [insets.top]);
   const floatingPosition = useMemo(
@@ -101,24 +100,23 @@ export function LearningLayout({
           />
         </View>
       )}
-      {showTitle && (
-        <View className="flex-row items-center gap-[8px] px-[16px] py-[12px]">
-          {onBack && (
-            <Button
-              testID={`${prefix}-back`}
-              variant="ghost"
-              label={t('learning.back')}
-              onPress={onBack}
-            />
-          )}
-          <Text
-            accessibilityRole="header"
-            className="flex-1 font-nunito-extrabold text-[22px] leading-[28px] text-forest"
-          >
-            {title}
-          </Text>
-        </View>
-      )}
+      {showTitle &&
+        (onBack ? (
+          <SubPageHeader
+            title={title}
+            prefix={prefix}
+            onBack={onBack}
+          />
+        ) : (
+          <View className="flex-row items-center gap-[8px] px-[16px] py-[12px]">
+            <Text
+              accessibilityRole="header"
+              className="flex-1 font-nunito-extrabold text-[22px] leading-[28px] text-forest"
+            >
+              {title}
+            </Text>
+          </View>
+        ))}
       {header}
       <ScrollView
         ref={scrollRef}
@@ -166,11 +164,14 @@ export function LearningState<T>({
   prefix,
   empty,
   children,
+  inset = false,
 }: {
   region: DataRegion<T>;
   prefix: string;
   empty: boolean;
   children: ReactNode;
+  /** Pad state placeholders on screens whose content has no horizontal padding. */
+  inset?: boolean;
 }) {
   const { t } = useTranslation();
   const namespace =
@@ -183,7 +184,7 @@ export function LearningState<T>({
     return (
       <View
         testID={`${prefix}-loading`}
-        className="gap-[16px]"
+        className={cn('gap-[16px]', inset && 'p-[16px]')}
       >
         {[0, 1, 2].map((id) => (
           <Skeleton
@@ -195,13 +196,14 @@ export function LearningState<T>({
     );
   if (!region.data && region.status === 'error')
     return (
-      <ScreenState
-        title={t('home.errorTitle')}
-        description={t('errors.generic')}
-        onRetry={region.onRetry}
-        requestId={region.error?.requestId}
-        retryTestID={`${prefix}-retry`}
-      />
+      <View className={inset ? 'p-[16px]' : ''}>
+        <ScreenState
+          title={t('home.errorTitle')}
+          description={t('errors.generic')}
+          onRetry={region.onRetry}
+          retryTestID={`${prefix}-retry`}
+        />
+      </View>
     );
   return (
     <>
@@ -210,7 +212,6 @@ export function LearningState<T>({
           title={t('learning.stale')}
           description={t('errors.generic')}
           onRetry={region.onRetry}
-          requestId={region.error?.requestId}
           retryTestID={`${prefix}-retry`}
         />
       )}

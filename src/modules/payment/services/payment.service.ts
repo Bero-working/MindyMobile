@@ -63,6 +63,37 @@ export const paymentService = {
       ) ?? null
     );
   },
+  async findPendingCashOrders(classIds: string[]): Promise<OrderDto[]> {
+    const wanted = new Set(classIds);
+    if (!wanted.size) return [];
+    const matches = new Map<string, OrderDto>();
+    for (let page = 1; ; page++) {
+      const response = await apiInstances.service.get<{ items: OrderDto[] }>(
+        'me/orders',
+        { params: { status: 'PENDING', page, pageSize: 20 } }
+      );
+      const result = parse(ordersPageSchema, response);
+      for (const order of result.items) {
+        if (
+          order.paymentType === 'CASH' &&
+          order.status === 'PENDING' &&
+          order.details.length > 0 &&
+          order.details.every((detail) => wanted.has(detail.classId))
+        )
+          matches.set(order.id, order);
+      }
+      if (page * result.pageSize >= result.total) break;
+      if (!result.items.length) throw invalidPaymentResponse();
+    }
+    const orders = [...matches.values()];
+    const covered = new Set(
+      orders.flatMap((order) => order.details.map((d) => d.classId))
+    );
+    // A partial match must keep checkout locked rather than risk a duplicate purchase.
+    if (covered.size && covered.size !== wanted.size)
+      throw invalidPaymentResponse();
+    return orders;
+  },
 };
 const BACKOFF_MS = [2000, 4000, 8000];
 const WAIT_LIMIT_MS = 30_000;

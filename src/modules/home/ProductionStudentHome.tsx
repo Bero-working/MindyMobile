@@ -1,21 +1,23 @@
-import { View } from 'react-native';
+/* eslint-disable @typescript-eslint/no-require-imports */
+import { deferComponent } from '@/components/common/deferComponent';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import type { NavigationProp } from '@/navigation/types';
 import routes from '@/navigation/routes';
-import { ShoppingSheets } from '@/modules/courses/components/ShoppingSheets';
-import { useTranslation } from 'react-i18next';
-import { Button } from '@/components/ui/Button';
-import { ScreenState } from '@/components/common/ScreenState';
-import { useAuthActions } from '@/modules/auth/hooks/useAuthSession';
 import type { SessionUser } from '@/modules/auth/schemas/authResponse.schema';
 import { useCartQuery } from '@/modules/cart/hooks/useCartQuery';
 import { useHomeQuery } from './hooks/useHomeQuery';
 import { StudentHome } from './StudentHome';
-import { navigateLearningTab } from '../my-classes/LearningRoutes';
+import { navigateLearningTab } from '@/navigation/navigateLearningTab';
+
+const ShoppingSheets = deferComponent(
+  () =>
+    (
+      require('@/modules/courses/components/ShoppingSheets') as typeof import('@/modules/courses/components/ShoppingSheets')
+    ).ShoppingSheets
+);
 
 export function ProductionStudentHome({ user }: { user: SessionUser }) {
-  const { t } = useTranslation();
   const data = useHomeQuery();
   const cart = useCartQuery();
   const navigation = useNavigation<NavigationProp>();
@@ -33,7 +35,6 @@ export function ProductionStudentHome({ user }: { user: SessionUser }) {
     setCourseId(id);
     setSheet('course');
   };
-  const { signOut, signingOut, logoutError } = useAuthActions();
   return (
     <>
       <StudentHome
@@ -55,32 +56,15 @@ export function ProductionStudentHome({ user }: { user: SessionUser }) {
               sessionId: session.sessionId,
             }),
         }}
-        sessionControls={
-          <View className="mt-4 gap-3">
-            {logoutError && (
-              <ScreenState
-                title={t('auth.session.logout')}
-                description={t('errors.generic')}
-                requestId={logoutError.requestId}
-              />
-            )}
-            <Button
-              testID="session-logout"
-              label={t('auth.session.logout')}
-              disabled={signingOut}
-              onPress={() => {
-                signOut().catch(() => {});
-              }}
-            />
-          </View>
-        }
       />
-      <ShoppingSheets
-        sheet={sheet}
-        courseId={courseId}
-        onOpenCart={() => setSheet('cart')}
-        onClose={() => setSheet(null)}
-      />
+      {sheet !== null && (
+        <ShoppingSheets
+          sheet={sheet}
+          courseId={courseId}
+          onOpenCart={() => setSheet('cart')}
+          onClose={() => setSheet(null)}
+        />
+      )}
     </>
   );
 }

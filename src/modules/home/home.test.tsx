@@ -87,17 +87,18 @@ it('shows the course title once when its cover is unavailable', () => {
   expect(screen.getAllByText(course.title)).toHaveLength(1);
 });
 
-it('reserves the design image area when introduction artwork is unavailable', () => {
+it('renders bundled introduction photos with accessible descriptions', () => {
   render(<StudentHome {...props} />);
-  expect(
-    screen.getByTestId('home-intro-image-0', { includeHiddenElements: true })
-      .props.importantForAccessibility
-  ).toBe('no-hide-descendants');
+  for (const [index, slot] of ['start', 'mentor', 'project'].entries()) {
+    expect(screen.getByTestId(`home-intro-image-${index}-image`)).toHaveProp(
+      'accessibilityLabel',
+      i18n.t(`home.intro.slides.${slot}.imageAlt`)
+    );
+  }
 });
 
 it('shows approved course promises outside preview and no invented image icons', () => {
   render(<StudentHome {...props} />);
-  fireEvent.press(screen.getByTestId('home-intro-dot-2'));
   expect(screen.getByText('Dự án đầu tiên sau 4 tuần.')).toBeTruthy();
   expect(screen.getByText('hotro@mindycoding.vn · 1900 0000')).toBeTruthy();
   expect(screen.queryByText(i18n.t('home.sections.about'))).toBeNull();
@@ -212,7 +213,7 @@ it('keeps successful regions while another region fails and retries only that re
     />
   );
   expect(screen.getByTestId('home-course-course-1')).toBeTruthy();
-  expect(screen.getByText(/schedule-ref/)).toBeTruthy();
+  expect(screen.queryByText(/schedule-ref/)).toBeNull();
   fireEvent.press(screen.getByTestId('home-schedule-retry-button'));
   expect(retry).toHaveBeenCalledTimes(1);
 });
@@ -250,7 +251,7 @@ it('renders loading, empty and error states without inventing courses; preserves
   expect(screen.getByTestId('home-course-course-1')).toBeTruthy();
 });
 
-it('changes carousel selection by dots and swipes and does not invoke a CTA on selection', () => {
+it('shows every Home card in horizontal rails and invokes a card CTA', () => {
   const onIntro = jest.fn();
   render(
     <StudentHome
@@ -258,41 +259,16 @@ it('changes carousel selection by dots and swipes and does not invoke a CTA on s
       actions={{ onIntro }}
     />
   );
-  expect(
-    screen.getByTestId('home-intro-dot-0').props.accessibilityState.selected
-  ).toBe(true);
-  fireEvent.press(screen.getByTestId('home-intro-dot-2'));
-  expect(
-    screen.getByTestId('home-intro-dot-2').props.accessibilityState.selected
-  ).toBe(true);
-  expect(onIntro).not.toHaveBeenCalled();
+  for (const kind of ['intro', 'about']) {
+    expect(screen.getByTestId(`home-${kind}-scroll`).props.horizontal).toBe(
+      true
+    );
+    for (const index of [0, 1, 2])
+      expect(screen.getByTestId(`home-${kind}-slide-${index}`)).toBeTruthy();
+  }
+  expect(screen.queryByTestId('home-intro-dot-0')).toBeNull();
   fireEvent.press(screen.getByTestId('home-intro-action-2'));
   expect(onIntro).toHaveBeenCalledWith(2);
-  fireEvent(screen.getByTestId('home-about-scroll'), 'momentumScrollEnd', {
-    nativeEvent: {
-      contentOffset: { x: 320 },
-      layoutMeasurement: { width: 320 },
-    },
-  });
-  expect(
-    screen.getByTestId('home-about-dot-1').props.accessibilityState.selected
-  ).toBe(true);
-});
-
-it('automatically advances both Home carousels after three seconds', () => {
-  jest.useFakeTimers();
-  const view = render(<StudentHome {...props} />);
-  for (const kind of ['intro', 'about'])
-    fireEvent(screen.getByTestId(`home-${kind}-viewport`), 'layout', {
-      nativeEvent: { layout: { width: 320 } },
-    });
-  act(() => jest.advanceTimersByTime(3000));
-  for (const kind of ['intro', 'about'])
-    expect(
-      screen.getByTestId(`home-${kind}-dot-1`).props.accessibilityState.selected
-    ).toBe(true);
-  view.unmount();
-  jest.useRealTimers();
 });
 
 it('disables unavailable destinations and marks Home as the selected middle tab', () => {
@@ -304,7 +280,7 @@ it('disables unavailable destinations and marks Home as the selected middle tab'
     'home-tab-courses',
     'home-tab-schedule',
     'home-tab-home',
-    'home-tab-notifications',
+    'home-tab-messages',
     'home-tab-account',
   ]);
   expect(

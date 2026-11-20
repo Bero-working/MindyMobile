@@ -66,6 +66,8 @@ it('locks checkout and remove while pending and provides a verification action f
   );
   expect(screen.getByTestId('cart-checkout')).toBeDisabled();
   expect(screen.getByTestId('cart-item-remove-a')).toBeDisabled();
+  expect(screen.getByTestId('cart-payment-PAYOS')).toBeDisabled();
+  expect(screen.getByTestId('cart-payment-CASH')).toBeDisabled();
   const verify = jest.fn();
   view.rerender(
     <CartSheet
@@ -77,4 +79,5 @@ it('locks checkout and remove while pending and provides a verification action f
   fireEvent.press(screen.getByTestId('cart-checkout-verify'));
   expect(verify).toHaveBeenCalledTimes(1);
   expect(screen.getByTestId('cart-checkout')).toBeDisabled();
+  expect(screen.getByTestId('cart-payment-CASH')).toBeDisabled();
 });

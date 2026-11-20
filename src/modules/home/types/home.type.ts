@@ -1,5 +1,4 @@
 import type { ImageSourcePropType } from 'react-native';
-import type { ReactNode } from 'react';
 export type HomeCourse = {
   id: string;
   code: string;
@@ -24,12 +23,7 @@ export type DataRegion<T> = {
   error?: { code: string; requestId?: string };
   onRetry?: () => void;
 };
-export type HomeTab =
-  | 'courses'
-  | 'schedule'
-  | 'home'
-  | 'notifications'
-  | 'account';
+export type HomeTab = 'courses' | 'schedule' | 'home' | 'messages' | 'account';
 export type HomeActions = {
   onCourse?: (id: string) => void;
   onSelectCourse?: (id: string) => void;
@@ -46,7 +40,6 @@ export type HomeActions = {
 export type HomeProps = {
   learningEnabled?: boolean;
   cartCount?: number;
-  sessionControls?: ReactNode;
   displayName: string;
   mascot?: ImageSourcePropType;
   courses: DataRegion<HomeCourse[]>;

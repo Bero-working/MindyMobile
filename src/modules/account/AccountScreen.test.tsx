@@ -5,7 +5,7 @@ import {
   screen,
   waitFor,
 } from '@testing-library/react-native';
-import '@/config/i18n.config';
+import i18n from '@/config/i18n.config';
 import { AccountScreen } from './AccountScreen';
 import { ApiError } from '@/shared/utilities/apiError';
 jest.mock('@/components/common/AppSheet', () => ({
@@ -21,6 +21,34 @@ const user = {
   lastLoginAt: null,
   createdAt: '2026-01-01T00:00:00Z',
 };
+it('opens orders when an orders action is available', () => {
+  const open = jest.fn();
+  render(
+    <AccountScreen
+      profile={{ status: 'success', data: user }}
+      onLogout={jest.fn()}
+      onTab={jest.fn()}
+      onMyClasses={jest.fn()}
+      onOrders={open}
+    />
+  );
+  fireEvent.press(screen.getByTestId('account-orders'));
+  expect(open).toHaveBeenCalledTimes(1);
+});
+it('opens attendance history when its action is available', () => {
+  const open = jest.fn();
+  render(
+    <AccountScreen
+      profile={{ status: 'success', data: user }}
+      onLogout={jest.fn()}
+      onTab={jest.fn()}
+      onMyClasses={jest.fn()}
+      onAttendance={open}
+    />
+  );
+  fireEvent.press(screen.getByTestId('account-attendance'));
+  expect(open).toHaveBeenCalledTimes(1);
+});
 it('shows read-only profile and confirms logout before calling it', async () => {
   const logout = jest.fn().mockResolvedValue(undefined);
   render(
@@ -88,7 +116,10 @@ it('retains logout errors with a retry action', async () => {
   );
   fireEvent.press(screen.getByTestId('account-logout'));
   fireEvent.press(screen.getByTestId('account-logout-confirm'));
-  await waitFor(() => expect(screen.getByText(/logout-request/)).toBeTruthy());
+  await waitFor(() =>
+    expect(screen.getByText(i18n.t('errors.generic'))).toBeTruthy()
+  );
+  expect(screen.queryByText(/logout-request/)).toBeNull();
   expect(screen.getByTestId('account-logout-confirm')).not.toBeDisabled();
   logout.mockResolvedValueOnce(undefined);
   fireEvent.press(screen.getByTestId('account-logout-confirm'));

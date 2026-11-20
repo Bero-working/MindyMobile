@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
+import { deferComponent } from '@/components/common/deferComponent';
+import { navigateLearningTab } from '@/navigation/navigateLearningTab';
 import { useRef, useState } from 'react';
 import { Linking } from 'react-native';
 import {
@@ -12,14 +15,11 @@ import { useStudentScope } from '@/shared/hooks/useStudentScope';
 import { toRegion } from '@/shared/utilities/toRegion';
 import type { NavigationProp, RootStackParamList } from '@/navigation/types';
 import routes from '@/navigation/routes';
-import type { HomeTab } from '@/modules/home/types/home.type';
 import { authService } from '@/modules/auth/services/auth.service';
 import { useAuthActions } from '@/modules/auth/hooks/useAuthSession';
-import { AccountScreen } from '@/modules/account/AccountScreen';
-import { ScheduleScreen } from '@/modules/schedule/ScheduleScreen';
+
 import { useScheduleController } from '@/modules/schedule/hooks/useScheduleController';
-import { MyClassesScreen } from './MyClassesScreen';
-import { ClassDetailScreen } from './ClassDetailScreen';
+
 import {
   privateQueryOptions,
   useClassDetailQuery,
@@ -29,16 +29,32 @@ import { learningQueryKeys } from './hooks/learningQueryKeys';
 import { ScreenState } from '@/components/common/ScreenState';
 import { LearningLayout } from './components/LearningLayout';
 
-export function navigateLearningTab(navigation: NavigationProp, tab: HomeTab) {
-  if (tab === 'home')
-    navigation.navigate(routes.studentHome, undefined, { pop: true });
-  else if (tab === 'courses')
-    navigation.navigate(routes.courses, undefined, { pop: true });
-  else if (tab === 'schedule')
-    navigation.navigate(routes.studentSchedule, undefined, { pop: true });
-  else if (tab === 'account')
-    navigation.navigate(routes.studentAccount, undefined, { pop: true });
-}
+const AccountScreen = deferComponent(
+  () =>
+    (
+      require('@/modules/account/AccountScreen') as typeof import('@/modules/account/AccountScreen')
+    ).AccountScreen
+);
+
+const ScheduleScreen = deferComponent(
+  () =>
+    (
+      require('@/modules/schedule/ScheduleScreen') as typeof import('@/modules/schedule/ScheduleScreen')
+    ).ScheduleScreen
+);
+
+const MyClassesScreen = deferComponent(
+  () =>
+    (require('./MyClassesScreen') as typeof import('./MyClassesScreen'))
+      .MyClassesScreen
+);
+
+const ClassDetailScreen = deferComponent(
+  () =>
+    (require('./ClassDetailScreen') as typeof import('./ClassDetailScreen'))
+      .ClassDetailScreen
+);
+
 export function StudentScheduleRoute() {
   const active = useIsFocused();
   const navigation = useNavigation<NavigationProp>();
@@ -65,6 +81,8 @@ export function StudentAccountRoute() {
     <AccountScreen
       profile={toRegion(profile, scope.enabled && active)}
       onLogout={signOut}
+      onOrders={() => navigation.navigate(routes.studentOrders)}
+      onAttendance={() => navigation.navigate(routes.studentAttendance)}
       onTab={(tab) => navigateLearningTab(navigation, tab)}
       onMyClasses={() =>
         navigation.navigate(routes.myClasses, { origin: 'account' })
@@ -137,12 +155,31 @@ export function StudentClassDetailRoute() {
     );
   return (
     <ClassDetailScreen
+      active={active}
       detail={data.detail}
       sessionId={route.params.sessionId}
+      onSessionClose={() => {
+        // The deep-linked session is consumed once closed; refetches must not reopen it.
+        if (route.params.sessionId)
+          navigation.setParams({ sessionId: undefined });
+      }}
       courseTitle={data.enrollment?.courseTitle}
       courseImageUrl={data.enrollment?.courseImageUrl}
       timeZone="Asia/Ho_Chi_Minh"
       onBack={() => navigation.goBack()}
+      onMaterials={(unitId, unitTitle) => {
+        if (
+          !active ||
+          current.current.status !== 'success' ||
+          current.current.data?.accessMode !== 'FULL'
+        )
+          return;
+        navigation.navigate(routes.studentMaterials, {
+          classId: route.params.classId,
+          unitId,
+          unitTitle,
+        });
+      }}
       onJoin={async (url) => {
         if (
           !active ||

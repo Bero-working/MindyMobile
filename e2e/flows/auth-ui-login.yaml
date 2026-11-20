@@ -6,53 +6,24 @@ tags:
     clearState: true
 - extendedWaitUntil:
     visible:
-      id: 'login-screen'
+      id: login-screen
     timeout: 90000
 - tapOn:
-    id: 'auth-back-button'
+    id: auth-back-button
 - assertVisible:
-    id: 'welcome-screen'
+    id: welcome-screen
 - tapOn:
-    id: 'welcome-login-button'
+    id: welcome-login-button
 - assertVisible:
-    id: 'login-screen'
-- back
-- takeScreenshot: 'phase1-welcome'
+    id: login-screen
+- takeScreenshot: auth-login
 - tapOn:
-    id: 'phase-one-preview-button'
-- tapOn:
-    id: 'preview-auth-button'
-- tapOn:
-    id: 'welcome-login-button'
-- takeScreenshot: 'phase1-login'
-- tapOn:
-    id: 'login-email-input'
-- inputText: 'student@example.test'
-- tapOn:
-    id: 'login-password-input'
-- inputText: 'secret'
-# Dismiss via an unused ScrollView margin; hideKeyboard sends Back on this Android API.
-- tapOn:
-    point: '98%,15%'
-- tapOn:
-    id: 'login-password-toggle'
-- tapOn:
-    id: 'login-submit-button'
+    id: login-submit-button
 - assertVisible:
-    id: 'preview-action-result'
-- assertNotVisible:
-    id: 'home-screen'
-- tapOn:
-    id: 'preview-tools-toggle'
-- tapOn:
-    id: 'preview-error-toggle'
-- tapOn:
-    id: 'preview-tools-toggle'
-- tapOn:
-    id: 'login-submit-button'
+    id: login-screen
 - assertVisible:
-    id: 'login-form-error'
-- takeScreenshot: 'phase1-login-error'
-- back
+    text: 'Vui lòng điền thông tin này\.|Please fill in this field\.'
+- tapOn:
+    id: login-register-link
 - assertVisible:
-    id: 'welcome-screen'
+    id: register-screen

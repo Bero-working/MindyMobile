@@ -3,6 +3,8 @@ import { colors } from '@/theme/colors';
 
 export type IconName =
   | 'check'
+  | 'chat'
+  | 'send'
   | 'video'
   | 'folder'
   | 'folder-open'
@@ -33,8 +35,31 @@ export type IconName =
   | 'image'
   | 'arrow'
   | 'filter'
-  | 'clock';
+  | 'clock'
+  | 'search'
+  | 'board'
+  | 'hand'
+  | 'pen'
+  | 'square'
+  | 'circle'
+  | 'eraser'
+  | 'expand'
+  | 'minus'
+  | 'play'
+  | 'close';
 const paths: Record<IconName, string> = {
+  board: 'M3 4h18v12H3zM12 16v4M8 20h8M7 12l3-3 2 2 4-4',
+  hand: 'M8 13V5a1.5 1.5 0 0 1 3 0v6M11 11V4a1.5 1.5 0 0 1 3 0v7M14 11V6a1.5 1.5 0 0 1 3 0v8a7 7 0 0 1-7 7h-.5a6 6 0 0 1-4.6-2.2L3 15.5a1.5 1.5 0 0 1 2.3-1.9L8 16',
+  pen: 'M4 20l4-1 11-11-3-3L5 16zM14 7l3 3',
+  square: 'M4 4h16v16H4z',
+  circle: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z',
+  eraser: 'M8 20h12M4 16l9-9 6 6-7 7H8zM9 11l6 6',
+  expand: 'M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5',
+  minus: 'M5 12h14',
+  play: 'M7 4.5v15l12.5-7.5z',
+  close: 'M6 6l12 12M18 6 6 18',
+  chat: 'M21 11.5a8.5 8.5 0 0 1-8.5 8.5H4l-2 2v-9.5A8.5 8.5 0 0 1 10.5 4h2a8.5 8.5 0 0 1 8.5 7.5zM7 10h10M7 14h7',
+  send: 'M22 2 9 15M22 2l-8 20-5-7-7-5z',
   check: 'M5 12l4 4L19 6',
   video: 'M3 6h12v12H3zM15 10l6-4v12l-6-4z',
   folder: 'M3 5h7l2 3h9v12H3z',
@@ -69,6 +94,7 @@ const paths: Record<IconName, string> = {
   cart: 'M2 3h3l3 13h11l3-10H6M9 21h.01M18 21h.01',
   image: 'M3 3h18v18H3zM3 17l6-6 4 4 3-3 5 5',
   arrow: 'M5 12h14M13 6l6 6-6 6',
+  search: 'M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14zM20 20l-4-4',
 };
 export function Icon({
   name,

@@ -108,17 +108,19 @@ it('removes a class and surfaces CART_ITEM_NOT_FOUND', async () => {
   });
 });
 
-it('checks out with PAYOS only and returns the created order', async () => {
+it('checks out with PAYOS by default and returns the created orders', async () => {
   mockServer.use(
     http.post(TEST_API_URL + '/me/cart/checkout', async ({ request }) => {
       expect(await request.json()).toEqual({ paymentType: 'PAYOS' });
       return HttpResponse.json({ orders: [order] }, { status: 201 });
     })
   );
-  await expect(cartService.checkout()).resolves.toMatchObject({
-    id: order.id,
-    orderCode: order.orderCode,
-  });
+  await expect(cartService.checkout()).resolves.toMatchObject([
+    {
+      id: order.id,
+      orderCode: order.orderCode,
+    },
+  ]);
 });
 
 it('rejects malformed carts and checkout results', async () => {
@@ -139,4 +141,21 @@ it('rejects malformed carts and checkout results', async () => {
   await expect(cartService.checkout()).rejects.toMatchObject({
     code: 'INVALID_CART_RESPONSE',
   });
+});
+
+it('sends CASH and preserves all mentor orders in the checkout response', async () => {
+  const orders = [
+    { ...order, paymentType: 'CASH' },
+    { ...order, id: id(501), paymentType: 'CASH' },
+  ];
+  mockServer.use(
+    http.post(TEST_API_URL + '/me/cart/checkout', async ({ request }) => {
+      expect(await request.json()).toEqual({ paymentType: 'CASH' });
+      return HttpResponse.json({ orders }, { status: 201 });
+    })
+  );
+  await expect(cartService.checkout('CASH')).resolves.toMatchObject([
+    { id: id(500), paymentType: 'CASH' },
+    { id: id(501), paymentType: 'CASH' },
+  ]);
 });

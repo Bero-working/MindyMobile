@@ -26,7 +26,7 @@ import { colors } from '@/theme/colors';
 import { motion } from '@/theme/motion';
 import { useHomeController } from './hooks/useHomeController';
 import { CourseTile } from '@/components/common/CourseTile';
-import { HomeCarousel } from './components/HomeCarousel';
+import { HomeRail } from './components/HomeRail';
 import { AppTabBar as HomeTabBar } from '@/components/common/AppTabBar';
 import { BrandBar as HomeNav } from '@/components/common/BrandBar';
 import { HomeButton } from './components/HomeButton';
@@ -205,7 +205,6 @@ export function StudentHome(props: HomeProps) {
                 title={t('home.errorTitle')}
                 description={regionError(props.schedule.error?.code)}
                 onRetry={props.schedule.onRetry}
-                requestId={props.schedule.error?.requestId}
                 retryTestID="home-schedule-retry-button"
               />
             )}
@@ -276,7 +275,6 @@ export function StudentHome(props: HomeProps) {
               title={t('home.errorTitle')}
               description={regionError(props.courses.error?.code)}
               onRetry={props.courses.onRetry}
-              requestId={props.courses.error?.requestId}
               retryTestID="home-retry-button"
             />
           )}
@@ -329,7 +327,7 @@ export function StudentHome(props: HomeProps) {
             />
           </View>
         </View>
-        <HomeCarousel
+        <HomeRail
           kind="intro"
           onAction={actions.onIntro}
         />
@@ -337,7 +335,7 @@ export function StudentHome(props: HomeProps) {
           name={props.displayName}
           onPress={actions.onCompiler}
         />
-        <HomeCarousel kind="about" />
+        <HomeRail kind="about" />
         <View
           testID="home-footer"
           style={layout.footer}
@@ -405,7 +403,6 @@ export function StudentHome(props: HomeProps) {
           <Text className="mt-[18px] font-nunito text-[13.5px] leading-[23px] text-line">
             {t('home.footer.contact')}
           </Text>
-          {props.sessionControls}
           <Text className="mt-[16px] border-t border-canvas/20 pt-[12px] font-nunito text-[12px] text-banner">
             {t('home.footer.copyright')}
           </Text>

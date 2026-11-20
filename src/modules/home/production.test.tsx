@@ -56,11 +56,7 @@ it('renders verified production data, keeps unavailable CTAs disabled and logs o
         timeZone: 'Asia/Ho_Chi_Minh',
         asOf: '2026-10-17T00:00:00Z',
       });
-    }),
-    http.post(
-      TEST_API_URL + '/auth/logout',
-      () => new HttpResponse(null, { status: 204 })
-    )
+    })
   );
   renderWithProviders(<StudentHomeRoute />);
   expect(screen.getByTestId('home-loading')).toBeTruthy();
@@ -76,9 +72,7 @@ it('renders verified production data, keeps unavailable CTAs disabled and logs o
   await act(async () => finish());
   await waitFor(() => expect(screen.getByTestId('home-empty')).toBeTruthy());
   expect(screen.queryByTestId('home-next-session')).toBeNull();
-  fireEvent.press(screen.getByTestId('session-logout'));
-  await waitFor(() => expect(useStore.getState().sessionUser).toBeNull());
-  expect(screen.queryByTestId('home-screen')).toBeNull();
+  expect(screen.queryByTestId('session-logout')).toBeNull();
 });
 it('removes Home immediately when the session expires', async () => {
   mockServer.use(

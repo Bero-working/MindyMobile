@@ -1,12 +1,13 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
+import { deferComponent } from '@/components/common/deferComponent';
 import { useRef, useState, type ReactNode } from 'react';
 import { Switch, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { AppSheet } from '@/components/common/AppSheet';
+
 import { Icon, type IconName } from '@/components/common/Icon';
 import { PressableScale } from '@/components/common/PressableScale';
 import { Button } from '@/components/ui/Button';
 import { useI18n } from '@/shared/hooks/language/useI18n';
-import { ApiError } from '@/shared/utilities/apiError';
 import { colors } from '@/theme/colors';
 import {
   LearningLayout,
@@ -14,6 +15,13 @@ import {
 } from '../my-classes/components/LearningLayout';
 import type { AuthResult } from '../auth/types/auth.type';
 import type { DataRegion, HomeTab } from '../home/types/home.type';
+
+const AppSheet = deferComponent(
+  () =>
+    (
+      require('@/components/common/AppSheet') as typeof import('@/components/common/AppSheet')
+    ).AppSheet
+);
 
 function AccountRow({
   testID,
@@ -88,11 +96,15 @@ export function AccountScreen({
   onLogout,
   onTab,
   onMyClasses,
+  onOrders,
+  onAttendance,
 }: {
   profile: DataRegion<AuthResult['user']>;
   onLogout: () => Promise<void>;
   onTab: (tab: HomeTab) => void;
   onMyClasses: () => void;
+  onOrders?: () => void;
+  onAttendance?: () => void;
 }) {
   const { t, i18n } = useTranslation();
   const { changeLanguage } = useI18n();
@@ -115,12 +127,8 @@ export function AccountScreen({
     try {
       await onLogout();
       setSheet(null);
-    } catch (e) {
-      setError(
-        e instanceof ApiError && e.requestId
-          ? t('common.requestId', { id: e.requestId })
-          : t('errors.generic')
-      );
+    } catch {
+      setError(t('errors.generic'));
     } finally {
       busy.current = false;
       setPending(false);
@@ -140,6 +148,7 @@ export function AccountScreen({
       <LearningState
         region={profile}
         prefix="account"
+        inset
         empty={!user}
       >
         {user && (
@@ -201,7 +210,8 @@ export function AccountScreen({
                   testID="account-orders"
                   icon="bag"
                   label={t('account.orders')}
-                  disabled
+                  disabled={!onOrders}
+                  onPress={onOrders}
                 />
               </View>
               <View className="rounded-[18px] bg-soft py-[4px]">
@@ -227,7 +237,8 @@ export function AccountScreen({
                   testID="account-attendance"
                   icon="check-calendar"
                   label={t('account.attendance')}
-                  disabled
+                  disabled={!onAttendance}
+                  onPress={onAttendance}
                 />
               </View>
               <View className="rounded-[18px] bg-soft py-[4px]">

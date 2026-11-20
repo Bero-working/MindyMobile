@@ -9,25 +9,12 @@ import {
   RegisterRoute,
   StudentHomeRoute,
 } from './AuthRoutes';
-import { PhaseOnePreview } from '../preview/PhaseOnePreview';
 const mockNavigate = jest.fn();
 jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual('@react-navigation/native'),
   useNavigation: () => ({ navigate: mockNavigate }),
 }));
 afterEach(() => jest.clearAllMocks());
-it('switches Home preview between controlled loading, empty, error and success states', () => {
-  render(<PhaseOnePreview />);
-  fireEvent.press(screen.getByTestId('preview-home-button'));
-  expect(screen.queryByTestId('preview-state-loading')).toBeNull();
-  fireEvent.press(screen.getByTestId('preview-tools-toggle'));
-  fireEvent.press(screen.getByTestId('preview-state-loading'));
-  expect(screen.getByTestId('home-loading')).toBeTruthy();
-  fireEvent.press(screen.getByTestId('preview-state-empty'));
-  expect(screen.getByTestId('home-empty')).toBeTruthy();
-  fireEvent.press(screen.getByTestId('preview-state-error'));
-  expect(screen.getByTestId('home-error')).toBeTruthy();
-});
 it('navigates Welcome to typed login and registration routes without credentials in params', () => {
   render(<WelcomeRoute />);
   fireEvent.press(screen.getByTestId('welcome-login-button'));
@@ -48,26 +35,15 @@ it('does not render student data without a real session adapter', () => {
   render(<StudentHomeRoute />);
   expect(screen.queryByTestId('home-screen')).toBeNull();
 });
-it('has no development preview or preview link in release', () => {
+it.each([true, false])('has no demo entry with __DEV__=%s', (development) => {
   const runtime = global as typeof global & { __DEV__: boolean };
   const previous = runtime.__DEV__;
-  runtime.__DEV__ = false;
+  runtime.__DEV__ = development;
   try {
-    const view = render(<PhaseOnePreview />);
-    expect(screen.queryByTestId('phase-one-preview')).toBeNull();
-    view.unmount();
     render(<WelcomeRoute />);
     expect(screen.queryByTestId('phase-one-preview-button')).toBeNull();
+    expect(screen.getAllByRole('button')).toHaveLength(2);
   } finally {
     runtime.__DEV__ = previous;
   }
 });
-
-jest.mock('react-native-qrcode-svg', () => ({
-  __esModule: true,
-  default: jest.requireActual('react-native').View,
-}));
-jest.mock('@react-native-clipboard/clipboard', () => ({
-  __esModule: true,
-  default: { setString: jest.fn() },
-}));

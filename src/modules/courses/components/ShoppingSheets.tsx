@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
+import { deferComponent } from '@/components/common/deferComponent';
 import { useNavigation } from '@react-navigation/native';
 import routes from '@/navigation/routes';
 import type { NavigationProp } from '@/navigation/types';
-import { CartSheet } from '@/modules/cart/components/CartSheet';
+
 import { useCartController } from '@/modules/cart/hooks/useCartController';
 import {
   useCartActions,
@@ -10,7 +12,17 @@ import {
 import { useCourseDetailQuery } from '../hooks/useCourseDetailQuery';
 import { useCourseSelection } from '../hooks/useCourseSelection';
 import type { Course } from '../types/courses.type';
-import { CourseSheet } from './CourseSheet';
+
+const CartSheet = deferComponent(
+  () =>
+    (
+      require('@/modules/cart/components/CartSheet') as typeof import('@/modules/cart/components/CartSheet')
+    ).CartSheet
+);
+
+const CourseSheet = deferComponent(
+  () => (require('./CourseSheet') as typeof import('./CourseSheet')).CourseSheet
+);
 
 type Props = {
   sheet: 'course' | 'cart' | null;
@@ -51,7 +63,7 @@ function ProductionCourseSheet({
   courseId,
   onOpenCart,
   onClose,
-}: Omit<Props, 'sheet'>) {
+}: Pick<Props, 'courseId' | 'onOpenCart' | 'onClose'>) {
   const detail = useCourseDetailQuery(courseId);
   const cart = useCartQuery();
   const actions = useCartActions();
@@ -64,7 +76,9 @@ function ProductionCourseSheet({
     onRefresh: async () => {
       await actions.refresh();
     },
-    onOpenCart,
+    onCheckout: async () => {
+      onOpenCart();
+    },
   });
   return (
     <CourseSheet
@@ -91,10 +105,16 @@ function ProductionCourseSheet({
 }
 function ProductionCartSheet({ onClose }: { onClose: () => void }) {
   const navigation = useNavigation<NavigationProp>();
-  const controller = useCartController((orderId) => {
-    onClose();
-    navigation.navigate(routes.payment, { orderId });
-  });
+  const controller = useCartController(
+    (orderId) => {
+      onClose();
+      navigation.navigate(routes.payment, { orderId });
+    },
+    () => {
+      onClose();
+      navigation.navigate(routes.studentOrders);
+    }
+  );
   return (
     <CartSheet
       {...controller}

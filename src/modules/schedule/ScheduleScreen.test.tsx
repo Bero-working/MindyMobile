@@ -3,7 +3,7 @@ import { fireEvent, render, screen } from '@testing-library/react-native';
 import '@/config/i18n.config';
 import { ScheduleScreen } from './ScheduleScreen';
 import type { ScheduleProps } from './types';
-import { learningFixtures } from '../preview/learningFixtures';
+import { learningFixtures } from '../../../tests/fixtures/learningUi';
 const props: ScheduleProps = {
   sessions: { status: 'success', data: [] },
   anchorDay: '2027-01-01',
